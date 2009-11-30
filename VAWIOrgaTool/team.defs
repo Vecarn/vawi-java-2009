@@ -1,0 +1,15 @@
+#Mon Nov 30 22:06:26 CET 2009
+bluej.teamsettings.groupname=
+bluej.teamsettings.subversion.server=vawi-java-2009.googlecode.com
+bluej.teamsettings.user=georghattinger
+bluej.teamsettings.ignore8=\\.DS_Store
+bluej.teamsettings.vcs=subversion
+bluej.teamsettings.ignore7=.*\\\#backup
+bluej.teamsettings.ignore6=.*\\\#
+bluej.teamsettings.ignore5=.*\\~
+bluej.teamsettings.ignore4=.*\\.ctxt
+bluej.teamsettings.ignore3=team\\.defs
+bluej.teamsettings.subversion.repositoryPrefix=/svn/
+bluej.teamsettings.ignore2=bluej\\.pkh
+bluej.teamsettings.ignore1=.*\\.class
+bluej.teamsettings.subversion.protocol=https
