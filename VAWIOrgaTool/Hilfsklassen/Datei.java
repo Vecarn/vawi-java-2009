@@ -1,3 +1,5 @@
+package Hilfsklassen;
+
 import java.io.*;
 
 /**
