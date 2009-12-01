@@ -1,9 +1,9 @@
-
+import Hilfsklassen;
 package EingabeDatenVerwaltung.Eingabe;
 
 /**
  * Der FlatFileLeser ist eine Realisierung des Datenleser, der die EingabeDaten mit Hilfe der Hilfsklasse Datei aus FlatFiles liest.
- * 
+ * @author Markus Bode
  * @poseidon-object-id [I2d0758e8m124d537380cmm7cc1]
  */
 public class FlatFileLeser {
@@ -12,7 +12,7 @@ public class FlatFileLeser {
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm76d2]
  */
-    public Hilfsklassen.Datei datei;
+    public Datei datei;
 /**
  * 
  * 

@@ -3,7 +3,8 @@ package EingabeDatenVerwaltung.DatenVerwaltung;
 
 /**
  * Verwaltungsklasse f&uuml;r Kurse
- * @author: Markus Bode
+ * @author Markus Bode
+ *
  * @poseidon-object-id [I2d0758e8m124d537380cmm7b6d]
  */
 public class Kursliste {
