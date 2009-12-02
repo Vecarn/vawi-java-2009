@@ -1,11 +1,11 @@
 package EingabeDatenVerwaltung.Eingabe;
 
+import java.io.IOException;
 import Hilfsklassen.Datei;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 /**
- * Der FlatFileLeser ist eine Realisierung des Datenleser, der die EingabeDaten
- * mit Hilfe der Hilfsklasse Datei aus FlatFiles liest.
+ * Objekte der Klasse FlatFileLeser lesen die Eingabedaten aus einfachen 
  * 
  * @author Markus Bode
  */
@@ -29,13 +29,17 @@ public class FlatFileLeser {
 	 * (nur eine Kursdatei, restl. Daten werden generiert)
 	 * 
 	 * @param kursdateiname (String): Dateiname der Kursdatei.
+	 * @throws IOException : Wenn ein Problem beim Öffnen der Datei auftritt, wird eine IOException ausgelöst. 
 	 */
-	public FlatFileLeser(String kursdateiname) {
+	public FlatFileLeser(String kursdateiname) throws IOException {
 		
 		this.kursdatei = new Datei(kursdateiname);
 		this.studentendatei = null;
 		this.buchungsdatei = null;
-		erstelleKursliste();
+		if(!erstelleKursliste()){
+			throw new IOException();
+		}
+		
 	}
 
 	/**
@@ -47,38 +51,72 @@ public class FlatFileLeser {
 	 * @param studentendateiname (String): Dateiname der Studentendatei.
 	 * @param buchungsdateiname (String): Dateiname der Buchungsdatei.
 	 * @param kursdateiname (String): Dateiname der Kursdatei.
+	 * @throws IOException : Wenn ein Problem beim Öffnen der Datei auftritt, wird eine IOException ausgelöst.
 	 * @poseidon-object-id [I2d0758e8m124d537380cmm76d2]
 	 * 
 	 */
 	public FlatFileLeser(String studentendateiname,
-			String buchungsdateiname, String kursdateiname) {
+			String buchungsdateiname, String kursdateiname) throws IOException {
 		
 		this.studentendatei = new Datei(studentendateiname);
 		this.buchungsdatei = new Datei(buchungsdateiname);
 		this.kursdatei = new Datei(kursdateiname);
 		
-		erstelleStudentenliste();
-		erstelleBuchungsliste();
-		erstelleKursliste();
-
+		if(!erstelleStudentenliste()||!erstelleBuchungsliste()||!erstelleKursliste()){
+			throw new IOException();
+		}
+		
 	}
 	
-	private void erstelleKursliste() {
-		// TODO Auto-generated method stub
+	private boolean erstelleKursliste() {
+		kursdatei.openInFile();
+        // Abfrage, ob das öffen funktioniert hat
+        if (!kursdatei.state())
+        {
+            // Ausgabe des Fehlers im Terminalfenster
+            System.out.println("Fehler: Beim öffen der Eingabedatei.");
+            // Abbrechen der Methode
+            return false;
+        }
+        
+        return true;
 		
 	}
 
-	private void erstelleBuchungsliste() {
-		// TODO Auto-generated method stub
+	private boolean erstelleBuchungsliste() {
+		buchungsdatei.openInFile();
+        // Abfrage, ob das öffen funktioniert hat
+        if (!buchungsdatei.state())
+        {
+            // Ausgabe des Fehlers im Terminalfenster
+            System.out.println("Fehler: Beim öffen der Eingabedatei.");
+            // Abbrechen der Methode
+            return false;
+        }
+        
+        return true;
 		
 	}
 
-	private void erstelleStudentenliste() {
-		// TODO Auto-generated method stub
+	private boolean erstelleStudentenliste() {
+		studentendatei.openInFile();
+        // Abfrage, ob das öffen funktioniert hat
+        if (!studentendatei.state())
+        {
+            // Ausgabe des Fehlers im Terminalfenster
+            System.out.println("Fehler: Beim öffen der Eingabedatei.");
+            // Abbrechen der Methode
+            return false;
+        }
+        
+        return true;
 		
 	}
 
 	/**
+	 * Liefert die Studentenliste zurück, in der die Studenten-Objekte verwaltet werden, 
+	 * die aus der übergebenen Datei erstellt wurden.
+	 * 
 	 * @return studentenliste (Studentenliste)
 	 */
 	public Studentenliste getStudentenliste() {
@@ -86,6 +124,9 @@ public class FlatFileLeser {
 	}
 
 	/**
+	 * Liefert die Buchungsliste zurück, in der die Buchungs-Objekte verwaltet werden, 
+	 * die aus der übergebenen Datei erstellt wurden.
+	 * 
 	 * @return buchungsliste (Buchungsliste)
 	 */
 	public Buchungsliste getBuchungsliste() {
@@ -93,6 +134,9 @@ public class FlatFileLeser {
 	}
 
 	/**
+	 * Liefert die Kursliste zurück, in der die Kurs-Objekte verwaltet werden, 
+	 * die aus der übergebenen Datei erstellt wurden.
+	 * 
 	 * @return kursliste (Kursliste)
 	 */
 	public Kursliste getKursliste() {
