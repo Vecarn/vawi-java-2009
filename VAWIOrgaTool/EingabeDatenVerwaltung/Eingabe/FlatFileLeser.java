@@ -5,7 +5,7 @@ import Hilfsklassen.Datei;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 /**
- * Objekte der Klasse FlatFileLeser lesen die Eingabedaten aus einfachen 
+ * Objekte der Klasse FlatFileLeser lesen die Eingabedaten aus einfachen CSV Dateien
  * 
  * @author Markus Bode
  */
@@ -36,6 +36,7 @@ public class FlatFileLeser {
 		this.kursdatei = new Datei(kursdateiname);
 		this.studentendatei = null;
 		this.buchungsdatei = null;
+		
 		if(!erstelleKursliste()){
 			throw new IOException();
 		}
@@ -62,13 +63,14 @@ public class FlatFileLeser {
 		this.buchungsdatei = new Datei(buchungsdateiname);
 		this.kursdatei = new Datei(kursdateiname);
 		
-		if(!erstelleStudentenliste()||!erstelleBuchungsliste()||!erstelleKursliste()){
+		if(!erstelleStudentenliste()||!erstelleKursliste()||!erstelleBuchungsliste()){
 			throw new IOException();
 		}
 		
 	}
 	
 	private boolean erstelleKursliste() {
+		
 		kursdatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
         if (!kursdatei.state())
@@ -84,6 +86,11 @@ public class FlatFileLeser {
 	}
 
 	private boolean erstelleBuchungsliste() {
+		
+		//erst Studentenliste und Kursliste erstellen
+		//beim erstellen neuer Buchung: buchung.setStudent(studentenliste.getStudent(id))
+		//   							buchung.setKurs(kursliste.getKurs(id))
+		
 		buchungsdatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
         if (!buchungsdatei.state())
