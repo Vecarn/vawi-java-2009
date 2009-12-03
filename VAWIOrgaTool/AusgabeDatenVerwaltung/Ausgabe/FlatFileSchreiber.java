@@ -5,6 +5,7 @@ package AusgabeDatenVerwaltung.Ausgabe;
  * Realisierung des Datenschreibers, der FlatFiles ausgibt.
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm7ca8]
+ * @author Martin
  */
 public class FlatFileSchreiber {
 /**
@@ -20,7 +21,9 @@ public class FlatFileSchreiber {
  */
     public AusgabeDatenVerwaltung.AusgabeVerwaltung ausgabeVerwaltung;
 
-    public void Test(){
+    
+    public void writer()
+    {
     
     }
 

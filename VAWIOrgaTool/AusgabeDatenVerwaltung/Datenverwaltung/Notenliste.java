@@ -2,9 +2,11 @@
 package AusgabeDatenVerwaltung.Datenverwaltung;
 
 /**
- * Verwaltungsklasse f&uuml;r die Noten eines Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
+ * Verwaltungsklasse f&uuml;r die Noten eines 
+ * Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm766a]
+ * @author Martin
  */
 public class Notenliste {
 /**

@@ -2,9 +2,12 @@
 package AusgabeDatenVerwaltung.Datenverwaltung;
 
 /**
- * Verwaltungsklasse f&uuml;r Platzkarten.
+ * Die Klasse "Platzkartenliste" wird für die Erzeugung der Platzkarten
+ * verwendet.
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm7683]
+ * @author Martin
+ * 
  */
 public class Platzkartenliste {
 /**
