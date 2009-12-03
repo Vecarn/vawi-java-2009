@@ -19,4 +19,9 @@ public class FlatFileSchreiber {
  * @poseidon-object-id [Im3057c7d4m124e9a3360amm75cc]
  */
     public AusgabeDatenVerwaltung.AusgabeVerwaltung ausgabeVerwaltung;
- }
+
+    public void Test(){
+    
+    }
+
+}
