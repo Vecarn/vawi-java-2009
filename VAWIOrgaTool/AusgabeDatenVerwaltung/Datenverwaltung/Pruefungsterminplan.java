@@ -1,25 +1,24 @@
 
 package AusgabeDatenVerwaltung.Datenverwaltung;
 
+import java.util.Collection;
+import AusgabeDatenVerwaltung.DatenObjekte.Anwesenheit;
+
 /**
  * Verwaltungsklasse, die das Ergebnis des Planungsalgorithmus 
  * in Form von Pruefungstagen enth&auml;lt.
  * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm7b2d]
  * @author Martin
  */
 public class Pruefungsterminplan {
-/**
- * 
- * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm71ab]
- */
+
     public EingabeDatenVerwaltung.DatenVerwaltung.Buchungsliste buchungsliste;
-/**
- * 
- * 
- * @poseidon-object-id [Im3057c7d4m124e9a3360amm7536]
- * @poseidon-type AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag
- */
+    
+    /**
+     * Collection für die einzelnen Anwesenheiten
+     */
+    private Collection<Anwesenheit> anwesenheiten;
+    
+
     public java.util.Collection pruefungstag = new java.util.TreeSet();
  }
