@@ -1,8 +1,8 @@
 package EingabeDatenVerwaltung.DatenVerwaltung;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.TreeSet;
 import EingabeDatenVerwaltung.DatenObjekte.Kurs;
 
 /**
@@ -12,13 +12,8 @@ import EingabeDatenVerwaltung.DatenObjekte.Kurs;
  * @poseidon-object-id [I2d0758e8m124d537380cmm7b6d]
  */
 public class Kursliste {
-/**
- * 
- * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm7a6a]
- * @poseidon-type EingabeDatenVerwaltung.DatenObjekte.Kurs
- */
-    private Collection<Kurs> kurse = new TreeSet<Kurs>();
+
+    private Collection<Kurs> kurse = new ArrayList<Kurs>();
     /**
      * 
      * @param id
@@ -31,18 +26,15 @@ public class Kursliste {
      */
     public boolean addKurs(int id, String kurzname, String langname, boolean teilleistungen, int maxPunkte){
     	//new Kurs(hier alle Variablen)
-    	if(kurse.add(new Kurs())){
-    		return true;
-    	}
-    	
-    	return false;
+    	    	
+    	return kurse.add(new Kurs(id));
 	  
     }
     
     public Kurs getKurs(int id){
     	
     	Iterator<Kurs> kursiterator = kurse.iterator();
-    	
+    		
     	while(kursiterator.hasNext()){
     		Kurs kurs = kursiterator.next();
     		if(kurs.getId() == id){
@@ -51,6 +43,16 @@ public class Kursliste {
     	}
     		
     	return null;
+    }
+    
+    /**
+     * Liefert einen Iterator auf die vorhandene Kurs-Collection.
+     * 
+     * @return Iterator<Student> : Iterator auf Collection mit Kurs-Objekten.
+     */
+    
+    public Iterator<Kurs> getKursIterator(){
+		return kurse.iterator();	
     }
       
  }
