@@ -1,8 +1,10 @@
 package EingabeDatenVerwaltung.DatenVerwaltung;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.TreeSet;
+import java.util.Vector;
 
 import EingabeDatenVerwaltung.DatenObjekte.*;
 /**
@@ -17,8 +19,9 @@ public class Studentenliste {
  * @poseidon-object-id [I2d0758e8m124d537380cmm7ac0]
  * @poseidon-type EingabeDatenVerwaltung.DatenObjekte.Student
  */
-    private Collection<Student> studenten = new TreeSet<Student>();
- 
+    //private Vector<Student> studenten2 = new Vector<Student>();
+    
+    private Collection<Student> studenten = new TreeSet<Student>(new StudentenComparator());
     /**
      * 
      * @param id
@@ -33,11 +36,15 @@ public class Studentenliste {
     
     public boolean addStudent(long id, String nachname, String vorname, char uni, String region, boolean zeitminimierer){
     	//new Student(variablen)
-    	if(studenten.add(new Student())){
-    		return true;
-    	}
+    	//System.out.println("try addStudent:"+id);
+    	//if(getStudent(id)==null){
+    	//System.out.println("--"+
+    	//	return true;
+    	//}
     	
-    	return false;
+    	return studenten.add(new Student(id));
+    	
+    	
     }
     
     /**
@@ -46,19 +53,24 @@ public class Studentenliste {
      * @return Student
      */
 
-    public Student getStudent(int id){
+    public Student getStudent(long id){
     	
     	Iterator<Student> studenteniterator = studenten.iterator();
     	
     	while(studenteniterator.hasNext()){
+    		
     		Student student = studenteniterator.next();
     		//student.getId() == id
-    		if(true){
+    		if(student.getId()==id){
     			return student;
     		}
     	}
     		
     	return null;
+    }
+    
+    public Iterator<Student> getStudentIterator(){
+		return studenten.iterator();	
     }
 
 }
