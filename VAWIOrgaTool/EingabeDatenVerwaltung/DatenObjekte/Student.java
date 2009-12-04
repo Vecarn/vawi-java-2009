@@ -65,7 +65,11 @@ public class Student
          this.zeitminimierer = zeitminimierer;
      }        
     // Getter
-     public String getVorname()
+      public int getMatrikelnr()
+      {
+      return matrikelnr;
+      }
+    public String getVorname()
       {
       return vorname;
       }

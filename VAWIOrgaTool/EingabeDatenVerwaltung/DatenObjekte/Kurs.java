@@ -57,8 +57,12 @@ public class Kurs
          this.maxPunkte = maxPunkte;
      }   
         
-    // Getter
-     public String getTitel()
+    // Getter 
+    public int getKursid()
+      {
+      return kursid;
+      }
+    public String getTitel()
       {
       return titel;
       }
