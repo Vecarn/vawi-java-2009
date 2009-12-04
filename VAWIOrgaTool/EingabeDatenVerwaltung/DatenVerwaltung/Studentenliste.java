@@ -26,9 +26,11 @@ public class Studentenliste {
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
     public boolean addStudent(int matrikelNummer, String name, String vorname, char uni, String region, boolean zeitminimierer){
+    	
     	Student student = new Student(name,vorname,matrikelNummer);
+    	
     	if(studenten.add(student)){
-    		
+    		student.setUni(uni);
     		return true;
     	}
     	

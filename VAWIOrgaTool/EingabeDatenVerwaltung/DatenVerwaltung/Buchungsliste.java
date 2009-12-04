@@ -2,10 +2,12 @@ package EingabeDatenVerwaltung.DatenVerwaltung;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 
 import EingabeDatenVerwaltung.DatenObjekte.*;
@@ -17,8 +19,8 @@ import EingabeDatenVerwaltung.DatenObjekte.*;
 @author Markus Bode
  */
 public class Buchungsliste {
-	// vllt. HashSet verwenden um duplicates zu vermeiden
-    private Collection<Buchung> buchungen = new ArrayList<Buchung>();
+	// vllt. HashSet /TreeSet verwenden um duplicates zu vermeiden
+    private Collection<Buchung> buchungen = new TreeSet<Buchung>(new BuchungsComparator());
     
     private HashMap<Kurs,Integer> buchungszahlen = new HashMap<Kurs, Integer>(); 
    
@@ -31,16 +33,23 @@ public class Buchungsliste {
      * @return  true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addBuchung(Student student, Kurs kurs){
+    public boolean addBuchung(Student student, Kurs kurs, short erreichtePunkte){
 		    	
     	if(buchungszahlen.containsKey(kurs)){
     		buchungszahlen.put(kurs, new Integer((buchungszahlen.get(kurs).intValue())+1));
     	}else{
     		buchungszahlen.put(kurs, new Integer(1));
     	}
-    
-    	return buchungen.add(new Buchung(student,kurs));
-		    	
+    	
+    	Buchung buchung = new Buchung(student,kurs);
+    	
+    	if(buchungen.add(buchung)){
+    		buchung.setErreichtePunkte(erreichtePunkte);
+    		return true;
+    	}
+    	
+    	return false;
+    			    	
     }
     
     /**
