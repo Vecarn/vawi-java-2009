@@ -15,8 +15,8 @@ public class BuchungsComparator implements Comparator<Buchung> {
 		int s1 = arg1.getStudent().getMatrikelnr();
 		
 		if((k0==k1)&&(s0==s1)){
-			System.out.println("identisch");
-			System.out.println("k0: "+k0+" s0: "+s0+" - k1: "+k1+" s1:"+s1);
+			//System.out.println("identisch");
+			//System.out.println("k0: "+k0+" s0: "+s0+" - k1: "+k1+" s1:"+s1);
 			return 0;
 		}else{
 			//

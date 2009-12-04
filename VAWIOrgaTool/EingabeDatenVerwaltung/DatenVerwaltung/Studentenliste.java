@@ -71,5 +71,13 @@ public class Studentenliste {
     public Iterator<Student> getStudentIterator(){
 		return studenten.iterator();	
     }
+    /**
+     * Liefert die Anzahl der Studenten-Objekte.
+     * 
+     * @return int: Anzahl
+     */
+    public int getSize(){
+    	return studenten.size();
+    }
 
 }

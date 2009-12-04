@@ -25,7 +25,8 @@ public class Buchungsliste {
     private HashMap<Kurs,Integer> buchungszahlen = new HashMap<Kurs, Integer>(); 
    
     /**
-     * Fügt eine neue Buchung hinzu. 
+     * Fügt eine neue Buchung zu einem TreeSet hinzu. Doppelte Buchungen (identischer Kurs und Student) sind ausgeschlossen.
+     *  
 	 * Dabei wird die Anzahl der Buchungen für einen Kurs gezählt und in einer HashMap gespeichert.
      *  
      * @param student
@@ -71,7 +72,12 @@ public class Buchungsliste {
     public int anzBuchungenStudent(Student student){
     	return 0;
     }
-    
+    /**
+     * Liefert einen Iterator über Elemente die durch die Verwaltungsklasse verwaltet werden.<br>
+     * Die einzelnen Buchungen sind nach der Kurs-ID aufsteigend sortiert.
+     * 
+     * @return Iterator: über alle Buchungs-Objekte.
+     */
     public Iterator<Buchung> getIterator(){
 		return buchungen.iterator();
     	
@@ -79,13 +85,22 @@ public class Buchungsliste {
     
     
     /**
-     * Liefert Set mit der Anzahl Buchungen pro Kurs.
+     * Liefert Set mit der Anzahl Buchungen pro Kurs.<br>
+     * Ein Eintrag besteht aus KEY (Kurs) und Value (Anzahl Buchungen).
      * 
-     * @return Set<Entry<Kurs,Integer>>
+     * @return Set: Repräsentierung der Inhalte des Buchungszaehlers als Set.
      */
     public Set<Entry<Kurs,Integer>> getBuchungszaehlerEntrySet(){
     	return buchungszahlen.entrySet();
    	 
+    }
+    /**
+     * Liefert die Anzahl der existierenden Buchungs-Elemente.
+     * 
+     * @return int: Anzahl Buchungen
+     */
+    public int getSize(){
+    	return buchungen.size();
     }
        
 }

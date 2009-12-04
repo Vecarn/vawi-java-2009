@@ -1,19 +1,20 @@
 package EingabeDatenVerwaltung.DatenVerwaltung;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.TreeSet;
+
 import EingabeDatenVerwaltung.DatenObjekte.Kurs;
 
 /**
  * Verwaltungsklasse für Kurse
+ * 
  * @author Markus Bode
- *
- * @poseidon-object-id [I2d0758e8m124d537380cmm7b6d]
  */
 public class Kursliste {
 
-    private Collection<Kurs> kurse = new ArrayList<Kurs>();
+    private Collection<Kurs> kurse = new TreeSet<Kurs>(new KursComparator());
+    
     /**
      * 
      * @param id
@@ -39,6 +40,13 @@ public class Kursliste {
 	  
     }
     
+    /**
+     * Kurse werden über eine ID eindeutig identifiziert. 
+     * Die Methode gibt einen Kurs anhand einer KursID zurück. 
+     * 
+     * @param kursId(int)
+     * @return Kurs: Kurs-Objekt
+     */
     public Kurs getKurs(int kursId){
     	
     	Iterator<Kurs> kursiterator = kurse.iterator();
@@ -56,11 +64,18 @@ public class Kursliste {
     /**
      * Liefert einen Iterator auf die vorhandene Kurs-Collection.
      * 
-     * @return Iterator<Student> : Iterator auf Collection mit Kurs-Objekten.
+     * @return Iterator<Kurs> : Iterator auf Collection mit Kurs-Objekten.
      */
     
     public Iterator<Kurs> getKursIterator(){
 		return kurse.iterator();	
+    }
+    /**
+     * Liefert die Anzahl der vorhandenen Kurs-Objekte zurück.
+     * @return int: Anzahl Kurse
+     */
+    public int getSize(){
+    	return kurse.size();
     }
       
  }
