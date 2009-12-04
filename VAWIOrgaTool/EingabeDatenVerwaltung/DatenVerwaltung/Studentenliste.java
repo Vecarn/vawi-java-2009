@@ -25,9 +25,14 @@ public class Studentenliste {
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addStudent(long id, String nachname, String vorname, char uni, String region, boolean zeitminimierer){
-    	    	
-    	return studenten.add(new Student(id));
+    public boolean addStudent(int matrikelNummer, String name, String vorname, char uni, String region, boolean zeitminimierer){
+    	Student student = new Student(name,vorname,matrikelNummer);
+    	if(studenten.add(student)){
+    		
+    		return true;
+    	}
+    	
+    	return false;
         	
     }
     
@@ -40,7 +45,7 @@ public class Studentenliste {
      * 			
      */
 
-    public Student getStudent(long id){
+    public Student getStudent(int id){
     	
     	Iterator<Student> studenteniterator = studenten.iterator();
     	
@@ -48,7 +53,7 @@ public class Studentenliste {
     		
     		Student student = studenteniterator.next();
   
-    		if(student.getId()==id){
+    		if(student.getMatrikelnr()==id){
     			return student;
     		}
     	}

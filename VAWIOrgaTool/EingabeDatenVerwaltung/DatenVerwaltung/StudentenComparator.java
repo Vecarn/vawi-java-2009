@@ -25,7 +25,7 @@ public class StudentenComparator implements Comparator<Student> {
 	public int compare(Student arg0, Student arg1) {
 		//System.out.println("compare:"+arg0.getId()+" und: "+arg1.getId());
 		
-		return (int)(arg0.getId()-arg1.getId());
+		return (int)(arg0.getMatrikelnr()-arg1.getMatrikelnr());
 		//return -1;
 	}
 

@@ -3,6 +3,7 @@ package EingabeDatenVerwaltung.DatenVerwaltung;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -16,10 +17,10 @@ import EingabeDatenVerwaltung.DatenObjekte.*;
 @author Markus Bode
  */
 public class Buchungsliste {
-
+	// vllt. HashSet verwenden um duplicates zu vermeiden
     private Collection<Buchung> buchungen = new ArrayList<Buchung>();
     
-    private HashMap<Kurs,Long> buchungszahlen = new HashMap<Kurs, Long>(); 
+    private HashMap<Kurs,Integer> buchungszahlen = new HashMap<Kurs, Integer>(); 
    
     /**
      * Fügt eine neue Buchung hinzu. 
@@ -33,12 +34,12 @@ public class Buchungsliste {
     public boolean addBuchung(Student student, Kurs kurs){
 		    	
     	if(buchungszahlen.containsKey(kurs)){
-    		buchungszahlen.put(kurs, new Long((buchungszahlen.get(kurs).longValue())+1));
+    		buchungszahlen.put(kurs, new Integer((buchungszahlen.get(kurs).intValue())+1));
     	}else{
-    		buchungszahlen.put(kurs, new Long(1));
+    		buchungszahlen.put(kurs, new Integer(1));
     	}
     
-    	return buchungen.add(new Buchung(kurs,student));
+    	return buchungen.add(new Buchung(student,kurs));
 		    	
     }
     
@@ -48,7 +49,7 @@ public class Buchungsliste {
      * @param kurs
      * @return Anzahl an Buchungen für einen gegebenen Kurs
      */
-    public long anzBuchungenKurs(Kurs kurs){
+    public int anzBuchungenKurs(Kurs kurs){
     	return 0;
     }
     
@@ -71,9 +72,9 @@ public class Buchungsliste {
     /**
      * Liefert Set mit der Anzahl Buchungen pro Kurs.
      * 
-     * @return Set<Entry<Kurs,Long>>
+     * @return Set<Entry<Kurs,Integer>>
      */
-    public Set<Entry<Kurs,Long>> getBuchungszaehlerEntrySet(){
+    public Set<Entry<Kurs,Integer>> getBuchungszaehlerEntrySet(){
     	return buchungszahlen.entrySet();
    	 
     }

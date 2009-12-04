@@ -24,20 +24,28 @@ public class Kursliste {
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addKurs(int id, String kurzname, String langname, boolean teilleistungen, int maxPunkte){
+    public boolean addKurs(int id, String kurztitel, String langname, boolean teilleistungen, short maxPunkte){
     	//new Kurs(hier alle Variablen)
-    	    	
-    	return kurse.add(new Kurs(id));
+    	Kurs kurs = new Kurs(id, langname);
+    	
+    	if(kurse.add(kurs)){
+    		kurs.setKurztitel(kurztitel);
+    		kurs.setHatTeilleistungen(teilleistungen);
+    		kurs.setMaxPunkte(maxPunkte);
+    	    return true;
+    	}
+    	
+    	return false;    	
 	  
     }
     
-    public Kurs getKurs(int id){
+    public Kurs getKurs(int kursId){
     	
     	Iterator<Kurs> kursiterator = kurse.iterator();
     		
     	while(kursiterator.hasNext()){
     		Kurs kurs = kursiterator.next();
-    		if(kurs.getId() == id){
+    		if(kurs.getKursid() == kursId){
     			return kurs;
     		}
     	}
