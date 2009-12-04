@@ -1,5 +1,6 @@
 
 package EingabeDatenVerwaltung.DatenObjekte;
+import  EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
  * Datenträgerklasse Buchung
@@ -13,8 +14,8 @@ package EingabeDatenVerwaltung.DatenObjekte;
 public class Buchung
 {
     // Attribute: Klassen Student, Kurs sowie bereichts erreichte Punkte
-    public Student matrikelnr;
-    public Kurs kursid;
+    private Student student;
+    private Kurs kurs;
     private short erreichtePunkte;
 
      /**
@@ -23,26 +24,39 @@ public class Buchung
      */
     public Buchung(Student student, Kurs kurs)
     {
-        this.matrikelnr = student;
-        this.kursid = kurs;
+        this.student = student;
+        this.kurs = kurs;
     }
-    
-    
-    
-/**
- * 
- * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm782d]
- */
-    public EingabeDatenVerwaltung.DatenObjekte.Kurs kurs;
-/**
- * 
- * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm7804]
- */
-    public EingabeDatenVerwaltung.DatenObjekte.Student student;
 
+   /**
+     * Getter/Setter-Methoden
+     */    
+    // Setter
+    public void setStudent(Student student)
+     {
+         this.student = student;
+     }
+    public void setKurs(Kurs kurs)
+     {
+         this.kurs = kurs;
+     }
+    public void setErreichtePunkte(short erreichtePunkte)
+     {
+         this.erreichtePunkte = erreichtePunkte;
+     }
 
-
+    // Getter
+     public Student getStudent()
+      {
+      return student;
+      }
+     public Kurs getKurs()
+      {
+      return kurs;
+      }
+    public short getErreichtePunkte()
+      {
+      return erreichtePunkte;
+      }
 
 }

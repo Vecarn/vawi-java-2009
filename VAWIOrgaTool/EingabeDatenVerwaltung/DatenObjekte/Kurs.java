@@ -1,5 +1,6 @@
 
 package EingabeDatenVerwaltung.DatenObjekte;
+import  EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
  * Datenträgerklasse Kurs 
@@ -12,11 +13,8 @@ package EingabeDatenVerwaltung.DatenObjekte;
 public class Kurs
 {
     // Attribute der Klasse Kurs
-    // kursId steht für die Kursnummer
     private int kursid;
-    // titel steht für den Kursnamen
     private String titel;
-    // kurzTitel steht für den Kurskurznamen
     private String kurztitel;
     // Kurse können Teilleistungen beinhalten
     // true bedeutet, dass der Kurs Teilleistungen vorsieht
@@ -27,30 +25,54 @@ public class Kurs
     private short maxPunkte;
 
     /**
-     * Konstruktor für Objekte der Kurs ohne Parameter
-     */
-    public Kurs()
-    {
-        // initialise instance variables
-        titel="";
-        kurztitel="";
-        hatTeilleistungen=true;
-    }
-
-    /**
      * Konstruktor für Objekte der Klasse Kurs mit Parameter 
      * (der titel und kursid bei der erstellung des Objekts verlangt und gleich setzt
      * 
-     * @param in_kursid             ID des Kurses (int)
-     * @param in_titel              Titel des Kurses (String)
+     * @param kursid             ID des Kurses (int)
+     * @param titel              Titel des Kurses (String)
      */
-    public Kurs(int in_kursid, String in_titel)
+    public Kurs(int kursid, String titel)
     {
         this.kursid=kursid;
-        this.titel="";
+        this.titel=titel;
      }
    /**
      * Getter/Setter-Methoden
      */    
+    // Setter
+    public void setTitel(String titel)
+     {
+         this.titel = titel;
+     }
+    public void setKurztitel(String kurztitel)
+     {
+         this.kurztitel = kurztitel;
+     }
+    public void setHatTeilleistungen(boolean hatTeilleistungen)
+     {
+         this.hatTeilleistungen = hatTeilleistungen;
+     }
+    public void setMaxPunkte(short maxPunkte)
+     {
+         this.maxPunkte = maxPunkte;
+     }   
+        
+    // Getter
+     public String getTitel()
+      {
+      return titel;
+      }
+     public String getKurztitel()
+      {
+      return kurztitel;
+      }
+    public boolean getHatTeilleistungen()
+      {
+      return hatTeilleistungen;
+      }
+    public short getMaxPunkte()
+      {
+      return maxPunkte;
+      }   
      
 }
