@@ -2,11 +2,33 @@
 package EingabeDatenVerwaltung.DatenObjekte;
 
 /**
- * Datenklasse Buchung mit den Eigenschaften einer Buchung und den passenden Getter/Setter-Methoden
+ * Datenträgerklasse Buchung
+ * enthält Buchungs-Objekte 
+ * mit den Eigenschaften einer Buchung (aus Student und Kurs und bereits erreichte Punkte)
+ * und den passenden Getter/Setter-Methoden
  * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm7bce]
+ * @author  Silvia Wölfle
+ * @version 1.0 on 04.12.2009
  */
-public class Buchung {
+public class Buchung
+{
+    // Attribute: Klassen Student, Kurs sowie bereichts erreichte Punkte
+    public Student matrikelnr;
+    public Kurs kursid;
+    private short erreichtePunkte;
+
+     /**
+     * Konstruktor Buchung, verlangt einen Studenten und einen Kurs 
+     * für die Erstellung eines Buchungsobjektes
+     */
+    public Buchung(Student student, Kurs kurs)
+    {
+        this.matrikelnr = student;
+        this.kursid = kurs;
+    }
+    
+    
+    
 /**
  * 
  * 
@@ -19,4 +41,8 @@ public class Buchung {
  * @poseidon-object-id [I2d0758e8m124d537380cmm7804]
  */
     public EingabeDatenVerwaltung.DatenObjekte.Student student;
- }
+
+
+
+
+}
