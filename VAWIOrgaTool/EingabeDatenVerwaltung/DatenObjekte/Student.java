@@ -25,6 +25,10 @@ public class Student
     // true bedeutet, dass der Student Zeitminimierer ist
     // false bedeutet, dass der nicht Student Zeitminimierer ist, also Prüfungen besser verteilen will
     private boolean zeitminimierer;
+    // Hier wird gesetzt, ob Student zufrieden, also ob zeitminimierung erfuellt
+    // true bedeutet, dass Praeferenz Zeitminimierer erfuellt
+    // false bedeutet, dass Praeferenz Zeitminimierer nicht erfuellt
+    private boolean zufrieden;
 
     /**
      * Konstruktor für Objekte der Klasse Student mit Parameter 
@@ -64,6 +68,10 @@ public class Student
      {
          this.zeitminimierer = zeitminimierer;
      }        
+    public void setZufrieden(boolean zufrieden)
+     {
+         this.zufrieden = zufrieden;
+     }  
     // Getter
       public int getMatrikelnr()
       {
@@ -89,5 +97,8 @@ public class Student
     {
      return zeitminimierer;
      } 
-
+    public boolean getZufrieden()
+    {
+     return zufrieden;
+     } 
 }
