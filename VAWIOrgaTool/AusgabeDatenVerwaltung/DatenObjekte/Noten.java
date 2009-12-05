@@ -1,6 +1,6 @@
 
 package AusgabeDatenVerwaltung.DatenObjekte;
-import  AusgabeDatenVerwaltung.DatenObjekte.*;
+import  EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
  * Datenklasse Note mit den Eigenschaften einer Sammlung an Noten jedes Studenten 
@@ -14,15 +14,16 @@ public class Noten
     // Attribute für Klasse Noten, aus den Klassen Student und Kurs und der Pruefungsverwaltung
     private Kurs kurs;
     private Student student;
-    private Buchung buchung;
+    private Buchung buchung; 
 
     /**
      * Konstruktor Note, verlangt Studenten-, Kurs- und Buchungs-Attribute 
      * für die Erstellung eines Notenobjektes
      */
-    public Note(Student student, Kurs kurs)
+    public Note(Student student, Kurs kurs, Buchung buchung);
     {
         this.kurs = kurs;
         this.student = student;
+        this.buchung = buchung;
     }
 }
