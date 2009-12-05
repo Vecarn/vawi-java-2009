@@ -1,6 +1,8 @@
 
 package AusgabeDatenVerwaltung;
+import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
 import AusgabeDatenVerwaltung.Datenverwaltung.*;
+import Hilfsklassen.Datei;
 
 /**
  * Dies AusgabeVerwaltung ist eine 
@@ -12,44 +14,54 @@ import AusgabeDatenVerwaltung.Datenverwaltung.*;
  * Ausgabeformen zu vermeiden..
  * 
  * @author Martin
+ * @version 0.1
  */
 public class AusgabeVerwaltung {
 
     private Pruefungsterminplan pruefungsterminplan;
-
     private Anwesenheitsliste anwesenheitsliste;
-
     private Notenliste notenliste;
+    private Platzkartenliste platzkartenliste;    
+    private FlatFileSchreiber fileschreiber;
+    private Datei datei;
 
-    private Platzkartenliste platzkartenliste;
-
-	/**
-	 * @return the pruefungsterminplan
-	 */
-	public Pruefungsterminplan getPruefungsterminplan() {
-		return pruefungsterminplan;
+    
+    public void AusgabeVerwaltung(){
+    	
+    	fileschreiber = new FlatFileSchreiber(this);
+    }
+    
+    /**
+     * @return
+     */
+    public boolean generiereAnwesenheitsliste(){
+    	
+    	
+    	
+    	
+    	return true;
+    }
+    
+    /**
+     * @return
+     */
+    public boolean generierePruefungsterminplan(){
+    	return true;
+    }
+    
+    /**
+     * @return
+     */
+    public boolean generiereNotenliste() {
+		
+    	return true;
 	}
-
-	/**
-	 * @return the anwesenheitsliste
-	 */
-	public Anwesenheitsliste getAnwesenheitsliste() {
-		return anwesenheitsliste;
+    
+    /**
+     * @return
+     */
+    public boolean generierePlatzkartenliste() {
+		return true;
 	}
-
-	/**
-	 * @return the notenliste
-	 */
-	public Notenliste getNotenliste() {
-		return notenliste;
-	}
-
-	/**
-	 * @return the platzkartenliste
-	 */
-	public Platzkartenliste getPlatzkartenliste() {
-		return platzkartenliste;
-	}
-
 
  }
