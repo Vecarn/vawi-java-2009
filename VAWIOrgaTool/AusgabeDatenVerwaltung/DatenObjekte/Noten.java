@@ -1,29 +1,58 @@
 
 package AusgabeDatenVerwaltung.DatenObjekte;
-import  EingabeDatenVerwaltung.DatenObjekte.*;
+import EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
- * Datenklasse Note mit den Eigenschaften einer Sammlung an Noten jedes Studenten 
- * und den passenden Getter/Setter-Methoden.
+ * Datenklasse Noten mit den Eigenschaften Student, Kurs und Buchung und den passenden Getter/Setter-Methoden,
+ * für eine Liste über Studenten und deren Punkte pro Kurs
+ * ggf. mit einem Attribut für die Endnote pro Student
  * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm72e8]
+ * @author  Silvia Wölfle
+ * @version 1.0 on 05.12.2009
  */
 public class Noten 
 {
  
-    // Attribute für Klasse Noten, aus den Klassen Student und Kurs und der Pruefungsverwaltung
-    private Kurs kurs;
-    private Student student;
-    private Buchung buchung; 
+    // Attribute für Klasse Noten, aus den Klassen Student und Kurs und Buchung
+    private Kurs kursDaten;
+    private Student studentDaten;
+    private Buchung erreichtePunkte; 
+    private short gesamtpunkte;
 
     /**
      * Konstruktor Note, verlangt Studenten-, Kurs- und Buchungs-Attribute 
      * für die Erstellung eines Notenobjektes
      */
-    public Note(Student student, Kurs kurs, Buchung buchung);
+    public Noten(Kurs kursDaten, Student studentDaten, Buchung erreichtePunkte)
     {
-        this.kurs = kurs;
-        this.student = student;
-        this.buchung = buchung;
+        this.kursDaten = kursDaten;
+        this.studentDaten = studentDaten;
+        this.erreichtePunkte = erreichtePunkte;               
     }
+    
+   /**
+     * Getter/Setter-Methoden
+     */    
+    // Setter
+    public void setGesamtpunkte(short gesamtpunkte)
+     {
+         this.gesamtpunkte = gesamtpunkte;
+     }
+    // Getter
+    public Kurs getKurs()
+      {
+      return kursDaten;
+      }
+    public Student getStudent()
+      {
+      return studentDaten;
+      }
+    public Buchung getErreichtePunkte()
+      {
+      return erreichtePunkte;
+      }
+    public short getGesamtpunkte()
+      {
+      return gesamtpunkte;
+      }
 }
