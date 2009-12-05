@@ -34,7 +34,7 @@ public class Student
      * @param vorname          Vorname des Studenten (String)
      * @param matrikelnr       ID des Studenten (int)
      */
-    public Student(String name, String vorname, int kursid)
+    public Student(String name, String vorname, int matrikelnr)
     {
         this.name=name;
         this.vorname=vorname;
