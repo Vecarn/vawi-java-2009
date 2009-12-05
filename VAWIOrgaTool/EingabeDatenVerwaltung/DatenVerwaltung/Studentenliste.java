@@ -16,8 +16,8 @@ public class Studentenliste {
     /**
      * Fügt ein Studenten-Objekt zur Collection hinzu.
      * 
-     * @param id (long)
-     * @param nachname (String)
+     * @param id (int)
+     * @param name (String)
      * @param vorname (String)
      * @param uni (Char)
      * @param region (String)
@@ -25,12 +25,14 @@ public class Studentenliste {
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addStudent(int matrikelNummer, String name, String vorname, char uni, String region, boolean zeitminimierer){
+    public boolean addStudent(int matrikelNummer, String name, String vorname, char uni, String bundesland, boolean zeitminimierer){
     	
     	Student student = new Student(name,vorname,matrikelNummer);
     	
     	if(studenten.add(student)){
     		student.setUni(uni);
+    		student.setBundesland(bundesland);
+    		student.setZeitminimierer(zeitminimierer);
     		return true;
     	}
     	

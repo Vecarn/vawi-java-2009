@@ -63,8 +63,8 @@ public class Kursliste {
     
     /**
      * Liefert einen Iterator auf die vorhandene Kurs-Collection.
-     * 
-     * @return Iterator<Kurs> : Iterator auf Collection mit Kurs-Objekten.
+     * Die Kurse liegen nach der ID aufsteigend sortiert vor.
+     * @return <tt>Iterator</tt> : Typisierter Iterator auf Collection mit Kurs-Objekten.
      */
     
     public Iterator<Kurs> getKursIterator(){

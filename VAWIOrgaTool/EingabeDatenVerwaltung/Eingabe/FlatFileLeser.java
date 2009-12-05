@@ -5,31 +5,33 @@ import Hilfsklassen.Datei;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 /**
- * Objekte der Klasse FlatFileLeser lesen die Eingabedaten aus einfachen CSV Dateien
+ * Objekte der Klasse FlatFileLeser lesen die Eingabedaten aus einfachen CSV-Dateien 
+ * und übergeben diese an die entsprechenden Verwaltungsklassen zur Objekterstellung. 
  * 
  * @author Markus Bode
  */
 public class FlatFileLeser {
+	
 	/**
-	 * 
-	 * 
-	 * 
+	 * Datei-Objekte für jeweilige Eingabedatei.
 	 */
 	private Datei studentendatei;
 	private Datei buchungsdatei;
 	private Datei kursdatei;
-	
+	/**
+	 * Verwaltungs-Objekte für jeweiligen Daten-Typ.
+	 */
 	private Studentenliste studentenliste;
 	private Buchungsliste buchungsliste;
 	private Kursliste kursliste;
 
 	/**
-	 * Konstruktor für Objekte der Klasse FlatFileLeser welcher einen Dateinamen zu einer Kursdatei erwartet. <br>
-	 * Kann für den Simulationsprozess verwendet werden. <br>
-	 * (nur eine Kursdatei, restl. Daten werden generiert)
+	 * Konstruktor für Objekte der Klasse FlatFileLeser, welcher einen Dateinamen zu einer Kursdatei erwartet. <br>
+	 * Kann z.B.: für den Simulationsprozess verwendet werden. (Nur eine Kursdatei, restl. Daten werden generiert)<br>
+	 * Für Planungsprozess ungeeignet, da nur eine Kursliste mit Kurs-Objekten erstellt wird. Die anderen Listen sind null.
 	 * 
 	 * @param kursdateiname (String): Dateiname der Kursdatei.
-	 * @throws IOException : Wenn ein Problem beim Öffnen der Datei auftritt, wird eine IOException ausgelöst. 
+	 * @throws IOException : Wenn ein Problem beim Öffnen der Datei auftritt, wird eine IOException geworfen. 
 	 */
 	public FlatFileLeser(String kursdateiname) throws IOException {
 		
@@ -46,14 +48,13 @@ public class FlatFileLeser {
 	/**
 	 * 
 	 * Konstruktor für Objekte der Klasse FlatFileLeser welcher 3 Dateinamen erwartet. <br>
-	 * Kann für den normalen Planungsprozess verwendet werden, 
-	 * wenn 3 Verwaltungslisten aus den entsprechenden Dateien erstellt werden sollen.
+	 * Kann für den normalen Planungsprozess verwendet werden. <br> 
+	 * Es werden 3 Verwaltungslisten aus den entsprechenden Dateien erstellt.
 	 * 
 	 * @param studentendateiname (String): Dateiname der Studentendatei.
 	 * @param buchungsdateiname (String): Dateiname der Buchungsdatei.
 	 * @param kursdateiname (String): Dateiname der Kursdatei.
 	 * @throws IOException : Wenn ein Problem beim Öffnen der Datei auftritt, wird eine IOException ausgelöst.
-	 * @poseidon-object-id [I2d0758e8m124d537380cmm76d2]
 	 * 
 	 */
 	public FlatFileLeser(String studentendateiname,
@@ -63,28 +64,40 @@ public class FlatFileLeser {
 		this.buchungsdatei = new Datei(buchungsdateiname);
 		this.kursdatei = new Datei(kursdateiname);
 		
-		if(!erstelleStudentenliste()||!erstelleKursliste()||!erstelleBuchungsliste()){
+		if(!erstelleStudentenliste()&&!erstelleKursliste()&&!erstelleBuchungsliste()){
 			throw new IOException();
 		}
 		
 	}
 	
+	/**
+	 * Erstellt die Kursliste aus der Eingabedatei.
+	 * 
+	 * @return boolean - true: Wenn Erstellung funktioniert.<br>
+	 *                 - false: Wenn Erstellung fehlschlägt.
+	 */
 	private boolean erstelleKursliste() {
 		
 		kursdatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
-        if (!kursdatei.state())
+        if (kursdatei.state())
         {
             // Ausgabe des Fehlers im Terminalfenster
             System.out.println("Fehler: Beim öffen der Eingabedatei.");
             // Abbrechen der Methode
-            return false;
+            return true;
         }
         
-        return true;
+        return false;
 		
 	}
-
+	
+	/**
+	 * Erstellt die Buchungsliste aus der Eingabedatei.
+	 * 
+	 * @return boolean - true: Wenn Erstellung funktioniert.<br>
+	 *                 - false: Wenn Erstellung fehlschlägt.
+	 */
 	private boolean erstelleBuchungsliste() {
 		
 		//erst Studentenliste und Kursliste erstellen
@@ -104,7 +117,13 @@ public class FlatFileLeser {
         return true;
 		
 	}
-
+	
+	/**
+	 * Erstellt die Studentenliste aus der Eingabedatei.
+	 * 
+	 * @return boolean - true: Wenn Erstellung funktioniert.<br>
+	 *                 - false: Wenn Erstellung fehlschlägt.
+	 */
 	private boolean erstelleStudentenliste() {
 		studentendatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
