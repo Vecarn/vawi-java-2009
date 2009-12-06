@@ -7,10 +7,11 @@ import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
 
 
 /**
- * Der ZufriedenheitsMesser ist f&uuml;r die Zufriedenheitsmessung der einzelnen Studenten mit der Planung zust&auml;ndig. 
+ * Der ZufriedenheitsMesser ist f&uuml;r die Zufriedenheitsmessung der einzelnen Studenten mit der Planung zust&auml;ndig. <br>
  * Dazu verwendet er den Pruefungsterminplan und die Attribute Zufriedenheit und Zeitminimierer der Studenten der Studentenliste.
  * 
  * @author Markus Bode
+ * @version 1.0 vom 6.12.2009
  */
 public class ZufriedenheitsMesser {
 

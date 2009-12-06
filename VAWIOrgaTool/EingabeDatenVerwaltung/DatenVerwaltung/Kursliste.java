@@ -7,27 +7,33 @@ import java.util.TreeSet;
 import EingabeDatenVerwaltung.DatenObjekte.Kurs;
 
 /**
- * Verwaltungsklasse für Kurse
- * 
+ * Verwaltungsklasse für Kurse.<br>
+ * Die Buchungen werden nach KursID aufsteigend in einem TreeSet sortiert. <br>
+ * Die Klasse bietet entsprechende Methoden um Kurs-Objekte hinzuzufügen und <br>
+ * Informationen über den Bestand an Kurs-Objekten zu liefern.
+ *  
  * @author Markus Bode
+ * @version 1.0 vom 06.12.2009
  */
 public class Kursliste {
 
     private Collection<Kurs> kurse = new TreeSet<Kurs>(new KursComparator());
     
     /**
+     * Die Methode erstellt ein neues Kurs-Objekt und fügt dieses einem TreeSet hinzu.<br>
+     * Der Rückgabe-Wert liefert die Information ob das Objekt hinzugefügt wurde.
      * 
-     * @param id
-     * @param kurzname
-     * @param langname
-     * @param teilleistungen
-     * @param maxPunkte
+     * @param id (int) - Die KursId des Kurses 
+     * @param kurztitel (String) - Kurztitel des Kurses
+     * @param titel (String) - Lange Bezeichung(Titel) des Kurses.
+     * @param teilleistungen (boolean) - Gibt an ob im Kurs Teilleistungen zu erreichen waren. 
+     * @param maxPunkte (short) - Gibt die in den Teilleistungen maximal erreichbaren Punkte an.
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addKurs(int id, String kurztitel, String langname, boolean teilleistungen, short maxPunkte){
+    public boolean addKurs(int id, String kurztitel, String titel, boolean teilleistungen, short maxPunkte){
     	//new Kurs(hier alle Variablen)
-    	Kurs kurs = new Kurs(id, langname);
+    	Kurs kurs = new Kurs(id,titel);
     	
     	if(kurse.add(kurs)){
     		kurs.setKurztitel(kurztitel);
@@ -41,14 +47,14 @@ public class Kursliste {
     }
     
     /**
-     * Kurse werden über eine ID eindeutig identifiziert. 
+     * Kurse werden über eine ID eindeutig identifiziert.<br> 
      * Die Methode gibt einen Kurs anhand einer KursID zurück. 
      * 
-     * @param kursId(int)
+     * @param kursId (int) - Eindeutige KursID eines Kurses.
      * @return Kurs: Kurs-Objekt
      */
     public Kurs getKurs(int kursId){
-    	
+    	    	
     	Iterator<Kurs> kursiterator = kurse.iterator();
     		
     	while(kursiterator.hasNext()){
@@ -62,17 +68,20 @@ public class Kursliste {
     }
     
     /**
-     * Liefert einen Iterator auf die vorhandene Kurs-Collection.
+     * Liefert einen Iterator auf die vorhandene Kurs-Collection.<br>
      * Die Kurse liegen nach der ID aufsteigend sortiert vor.
-     * @return <tt>Iterator</tt> : Typisierter Iterator auf Collection mit Kurs-Objekten.
+     * 
+     * @return Iterator: Typisierter Iterator auf Collection mit Kurs-Objekten.
      */
     
     public Iterator<Kurs> getKursIterator(){
 		return kurse.iterator();	
     }
+    
     /**
      * Liefert die Anzahl der vorhandenen Kurs-Objekte zurück.
-     * @return int: Anzahl Kurse
+     *
+     * @return int: Anzahl Kurse in der Kursliste.
      */
     public int getSize(){
     	return kurse.size();

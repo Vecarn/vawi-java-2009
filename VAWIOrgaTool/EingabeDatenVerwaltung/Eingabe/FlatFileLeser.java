@@ -5,10 +5,11 @@ import Hilfsklassen.Datei;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 /**
- * Objekte der Klasse FlatFileLeser lesen die Eingabedaten aus einfachen CSV-Dateien 
- * und übergeben diese an die entsprechenden Verwaltungsklassen zur Objekterstellung. 
+ * Die Klasse FlatFileLeser liest die Eingabedaten aus einfachen CSV-Dateien 
+ * und übergibt die einzelnen Datensätze an die entsprechenden Verwaltungsklassen zur Objekterstellung. 
  * 
  * @author Markus Bode
+ * @version 1.0 vom 6.12.2009
  */
 public class FlatFileLeser {
 	

@@ -6,22 +6,28 @@ import java.util.TreeSet;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
- * Verwaltungsklasse f&uuml;r Studenten
+ * Verwaltungsklasse f&uuml;r Studenten.<br>
+ * Die Studenten werden aufsteigend nach Ihrer MatrikelNr in einem TreeSet gespeichert.<br>
+ * Die Klasse bietet entsprechende Methoden um ein Studenten-Objekt hinzuzufügen und <br>
+ * Informationen über den Datenbestand zu liefern.
+ * 
  * @author Markus Bode
+ * @version 1.0 vom 6.12.2009
  */
 public class Studentenliste {
 
     private Collection<Student> studenten = new TreeSet<Student>(new StudentenComparator());
     
     /**
-     * Fügt ein Studenten-Objekt zur Collection hinzu.
+     * Fügt ein Studenten-Objekt zur Collection hinzu.<br>
+     * Dabei werden doppelte Studenten-Objekte automatisch ausgeschlossen.
      * 
-     * @param id (int)
-     * @param name (String)
-     * @param vorname (String)
-     * @param uni (Char)
-     * @param region (String)
-     * @param zeitminimierer (boolean)
+     * @param matrikelNummer (int) - Die MatrikelNr. des Studenten. 
+     * @param name (String) - Der Nachname des Studenten.
+     * @param vorname (String) - Der Vorname des Studenten.
+     * @param uni (Char) - Die Universität an der der Student eingeschrieben ist.
+     * @param bundesland (String) - Das Herkunfts-Bundesland des Studenten.
+     * @param zeitminimierer (boolean) - Wahrheitswert gibt an ob Student zeitminimierer ist oder nicht.
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
@@ -41,15 +47,15 @@ public class Studentenliste {
     }
     
     /**
-     * Liefert ein Studenten-Objekt anhand einer zu übergebenden id. 
+     * Studenten sind über Ihre MatrikelNr. eindeutig zu identifizieren.<br>
+     * Die Methode liefert ein Studenten-Objekt anhand der MatrikelNr. 
      * 
-     * @param id (long)	: Identifizierendes Merkmal eines Studenten
+     * @param id (int) - MatrikelNr. des gesuchten Studenten.
      * @return Student	: Konkretes Studenten-Objekt<br>
-     * 			null	: Wenn kein Student mit entsprechender id vorhanden.
+     * 			null	: Wenn kein Student mit entsprechender MatrikelNr. vorhanden ist.
      * 			
      */
-
-    public Student getStudent(int id){
+    public Student getStudent(int matrikelnr){
     	
     	Iterator<Student> studenteniterator = studenten.iterator();
     	
@@ -57,26 +63,28 @@ public class Studentenliste {
     		
     		Student student = studenteniterator.next();
   
-    		if(student.getMatrikelnr()==id){
+    		if(student.getMatrikelnr()==matrikelnr){
     			return student;
     		}
     	}
     		
     	return null;
     }
-    /**
-     * Liefert einen Iterator auf die vorhandene Studenten-Collection.
-     * 
-     * @return Iterator<Student> : Iterator auf Collection mit Studenten-Objekten.
-     */
     
+    /**
+     * Liefert einen Iterator auf die vorhandene Studenten-Collection.<br>
+     * Anhand des Iterators kann durch alle Studenten-Objekte, aufsteigend nach MatrikelNr. gesucht werden.
+     * 
+     * @return Iterator: Iterator auf Collection mit Studenten-Objekten.
+     */
     public Iterator<Student> getStudentIterator(){
 		return studenten.iterator();	
     }
+    
     /**
      * Liefert die Anzahl der Studenten-Objekte.
      * 
-     * @return int: Anzahl
+     * @return int: Anzahl der vorhandenen Studenten-Objekte.
      */
     public int getSize(){
     	return studenten.size();
