@@ -5,7 +5,6 @@ import EingabeDatenVerwaltung.DatenObjekte.*;
 /**
  * Datenklasse Noten mit den Eigenschaften Student, Kurs und Buchung und den passenden Getter/Setter-Methoden,
  * für eine Liste über Studenten und deren Punkte pro Kurs
- * ggf. mit einem Attribut für die Endnote pro Student
  * 
  * @author  Silvia Wölfle
  * @version 1.0 on 05.12.2009

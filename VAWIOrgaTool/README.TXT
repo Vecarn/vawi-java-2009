@@ -20,7 +20,19 @@ USER INSTRUCTIONS: -
 | Allgemeine Beschreibgung des Klassensystems |
 |---------------------------------------------|
 
-Ein paar allgemeine Sätze.	
+Das Programm unterstützt die Planung und Organisation von Prüfungen. Es verwaltet Studierende, 
+Kurse und verteilt gebuchte Kurse konfigurierbar auf Prüfungstage. Pro Tag und Student sind 
+maximal drei Kurse zulässig. Der möglichst kurze Prüfungsterminplan umfasst mehrere Prüfungstage. 
+Das Programm erzeugt auch fiktive Kursbelegungen. 
+Es werden Anwesenheitslisten (pro Tag und Ort), Notenlisten (pro Kurs, inkl. Darstellung bereits erreichter Punkte) 
+sowie Platzkarten (pro Student, Tag und Ort) erstellt. Die Erfüllung der Präferenz der Studenten, 
+ob alle Kurse an einem Tag oder möglichst nur ein Kurs am Tag geprüft werden will, prüft das System im Nachhinein. 
+
+Grundgedanke des Klassenmodells ist eine gute objektorientierte Architektur, die Klassen gruppiert 
+und eindeutig einzelnen Komponenten zuordnen lässt. Daher die Packages Dateneinlesen, Prüfungsplanung, Datenausgabe. 
+Es wurde zudem darauf geachtet, dass Berührungspunkte für eine leichte Austauschbarkeit teils abstrahiert wurden
+Das Klassenmodell wurde so gestaltet, dass der eigentliche Prüfungs-Algorithmus leicht austauschbar ist. 
+Alle Algorithmen verwenden die gleichen Randbedingungen. 
 
 
 
@@ -46,6 +58,17 @@ PruefungsPlaner
 ....
 ....
 
+Pruefungstag
+------------
+
+Pruefung
+--------
+
+Eingabe-Datenklassen
+--------------------
+Student, Kurs und Buchung enthalten entsprechende Datenobjekte und getter/setter-Methoden
+
+
 Buchungsliste + BuchungsComparator
 ----------------------------------
 Die Buchungsliste steht mit den Klassen in Beziehung, die Zugriff auf den Buchungs-Bestand benötigen. 
@@ -70,3 +93,6 @@ FlatFileLeser
 -------------
 Wird von der Haupt-Klasse VAWIOrgaTool genutzt und liest Daten mit Hilfe der Klasse Datei ein. 
 Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben. 
+
+
+

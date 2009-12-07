@@ -6,11 +6,18 @@ package PruefungsPlanung;
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm78e9]
  */
-public class Planungsbedingungen {
-/**
- * 
- * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm7856]
- */
-    public EingabeDatenVerwaltung.Eingabe.FlatFileLeser flatFileLeser;
+public class Planungsbedingungen 
+{
+        // Attribute in welcher Form?
+        // Anzahl Tag-Objekte möglichst klein
+        // jeder Kurs an genau einem Tag
+        // Anzahl kurse pro Tag und Student <=3, konfigurierbar
+        
+        
+        /**
+         * 
+         * 
+         * @poseidon-object-id [I2d0758e8m124d537380cmm7856]
+         */
+         public EingabeDatenVerwaltung.Eingabe.FlatFileLeser flatFileLeser;
  }
