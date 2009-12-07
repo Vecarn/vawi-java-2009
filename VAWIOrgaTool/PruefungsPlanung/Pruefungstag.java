@@ -1,3 +1,7 @@
+@To-Do: Hi Silvia, kursdaten sollten eine Kursliste sein, damit an einem Tag mehrere Kurse statt finden können.
+        so kann nur einer statt finden. Dann auch Kursliste getKursListe()
+        Gruß Jörn
+        
 package PruefungsPlanung;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
