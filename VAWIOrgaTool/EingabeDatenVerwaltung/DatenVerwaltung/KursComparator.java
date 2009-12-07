@@ -18,8 +18,8 @@ public class KursComparator implements Comparator<Kurs> {
 	/**
 	 * Methode vergleicht zwei Kurs-Objekte anhand der KursId.
 	 * 
-	 * @parm arg0 (Kurs): Zu vergleichendes Kurs-Objekt. 
-	 * @parm arg1 (Kurs): Zu vergleichendes Kurs-Objekt.
+	 * @param arg0 (Kurs): Zu vergleichendes Kurs-Objekt. 
+	 * @param arg1 (Kurs): Zu vergleichendes Kurs-Objekt.
 	 * @return int - 0: Kurs-Objekte identisch (gleiche KursId)<br>
 	 * 				<0: KursId arg0 < KursId arg1<br>
 	 * 				>0: KursId arg0 > KursId arg1

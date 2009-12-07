@@ -67,7 +67,7 @@ public class Studentenliste {
      * Studenten sind über Ihre MatrikelNr. eindeutig zu identifizieren.<br>
      * Die Methode liefert ein Studenten-Objekt anhand der MatrikelNr. 
      * 
-     * @param id (int) - MatrikelNr. des gesuchten Studenten.
+     * @param matrikelnr (int) - MatrikelNr. des gesuchten Studenten.
      * @return Student	: Konkretes Studenten-Objekt<br>
      * 			null	: Wenn kein Student mit entsprechender MatrikelNr. vorhanden ist.
      * 			

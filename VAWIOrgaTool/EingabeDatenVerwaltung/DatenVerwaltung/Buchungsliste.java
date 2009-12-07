@@ -41,7 +41,7 @@ public class Buchungsliste {
      *  
      * @param student (Student) - Ein konkretes Studenten-Objekt.
      * @param kurs (Kurs) - Ein konkretes Kurs-Objekt.
-     * @param erreichte Punkte (short) - Die Anzahl der bereits erreichten Punkte des Studenten in diesem Kurs.
+     * @param erreichtePunkte (short) - Die Anzahl der bereits erreichten Punkte des Studenten in diesem Kurs.
      * @return  true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */

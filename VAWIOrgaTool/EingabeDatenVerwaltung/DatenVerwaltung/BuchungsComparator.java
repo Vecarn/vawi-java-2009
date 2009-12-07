@@ -20,8 +20,8 @@ public class BuchungsComparator implements Comparator<Buchung> {
 	/**
 	 * Methode vergleicht zwei Buchungs-Objekte anhand der KursId und der Matrikel-Nummer des Studenten.
 	 * 
-	 * @parm arg0 (Buchung): Zu vergleichendes Buchungs-Objekt. 
-	 * @parm arg1 (Buchung): Zu vergleichendes Buchungs-Objekt.
+	 * @param arg0 (Buchung): Zu vergleichendes Buchungs-Objekt. 
+	 * @param arg1 (Buchung): Zu vergleichendes Buchungs-Objekt.
 	 * @return int - 0: Buchungsobjekte identisch (KursId und Matrikel-Nummer gleich)<br>
 	 * 				-1: KursId arg0 < KursId arg1 || ((KursId arg0 == KursId arg1) && (MatrikelNr arg0 < MatrikelNr arg1))<br>
 	 * 				 1: KursId arg0 > KursId arg1 || ((KursId arg0 == KursId arg1) && (MatrikelNr arg0 > MatrikelNr arg1))
