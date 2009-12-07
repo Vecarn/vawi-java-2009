@@ -9,51 +9,46 @@ import AusgabeDatenVerwaltung.Ausgabe.*;
  * 
  * @author  Silvia Wölfle
  * @version 1.0 on 05.12.2009
+ * 
  */
 
 public class Anwesenheit 
 {
     // Attribute für Klasse Anwesenheit, aus den Klassen Student und Kurs und dem Pruefungstag
-    private Student studentDaten;
-    private Pruefungstag tag;
-    private Kurs kursDaten;
+    private Buchung buchung;
+    private int tag;
     private List<Buchung> liste1 = new ArrayList<Buchung>();
+    private Vector buchungen;
     
     /**
-     * Konstruktor Anwesenheit, verlangt Studenten-Attribute sowie den Tag
+     * Konstruktor Anwesenheit, verlangt Buchungs-Attribute sowie den Tag
      * für die Erstellung eines Anwesenheits-Objektes
      */
-    public Anwesenheit(Student studentDaten, Pruefungstag tag)
+    public Anwesenheit(Buchung buchung, int tag)
     {
-        this.studentDaten = studentDaten;
+        this.buchung = buchung;
         this.tag = tag;   
-        liste1.add(buchung1);
     }
-    
-   /**
-     * Getter/Setter-Methoden
-     */    
-    // Setter
-    public void setKursDaten(Kurs kursDaten)
-     {
-         this.kursDaten = kursDaten;
-     }
-    // Getter
-    public Student getStudent()
-      {
-      return studentDaten;
-      }
-    public Kurs getKurs()
-      {
-      return kursDaten;
-      }
-    public Pruefungstag getTag()
-      {
-      return tag;
-      }
-    public Pruefungstag tag()
-      {
-      return tag;
-      }
 
+   /**
+     * Methoden
+     */ 
+    
+    // 1-3 Buchungen pro Student
+    liste1.add(buchung1);
+    public void addBuchung(Buchung buchungen)
+    {
+      buchungen.add(buchungen);
+    }
+
+    // Getter
+    public Buchung getBuchung()
+      {
+      return buchung;
+      }
+     public int tag()
+      {
+      return tag;
+      }
+      public getBuchungenAnzahl()
  }
