@@ -17,7 +17,8 @@ public class Anwesenheit
     private Student studentDaten;
     private Pruefungstag tag;
     private Kurs kursDaten;
-
+    private List<Buchung> liste1 = new ArrayList<Buchung>();
+    
     /**
      * Konstruktor Anwesenheit, verlangt Studenten-Attribute sowie den Tag
      * für die Erstellung eines Anwesenheits-Objektes
@@ -25,7 +26,8 @@ public class Anwesenheit
     public Anwesenheit(Student studentDaten, Pruefungstag tag)
     {
         this.studentDaten = studentDaten;
-        this.tag = tag;             
+        this.tag = tag;   
+        liste1.add(buchung1);
     }
     
    /**
