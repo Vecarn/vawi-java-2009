@@ -19,7 +19,7 @@ public class Studentenliste {
     private Collection<Student> studenten = new TreeSet<Student>(new StudentenComparator());
     
     /**
-     * Fügt ein Studenten-Objekt zur Collection hinzu.<br>
+     * Fügt ein neues Studenten-Objekt zur Collection hinzu.<br>
      * Dabei werden doppelte Studenten-Objekte automatisch ausgeschlossen.
      * 
      * @param matrikelNummer (int) - Die MatrikelNr. des Studenten. 
@@ -31,7 +31,7 @@ public class Studentenliste {
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addStudent(int matrikelNummer, String name, String vorname, char uni, String bundesland, boolean zeitminimierer){
+    public boolean addNeuerStudent(int matrikelNummer, String name, String vorname, char uni, String bundesland, boolean zeitminimierer){
     	
     	Student student = new Student(name,vorname,matrikelNummer);
     	
@@ -44,6 +44,23 @@ public class Studentenliste {
     	
     	return false;
         	
+    }
+    
+    /**
+     * Methode kann genutzt werden um ein bereits bestehendes Studenten-Objekt der Studentenliste hinzuzufügen. <br>
+     * Dies ist sinnvoll, wenn eine weitere Studentenliste benötigt wird, um zum Beispiel eine Untermenge der vorhandenen Studenten separat zwischenzuspeichern.<br>
+     * (z.B.: Menge an Studenten die an einem Prüfungstag eine Prüfung ablegen) 
+     * 
+     * @param student (Student) - Ein konkretes Studenten-Objekt
+     * @return	true: wenn Collection geändert wurde <br>
+     *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
+     */
+    public boolean addStudent(Student student){
+    	if(studenten.add(student)){
+    		return true;
+    	}
+    	
+    	return false;
     }
     
     /**

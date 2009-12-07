@@ -31,7 +31,7 @@ public class Kursliste {
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addKurs(int id, String kurztitel, String titel, boolean teilleistungen, short maxPunkte){
+    public boolean addNeuerKurs(int id, String kurztitel, String titel, boolean teilleistungen, short maxPunkte){
     	//new Kurs(hier alle Variablen)
     	Kurs kurs = new Kurs(id,titel);
     	
@@ -46,6 +46,22 @@ public class Kursliste {
 	  
     }
     
+    /**
+     * Methode kann genutzt werden um ein bereits bestehendes Kurs-Objekt der Kursliste hinzuzufügen.<br>
+     * Dies ist sinnvoll, wenn eine weitere Kursliste benötigt wird, um zum Beispiel eine Untermenge der vorhandenen Kursen separat zwischenzuspeichern.<br>
+     * (z.B.: Menge an Kursen die an einem Prüfungstag geprüft werden)<br> 
+     * 
+     * @param kurs (Kurs) - Ein konkretes Kurs-Objekt.
+     * @return	true: wenn Collection geändert wurde <br>
+     *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
+     */
+    public boolean addKurs(Kurs kurs){
+    	if(kurse.add(kurs)){
+    		return true;
+    	}
+    	
+    	return false;
+    }
     /**
      * Kurse werden über eine ID eindeutig identifiziert.<br> 
      * Die Methode gibt einen Kurs anhand einer KursID zurück. 
