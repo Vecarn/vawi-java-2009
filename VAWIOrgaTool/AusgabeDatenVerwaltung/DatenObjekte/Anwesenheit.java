@@ -1,58 +1,56 @@
 
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenObjekte.*;
-import AusgabeDatenVerwaltung.Ausgabe.*;
+import Hilfsklassen.Universitaet.*;
+import PruefungsPlanung.PruefungsPlanerAlgo1.*;
+import PruefungsPlanung.Pruefungstag.*;
+
 /**
- * Datenklasse Anwesenheit mit den Eigenschaften der Anwesenheit eines einzelnen Studenten 
- * pro Prüfungstag und Uni
+ * Datentraegerklasse Anwesenheit mit den Eigenschaften Studentenliste und Tag und Uni
  * und den passenden Getter/Setter-Methoden.
  * 
  * @author  Silvia Wölfle
- * @version 1.0 on 05.12.2009
+ * @version 1.0 on 07.12.2009
  */
 
 public class Anwesenheit 
 {
-    // Attribute für Klasse Anwesenheit, aus den Klassen Student und Kurs und dem Pruefungstag
-    private Buchung buchung;
-    private Student student;
-    private int tag;
-    private List<Buchung> liste1 = new ArrayList<Buchung>();
-    private Vector buchungen;
-    
+    // Attribute für Klasse Anwesenheit, Liste wird aus der Studentenliste verwendet
+    private short tagId;
+    private Universitaet uniTag;
+    private Studentenliste tagesStudentenliste;
+
     /**
-     * Konstruktor Anwesenheit, verlangt Buchungs-Attribute sowie den Tag
+     * Konstruktor Anwesenheit, verlangt Tag und Uni
      * für die Erstellung eines Anwesenheits-Objektes
      */
-    public Anwesenheit(Buchung buchung, int tag)
+    public Anwesenheit (short tagID, Universitaet uniTag)
     {
-        this.buchung = buchung;
-        this.tag = tag;   
+        this.tagId = tagId; 
+        this.uniTag = uniTag; 
     }
-
+    
    /**
      * Methoden
      */ 
     
-    // 1-3 Buchungen pro Student
-    liste1.add(buchung1);
-    public void addBuchung(Buchung buchungen)
-    {
-      buchungen.add(buchungen);
-    }
+    // Setter
+    public void setStudentenliste(Studentenliste tagesStudentenliste)
+        {
+            this.tagesStudentenliste = tagesStudentenliste;
+        }
 
     // Getter  (bei Student: Attribut Uni)
-    public Buchung getBuchung()
-      {
-      return buchung;
-      }
      public int tag()
       {
       return tag;
       }
-     public Student student()
+     public Universitaet uniTag()
       {
-      return student;
+      return uniTag;
       }
-      public getBuchungenAnzahl()
+     public Studentenliste tagesStudentenliste()
+      {
+      return tagesStudentenliste;
+      }
  }

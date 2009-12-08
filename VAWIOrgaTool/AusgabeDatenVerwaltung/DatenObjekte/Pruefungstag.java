@@ -1,42 +1,40 @@
+@nach Package Pruefungsplanung verschoben, ist das gut? Oder doch hier lassen?
 
 package AusgabeDatenVerwaltung.DatenObjekte;
-import EingabeDatenVerwaltung.DatenObjekte.*;
+import EingabeDatenVerwaltung.DatenVerwaltung.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
+
 
 /**
  * Datentraegerklasse Pruefungstag 
- * mit einer Liste an Kursen f&uuml;r Tag 
- * und den passenden Getter/Setter-Methoden.
+ * mit einer Kursliste für einen Tag.
  * 
  * @author  Silvia Wölfle
  * @version 1.0 on 07.12.2009
  */
 public class Pruefungstag 
 {
-    // Attribute der Klasse Pruefungstag, mit Datum?
+    // Attribute für den Priefungstag, Datum zusätzlich?
     private short tagId;
-    private Kurs kursDaten;
+    public Kursliste tagesKursliste;
 
     /**
-     * Konstruktor Pruefungstag, verlangt Algorithmus Verteilung Kurse auf Tage
-     * und Kurs-Attribute 
+     * Konstruktor Pruefungstag
      */
-    public Pruefungstag (short tagID, Kurs kursDaten)
+    public Pruefungstag (short tagID, Kursliste tagesKursliste)
     {
-        this.tagId = tagId;   
-        this.kursDaten = kursDaten;
+        this.tagId = tagId; 
+        this.tagesKursliste = tagesKursliste; 
     }
-    
    /**
-     * Getter-Methoden
+     * Get-Methoden
      */    
-    // Getter
     public short getTagId()
       {
       return tagId;
       }
-    public Kurs getKurs()
+     public Kursliste getTagesKursliste()
       {
-      return kursDaten;
-      }
+      return tagesKursliste;
+      }   
  }

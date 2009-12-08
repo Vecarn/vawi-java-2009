@@ -3,14 +3,11 @@
 package PruefungsPlanung;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.TreeSet;
+
 
 /**
  * Datentraegerklasse Pruefungstag 
- * mit einer Liste an Kursen fuer Tag, nach KursID aufsteigend in einem TreeSet sortiert.
- * und den passenden Getter/Setter-Methoden.
+ * mit einer Kursliste für einen Tag.
  * 
  * @author  Silvia Wölfle
  * @version 1.0 on 07.12.2009
