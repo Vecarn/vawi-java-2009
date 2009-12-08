@@ -17,8 +17,8 @@ public class Student
     private String name;
     private String vorname;
     // Kategorien einordnen lassen:
-    // 'Ba' - Universität Bamberg
-    // 'Dui' - Universität Duisburg-Essen
+    // 'B' - Universität Bamberg
+    // 'D' - Universität Duisburg-Essen
     private char uni;
     private String bundesland;
     // Studenten können angeben, ob sie möglichst viele Prüfungen an einem Tag machen möchten
