@@ -9,13 +9,13 @@ import AusgabeDatenVerwaltung.Ausgabe.*;
  * 
  * @author  Silvia Wölfle
  * @version 1.0 on 05.12.2009
- * 
  */
 
 public class Anwesenheit 
 {
     // Attribute für Klasse Anwesenheit, aus den Klassen Student und Kurs und dem Pruefungstag
     private Buchung buchung;
+    private Student student;
     private int tag;
     private List<Buchung> liste1 = new ArrayList<Buchung>();
     private Vector buchungen;
@@ -41,7 +41,7 @@ public class Anwesenheit
       buchungen.add(buchungen);
     }
 
-    // Getter
+    // Getter  (bei Student: Attribut Uni)
     public Buchung getBuchung()
       {
       return buchung;
@@ -49,6 +49,10 @@ public class Anwesenheit
      public int tag()
       {
       return tag;
+      }
+     public Student student()
+      {
+      return student;
       }
       public getBuchungenAnzahl()
  }

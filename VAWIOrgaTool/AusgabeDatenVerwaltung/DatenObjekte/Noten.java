@@ -1,3 +1,4 @@
+@ an alle: die Klasse wäre also zu löschen
 
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenObjekte.*;

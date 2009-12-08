@@ -1,3 +1,5 @@
+@weitere Bedingung: jeder Kurs an genau einem Tag geprüft, nicht notwendig? Damit ein gleicher Kurs nicht evtl. für versch. Studenten an versch. Tagen stattfindet?
+LG Silvia
 
 package PruefungsPlanung;
 
