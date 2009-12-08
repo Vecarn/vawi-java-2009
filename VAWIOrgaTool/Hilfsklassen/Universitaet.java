@@ -1,3 +1,5 @@
+@solle das nicht ein interface sein? Gruss Silvia
+
 /**
  * 
  */
