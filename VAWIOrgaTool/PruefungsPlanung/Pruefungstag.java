@@ -1,14 +1,15 @@
-@To-Do: Hi Silvia, kursdaten sollten eine Kursliste sein, damit an einem Tag mehrere Kurse statt finden können.
-        so kann nur einer statt finden. Dann auch Kursliste getKursListe()
-        Gruß Jörn
+
         
 package PruefungsPlanung;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 /**
  * Datentraegerklasse Pruefungstag 
- * mit einer Liste an Kursen f&uuml;r Tag 
+ * mit einer Liste an Kursen fuer Tag, nach KursID aufsteigend in einem TreeSet sortiert.
  * und den passenden Getter/Setter-Methoden.
  * 
  * @author  Silvia Wölfle
@@ -16,30 +17,109 @@ import PruefungsPlanung.PruefungsPlanerAlgo1.*;
  */
 public class Pruefungstag 
 {
-    // Attribute der Klasse Pruefungstag, mit Datum?
+    // Attribute für den Priefungstag, Datum zusätzlich?
     private short tagId;
-    private Kurs kursDaten;
+    private Collection<Kurs> kurse = new TreeSet<Kurs>(new KursComparator());
 
     /**
-     * Konstruktor Pruefungstag, verlangt Algorithmus Verteilung Kurse auf Tage
-     * und Kurs-Attribute 
+     * Konstruktor Pruefungstag
      */
-    public Pruefungstag (short tagID, Kurs kursDaten)
+    public Pruefungstag (short tagID, Collection<Kurs> kurse)
     {
-        this.tagId = tagId;   
-        this.kursDaten = kursDaten;
+        this.tagId = tagId; 
+        this.kurse = kurse; 
     }
-    
    /**
-     * Getter-Methoden
+     * Get-Methoden
      */    
-    // Getter
     public short getTagId()
       {
       return tagId;
       }
-    public Kurs getKurs()
+     public short getKurse()
       {
-      return kursDaten;
-      }
+      return kurse;
+      }   
+    /**
+     * Methode, die ein neues Kurs-Objekt erstellt und dieses einem TreeSet hinzufügt.<br>
+     * Der Rückgabe-Wert liefert die Information ob das Objekt hinzugefügt wurde.
+     * 
+     * @param id (int) - Die KursId des Kurses 
+     * @param kurztitel (String) - Kurztitel des Kurses
+     * @param titel (String) - Lange Bezeichung(Titel) des Kurses.
+     * @return  true: wenn Collection geändert wurde <br>
+     *          false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
+     */
+    public boolean addNeuerKurs(int id, String kurztitel, String titel)
+    {
+        //new Kurs(hier alle Variablen)
+        Kurs kurs = new Kurs(id, kurztitel, titel);
+        
+        if(kurse.add(kurs))
+        {
+            kurs.setKurztitel(kurztitel);
+            kurs.setTitel(titel);
+            return true;
+        }   
+        return false;       
+    }
+    
+    /**
+     * Methode, um ein bereits bestehendes Kurs-Objekt der Kursliste hinzuzufügen.<br>
+     * 
+     * @param kurs (Kurs) - Ein konkretes Kurs-Objekt.
+     * @return  true: wenn Collection geändert wurde <br>
+     *          false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
+     */
+    public boolean addKurs(Kurs kurs)
+    {
+        if(kurse.add(kurs))
+        {
+            return true;
+        }
+        return false;
+    } 
+    
+    /**
+     * Kurse werden über eine ID eindeutig identifiziert.<br> 
+     * Die Methode gibt einen Kurs anhand einer KursID zurück. 
+     * 
+     * @param kursId (int) - Eindeutige KursID eines Kurses.
+     * @return Kurs: Kurs-Objekt
+     */
+    public Kurs getKurs(int kursId)
+    {       
+        Iterator<Kurs> kursiterator = kurse.iterator();
+        
+        while(kursiterator.hasNext())
+        {
+            Kurs kurs = kursiterator.next();
+            if(kurs.getKursid() == kursId)
+            {
+                return kurs;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Liefert Iterator auf vorhandene Kurs-Collection.<br>
+     * Kurse liegen nach der ID aufsteigend sortiert vor.
+     * 
+     * @return Iterator: Typisierter Iterator auf Collection mit Kurs-Objekten.
+     */
+     public Iterator<Kurs> getKursIterator()
+     {
+        return kurse.iterator();    
+     }
+    
+    /**
+     * Liefert die Anzahl der vorhandenen Kurs-Objekte zurück.
+     *
+     * @return int: Anzahl Kurse in der Kursliste.
+     */
+    public int getSize()
+    {
+        return kurse.size();
+    }
  }
