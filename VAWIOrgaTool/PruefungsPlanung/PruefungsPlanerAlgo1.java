@@ -2,6 +2,7 @@
 package PruefungsPlanung;
 
 import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
+import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 
 /**
@@ -9,7 +10,7 @@ import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm79f1]
  */
-public class PruefungsPlanerAlgo1 implements PruefungsPlaner {
+public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements PruefungsPlaner  {
 
 /**
  *
@@ -18,7 +19,15 @@ public class PruefungsPlanerAlgo1 implements PruefungsPlaner {
  */
     private Pruefungsterminplan pruefungsterminplan;
 
-    public Pruefungsterminplan berechnePruefungsTerminPlan(Planungsbedingungen bedingung){
+    /**
+     * Konstruktor, der die Planungsbedingungen entgegen nimmt
+     * @param bedingungen
+     */
+    public PruefungsPlanerAlgo1(Planungsbedingungen bedingungen){
+        super(bedingungen);
+    }
+    
+    public Pruefungsterminplan berechnePruefungsTerminPlan(Studentenliste studenten, Buchungsliste buchungen,Kursliste kurse){
         return null;
     };
  }

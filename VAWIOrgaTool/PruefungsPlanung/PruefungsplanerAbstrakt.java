@@ -13,7 +13,7 @@ import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
 public abstract class PruefungsplanerAbstrakt implements PruefungsPlaner {
  /**
  *
- * Alle Studenten für die geplant wird
+ * Alle Studenten fï¿½r die geplant wird
  * @poseidon-object-id [I2d0758e8m124d537380cmm7789]
  */
     private Studentenliste studentenliste;
@@ -29,9 +29,19 @@ public abstract class PruefungsplanerAbstrakt implements PruefungsPlaner {
  * @poseidon-object-id [I2d0758e8m124d537380cmm77b2]
  */
     private Buchungsliste buchungsliste;
+
+    /**
+     * Konstruktor der alle fuer den Algorithmus benoetigten Listen bekommt
+     * @param studenten
+     * @param buchungen
+     * @param kurse
+     */
+    public PruefungsplanerAbstrakt(Planungsbedingungen planungsbedingungen){
+        ;
+    }
 /**
  *
- * Kursliste mit allen verfügbaren Kursen
+ * Kursliste mit allen verfï¿½gbaren Kursen
  * @poseidon-object-id [I2d0758e8m124d537380cmm77db]
  */
     private Kursliste kursliste;
@@ -60,5 +70,5 @@ public abstract class PruefungsplanerAbstrakt implements PruefungsPlaner {
         return buchungsliste;
     }
 
-    public abstract Pruefungsterminplan berechnePruefungsTerminPlan(Planungsbedingungen bedingung);
+    public abstract Pruefungsterminplan berechnePruefungsTerminPlan(Studentenliste studenten, Buchungsliste buchungen,Kursliste kurse);
  }
