@@ -2,6 +2,7 @@
 package AusgabeDatenVerwaltung;
 import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
 import AusgabeDatenVerwaltung.Datenverwaltung.*;
+import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
 import Hilfsklassen.Datei;
 
 /**
@@ -24,11 +25,13 @@ public class AusgabeVerwaltung {
     private Platzkartenliste platzkartenliste;    
     private FlatFileSchreiber fileschreiber;
     private Datei datei;
+    private Studentenliste studentenliste;
 
     
-    public void AusgabeVerwaltung(){
+    public void AusgabeVerwaltung(Studentenliste studentenliste){
     	
     	fileschreiber = new FlatFileSchreiber(this);
+    	this.studentenliste = studentenliste;
     }
     
     /**
@@ -36,7 +39,13 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereAnwesenheitsliste(){
     	
-    	
+    	while(studentenliste.getStudentIterator().hasNext()){
+    		
+    		anwesenheitsliste.addAnwesenheit(
+    				uni, tag, studentenliste.getStudentIterator().next());
+    		
+    		
+    	}
     	
     	
     	return true;

@@ -5,6 +5,7 @@ import java.util.*;
 
 import AusgabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenObjekte.*;
+import EingabeDatenVerwaltung.DatenVerwaltung.*;
 import Hilfsklassen.Universitaet;
 
 /**
@@ -12,18 +13,23 @@ import Hilfsklassen.Universitaet;
  * Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
  * 
  * @author Martin
- * @version 0.1
+ * @version 0.2
  */
 public class Notenliste {
 
-    private Collection<Noten> noten_liste;
+    private Collection<Buchung> noten_liste;
+    private Buchungsliste buchungsliste;
     
-    
+
     /**
-     * Konstruktor für die Notenliste
+     * Der Konstruktor für die Notenliste. Erzeugt Objekte für die Notenliste
+     * und die Buchungliste
+     * @param buchungsliste Die Buchungsliste der allgemeinen Verwaltung wird
+     * an das Objekt übergeben.
      */
-    public Notenliste(){
-    	 noten_liste = new TreeSet<Noten>();
+    public Notenliste(Buchungsliste buchungsliste){
+    	 noten_liste = new TreeSet<Buchung>();
+    	 this.buchungsliste = buchungsliste;
     }
     
 	/**
@@ -34,11 +40,15 @@ public class Notenliste {
 	 * @param kurse Ein Array mit den drei Kursen, die der Student belegen kann.
 	 * @return boolean flag true oder false
 	 */
-	public boolean addNote(Buchung buchung, int note){
+	public boolean addNote(Student student){
 		
-		if(noten_liste.add(new Noten(buchung, note))){
+		for(int i = 0; i < buchungsliste.anzBuchungenStudent(student); i++){
 		
-			return true;
+			if(noten_liste.add(
+					buchungsliste.getBuchung(1, 1))){
+			
+				return true;
+			}
 		}
 		
 		return false;
@@ -57,10 +67,10 @@ public class Notenliste {
 	 * Methode für die Ausgabe einer einzelnen Note der Liste
 	 * @return Note Rückgabewert aus der Liste
 	 */
-	public Noten getNote(){
+	public Buchung getNote(){
 		
 		
-		return new Noten();
+		return new Buchung(student, kurs);
 	}
 	
 	

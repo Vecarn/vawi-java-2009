@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 import AusgabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenObjekte.*;
+import EingabeDatenVerwaltung.DatenVerwaltung.*;
 import Hilfsklassen.*;
 
 /**
@@ -13,17 +14,23 @@ import Hilfsklassen.*;
  * und gleichzeitig Entit&auml;tstyp f&uuml;r eine Anwesenheitsliste.
  * 
  * @author Martin
- * @version 0.1
+ * @version 0.2
  */
 public class Anwesenheitsliste {
 
 	private Collection<Anwesenheit> anw_liste;
+	private Buchungsliste buchungsliste;
+	
 	
 	/**
-	 * Konstruktor für die Anwesenheitsliste
+	 * Konstruktor für die Anwesenheitsliste. Erzeugt ein neues TreeSet für die
+	 * Liste der Anwesenheiten und gibt an die lokale Variable buchungsliste
+	 * den Verweis auf die allgemeine Buchungsliste zurück.
+	 * @param buchungsliste Die Buchungsliste, die im System geführt wird.
 	 */
-	public Anwesenheitsliste(){
+	public Anwesenheitsliste(Buchungsliste buchungsliste){
 		 anw_liste = new TreeSet<Anwesenheit>();
+		 this.buchungsliste = buchungsliste;
 	}
 	
 	
@@ -32,15 +39,19 @@ public class Anwesenheitsliste {
 	 * 
 	 * @param student Der Student, dessen Anwesenheit hinzugefügt wird.
 	 * @param uni Die Universität, für die die aktuelle Anwesenheit hinzugefügt wird.
-	 * @param kurse Ein Array mit den drei Kursen, die der Student belegen kann.
+	 * @param tag Ein Integer Wert, der den Pruefungstag angibt.
 	 * @return boolean flag true oder false
 	 */
-	public boolean addAnwesenheit(Student student, Universitaet uni, 
-			Kurs[] kurse){
+	public boolean addAnwesenheit(Universitaet uni, int tag, Student student){
 		
-		if(anw_liste.add(new Anwesenheit(student, uni, kurse))){
+		for(int i = 0; i < buchungsliste.anzBuchungenStudent(student); i++){
 		
-			return true;
+			//Beispiel für den Aufruf
+			buchungsliste.getBuchung(1, student.getMatrikelnr());			
+//		if(anw_liste.add(new Anwesenheit(Universtitaet uni, int tag){
+//		
+//			return true;
+//		}
 		}
 		
 		return false;
