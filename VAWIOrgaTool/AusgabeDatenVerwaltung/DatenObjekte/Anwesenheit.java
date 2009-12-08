@@ -16,6 +16,7 @@ import PruefungsPlanung.Pruefungstag.*;
 public class Anwesenheit 
 {
     // Attribute für Klasse Anwesenheit, Liste wird aus der Studentenliste verwendet
+    // Statt Uni aus Klasse - Attribut von Student verwenden?
     private short tagId;
     private Universitaet uniTag;
     private Studentenliste tagesStudentenliste;
