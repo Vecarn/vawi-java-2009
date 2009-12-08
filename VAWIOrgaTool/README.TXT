@@ -60,9 +60,21 @@ PruefungsPlaner
 
 Pruefungstag
 ------------
+Enthält pro Prüfungstag die stattfindenen Prüfungen (Kurse), die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
 
-Pruefung
---------
+Erläuterung, warum Noten und Platzkarte als Datenklassen entfallen , eher in spearaten Dok.
+(...weil Platzkarte und Anwesenheit inhaltlich gleich wären und weil Noten nur Buchung enthält, die Notenliste auch driekt holen kann)
+
+und auch, warum hier keine Listenlogik gebraucht wird...
+(...die Klasse muss eine Sammlung von Kursen speichern. Dafür ist eine logik zu implementieren, die das Hinzufügen erlaubt, 
+Duplikate verhindert, irgendwas liefert, wie man durch die einzelnen Objekte läuft etc.  Da genau dies auch die Kursliste liefert,
+kann hier die Kursliste als Attribut verwendet werden.
+
+Anwesenheit
+-----------
+Enthält 1-3 Kurse pro Studenten, pro Tag und Uni.
+Erklärung, warum hier keine Listenlogik gebraucht wird, auch eher in separates Dok...
+
 
 Eingabe-Datenklassen
 --------------------
