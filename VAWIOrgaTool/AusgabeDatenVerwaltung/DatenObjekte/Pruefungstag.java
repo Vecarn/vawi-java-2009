@@ -16,7 +16,7 @@ public class Pruefungstag
 {
     // Attribute für den Priefungstag, Datum zusätzlich?
     private short tagId;
-    public Kursliste tagesKursliste;
+    private Kursliste tagesKursliste;
 
     /**
      * Konstruktor Pruefungstag
@@ -27,8 +27,14 @@ public class Pruefungstag
         this.tagesKursliste = tagesKursliste; 
     }
    /**
-     * Get-Methoden
+     * Setter und Getter-Methoden
      */    
+    //Setter
+    public void setTagesKursliste(Kursliste tagesKursliste)
+     {
+         this.tagesKursliste = tagesKursliste;
+     }
+    //Getter
     public short getTagId()
       {
       return tagId;

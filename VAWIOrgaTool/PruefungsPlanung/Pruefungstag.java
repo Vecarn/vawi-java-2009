@@ -16,26 +16,31 @@ public class Pruefungstag
 {
     // Attribute für den Priefungstag, Datum zusätzlich?
     private short tagId;
-    public Kursliste tagesKursliste;
+    private Kursliste tagesKursliste;
 
     /**
-     * Konstruktor Pruefungstag
+     * Konstruktor Pruefungstag, Kursliste besser in Konstruktor oder besser als Setter?
      */
     public Pruefungstag (short tagID, Kursliste tagesKursliste)
     {
-        this.tagId = tagId; 
+        this.tagId = tagId;   
         this.tagesKursliste = tagesKursliste; 
     }
    /**
-     * Get-Methoden
+     * Setter und Getter-Methoden
      */    
+    //Setter
+    public void setTagesKursliste(Kursliste tagesKursliste)
+     {
+         this.tagesKursliste = tagesKursliste;
+     }
+    //Getter
     public short getTagId()
       {
       return tagId;
       }
-     public Kursliste getTagesKursliste()
+    public Kursliste getTagesKursliste()
       {
       return tagesKursliste;
       }   
-
  }
