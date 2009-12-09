@@ -31,6 +31,8 @@ public class AusgabeVerwaltung {
     private Studentenliste studentenliste;
     private Buchungsliste buchungsliste;
     private Kursliste kursliste;
+    private Iterator<Student> si;
+    private Iterator<Buchung> bi;
     
 
     
@@ -54,6 +56,8 @@ public class AusgabeVerwaltung {
     	this.studentenliste = studentenliste;
     	this.kursliste = kursliste;
     	
+    	si = studentenliste.getStudentIterator();
+    	bi = buchungsliste.getIterator();
     }
     
     /**
@@ -62,7 +66,7 @@ public class AusgabeVerwaltung {
     public boolean generiereAnwesenheitsliste(){
     	
     	
-    	Iterator<Student> si = studentenliste.getStudentIterator();
+    	
     	
     	while (si.hasNext()){
     		
@@ -83,18 +87,20 @@ public class AusgabeVerwaltung {
     	return true;
     }
     
-    /**
-     * @return
-     */
-    public boolean generierePruefungsterminplan(){
-    	return true;
-    }
+    
     
     /**
      * @return
      */
     public boolean generiereNotenliste() {
 		
+    	while(bi.hasNext()){
+    		    		
+    		
+    		
+    	}
+    	
+    	
     	return true;
 	}
     
