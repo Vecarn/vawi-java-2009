@@ -1,3 +1,6 @@
+@uni eher als Attribut aus Student holen...
+@array o.ä. für 1-3 Kurse pro Student fehlt noch...
+@oder geht Studentenliste plus (spezifische) Kursliste jeweils??
 
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenObjekte.*;
