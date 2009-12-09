@@ -1,8 +1,11 @@
 
 package AusgabeDatenVerwaltung;
+import java.util.Iterator;
+
 import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
 import AusgabeDatenVerwaltung.Datenverwaltung.*;
-import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
+import EingabeDatenVerwaltung.DatenVerwaltung.*;
+import EingabeDatenVerwaltung.DatenObjekte.*;
 import Hilfsklassen.Datei;
 
 /**
@@ -26,12 +29,31 @@ public class AusgabeVerwaltung {
     private FlatFileSchreiber fileschreiber;
     private Datei datei;
     private Studentenliste studentenliste;
+    private Buchungsliste buchungsliste;
+    private Kursliste kursliste;
+    
 
     
-    public void AusgabeVerwaltung(Studentenliste studentenliste){
+    /**
+     * Konstruktor fuer die Klasse Ausgabeverwaltung
+     * @param studentenliste Die im System vorhandene Studentenliste, die
+     * im System zur Verfügung steht.
+     * @param pruefungsterminplan Der Pruefungsterminplan, der 
+     * zusammengestellt wurde
+     * @param kursliste Die Kursliste, mit den im System verwalteten Kursen
+     * @param buchungsliste Die Buchungsliste mit den im System 
+     * vorhandenen Buchungen
+     */
+    public void AusgabeVerwaltung(Studentenliste studentenliste, 
+    		Pruefungsterminplan pruefungsterminplan, Kursliste kursliste,
+    		Buchungsliste buchungsliste){
     	
     	fileschreiber = new FlatFileSchreiber(this);
     	this.studentenliste = studentenliste;
+    	this.buchungsliste = buchungsliste;
+    	this.studentenliste = studentenliste;
+    	this.kursliste = kursliste;
+    	
     }
     
     /**
@@ -39,13 +61,23 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereAnwesenheitsliste(){
     	
-    	while(studentenliste.getStudentIterator().hasNext()){
+    	
+    	Iterator<Student> si = studentenliste.getStudentIterator();
+    	
+    	while (si.hasNext()){
     		
-    		anwesenheitsliste.addAnwesenheit(
-    				uni, tag, studentenliste.getStudentIterator().next());
-    		
+//    		anwesenheitsliste.addAnwesenheit();
     		
     	}
+    	
+    	
+//    	while(studentenliste.getStudentIterator().hasNext()){
+//    		
+//    		anwesenheitsliste.addAnwesenheit(
+//    				uni, tag, studentenliste.getStudentIterator().next());
+//    		
+//    		
+//    	}
     	
     	
     	return true;
