@@ -73,7 +73,7 @@ kann hier die Kursliste als Attribut verwendet werden.
 Anwesenheit
 -----------
 Enthält 1-3 Kurse pro Studenten, pro Tag und Uni.
-Erklärung, warum hier keine Listenlogik gebraucht wird, auch eher in separates Dok...
+Erklärung, warum, falls hier keine Listenlogik gebraucht wird, auch eher in separates Dok...
 
 
 Eingabe-Datenklassen
