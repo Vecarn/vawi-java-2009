@@ -3,6 +3,7 @@
 @oder geht Studentenliste plus (spezifische) Kursliste jeweils??
 
 package AusgabeDatenVerwaltung.DatenObjekte;
+import java.util.Arrays
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import Hilfsklassen.Universitaet.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
