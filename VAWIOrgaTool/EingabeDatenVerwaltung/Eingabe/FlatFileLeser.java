@@ -40,9 +40,8 @@ public class FlatFileLeser {
 		this.studentendatei = null;
 		this.buchungsdatei = null;
 		
-		if(!erstelleKursliste()){
-			throw new IOException();
-		}
+		erstelleKursliste();
+		
 		
 	}
 
@@ -65,41 +64,33 @@ public class FlatFileLeser {
 		this.buchungsdatei = new Datei(buchungsdateiname);
 		this.kursdatei = new Datei(kursdateiname);
 		
-		if(!erstelleStudentenliste()&&!erstelleKursliste()&&!erstelleBuchungsliste()){
-			throw new IOException();
-		}
+		erstelleKursliste();
+		erstelleBuchungsliste();
+		erstelleStudentenliste();
 		
 	}
 	
 	/**
 	 * Erstellt die Kursliste aus der Eingabedatei.
 	 * 
-	 * @return boolean - true: Wenn Erstellung funktioniert.<br>
-	 *                 - false: Wenn Erstellung fehlschlägt.
 	 */
-	private boolean erstelleKursliste() {
+	private void erstelleKursliste() throws IOException {
 		
 		kursdatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
-        if (kursdatei.state())
-        {
-            // Ausgabe des Fehlers im Terminalfenster
-            System.out.println("Fehler: Beim öffen der Eingabedatei.");
-            // Abbrechen der Methode
-            return true;
+        if (kursdatei.state()){
+        	        
+        }else{
+        	throw new IOException("Fehler: Beim öffen der Eingabedatei - Kursliste.");   
         }
-        
-        return false;
 		
 	}
 	
 	/**
 	 * Erstellt die Buchungsliste aus der Eingabedatei.
 	 * 
-	 * @return boolean - true: Wenn Erstellung funktioniert.<br>
-	 *                 - false: Wenn Erstellung fehlschlägt.
 	 */
-	private boolean erstelleBuchungsliste() {
+	private void erstelleBuchungsliste() throws IOException {
 		
 		//erst Studentenliste und Kursliste erstellen
 		//beim erstellen neuer Buchung: buchung.setStudent(studentenliste.getStudent(id))
@@ -107,36 +98,26 @@ public class FlatFileLeser {
 		
 		buchungsdatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
-        if (!buchungsdatei.state())
-        {
-            // Ausgabe des Fehlers im Terminalfenster
-            System.out.println("Fehler: Beim öffen der Eingabedatei.");
-            // Abbrechen der Methode
-            return false;
+        if (buchungsdatei.state()){
+            //logik
+        }else{
+        	throw new IOException("Fehler: Beim öffen der Eingabedatei - Buchungsliste.");
         }
-        
-        return true;
 		
 	}
 	
 	/**
 	 * Erstellt die Studentenliste aus der Eingabedatei.
 	 * 
-	 * @return boolean - true: Wenn Erstellung funktioniert.<br>
-	 *                 - false: Wenn Erstellung fehlschlägt.
 	 */
-	private boolean erstelleStudentenliste() {
+	private void erstelleStudentenliste() throws IOException {
 		studentendatei.openInFile();
         // Abfrage, ob das öffen funktioniert hat
-        if (!studentendatei.state())
-        {
-            // Ausgabe des Fehlers im Terminalfenster
-            System.out.println("Fehler: Beim öffen der Eingabedatei.");
-            // Abbrechen der Methode
-            return false;
+        if (studentendatei.state()){
+        	//logik
+        }else{
+          	throw new IOException("Fehler: Beim öffen der Eingabedatei - Studentenliste.");          
         }
-        
-        return true;
 		
 	}
 
