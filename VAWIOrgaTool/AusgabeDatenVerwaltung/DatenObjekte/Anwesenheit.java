@@ -1,5 +1,5 @@
 @uni eher als Attribut aus Student holen...
-@array o.ä. für 1-3 Kurse pro Student fehlt noch...
+@array o.ä. für 1-3 Kurse pro Student fehlt noch... Versuche unten sind wohl nicht gut :-/
 @oder geht Studentenliste plus (spezifische) Kursliste jeweils??
 
 package AusgabeDatenVerwaltung.DatenObjekte;
@@ -22,7 +22,10 @@ public class Anwesenheit
     // Statt Uni aus Klasse - Attribut von Student verwenden?
     private short tagId;
     private Universitaet uniTag;
+    private Kurs kurs;
     private Studentenliste tagesStudentenliste;
+    // Array für Kurse pro Student?
+    private Kurs kursStudent[];
 
     /**
      * Konstruktor Anwesenheit, verlangt Tag und Uni
@@ -33,7 +36,6 @@ public class Anwesenheit
         this.tagId = tagId; 
         this.uniTag = uniTag; 
     }
-    
    /**
      * Methoden
      */ 
@@ -43,8 +45,11 @@ public class Anwesenheit
         {
             this.tagesStudentenliste = tagesStudentenliste;
         }
-
-    // Getter  (bei Student: Attribut Uni)
+    public void setKurs (Kurs kurs)
+        {
+            this.kurs = kurs;
+        }
+     // Getter  
      public int tag()
       {
       return tag;
@@ -57,4 +62,15 @@ public class Anwesenheit
       {
       return tagesStudentenliste;
       }
+     public Kurs kurs()
+      {
+      return kurs;
+      }
+      // Array für mehrere Kurse, es sollen die Kurskurztitel aus Kurs verwendet werden
+      // Erzeugung eines Arrays
+      kursStudent = new Kurs [3];
+      kursStudent[1] = Kurs kurztitel;
+      kursStudent[2] = Kurs kurztitel;
+      kursStudent[3] = Kurs kurztitel;  
+      // oder kursStudent [1] = new Kurs (); ??
  }

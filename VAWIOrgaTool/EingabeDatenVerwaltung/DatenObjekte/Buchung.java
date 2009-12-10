@@ -22,27 +22,27 @@ public class Buchung
      * Konstruktor Buchung, verlangt einen Studenten und einen Kurs 
      * für die Erstellung eines Buchungsobjektes
      */
-    public Buchung(Student student, Kurs kurs)
+    public Buchung(Student in_student, Kurs in_kurs)
     {
-        this.student = student;
-        this.kurs = kurs;
+        student = in_student;
+        kurs = in_kurs;
     }
 
    /**
      * Getter/Setter-Methoden
      */    
     // Setter
-    public void setStudent(Student student)
+    public void setStudent(Student in_student)
      {
-         this.student = student;
+         student = in_student;
      }
-    public void setKurs(Kurs kurs)
+    public void setKurs(Kurs in_kurs)
      {
-         this.kurs = kurs;
+         kurs = in_kurs;
      }
-    public void setErreichtePunkte(int erreichtePunkte)
+    public void setErreichtePunkte(int in_erreichtePunkte)
      {
-         this.erreichtePunkte = erreichtePunkte;
+         erreichtePunkte =in_erreichtePunkte;
      }
 
     // Getter
