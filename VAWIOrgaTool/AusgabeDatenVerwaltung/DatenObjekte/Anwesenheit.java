@@ -12,7 +12,7 @@ import PruefungsPlanung.Pruefungstag.*;
  * und den passenden Getter/Setter-Methoden.
  * 
  * @author  Silvia Wölfle
- * @version 1.0 on 07.12.2009
+ * @version 1.0 on 10.12.2009
  */
 
 public class Anwesenheit 
@@ -33,7 +33,6 @@ public class Anwesenheit
     {
         this.tagId = tagId; 
         this.uniTag = uniTag; 
-
     }
    /**
      * Methoden
@@ -57,19 +56,19 @@ public class Anwesenheit
               // oder kursStudent [1] = new Kurs (); ??
          }
      // Getter  
-     public int tag()
+     public int getTag()
       {
       return tag;
       }
-     public Universitaet uniTag()
+     public Universitaet getUniTag()
       {
       return uniTag;
       }
-     public Studentenliste tagesStudentenliste()
+     public Studentenliste getTagesStudentenliste()
       {
       return tagesStudentenliste;
       }
-     public Kurs kursStudent()
+     public Kurs getKursStudent()
       {
       return kursStudent;
       }
