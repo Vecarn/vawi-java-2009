@@ -22,7 +22,7 @@ public class Kurs
     private boolean hatTeilleistungen;
     // in maxPunkte werden maximal erreichbare Punkte in Teilleistungen abgebildet
     // bedingt, dass hatTeilleistungen true ist
-    private short maxPunkte;
+    private int maxPunkte;
 
     /**
      * Konstruktor für Objekte der Klasse Kurs mit Parameter 
@@ -52,7 +52,7 @@ public class Kurs
      {
          this.hatTeilleistungen = hatTeilleistungen;
      }
-    public void setMaxPunkte(short maxPunkte)
+    public void setMaxPunkte(int maxPunkte)
      {
          this.maxPunkte = maxPunkte;
      }   
@@ -74,7 +74,7 @@ public class Kurs
       {
       return hatTeilleistungen;
       }
-    public short getMaxPunkte()
+    public int getMaxPunkte()
       {
       return maxPunkte;
       }   

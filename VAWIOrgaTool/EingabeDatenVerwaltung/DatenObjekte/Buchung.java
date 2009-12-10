@@ -16,7 +16,7 @@ public class Buchung
     // Attribute: Klassen Student, Kurs sowie bereichts erreichte Punkte
     private Student student;
     private Kurs kurs;
-    private short erreichtePunkte;
+    private int erreichtePunkte;
 
      /**
      * Konstruktor Buchung, verlangt einen Studenten und einen Kurs 
@@ -40,7 +40,7 @@ public class Buchung
      {
          this.kurs = kurs;
      }
-    public void setErreichtePunkte(short erreichtePunkte)
+    public void setErreichtePunkte(int erreichtePunkte)
      {
          this.erreichtePunkte = erreichtePunkte;
      }
@@ -54,7 +54,7 @@ public class Buchung
       {
       return kurs;
       }
-    public short getErreichtePunkte()
+    public int getErreichtePunkte()
       {
       return erreichtePunkte;
       }

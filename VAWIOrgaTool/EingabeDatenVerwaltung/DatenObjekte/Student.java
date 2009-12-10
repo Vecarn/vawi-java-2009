@@ -47,7 +47,7 @@ public class Student
    /**
      * Getter/Setter-Methoden
      */    
-    // Setter
+    // Setter (Name: gleich Vor- und Nachname??)
     public void setVorname(String vorname)
      {
          this.vorname = vorname;
