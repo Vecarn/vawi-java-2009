@@ -7,28 +7,11 @@ import EingabeDatenVerwaltung.DatenVerwaltung.Kursliste;
 import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
 /**
  * Der PruefungsplanerAbstrakt ist eine Abstrakte Klasse, die das Interface Pruefungsplaner implementiert. Alle Methoden die den Algorithmus direkt betreffen bleiben abstrakt. Lediglich die Methoden, die die Planungsbedingungen als Randbedingungen f&uuml;r den Algorithmus setzen, sind implementiert.
- * 
+ * @author Joern Hauser
  * @poseidon-object-id [Im3057c7d4m124e9a3360amm7463]
  */
 public abstract class PruefungsplanerAbstrakt implements PruefungsPlaner {
- /**
- *
- * Alle Studenten f�r die geplant wird
- * @poseidon-object-id [I2d0758e8m124d537380cmm7789]
- */
-    private Studentenliste studentenliste;
-/**
- *
- * Planungsbedingungen als Randbedingungen
- * @poseidon-object-id [I2d0758e8m124d537380cmm78a4]
- */
-    private Planungsbedingungen planungsbedingungen;
-/**
- *
- * Buchungsliste mit allen Buchungen
- * @poseidon-object-id [I2d0758e8m124d537380cmm77b2]
- */
-    private Buchungsliste buchungsliste;
+
 
     /**
      * Konstruktor der alle fuer den Algorithmus benoetigten Listen bekommt
@@ -39,36 +22,22 @@ public abstract class PruefungsplanerAbstrakt implements PruefungsPlaner {
     public PruefungsplanerAbstrakt(Planungsbedingungen planungsbedingungen){
         ;
     }
-/**
- *
- * Kursliste mit allen verf�gbaren Kursen
- * @poseidon-object-id [I2d0758e8m124d537380cmm77db]
- */
-    private Kursliste kursliste;
 
-   public void setBuchungsliste(Buchungsliste buchungsliste) {
-        this.buchungsliste = buchungsliste;
-    }
+        /**
+     * Methode gibt die aktuell gültigen Planungsbedingungen zurueck
+     * @return aktuelle Planungsbedingungen
+     */
+    public Planungsbedingungen getPlanungsbedingungen(){
+        return null;
+    };
 
-    public Kursliste getKursliste() {
-        return kursliste;
-    }
-
-    public void setKursliste(Kursliste kursliste) {
-        this.kursliste = kursliste;
-    }
-
-    public Studentenliste getStudentenliste() {
-        return studentenliste;
-    }
-
-    public void setStudentenliste(Studentenliste studentenliste) {
-        this.studentenliste = studentenliste;
-    }
-
-    public Buchungsliste getBuchungsliste() {
-        return buchungsliste;
-    }
+    /**
+     * Methode setzt neue Planungsbedingungen zur Pruefungsterminplan-Berechnung
+     * @param bedingungen
+     */
+    public void setPlanungsbedingungen(Planungsbedingungen bedingungen){
+        
+    };
 
     public abstract Pruefungsterminplan berechnePruefungsTerminPlan(Studentenliste studenten, Buchungsliste buchungen,Kursliste kurse);
  }

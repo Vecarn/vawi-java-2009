@@ -12,12 +12,25 @@ public interface PruefungsPlaner {
 
 
     /**
-     * Methode berechnet den Pruefungsplan und gibt diesen zur�ck
-     * @param bedingungen f�r die Berechnung durch den Algorithmus
+     * Methode berechnet den Pruefungsplan und gibt diesen zurueck
+     * @param Studentenliste aller Studenten, die eingeplant werden müssen
+     * @param Buchungsliste mit allen Buchungen der Studenten
+     * @param Kursliste mit allen buchbaren Kursen
      * @return Pruefungsterminplan mit allen geplanten Tagen
      */
     public Pruefungsterminplan berechnePruefungsTerminPlan(Studentenliste studenten, Buchungsliste buchungen,Kursliste kurse);
-    
+
+    /**
+     * Methode gibt die aktuell gültigen Planungsbedingungen zurueck
+     * @return aktuelle Planungsbedingungen
+     */
+    public Planungsbedingungen getPlanungsbedingungen();
+
+    /**
+     * Methode setzt neue Planungsbedingungen zur Pruefungsterminplan-Berechnung
+     * @param bedingungen
+     */
+    public void setPlanungsbedingungen(Planungsbedingungen bedingungen);
 }
 
 

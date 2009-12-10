@@ -1,3 +1,6 @@
+@Martin: Hi Martin, kannst du noch ne Methode hinzufuegen, die die Zufriedenheit ausgibt? Die Zufriedenheit ist als Attribut beim Student gespeichert.
+Sie bekommt also eine Studentenliste als Parameter
+Gruß Jörn
 
 package AusgabeDatenVerwaltung;
 import java.util.Iterator;
