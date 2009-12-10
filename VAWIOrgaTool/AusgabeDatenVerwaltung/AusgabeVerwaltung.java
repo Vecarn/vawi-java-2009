@@ -39,14 +39,14 @@ public class AusgabeVerwaltung {
     /**
      * Konstruktor fuer die Klasse Ausgabeverwaltung
      * @param studentenliste Die im System vorhandene Studentenliste, die
-     * im System zur Verfügung steht.
+     * im System zur Verfï¿½gung steht.
      * @param pruefungsterminplan Der Pruefungsterminplan, der 
      * zusammengestellt wurde
      * @param kursliste Die Kursliste, mit den im System verwalteten Kursen
      * @param buchungsliste Die Buchungsliste mit den im System 
      * vorhandenen Buchungen
      */
-    public void AusgabeVerwaltung(Studentenliste studentenliste, 
+    public AusgabeVerwaltung(Studentenliste studentenliste, 
     		Pruefungsterminplan pruefungsterminplan, Kursliste kursliste,
     		Buchungsliste buchungsliste){
     	
