@@ -41,11 +41,11 @@ public class Buchungsliste {
      *  
      * @param student (Student) - Ein konkretes Studenten-Objekt.
      * @param kurs (Kurs) - Ein konkretes Kurs-Objekt.
-     * @param erreichtePunkte (short) - Die Anzahl der bereits erreichten Punkte des Studenten in diesem Kurs.
+     * @param erreichtePunkte (int) - Die Anzahl der bereits erreichten Punkte des Studenten in diesem Kurs.
      * @return  true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addBuchung(Student student, Kurs kurs, short erreichtePunkte){
+    public boolean addBuchung(Student student, Kurs kurs, int erreichtePunkte){
 		    	
     	Buchung buchung = new Buchung(student,kurs);
     	buchung.setErreichtePunkte(erreichtePunkte);
