@@ -1,9 +1,7 @@
-@uni eher als Attribut aus Student holen...
-@array o.ä. für 1-3 Kurse pro Student fehlt noch... Versuche unten sind wohl nicht gut :-/
-@oder geht Studentenliste plus (spezifische) Kursliste jeweils??
+@stimmt sicher alles nicht mit dem Array und ob überhaupt!! Verschiedenes probiert, wird aber eher immer schlimmer...
 
 package AusgabeDatenVerwaltung.DatenObjekte;
-import java.util.Arrays
+import java.util.Arrays;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import Hilfsklassen.Universitaet.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
@@ -23,7 +21,6 @@ public class Anwesenheit
     // Statt Uni aus Klasse - Attribut von Student verwenden?
     private short tagId;
     private Universitaet uniTag;
-    private Kurs kurs;
     private Studentenliste tagesStudentenliste;
     // Array für Kurse pro Student?
     private Kurs kursStudent[];
@@ -32,10 +29,11 @@ public class Anwesenheit
      * Konstruktor Anwesenheit, verlangt Tag und Uni
      * für die Erstellung eines Anwesenheits-Objektes
      */
-    public Anwesenheit (short tagID, Universitaet uniTag)
+    public Anwesenheit (short tagID, Universitaet uniTag, Kurs kurs)
     {
         this.tagId = tagId; 
         this.uniTag = uniTag; 
+
     }
    /**
      * Methoden
@@ -46,10 +44,18 @@ public class Anwesenheit
         {
             this.tagesStudentenliste = tagesStudentenliste;
         }
-    public void setKurs (Kurs kurs)
+    // Array für mehrere Kurse, es sollen die Kurskurztitel aus Kurs verwendet werden
+    public void setKursStudent (Kurs kursStudent)
         {
-            this.kurs = kurs;
-        }
+              this.kursStudent = new Kurs [3];
+              kursStudent[1] = Kurs kurztitel;
+              kursStudent.add (1);
+              kursStudent[2] = Kurs kurztitel;
+              kursStudent.add (2);
+              kursStudent[3] = Kurs kurztitel; 
+              kursStudent.add (3);
+              // oder kursStudent [1] = new Kurs (); ??
+         }
      // Getter  
      public int tag()
       {
@@ -63,15 +69,9 @@ public class Anwesenheit
       {
       return tagesStudentenliste;
       }
-     public Kurs kurs()
+     public Kurs kursStudent()
       {
-      return kurs;
+      return kursStudent;
       }
-      // Array für mehrere Kurse, es sollen die Kurskurztitel aus Kurs verwendet werden
-      // Erzeugung eines Arrays
-      kursStudent = new Kurs [3];
-      kursStudent[1] = Kurs kurztitel;
-      kursStudent[2] = Kurs kurztitel;
-      kursStudent[3] = Kurs kurztitel;  
-      // oder kursStudent [1] = new Kurs (); ??
+
  }
