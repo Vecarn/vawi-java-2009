@@ -39,8 +39,11 @@ public class ZufriedenheitsMesser {
 	 * Wenn Student zeitminimierer ist und er maximal einen Prüfungstag hat: <tt>zufriedenheit==true</tt><br>
 	 * Wenn Student kein zeitminimierer ist und er nicht mehr wie 1 Prüfung pro Tag hat: <tt>zufriedenheit==true</tt><br>
 	 * Bei allen anderen: <tt>zufriedenheit==false</tt>
+	 * 
+	 * @return Studentenliste: Liste mit Studentenobjekten die geprüft wurden
+	 * 
 	 */
-	public void errechneZufriedenheit(){
+	public Studentenliste errechneZufriedenheit(){
 	
 		Iterator<Student> si = studentenliste.getStudentIterator();
 		//alles an einem Tag -> zufrieden
@@ -61,6 +64,8 @@ public class ZufriedenheitsMesser {
 			}
 		
 		}
+	
+	return studentenliste;
 	
 	}
 
