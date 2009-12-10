@@ -1,5 +1,6 @@
-@weitere Bedingung: jeder Kurs an genau einem Tag geprüft, nicht notwendig? Damit ein gleicher Kurs nicht evtl. für versch. Studenten an versch. Tagen stattfindet?
-LG Silvia
+@Silvia: Hallo Silvia, kannst du bitte meine Konstanten weg und die PruefungenProTag und PruefungenProStudentUndTag als ganz normale int-Attribute mit getter und setter machen.
+Danke! Dann kann ich die nÃ¤mlich in meinem Programmablauf setzen.
+GruÃŸ JÃ¶rn
 
 package PruefungsPlanung;
 
