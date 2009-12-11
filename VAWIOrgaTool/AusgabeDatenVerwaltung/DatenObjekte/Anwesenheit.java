@@ -1,9 +1,7 @@
 
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenObjekte.*;
-import Hilfsklassen.Universitaet.*;
-import PruefungsPlanung.PruefungsPlanerAlgo1.*;
-import PruefungsPlanung.Pruefungstag.*;
+import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 /**
  * Datentraegerklasse Anwesenheit mit den Eigenschaften Studentenliste und Tag und Uni
@@ -38,7 +36,7 @@ public class Anwesenheit
     // Setter
     public void setKursliste(Kursliste studentKursliste)
         {
-            this.studentKurslistee = studentKursliste;
+            this.studentKursliste = studentKursliste;
         }
      // Getter  
      public Student getStudent ()
