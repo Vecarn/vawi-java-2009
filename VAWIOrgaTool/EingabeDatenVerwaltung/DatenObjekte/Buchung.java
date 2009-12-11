@@ -21,40 +21,61 @@ public class Buchung
      /**
      * Konstruktor Buchung, verlangt einen Studenten und einen Kurs 
      * für die Erstellung eines Buchungsobjektes
+     * @param student Student in der Buchung (Student)
+     * @param kurs Kurs in der Buchung (Kurs)
      */
-    public Buchung(Student in_student, Kurs in_kurs)
+    public Buchung(Student in_student, Kurs kurs)
     {
-        student = in_student;
-        kurs = in_kurs;
+        this.student = student;
+        this.kurs = kurs;
     }
 
-   /**
-     * Getter/Setter-Methoden
-     */    
-    // Setter
+    /**
+     * Set-Methode student (eigentlich schon in Konstruktor fix)
+     * @param student Student in der Buchung (Student)
+     */  
     public void setStudent(Student in_student)
      {
-         student = in_student;
+         this.student = student;
      }
-    public void setKurs(Kurs in_kurs)
+    /**
+     * Set-Methode kurs (eigentlich schon in Konstruktor fix)
+     * @param kurs Kurs in der Buchung (Kurs)
+     */  
+     public void setKurs(Kurs kurs)
      {
-         kurs = in_kurs;
+         this.kurs = kurs;
      }
-    public void setErreichtePunkte(int in_erreichtePunkte)
+   /**
+     * Set-Methode erreichtePunkte (ueberschreibt Attribut erreichtePunkte)
+     * @param erreichtePunkte bisher erriechte Punkte eines Studenten (int)
+     */  
+    public void setErreichtePunkte(int erreichtePunkte)
      {
-         erreichtePunkte =in_erreichtePunkte;
+         this.erreichtePunkte = erreichtePunkte;
      }
 
-    // Getter
+    /**
+     * Get-Methode: Gibt Student in der Buchung als Student zurück
+     * @return   Student der Buchung als Student
+     */
      public Student getStudent()
       {
       return student;
       }
+    /**
+     * Get-Methode: Gibt Kurs in der Buchung als Kurs zurück
+     * @return   Kurs der Buchung als Kurs
+     */
      public Kurs getKurs()
       {
       return kurs;
       }
-    public int getErreichtePunkte()
+    /**
+     * Get-Methode: Gibt bisher erreichte Punkte eines Studenten als int zurück
+     * @return   ErreichtePunkte des Studenten als int
+     */
+     public int getErreichtePunkte()
       {
       return erreichtePunkte;
       }

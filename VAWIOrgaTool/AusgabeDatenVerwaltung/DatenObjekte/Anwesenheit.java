@@ -2,47 +2,53 @@
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
+import AusgabeDatenVerwaltung.DatenObjekte.*;
 
 /**
- * Datentraegerklasse Anwesenheit mit den Eigenschaften Studentenliste und Tag und Uni
+ * Datentraegerklasse Anwesenheit mit den Eigenschaften Student und Kursliste
  * und den passenden Getter/Setter-Methoden.
+ * Enthaelt selbst nicht Tag und Uni und auch keine Liste, 
+ * da dies erst in der Verwaltungsklassen für die Listen zusammengestellt wird 
  * 
  * @author  Silvia Wölfle
- * @version 1.0 on 11.12.2009
+ * @version 2.0 on 11.12.2009
  */
 
 public class Anwesenheit 
 {
-    // Attribute für Klasse Anwesenheit, Liste wird aus der Studentenliste verwendet
-    // Tag und Uni werden erst in Verwaltungsklassen für Listen genutzt, daher hier nicht
-    // kein Array/keine Liste, weil das erst in Verwaltungsklasse zusammengestellt
+    // Attribute für Klasse Anwesenheit, Liste wird aus der Kursliste verwendet
+    // Tag und Uni werden erst in Verwaltungsklassen für Listen genutzt
     private Student student;
     private Kursliste studentKursliste;
-    // Array für Kurse pro Student?
-    private Kurs kursStudent[];
 
     /**
-     * Konstruktor Anwesenheit, verlangt Tag und Uni
-     * für die Erstellung eines Anwesenheits-Objektes
+     * Konstruktor Anwesenheit, verlangt Student
+     * @param student  anwesender Student
      */
     public Anwesenheit (Student student)
     {
         this.student = student; 
     }
    /**
-     * Methoden
+     * Set-Methode studentKursliste (ueberschreibt Attribut studentKursliste)
+     * @param studentKursliste Kurse, die ein Student an einem Pruefungstag schreibt (Kursliste)
      */ 
-    
-    // Setter
     public void setKursliste(Kursliste studentKursliste)
         {
             this.studentKursliste = studentKursliste;
         }
-     // Getter  
+     /**
+     * Get-Methode: Gibt Student an einem Pruefungstag als Student zurück
+     * @return   student Student an einem Pruefungstag
+     */
      public Student getStudent ()
       {
        return student;
       }
+     /**
+     * Get-Methode: Gibt Kurse, die ein Student an einem Pruefungstag schreibt als Kursliste zurück
+     * @return   studentKursliste Kurse des Studenten am Pruefungstag
+     */
      public Kursliste getStudentKursliste()
       {
       return studentKursliste;

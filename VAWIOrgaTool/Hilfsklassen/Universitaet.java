@@ -1,4 +1,5 @@
 @solle das nicht ein interface sein? Gruss Silvia
+@Löschen als Datenklasse, da Interface und Attribut uni in Student
 
 /**
  * 

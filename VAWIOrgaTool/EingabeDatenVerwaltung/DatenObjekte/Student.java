@@ -4,7 +4,7 @@ import  EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
  * Datenträgerklasse Student
- * enthält Student-Objekte 
+ * Enthält Student-Objekte 
  * mit den Eigenschaften eines Studenten und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
@@ -34,69 +34,112 @@ public class Student
      * Konstruktor für Objekte der Klasse Student mit Parameter 
      * (der name, vorname und matrikelnr bei der erstellung des Objekts verlangt und gleich setzt)
      * 
-     * @param name             Nachname des Studenten (String)
-     * @param vorname          Vorname des Studenten (String)
-     * @param matrikelnr       ID des Studenten (int)
+     * @param matrikelnr   ID des Studenten (int)
      */
     public Student(String name, String vorname, int matrikelnr)
     {
-        this.name=name;
-        this.vorname=vorname;
         this.matrikelnr=matrikelnr;
      }
    /**
-     * Getter/Setter-Methoden
+     * Set-Methode vorname (ueberschreibt Attribut vorname)
+     * @param vorname Vorname eines Studenten (String)
      */    
-    // Setter (Name: gleich Vor- und Nachname??)
     public void setVorname(String vorname)
      {
          this.vorname = vorname;
      }
+   /**
+     * Set-Methode name (ueberschreibt Attribut name)
+     * @param name Nachname eines Studenten (String)
+     */    
     public void setName(String name)
      {
          this.name = name;
      }
+   /**
+     * Set-Methode uni (ueberschreibt Attribut uni)
+     * @param uni Universitaet, an welcher ein Student eingeschrieben ist (char). Möglich sind die Buchstaben 'B' für Bamberg und 'D' für Duiesburg-Essen
+     */    
     public void setUni(char uni)
      {
          this.uni = uni;
      }
+   /**
+     * Set-Methode bundesland (ueberschreibt Attribut bundesland)
+     * @param bundesland Bundesland, in welchem der Student ansaessig ist, frei als Text (String)
+     */    
     public void setBundesland(String bundesland)
      {
          this.bundesland = bundesland;
      }   
+   /**
+     * Set-Methode zeitminimierer (ueberschreibt Attribut zeitminimierer)
+     * @param zeitminimierer Zeitminimierer (boolean). Wenn true, dann will Student möglichst alle Pruefungen an einem Tag schreiben
+     */    
     public void setZeitminimierer(boolean zeitminimierer)
      {
          this.zeitminimierer = zeitminimierer;
      }        
+   /**
+     * Set-Methode zufrieden (ueberschreibt Attribut vorname)
+     * @param zufrieden Zufrieden (boolean): Wahrheitswert fuer Check, ob Praeferenz (Zeitminimierer true false) erfuellt
+     */    
     public void setZufrieden(boolean zufrieden)
      {
          this.zufrieden = zufrieden;
      }  
-    // Getter
-      public int getMatrikelnr()
+    /**
+     * Get-Methode: Gibt Matrikelnummer eines Studenten als int zurück
+     * @return   Matrikelnummer des Studenten als int
+     */
+     public int getMatrikelnr()
       {
       return matrikelnr;
       }
-    public String getVorname()
+    /**
+     * Get-Methode: Gibt Vorname eines Studenten als String zurück
+     * @return  Vorname des Studenten als String
+     */
+     public String getVorname()
       {
       return vorname;
       }
-     public String getName()
+    /**
+     * Get-Methode: Gibt Nachname eines Studenten als String zurück
+     * @return  Nachname des Studenten als String
+     */
+    public String getName()
       {
       return name;
       }
+    /**
+     * Get-Methode: Gibt Uni eines Studenten als char zurück
+     * @return  Uni des Studenten als char
+     */
     public char getUni()
       {
       return uni;
       }
+    /**
+     * Get-Methode: Gibt Bundesland eines Studenten als String zurück
+     * @return  Bundesland des Studenten als String
+     */
     public String getBundesland()
       {
       return bundesland;
       }   
+    /**
+     * Get-Methode: Gibt als boolean zurück, ob Student Zeitminimierer
+     * @return  Zeitminimierer als boolean
+     */
     public boolean getZeitminimierer()
     {
      return zeitminimierer;
      } 
+    /**
+     * Get-Methode: Gibt als boolean zurück, ob Student zufrieden, d.h. ob Praeferenz zeitminimierer erfuellt
+     * @return  Zufrieden als boolean
+     */
     public boolean getZufrieden()
     {
      return zufrieden;

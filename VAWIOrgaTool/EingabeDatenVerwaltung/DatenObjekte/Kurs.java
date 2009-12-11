@@ -4,7 +4,7 @@ import  EingabeDatenVerwaltung.DatenObjekte.*;
 
 /**
  * Datenträgerklasse Kurs 
- * enthält die Kurs-Objekte
+ * Enthält die Kurs-Objekte
  * mit den Eigenschaften eines Kurses und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
@@ -26,54 +26,71 @@ public class Kurs
 
     /**
      * Konstruktor für Objekte der Klasse Kurs mit Parameter 
-     * (der titel und kursid bei der erstellung des Objekts verlangt und gleich setzt
+     * (der titel, kurztitel und kursid bei der erstellung des Objekts verlangt und gleich setzt
      * 
      * @param kursid             ID des Kurses (int)
      * @param titel              Titel des Kurses (String)
+     * @param kurztitel          Kurztitel des Kurses (String)
      */
-    public Kurs(int kursid, String titel)
+    public Kurs(int kursid, String titel, String kurztitel)
     {
         this.kursid=kursid;
         this.titel=titel;
+        this.kurztitel=kurztitel;
      }
    /**
-     * Getter/Setter-Methoden
-     */    
-    // Setter
-    public void setTitel(String titel)
-     {
-         this.titel = titel;
-     }
-    public void setKurztitel(String kurztitel)
-     {
-         this.kurztitel = kurztitel;
-     }
+     * Set-Methode hatTeilleistungen (ueberschreibt Attribut hatTeilleistungen)
+     * @param hatTeilleistungen Teilleistungen eines Kurses vorhanden (boolean)
+     */
     public void setHatTeilleistungen(boolean hatTeilleistungen)
      {
          this.hatTeilleistungen = hatTeilleistungen;
      }
+   /**
+     * Set-Methode setMaxPunkte (ueberschreibt Attribut setMaxPunkte)
+     * @param setMaxPunkte maximale Punktzahl eines Kurses (int)
+     */
     public void setMaxPunkte(int maxPunkte)
      {
          this.maxPunkte = maxPunkte;
      }   
         
-    // Getter 
+    /**
+     * Get-Methode: Gibt Kursid eines Kurses als int zurück
+     * @return   Kursid des Kurses als int
+     */
     public int getKursid()
       {
       return kursid;
       }
-    public String getTitel()
+    /**
+     * Get-Methode: Gibt Titel eines Kurses als String zurück
+     * @return  Titel des Kurses als String
+     */
+     public String getTitel()
       {
       return titel;
       }
-     public String getKurztitel()
+    /**
+     * Get-Methode: Gibt Kurztitel eines Kurses als String zurück
+     * @return  Kurztitel des Kurses als String
+     */
+    public String getKurztitel()
       {
       return kurztitel;
       }
+    /**
+     * Get-Methode: Gibt als boolean zurück, ob Kurs Teilleistungen enthaelt
+     * @return  hatTeilleistungen als boolean
+     */
     public boolean getHatTeilleistungen()
       {
       return hatTeilleistungen;
       }
+   /**
+     * Get-Methode: Gibt maximale Punktzahl eines Kurses als int zurück
+     * @return  maximale Punktzahl als int
+     */
     public int getMaxPunkte()
       {
       return maxPunkte;

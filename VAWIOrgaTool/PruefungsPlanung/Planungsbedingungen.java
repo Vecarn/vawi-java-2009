@@ -7,11 +7,10 @@ import PruefungsPlanung.PruefungsPlanerAlgo1.*;
 
 /**
  * Die Planungsbedingungen ist eine Datenklasse mit Attributen, 
- * die als Randbedingungen und Eigenschaften des Algorithmuses verwendet werden 
- * (z.B. Max Anzahl an Kurse pro Student und Tag). Die Planungsbedingungen werden ueber 
- * den Programmablauf gesetzt.
+ * (z.B. maximale Anzahl an Kurse pro Student und Tag). Die Planungsbedingungen werden ueber den Programmablauf gesetzt.
  * 
- * @poseidon-object-id [I2d0758e8m124d537380cmm78e9]
+ * @author  Silvia Wölfle
+ * @version 2.0 on 11.12.2009
  */
 public class Planungsbedingungen 
 {
@@ -20,29 +19,35 @@ public class Planungsbedingungen
        private int pruefungProStudentUndTag;
        /**
         * Konstruktor für Planungsbedingung
+        * (der pruefungProTag bei der erstellung des Objekts verlangt und gleich setzt)
+        * @param pruefungProTag   Maximale Anzahl der Kurse pro Tag (int)
         */
-       public Planungsbedingungen (int pruefungProStudentUndTag)
+       public Planungsbedingungen (int pruefungProTag)
+       {
+           this.pruefungProTag = pruefungProTag;
+        }
+
+        /**
+       * Set-Methode pruefungProStudentUndTag (ueberschreibt Attribut pruefungProStudentUndTag)
+       * @param pruefungProStudentUndTag  Maximale Anzahl der Kurse pro Student und Tag (int)
+       */  
+        public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
        {
            this.pruefungProStudentUndTag = pruefungProStudentUndTag;
         }
-       /**
-        * Setter und Getter-Methoden
-        * @param!!
-        */    
-       //Setter
-       public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
-       {
-           this.pruefungProStudentUndTag = pruefungProStudentUndTag;
-        }
-        public void pruefungProTag (int pruefungProTag)
-        {
-            this.pruefungProTag = pruefungProTag;
-        }
-        //Getter
+
+        /**
+         * Get-Methode: Gibt Pruefung pro Tag als int zurück
+         * @return   Pruefung pro Tag als int
+         */
         public int getPruefungProTag ()
             {
              return pruefungProTag;
             }
+        /**
+         * Get-Methode: Gibt Pruefung pro Student und Tag als int zurück
+         * @return   Pruefung pro Student und Tag als int
+         */
         public int getPruefungProStudentUndTag ()
             {
              return pruefungProStudentUndTag;
