@@ -1,5 +1,3 @@
-@nach Package Pruefungsplanung verschoben, ist das gut? Oder doch hier lassen?
-
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
@@ -14,25 +12,30 @@ import PruefungsPlanung.PruefungsPlanerAlgo1.*;
  */
 public class Pruefungstag 
 {
-    // Attribute für den Priefungstag, Datum zusätzlich?
+    // Attribute für den Pruefungstag, ggf. Datum zusätzlich
     private short tagId;
     private Kursliste tagesKursliste;
-
+    private Studentenliste tagesStudentenliste;  
+     
     /**
      * Konstruktor Pruefungstag
      */
-    public Pruefungstag (short tagID, Kursliste tagesKursliste)
+    public Pruefungstag (short tagID)
     {
-        this.tagId = tagId; 
-        this.tagesKursliste = tagesKursliste; 
+        this.tagId = tagId;   
     }
    /**
      * Setter und Getter-Methoden
+     * @param!!
      */    
     //Setter
     public void setTagesKursliste(Kursliste tagesKursliste)
      {
          this.tagesKursliste = tagesKursliste;
+     }
+    public void setTagesStudentenliste(Studentenliste tagesStudentenliste)
+     {
+         this.tagesStudentenliste = tagesStudentenliste;
      }
     //Getter
     public short getTagId()
@@ -43,4 +46,8 @@ public class Pruefungstag
       {
       return tagesKursliste;
       }   
- }
+     public Studentenliste getTagesStudentenliste()
+      {
+      return tagesStudentenliste;
+      }   
+}

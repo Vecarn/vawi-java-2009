@@ -1,31 +1,51 @@
-@Silvia: Hallo Silvia, kannst du bitte meine Konstanten weg und die PruefungenProTag und PruefungenProStudentUndTag als ganz normale int-Attribute mit getter und setter machen.
-Danke! Dann kann ich die nÃ¤mlich in meinem Programmablauf setzen.
-GruÃŸ JÃ¶rn
+@Joern: Also wenn Du die im Programmauflauf setzt, muss ich die Werte noch gar nicht festlegen?
+Gruss Silvia
 
 package PruefungsPlanung;
-
+import PruefungsPlanung.PruefungsPlanerAlgo1.*;
 
 
 /**
- * Die Planungsbedingungen ist eine Datenklasse mit Attributen, die als Randbedingungen und Eigenschaften des Algorithmuses verwendet werden (z.B. Max Anzahl an Kurse pro Student und Tag). Die Planungsbedingungen werden dabei &uuml;ber eine Implementierung des Datenlesers eingelesen.
+ * Die Planungsbedingungen ist eine Datenklasse mit Attributen, 
+ * die als Randbedingungen und Eigenschaften des Algorithmuses verwendet werden 
+ * (z.B. Max Anzahl an Kurse pro Student und Tag). Die Planungsbedingungen werden ueber 
+ * den Programmablauf gesetzt.
  * 
  * @poseidon-object-id [I2d0758e8m124d537380cmm78e9]
  */
 public class Planungsbedingungen 
 {
-       
-        /**
-         * Maximale Anzahl an Pruefungen, die pro Tag geschrieben werden
-         */
-        public static final int PruefungProTag = 8;
-        /**
-        *  Maximale Anzahl an Pruefungen, die ein Student pro Tag schreiben darf
+       //Attribute für die Planungsbedingungen
+       private int pruefungProTag;
+       private int pruefungProStudentUndTag;
+       /**
+        * Konstruktor für Planungsbedingung
         */
-        public static final int PruefungProStudentUndTag =3;
-        
-        /**
-         * 
-         * 
-         * @poseidon-object-id [I2d0758e8m124d537380cmm7856]
-         */
+       public Planungsbedingungen (int pruefungProStudentUndTag)
+       {
+           this.pruefungProStudentUndTag = pruefungProStudentUndTag;
+        }
+       /**
+        * Setter und Getter-Methoden
+        * @param!!
+        */    
+       //Setter
+       public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
+       {
+           this.pruefungProStudentUndTag = pruefungProStudentUndTag;
+        }
+        public void pruefungProTag (int pruefungProTag)
+        {
+            this.pruefungProTag = pruefungProTag;
+        }
+        //Getter
+        public int getPruefungProTag ()
+            {
+             return pruefungProTag;
+            }
+        public int getPruefungProStudentUndTag ()
+            {
+             return pruefungProStudentUndTag;
+            }
  }
+
