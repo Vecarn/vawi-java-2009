@@ -42,7 +42,7 @@ public class Buchung
      * Set-Methode kurs (eigentlich schon in Konstruktor fix)
      * @param kurs Kurs in der Buchung (Kurs)
      */  
-     public void setKurs(Kurs kurs)
+    public void setKurs(Kurs kurs)
      {
          this.kurs = kurs;
      }
@@ -59,7 +59,7 @@ public class Buchung
      * Get-Methode: Gibt Student in der Buchung als Student zurück
      * @return   Student der Buchung als Student
      */
-     public Student getStudent()
+    public Student getStudent()
       {
       return student;
       }
@@ -67,7 +67,7 @@ public class Buchung
      * Get-Methode: Gibt Kurs in der Buchung als Kurs zurück
      * @return   Kurs der Buchung als Kurs
      */
-     public Kurs getKurs()
+    public Kurs getKurs()
       {
       return kurs;
       }
@@ -75,7 +75,7 @@ public class Buchung
      * Get-Methode: Gibt bisher erreichte Punkte eines Studenten als int zurück
      * @return   ErreichtePunkte des Studenten als int
      */
-     public int getErreichtePunkte()
+    public int getErreichtePunkte()
       {
       return erreichtePunkte;
       }

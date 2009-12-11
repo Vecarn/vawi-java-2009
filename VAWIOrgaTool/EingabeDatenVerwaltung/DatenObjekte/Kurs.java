@@ -1,6 +1,6 @@
 
 package EingabeDatenVerwaltung.DatenObjekte;
-import  EingabeDatenVerwaltung.DatenObjekte.*;
+
 
 /**
  * Datenträgerklasse Kurs 
