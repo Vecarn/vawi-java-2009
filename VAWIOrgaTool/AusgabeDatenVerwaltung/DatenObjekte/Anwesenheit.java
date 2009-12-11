@@ -2,7 +2,6 @@
 package AusgabeDatenVerwaltung.DatenObjekte;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
-import AusgabeDatenVerwaltung.DatenObjekte.*;
 
 /**
  * Datentraegerklasse Anwesenheit mit den Eigenschaften Student und Kursliste
