@@ -45,6 +45,8 @@ VAWIOrgaTool
 
 Simulator
 ------------
+Die Klasse Simulator nutzt die Verwaltungsklassen aus dem Paket EingabeDatenVerwaltung.DatenVerwaltung.
+Anhand einer übergebenen Kursliste und wahlweise Parametern werden Daten generiert.
 
 ZufriedenheitsMesser
 --------------------
@@ -74,27 +76,28 @@ Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden (ink
 
 EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator
 --------------------------------------------------------------------------
-Die Buchungsliste steht mit den Klassen in Beziehung, die Zugriff auf den Buchungs-Bestand benötigen. 
+Die Buchungsliste steht mit allen Klassen in Beziehung, die Zugriff auf den Buchungs-Bestand benötigen. 
 Der PruefungsPlaner nutzt so die Liste. Außerdem wird Sie von der Klasse FlatFileLeser genutzt um 
 die Objekte aus den Daten zu erstellen. Im Simulationsprozess wird die Klasse von der Klasse Simulator 
-genutzt welche die Liste mit generierten Daten beliefert. Die Buchungsliste nutzt den BuchungsComparator 
+genutzt, welche die Liste mit generierten Daten beliefert. Die Buchungsliste nutzt den BuchungsComparator 
 um die Objekte der Klasse Buchung sortiert zu speichern.
 
 EingabeDatenverwaltung.DatenVerwaltung: Kursliste + KursComparator
 ------------------------------------------------------------------
-Auch die Kursliste steht mit dem PruefungsPlaner in Beziehung und mit dem FlatFileLeser. Die Klasse nutzt den 
-KursComparator um Objekte der Klasse Kurs sortiert zu speichern.
+Auch die Kursliste steht mit dem PruefungsPlaner und dem FlatFileLeserin in Beziehung. Die Klasse nutzt den 
+KursComparator um Objekte der Klasse Kurs sortiert zu speichern. Weiterhin wird die Klasse Kursliste von allen Klassen genutzt, 
+die mehrere Kurse speichern müssen oder Zugriff auf diese benötigen. (z.B.: Klasse Anwesenheit, Klasse Simulator) 
 
 EingabeDatenverwaltung.DatenVerwaltung: Studentenliste + StudentenComparator
 ----------------------------------------------------------------------------
 Die Studentenliste steht ebenfalls mit dem PruefungsPlaner in Beziehung. Die Klasse nutzt den StudentenComparator
 um die erstellten Objekte der Klasse Student sortiert vorzuhalten. Auch die Studentenliste wird durch den FlatFileLeser
-mit Daten beliefert. Im Simulationsprozess wird die Liste von der Klasse Simulator genutzt welcher die Liste mit generierten Daten beliefert.
-Die Studentenliste wird auch vom ZufriedenheitsMesser genutzt welcher die Studenten abfragt. 
+mit Daten beliefert. Die Studentenliste steht außerdem mit allen Klassen in Beziehung, welche die Verwaltungslogik (Speicherung und Zugriff) 
+der Studentenliste benötigen. (z.B.: Klasse Simulator, Klasse Pruefungstag, Klasse ZufriedenheitsMesser)
 
 Eingabe: FlatFileLeser
 ----------------------
-Wird von der Haupt-Klasse VAWIOrgaTool genutzt und liest Daten mit Hilfe der Klasse Datei ein. 
+Wird von der Klasse Ablaufsteuerung genutzt und liest Daten mit Hilfe der Klasse Datei ein. 
 Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben. 
 
 
@@ -133,7 +136,10 @@ Ausgabe: FlatFileSchreiber
 
 
 Hilfsklasse Datei
------------------
+-----------------´
+Die vorgegebene Klasse Datei stellt die Logik zum Zugriff auf eine Datei zur Verfügung. 
+Sie wird genutzt vom FlatFileLeser und vom FlatFileSchreiber.
+
 
 Hilfsklasse: Interface Uni
 --------------------------
