@@ -51,60 +51,93 @@ ZufriedenheitsMesser
 Der ZufriedenheitsMesser bestimmt die Zufriedenheit der Studenten mit dem erstellten Pruefungsterminplan.
 Dazu wird die Klasse Studentenliste genutzt um die Zufriedenheit eines Studenten zu speichern.
 
-PruefungsPlaner
-----------------
+PruefungsPlanung.Planungsbedingunen
+-----------------------------------
+Die Planungsbedingungen ist eine Datenklasse mit Attributen, z.B. maximale Anzahl an Kurse pro Student und Tag. 
+Die Planungsbedingungen werden ueber den Programmablauf gesetzt. (Also keine Konstanten)
 				
-....
-....
-....
+PruefungsPlanung.PruefungsplanerAlgo1
+-------------------------------------
 
-Pruefungstag
-------------
-Enthält pro Prüfungstag die stattfindenen Prüfungen (Kurse), die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
+PruefungsPlanung.PruefungsplanerAbstrakt
+----------------------------------------
 
-Erläuterung, warum Noten und Platzkarte als Datenklassen entfallen , eher in spearaten Dok.
-(...weil Platzkarte und Anwesenheit inhaltlich gleich wären und weil Noten nur Buchung enthält, die Notenliste auch driekt holen kann)
-
-und auch, warum hier keine Listenlogik gebraucht wird...
-(...die Klasse muss eine Sammlung von Kursen speichern. Dafür ist eine logik zu implementieren, die das Hinzufügen erlaubt, 
-Duplikate verhindert, irgendwas liefert, wie man durch die einzelnen Objekte läuft etc.  Da genau dies auch die Kursliste liefert,
-kann hier die Kursliste als Attribut verwendet werden.
-
-Anwesenheit
------------
-Enthält 1-3 Kurse pro Studenten, pro Tag und Uni.
-Erklärung, warum, falls hier keine Listenlogik gebraucht wird, auch eher in separates Dok...
+PruefungsPlanung.PruefungsPlaner
+--------------------------------
 
 
-Eingabe-Datenklassen
---------------------
-Student, Kurs und Buchung enthalten entsprechende Datenobjekte und getter/setter-Methoden
+
+EingabeDatenverwaltung.DatenObjekte: Student, Kurs und Buchung
+--------------------------------------------------------------
+Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden
 
 
-Buchungsliste + BuchungsComparator
-----------------------------------
+EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator
+--------------------------------------------------------------------------
 Die Buchungsliste steht mit den Klassen in Beziehung, die Zugriff auf den Buchungs-Bestand benötigen. 
 Der PruefungsPlaner nutzt so die Liste. Außerdem wird Sie von der Klasse FlatFileLeser genutzt um 
 die Objekte aus den Daten zu erstellen. Im Simulationsprozess wird die Klasse von der Klasse Simulator 
 genutzt welche die Liste mit generierten Daten beliefert. Die Buchungsliste nutzt den BuchungsComparator 
 um die Objekte der Klasse Buchung sortiert zu speichern.
 
-Kursliste + KursComparator
---------------------------
+EingabeDatenverwaltung.DatenVerwaltung: Kursliste + KursComparator
+------------------------------------------------------------------
 Auch die Kursliste steht mit dem PruefungsPlaner in Beziehung und mit dem FlatFileLeser. Die Klasse nutzt den 
 KursComparator um Objekte der Klasse Kurs sortiert zu speichern.
 
-Studentenliste + Studentencomparator
-------------------------------------
+EingabeDatenverwaltung.DatenVerwaltung: Studentenliste + StudentenComparator
+----------------------------------------------------------------------------
 Die Studentenliste steht ebenfalls mit dem PruefungsPlaner in Beziehung. Die Klasse nutzt den StudentenComparator
 um die erstellten Objekte der Klasse Student sortiert vorzuhalten. Auch die Studentenliste wird durch den FlatFileLeser
 mit Daten beliefert. Im Simulationsprozess wird die Liste von der Klasse Simulator genutzt welcher die Liste mit generierten Daten beliefert.
 Die Studentenliste wird auch vom ZufriedenheitsMesser genutzt welcher die Studenten abfragt. 
 
-FlatFileLeser
--------------
+Eingabe: FlatFileLeser
+----------------------
 Wird von der Haupt-Klasse VAWIOrgaTool genutzt und liest Daten mit Hilfe der Klasse Datei ein. 
 Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben. 
+
+
+
+
+
+AusgabeDatenverwaltung.DatenObjekte: Pruefungstag
+-------------------------------------------------
+Enthält den Prüfungstag und eine Kursliste sowie ein Studentenliste. Die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
+
+
+
+AusgabeDatenverwaltung.DatenObjekte: Anwesenheit
+------------------------------------------------
+Enthält Student und Kursliste. 
+Enthält selbst nicht Tag und Uni, da erst in der Verwaltungsklassen für die Listen zusammengestellt 
+
+
+
+AusgabeDatenverwaltung.DatenVerwaltung: Pruefungsterminplan
+-----------------------------------------------------------
+
+
+AusgabeDatenverwaltung.DatenVerwaltung: Notenliste
+-----------------------------------------------------------
+
+AusgabeDatenverwaltung.DatenVerwaltung: Anwesenheitsliste
+-----------------------------------------------------------
+
+AusgabeDatenverwaltung.DatenVerwaltung: Platzkartenlisten
+-----------------------------------------------------------
+
+Ausgabe: FlatFileSchreiber
+--------------------------
+
+
+Hilfsklasse Datei
+-----------------
+
+Hilfsklasse: Interface Uni
+--------------------------
+Mit diesem Interface ist sichergestellt, dass programmweit immer "D" für Duisburg und "B" für Bamberg steht.
+
 
 
 
