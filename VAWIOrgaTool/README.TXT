@@ -53,7 +53,7 @@ Dazu wird die Klasse Studentenliste genutzt um die Zufriedenheit eines Studenten
 
 PruefungsPlanung.Planungsbedingunen
 -----------------------------------
-Die Planungsbedingungen ist eine Datenklasse mit Attributen, z.B. maximale Anzahl an Kurse pro Student und Tag. 
+Die Planungsbedingungen ist eine Datenklasse mit Attributen, getter/setter-Methoden (inkl. Prüfungen), z.B. maximale Anzahl an Kurse pro Student und Tag. 
 Die Planungsbedingungen werden ueber den Programmablauf gesetzt. (Also keine Konstanten)
 				
 PruefungsPlanung.PruefungsplanerAlgo1
@@ -69,7 +69,7 @@ PruefungsPlanung.PruefungsPlaner
 
 EingabeDatenverwaltung.DatenObjekte: Student, Kurs und Buchung
 --------------------------------------------------------------
-Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden
+Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden (inkl. Prüfungen)
 
 
 EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator
@@ -103,13 +103,14 @@ Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben.
 
 AusgabeDatenverwaltung.DatenObjekte: Pruefungstag
 -------------------------------------------------
-Enthält den Prüfungstag und eine Kursliste sowie ein Studentenliste. Die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
+Enthält den Prüfungstag und eine Kursliste sowie ein Studentenliste und getter/setter-Methoden (inkl. Prüfungen)
+Die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
 
 
 
 AusgabeDatenverwaltung.DatenObjekte: Anwesenheit
 ------------------------------------------------
-Enthält Student und Kursliste. 
+Enthält Student und Kursliste und getter/setter-Methoden (inkl. Prüfungen) 
 Enthält selbst nicht Tag und Uni, da erst in der Verwaltungsklassen für die Listen zusammengestellt 
 
 
