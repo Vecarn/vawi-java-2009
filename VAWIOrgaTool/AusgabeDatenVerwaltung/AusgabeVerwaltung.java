@@ -1,6 +1,3 @@
-@Martin: Hi Martin, kannst du noch ne Methode hinzufuegen, die die Zufriedenheit ausgibt? Die Zufriedenheit ist als Attribut beim Student gespeichert.
-Sie bekommt also eine Studentenliste als Parameter
-GruÃŸ JÃ¶rn
 
 package AusgabeDatenVerwaltung;
 import java.util.Iterator;
@@ -42,14 +39,14 @@ public class AusgabeVerwaltung {
     /**
      * Konstruktor fuer die Klasse Ausgabeverwaltung
      * @param studentenliste Die im System vorhandene Studentenliste, die
-     * im System zur Verfï¿½gung steht.
+     * im System zur Verfügung steht.
      * @param pruefungsterminplan Der Pruefungsterminplan, der 
      * zusammengestellt wurde
      * @param kursliste Die Kursliste, mit den im System verwalteten Kursen
      * @param buchungsliste Die Buchungsliste mit den im System 
      * vorhandenen Buchungen
      */
-    public AusgabeVerwaltung(Studentenliste studentenliste, 
+    public void AusgabeVerwaltung(Studentenliste studentenliste, 
     		Pruefungsterminplan pruefungsterminplan, Kursliste kursliste,
     		Buchungsliste buchungsliste){
     	
@@ -58,60 +55,47 @@ public class AusgabeVerwaltung {
     	this.buchungsliste = buchungsliste;
     	this.studentenliste = studentenliste;
     	this.kursliste = kursliste;
+    	this.pruefungsterminplan = pruefungsterminplan;
     	
     	si = studentenliste.getStudentIterator();
     	bi = buchungsliste.getIterator();
     }
     
     /**
-     * @return
+     * Methode für das Erzeugen der Anwesenheitsliste
+     * @return true, wenn erfolgreich
      */
     public boolean generiereAnwesenheitsliste(){
-    	
-    	
-    	
-    	
-    	while (si.hasNext()){
-    		
-//    		anwesenheitsliste.addAnwesenheit();
-    		
-    	}
-    	
-    	
-//    	while(studentenliste.getStudentIterator().hasNext()){
-//    		
-//    		anwesenheitsliste.addAnwesenheit(
-//    				uni, tag, studentenliste.getStudentIterator().next());
-//    		
-//    		
-//    	}
-    	
-    	
+
     	return true;
     }
     
     
     
     /**
-     * @return
+     * Methode für das Erzeugen der Notenliste
+     * @return true, wenn erfolgreich
      */
     public boolean generiereNotenliste() {
-		
-    	while(bi.hasNext()){
-    		    		
-    		
-    		
-    	}
-    	
     	
     	return true;
 	}
     
     /**
-     * @return
+     * Methode für das Erzeugen der Platzkartenliste
+     * @return true, wenn erfolgreich
      */
     public boolean generierePlatzkartenliste() {
 		return true;
 	}
+    
+    
+    /**
+     * Methode für das Erzeugen der Zufriedenheitsliste
+     * @return true, wenn erfolgreich
+     */
+    public boolean generiereZufriefenheitsliste(){
+    	return true;
+    }
 
  }
