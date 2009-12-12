@@ -13,7 +13,7 @@ import Hilfsklassen.Universitaet;
  * Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
  * 
  * @author Martin
- * @version 0.2
+ * @version 0.3
  */
 public class Notenliste {
 
@@ -42,15 +42,7 @@ public class Notenliste {
 	 */
 	public boolean addNote(Student student){
 		
-		for(int i = 0; i < buchungsliste.anzBuchungenStudent(student); i++){
-		
-			if(noten_liste.add(
-					buchungsliste.getBuchung(1, 1))){
-			
-				return true;
-			}
-		}
-		
+	
 		return false;
 		
 	}
