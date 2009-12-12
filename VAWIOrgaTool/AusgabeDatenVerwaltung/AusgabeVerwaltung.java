@@ -20,18 +20,55 @@ import Hilfsklassen.Datei;
  * @author Martin
  * @version 0.1
  */
+/**
+ * @author Martin
+ *
+ */
 public class AusgabeVerwaltung {
 
+    /**
+     * Der Pruefungsterminplan, der generiert wurde
+     */
     private Pruefungsterminplan pruefungsterminplan;
+    /**
+     * Die Anwesenheitsliste
+     */
     private Anwesenheitsliste anwesenheitsliste;
+    /**
+     * Die Notenliste
+     */
     private Notenliste notenliste;
+    /**
+     * Die Platzkartenliste
+     */
     private Platzkartenliste platzkartenliste;    
+    /**
+     * Der FlatFileSchreiber, der die Ausgabestreams zusammenstellt
+     */
     private FlatFileSchreiber fileschreiber;
+    /**
+     * Der Verweis auf das Datei Objekt, das für die Ausgabe ins File zuständig ist
+     */
     private Datei datei;
+    /**
+     * Die im System verwaltete Studentenliste
+     */
     private Studentenliste studentenliste;
+    /**
+     * Die im System verwaltete Buchungsliste
+     */
     private Buchungsliste buchungsliste;
+    /**
+     * Die im System verwaltet Kursliste
+     */
     private Kursliste kursliste;
+    /**
+     * Ein Iterator für die Studentenliste
+     */
     private Iterator<Student> si;
+    /**
+     * Ein Iterator für die Buchungen
+     */
     private Iterator<Buchung> bi;
     
 
