@@ -103,7 +103,8 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereAnwesenheitsliste(){
-
+    	fileschreiber.writer("");
+    	
     	return true;
     }
     
@@ -114,6 +115,7 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereNotenliste() {
+    	fileschreiber.writer("");
     	
     	return true;
 	}
@@ -123,7 +125,9 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generierePlatzkartenliste() {
-		return true;
+    	fileschreiber.writer("");
+    	
+    	return true;
 	}
     
     
@@ -132,6 +136,8 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereZufriefenheitsliste(){
+    	fileschreiber.writer("");
+    	
     	return true;
     }
     
@@ -140,6 +146,9 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereTerminplan(){
+    	
+    	fileschreiber.writer("");
+    	
     	return true;
     }
 
