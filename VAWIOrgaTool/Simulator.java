@@ -113,25 +113,42 @@ public class Simulator {
 		
 	}
 	
+	/**
+	 * Generiert BuchungsDaten
+	 */
 	private void generiereBuchungsDaten(){
 		
 		generiereStudenten();
-		System.out.println("blubb");
+		
 		Iterator<Student> si = generierteStudentenliste.getStudentIterator();
+		//Größe der Kursliste -> wähle zufällig Kurs aus zwischen KursId 0 und kursliste.getSize();
+		kursliste.getSize();
 		
 		while(si.hasNext()){
-			Student student = si.next();
+			//Student student = si.next();
+			for(int i=0;i<zufallsAnzahlBuchungen();i++){
+				//buchungsliste.addBuchung
+				//wenn Collection sich nicht ändert -> weiterer Versuch (so, dass minBuchungen erreicht wird) --> do..while
+				//zufallsAnzahlBuchungen();
+			}
 			
-			//buchungsliste.addBuchung
-			//wenn Collection sich nicht ändert -> weiterer Versuch (so, dass minBuchungen erreicht wird)
-			//zufallsAnzahlBuchungen();
 		}			
 	}
 	
+	/**
+	 * Generiert Studenten mit zufälligen Daten und fügt Sie der Studentenliste hinzu
+	 */
 	private void generiereStudenten(){
-				
+			for(int i=0;i<anzahlStudenten;i++){
+				//generiere Student mit zufälligen Daten
+			}
 	}
 	
+	/**
+	 * Liefert eine Zufallszahl
+	 * 
+	 * @return int - Zufallszahl zwischen minBuchungen und maxBuchungen
+	 */
 	private int zufallsAnzahlBuchungen(){
 		Random rand = new Random();
 		return (rand.nextInt(maxBuchungen-minBuchungen+1))+minBuchungen;

@@ -1,5 +1,6 @@
 import java.util.Iterator;
 
+import AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag;
 import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
 import EingabeDatenVerwaltung.DatenObjekte.Student;
 import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
@@ -46,6 +47,7 @@ public class ZufriedenheitsMesser {
 	public Studentenliste errechneZufriedenheit(){
 	
 		Iterator<Student> si = studentenliste.getStudentIterator();
+		Iterator<Pruefungstag> pi = pruefungsterminplan.getPruefungsplanIterator();
 		//alles an einem Tag -> zufrieden
 		while(si.hasNext()){
 			Student student = si.next();
@@ -53,7 +55,11 @@ public class ZufriedenheitsMesser {
 			//zaehle Prüfungen für Student am Tag -> merke max Pruefungen / Tag
 			int maxPruefungenProTag = 0;
 			//
-			//pruefungsterminplan.getIterator()
+			while(pi.hasNext()){
+				if(pi.next().getTagesStudentenliste().getStudent(student.getMatrikelnr())!=null){
+					anzahlPruefungstage++;
+				}
+			}
 			//
 			if(student.getZeitminimierer()&&(anzahlPruefungstage==1)){
 				//student.setZufriedenheit(true);

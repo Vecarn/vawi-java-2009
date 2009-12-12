@@ -31,12 +31,11 @@ public class Kursliste {
      * @return	true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addNeuerKurs(int id, String kurztitel, String titel, boolean teilleistungen, short maxPunkte){
-    	//new Kurs(hier alle Variablen)
-    	Kurs kurs = new Kurs(id,titel);
+    public boolean addNeuerKurs(int id, String kurztitel, String titel, boolean teilleistungen, int maxPunkte){
+    	
+    	Kurs kurs = new Kurs(id,titel,kurztitel);
     	
     	if(kurse.add(kurs)){
-    		kurs.setKurztitel(kurztitel);
     		kurs.setHatTeilleistungen(teilleistungen);
     		kurs.setMaxPunkte(maxPunkte);
     	    return true;
