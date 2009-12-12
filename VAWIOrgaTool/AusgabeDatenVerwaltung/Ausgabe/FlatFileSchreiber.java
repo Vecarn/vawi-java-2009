@@ -9,7 +9,7 @@ import Hilfsklassen.*;
  * Realisierung des Datenschreibers, der FlatFiles ausgibt.
  * 
  * @author Martin
- * @version 0.1
+ * @version 0.2
  */
 public class FlatFileSchreiber {
 

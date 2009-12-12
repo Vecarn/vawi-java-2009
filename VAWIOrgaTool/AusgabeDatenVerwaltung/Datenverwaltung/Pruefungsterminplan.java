@@ -11,7 +11,7 @@ import AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag;
  * in Form von Pruefungstagen enth&auml;lt.
  * 
  * @author Martin
- * @version 0.1
+ * @version 0.5
  */
 public class Pruefungsterminplan {
 
@@ -42,7 +42,7 @@ public class Pruefungsterminplan {
     /**
      * Methode zum Hinzufügen eines Prüfungstages zum Prüfungsterminplan
      * @param pruefungstag Der Prüfungstag, der hinzugefügt wird
-     * @return true, wenn erfolgreich
+     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean addPruefungstag(Pruefungstag pruefungstag){
 	    if(pruefungsterminplan.add(pruefungstag)){

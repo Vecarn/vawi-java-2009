@@ -6,7 +6,6 @@ import java.util.*;
 import AusgabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
-import Hilfsklassen.Universitaet;
 
 /**
  * Verwaltungsklasse f&uuml;r die Noten eines 
@@ -17,7 +16,7 @@ import Hilfsklassen.Universitaet;
  */
 public class Notenliste {
 
-    private Collection<Buchung> noten_liste;
+
     private Buchungsliste buchungsliste;
     
 
@@ -28,7 +27,6 @@ public class Notenliste {
      * an das Objekt übergeben.
      */
     public Notenliste(Buchungsliste buchungsliste){
-    	 noten_liste = new TreeSet<Buchung>();
     	 this.buchungsliste = buchungsliste;
     }
     
@@ -52,7 +50,7 @@ public class Notenliste {
 	 * @return integer mit der Anzahl
 	 */
 	public int getCount(){
-		return noten_liste.size();
+		return buchungsliste.getSize();
 	}
 	
 	/**
@@ -62,7 +60,7 @@ public class Notenliste {
 	public Buchung getNote(){
 		
 		
-		return new Buchung(student, kurs);
+		return null;
 	}
 	
 	

@@ -18,7 +18,7 @@ import Hilfsklassen.Datei;
  * Ausgabeformen zu vermeiden..
  * 
  * @author Martin
- * @version 0.1
+ * @version 0.6
  */
 /**
  * @author Martin
@@ -83,7 +83,7 @@ public class AusgabeVerwaltung {
      * @param buchungsliste Die Buchungsliste mit den im System 
      * vorhandenen Buchungen
      */
-    public void AusgabeVerwaltung(Studentenliste studentenliste, 
+    public AusgabeVerwaltung(Studentenliste studentenliste, 
     		Pruefungsterminplan pruefungsterminplan, Kursliste kursliste,
     		Buchungsliste buchungsliste){
     	
@@ -100,7 +100,7 @@ public class AusgabeVerwaltung {
     
     /**
      * Methode für das Erzeugen der Anwesenheitsliste
-     * @return true, wenn erfolgreich
+     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereAnwesenheitsliste(){
 
@@ -111,7 +111,7 @@ public class AusgabeVerwaltung {
     
     /**
      * Methode für das Erzeugen der Notenliste
-     * @return true, wenn erfolgreich
+     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereNotenliste() {
     	
@@ -120,7 +120,7 @@ public class AusgabeVerwaltung {
     
     /**
      * Methode für das Erzeugen der Platzkartenliste
-     * @return true, wenn erfolgreich
+     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generierePlatzkartenliste() {
 		return true;
@@ -129,9 +129,17 @@ public class AusgabeVerwaltung {
     
     /**
      * Methode für das Erzeugen der Zufriedenheitsliste
-     * @return true, wenn erfolgreich
+     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereZufriefenheitsliste(){
+    	return true;
+    }
+    
+    /**
+     * Methode für das Erzeugen der Ausgabe eines Terminplanes
+     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
+     */
+    public boolean generiereTerminplan(){
     	return true;
     }
 
