@@ -50,7 +50,7 @@ public class Datei
     /**
      * Überprüft, ob das Ende einer Eingabedatei erreicht wurde.
      *
-     * @returns gibt true nur zurück, wenn das Ende einer Eingabedatei 
+     * @return gibt true nur zurück, wenn das Ende einer Eingabedatei 
      *          erreicht wurde. Ansosnsten wird immer false zurückgegeben.
      */
     public boolean eof()

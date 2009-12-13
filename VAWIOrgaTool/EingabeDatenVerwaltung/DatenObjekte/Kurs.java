@@ -48,7 +48,7 @@ public class Kurs
      }
    /**
      * Set-Methode setMaxPunkte (ueberschreibt Attribut setMaxPunkte)
-     * @param setMaxPunkte maximale Punktzahl eines Kurses (int)
+     * @param maxPunkte maximale Punktzahl eines Kurses (int)
      */
     public void setMaxPunkte(int maxPunkte)
      {

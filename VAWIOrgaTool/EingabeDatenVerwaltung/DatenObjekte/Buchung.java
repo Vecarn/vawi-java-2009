@@ -24,7 +24,7 @@ public class Buchung
      * @param student Student in der Buchung (Student)
      * @param kurs Kurs in der Buchung (Kurs)
      */
-    public Buchung(Student in_student, Kurs kurs)
+    public Buchung(Student student, Kurs kurs)
     {
         this.student = student;
         this.kurs = kurs;
@@ -34,7 +34,7 @@ public class Buchung
      * Set-Methode student (eigentlich schon in Konstruktor fix)
      * @param student Student in der Buchung (Student)
      */  
-    public void setStudent(Student in_student)
+    public void setStudent(Student student)
      {
          this.student = student;
      }
