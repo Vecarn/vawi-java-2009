@@ -1,6 +1,3 @@
-@Joern: Also wenn Du die im Programmauflauf setzt, muss ich die Werte hier noch gar nicht festlegen?
-Gruss Silvia
-
 package PruefungsPlanung;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
