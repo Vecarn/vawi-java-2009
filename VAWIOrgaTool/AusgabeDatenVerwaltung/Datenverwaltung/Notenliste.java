@@ -34,8 +34,6 @@ public class Notenliste {
 	 * Fügt eine Note zur Liste hinzu
 	 * 
 	 * @param student Der Student, dessen Anwesenheit hinzugefügt wird.
-	 * @param uni Die Universität, für die die aktuelle Anwesenheit hinzugefügt wird.
-	 * @param kurse Ein Array mit den drei Kursen, die der Student belegen kann.
 	 * @return boolean flag true oder false
 	 */
 	public boolean addNote(Student student){
