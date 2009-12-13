@@ -42,7 +42,7 @@ public class Anwesenheitsliste {
 	 * @param tag Ein Integer Wert, der den Pruefungstag angibt.
 	 * @return boolean flag true oder false
 	 */
-	public boolean addAnwesenheit(Universitaet uni, int tag, Student student){
+	public boolean addAnwesenheit(Uni uni, int tag, Student student){
 		
 		for(int i = 0; i < buchungsliste.anzBuchungenStudent(student); i++){
 		
@@ -75,7 +75,7 @@ public class Anwesenheitsliste {
 	public Anwesenheit getAnwesenheit(){
 	
 		
-		return new Anwesenheit();
+		return null;
 	}
 	
 	

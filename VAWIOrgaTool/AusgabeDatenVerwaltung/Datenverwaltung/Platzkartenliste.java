@@ -4,7 +4,7 @@ package AusgabeDatenVerwaltung.Datenverwaltung;
 import java.util.*;
 import AusgabeDatenVerwaltung.DatenObjekte.*;
 import EingabeDatenVerwaltung.DatenObjekte.*;
-import Hilfsklassen.Universitaet;
+import Hilfsklassen.*;
 
 /**
  * Die Klasse "Platzkartenliste" wird für die Erzeugung der Platzkarten
@@ -15,13 +15,13 @@ import Hilfsklassen.Universitaet;
  */
 public class Platzkartenliste {
 
-	private Collection<Platzkarte> platz_liste;
+	private Collection<Buchung> platz_liste;
 	
 	/**
 	 * Konstruktor für die Platzkarten(liste)
 	 */
 	public Platzkartenliste(){
-		 platz_liste = new TreeSet<Platzkarte>();
+		 platz_liste = new TreeSet<Buchung>();
 	}
 	
 	
@@ -33,9 +33,9 @@ public class Platzkartenliste {
 	 * @param uni Die Universität, für die die Platzkarte gilt
 	 * @return boolean flag true oder false
 	 */
-	public boolean addPlatzkarte(Buchung buchung, String tag, Universitaet uni){
+	public boolean addPlatzkarte(Buchung buchung, String tag, Uni uni){
 		
-		if(platz_liste.add(new Platzkarte(buchung, tag, uni))){
+		if(platz_liste.add(buchung)){
 		
 			return true;
 		}
@@ -61,7 +61,7 @@ public class Platzkartenliste {
 	public Anwesenheit getPlatzkarte(){
 	
 		
-		return new Platzkarte();
+		return null;
 	}
     
  }
