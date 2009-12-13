@@ -12,7 +12,7 @@ AUTHORS: Silvia Wölfle, Martin Munkelt, Jörn Hauser, Markus Bode
 USER INSTRUCTIONS: -
 
 |---------------------------------------------|
-| Allgemeine Beschreibgung des Klassensystems |
+| Allgemeine Beschreibung des Klassensystems |
 |---------------------------------------------|
 
 Das Programm unterstützt die Planung und Organisation von Prüfungen. Es verwaltet Studierende, 
@@ -37,6 +37,11 @@ Alle Algorithmen verwenden die gleichen Randbedingungen.
 
 VAWIOrgaTool
 ------------
+Einsprungspunkt in das Programm. Enthält die "Main"-Methode. Ebenso stellt es Methoden für eine rudimentäre Benutzerschnittstelle zur Verfügung.
+
+Ablaufsteuerung
+---------------
+Stellt Methoden zur Steuerung des Programmablaufs bereit. Prüft zusätzlich auf Plausibilität des Programmablaufs.
 
 Simulator
 ------------
@@ -48,6 +53,8 @@ ZufriedenheitsMesser
 Der ZufriedenheitsMesser bestimmt die Zufriedenheit der Studenten mit dem erstellten Pruefungsterminplan.
 Dazu wird die Klasse Studentenliste genutzt um die Zufriedenheit eines Studenten zu speichern.
 
+
+
 PruefungsPlanung.Planungsbedingunen
 -----------------------------------
 Die Planungsbedingungen ist eine Datenklasse mit Attributen, getter/setter-Methoden (inkl. Prüfungen), z.B. maximale Anzahl an Kurse pro Student und Tag. 
@@ -55,19 +62,22 @@ Die Planungsbedingungen werden ueber den Programmablauf gesetzt. (Also keine Kon
 				
 PruefungsPlanung.PruefungsplanerAlgo1
 -------------------------------------
+Der PruefungsplanerAlgo1 ist die konkrete Umsetzung des Planungsalgorithmus. 
+Er implementiert den Pruefungsplaner und spezialisiert den PruefungsplanerAbstrakt
 
 PruefungsPlanung.PruefungsplanerAbstrakt
 ----------------------------------------
+Der PruefungsplanerAbstrakt implementiert allgemeinegültige Methoden für Prüfungsplaner.
 
 PruefungsPlanung.PruefungsPlaner
 --------------------------------
+Interface, das eine Klasse zur Pruefungsplanung beschreibt.
 
 
 
 EingabeDatenverwaltung.DatenObjekte: Student, Kurs und Buchung
 --------------------------------------------------------------
 Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden (inkl. Prüfungen)
-
 
 EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator
 --------------------------------------------------------------------------
@@ -97,27 +107,20 @@ Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben.
 
 
 
-
-
 AusgabeDatenverwaltung.DatenObjekte: Pruefungstag
 -------------------------------------------------
 Enthält den Prüfungstag und eine Kursliste sowie ein Studentenliste und getter/setter-Methoden (inkl. Prüfungen)
 Die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
-
-
 
 AusgabeDatenverwaltung.DatenObjekte: Anwesenheit
 ------------------------------------------------
 Enthält Student und Kursliste und getter/setter-Methoden (inkl. Prüfungen) 
 Enthält selbst nicht Tag und Uni, da erst in der Verwaltungsklassen für die Listen zusammengestellt 
 
-
-
 AusgabeDatenverwaltung.DatenVerwaltung: Pruefungsterminplan
 -----------------------------------------------------------
 Der Prüfungsterminplan enthält alle Prüfungstage. Der Pruefungsterminplan steht mit der AusgabeVerwaltung
 und der Logik für die Erzeugung des Planes in Beziehung
-
 
 AusgabeDatenverwaltung.DatenVerwaltung: Notenliste
 -----------------------------------------------------------
@@ -140,11 +143,12 @@ Der FlatFileSchreiber wird von der AusgabeVerwaltung instantziiert und für die A
 der Listen in Files verwendet. Die Klasse ruft die Hilfsklasse Datei auf und sendet
 die aufbereiteten Datenströme an die Ausgabe.
 
+
+
 Hilfsklasse Datei
 -----------------´
 Die vorgegebene Klasse Datei stellt die Logik zum Zugriff auf eine Datei zur Verfügung. 
 Sie wird genutzt vom FlatFileLeser und vom FlatFileSchreiber.
-
 
 Hilfsklasse: Interface Uni
 --------------------------
