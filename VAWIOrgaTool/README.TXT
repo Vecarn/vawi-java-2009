@@ -4,11 +4,6 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-Aufgabe:
-"Eine Readme-Datei, die das Klassensystem kurz und praegnant beschreibt und die
-Zusammenhaenge der Klassen des Klassensystems dokumentiert (Als Pi-mal-Daumen Regel:
-pro Zusammenhang ein bis zwei Saetze)." --> bitte noch vervollständigen.
-
 PROJECT TITLE: VAWI JAVA WS0910 - Teilleistung 2
 PURPOSE OF PROJECT: API - Dokumentation	
 VERSION or DATE: 14.12.2009
