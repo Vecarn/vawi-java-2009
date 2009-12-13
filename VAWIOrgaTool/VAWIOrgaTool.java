@@ -14,7 +14,7 @@ public class VAWIOrgaTool {
 
     /**
      * Methode wertet Benutzereingaben aus und ruft die passende Methode der Ablaufsteuerung auf
-     * @param EingabeString der STDIO
+     * @param eingabe der STDIO
      */
     public void werteEingabeAus(String eingabe) {
     }

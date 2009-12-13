@@ -13,9 +13,9 @@ public interface PruefungsPlaner {
 
     /**
      * Methode berechnet den Pruefungsplan und gibt diesen zurueck
-     * @param Studentenliste aller Studenten, die eingeplant werden müssen
-     * @param Buchungsliste mit allen Buchungen der Studenten
-     * @param Kursliste mit allen buchbaren Kursen
+     * @param studenten, die eingeplant werden müssen
+     * @param buchungen dieser Studenten
+     * @param kurse mit allen buchbaren Kursen
      * @return Pruefungsterminplan mit allen geplanten Tagen
      */
     public Pruefungsterminplan berechnePruefungsTerminPlan(Studentenliste studenten, Buchungsliste buchungen,Kursliste kurse);
