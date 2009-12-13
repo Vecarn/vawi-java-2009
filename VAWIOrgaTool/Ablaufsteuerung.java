@@ -44,11 +44,11 @@ public class Ablaufsteuerung {
     public void startePlanungslauf(String pruefungenProTag, String PruefungenProStudentUndTag) throws Exception {
         //@TO-DO: Check ob flatFileLeser != null         
         //Planungsbedingungsklasse erschaffen
-        Planungsbedingungen bedingungen = new Planungsbedingungen();
+        //Planungsbedingungen bedingungen = new Planungsbedingungen();
         //Konkreten Pruefungsplaner erschaffen und Planungsbedingungen uebergeben
-        PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
+        //PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
         //Pruefungsterminplan berechnen lassen
-        pruefungsplan = planer.berechnePruefungsTerminPlan(flatFileLeser.getStudentenliste(), flatFileLeser.getBuchungsliste(), flatFileLeser.getKursliste());
+        //pruefungsplan = planer.berechnePruefungsTerminPlan(flatFileLeser.getStudentenliste(), flatFileLeser.getBuchungsliste(), flatFileLeser.getKursliste());
     }
 
     /**
@@ -57,10 +57,10 @@ public class Ablaufsteuerung {
      */
     public void gebeDatenAus() throws Exception {
         //Dateien ausgeben
-        ausgabeVerwalter = new AusgabeVerwaltung(flatFileLeser.getStudentenliste(), pruefungsplan, flatFileLeser.getKursliste(), flatFileLeser.getBuchungsliste());
-        ausgabeVerwalter.generiereAnwesenheitsliste();
-        ausgabeVerwalter.generiereNotenliste();
-        ausgabeVerwalter.generierePlatzkartenliste();
+        //ausgabeVerwalter = new AusgabeVerwaltung(flatFileLeser.getStudentenliste(), pruefungsplan, flatFileLeser.getKursliste(), flatFileLeser.getBuchungsliste());
+        //ausgabeVerwalter.generiereAnwesenheitsliste();
+        //ausgabeVerwalter.generiereNotenliste();
+        //ausgabeVerwalter.generierePlatzkartenliste();
     }
 
     /**
@@ -68,8 +68,8 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void werteZufriedenheitAus() throws Exception {
-        zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, flatFileLeser.getStudentenliste());
-        zufriedenheitsMesser.errechneZufriedenheit();
+        //zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, flatFileLeser.getStudentenliste());
+        //zufriedenheitsMesser.errechneZufriedenheit();
     }
 
     /**
@@ -77,7 +77,7 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void erstelleFiktiveStudentenListe() throws Exception {
-        simulator = new Simulator(flatFileLeser.getKursliste());
+        //simulator = new Simulator(flatFileLeser.getKursliste());
     }
 
     /**
