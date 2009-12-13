@@ -115,20 +115,30 @@ Enthält selbst nicht Tag und Uni, da erst in der Verwaltungsklassen für die List
 
 AusgabeDatenverwaltung.DatenVerwaltung: Pruefungsterminplan
 -----------------------------------------------------------
+Der Prüfungsterminplan enthält alle Prüfungstage. Der Pruefungsterminplan steht mit der AusgabeVerwaltung
+und der Logik für die Erzeugung des Planes in Beziehung
 
 
 AusgabeDatenverwaltung.DatenVerwaltung: Notenliste
 -----------------------------------------------------------
+Die Notenliste enthält Buchungen. Dadurch, dass in der Buchung alle für die Notenliste
+relevanten Informationen zur Verfügung stehen wird keine weitere Notenklasse benötigt.
 
 AusgabeDatenverwaltung.DatenVerwaltung: Anwesenheitsliste
 -----------------------------------------------------------
+Die Anwesenheitsliste wird von der AusgabeVerwaltung generiert. Sie enthält die einzelnen
+Anwesenheiten. Dafür wird ebenfalls auf die Daten der Buchungsliste zurückgegriffen.
 
 AusgabeDatenverwaltung.DatenVerwaltung: Platzkartenlisten
 -----------------------------------------------------------
+Die Platzkartenliste wird von der AusgabeVerwaltung erzeugt und enthält Buchungsobjekte. Auch
+hier sind in den Buchungen die gesamten Informationen der Platzkarte enthalten.
 
 Ausgabe: FlatFileSchreiber
 --------------------------
-
+Der FlatFileSchreiber wird von der AusgabeVerwaltung instantziiert und für die Ausgabe
+der Listen in Files verwendet. Die Klasse ruft die Hilfsklasse Datei auf und sendet
+die aufbereiteten Datenströme an die Ausgabe.
 
 Hilfsklasse Datei
 -----------------´
