@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import EingabeDatenVerwaltung.DatenObjekte.Kurs;
 import EingabeDatenVerwaltung.DatenObjekte.Student;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
+import Hilfsklassen.Uni;
 
 /**
  * Der Simulator ist eine Logikklasse, die fiktive Kursbuchungen fuer jeden Studenten angelegt. <br>
@@ -22,6 +25,17 @@ public class Simulator {
 	private int minBuchungen;
 	private int maxBuchungen;
 	private int anzahlStudenten;
+	//DummyDaten
+	private String [] vornamen = new String[]{"Elias","Julian","Marcel","Thomas","Luca","Stefan","Michael","Felix",
+            "Luca","Stefan","Michael","Felix","Jessica","Katharina","Frauke",
+            "Petra","Manuela","Sophie","Marta","Lisa"};
+	private String [] nachnamen = new String[]{"Mueller","Schmidt","Klein","Muster","Mayer","Bode","Hauser","Munkelt","Woelfle",
+            "Schoenherr","Nett","Gosler","Sell","Rausch","Freitag","Buchmann","Junge",
+            "Merkel","Schroeder","Schaeuble","Gutenberg"};
+	private char[] uni = new char[]{Uni.Bamberg,Uni.Duisburg};
+	private String [] bundeslaender = new String[]{"Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg",
+			"Mecklemburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Nordreihn-Westfalen","Reihnland-Pfalz","Saarland",
+			"Schleswig-Holstein","Thüringen","Hessen"};
 	
 	/**
 	 * Konstruktor für den Simulator, der lediglich eine Kursliste erwartet.<br>
@@ -121,15 +135,37 @@ public class Simulator {
 		generiereStudenten();
 		
 		Iterator<Student> si = generierteStudentenliste.getStudentIterator();
-		//Größe der Kursliste -> wähle zufällig Kurs aus zwischen KursId 0 und kursliste.getSize();
-		kursliste.getSize();
+		Iterator<Kurs> ki = kursliste.getKursIterator();
+		
+		ArrayList<Integer> kursids = new ArrayList<Integer>();
+		while(ki.hasNext()){
+			kursids.add(new Integer(ki.next().getKursid()));
+		}
+		
+		//System.out.println("-"+kursliste.getSize()+"-"+generierteStudentenliste.getSize());
 		
 		while(si.hasNext()){
-			//Student student = si.next();
+		
+			Student student = si.next();
+			
 			for(int i=0;i<zufallsAnzahlBuchungen();i++){
-				//buchungsliste.addBuchung
-				//wenn Collection sich nicht ändert -> weiterer Versuch (so, dass minBuchungen erreicht wird) --> do..while
-				//zufallsAnzahlBuchungen();
+				
+				boolean buchungHinzugefuegt = false;
+				
+				while(!buchungHinzugefuegt){
+					
+					Kurs kurs = kursliste.getKurs(kursids.get(zufallsZahl(0,kursids.size()-1)).intValue());
+					int erreichtePunkte = 0;
+					
+					if(kurs.getHatTeilleistungen()){
+						erreichtePunkte = zufallsZahl(0, kurs.getMaxPunkte());
+					}
+					
+					if(generierteBuchungsliste.addBuchung(student,kurs,erreichtePunkte)){
+						buchungHinzugefuegt = true;
+					}
+				}
+				
 			}
 			
 		}			
@@ -139,9 +175,31 @@ public class Simulator {
 	 * Generiert Studenten mit zufälligen Daten und fügt Sie der Studentenliste hinzu
 	 */
 	private void generiereStudenten(){
-			for(int i=0;i<anzahlStudenten;i++){
-				//generiere Student mit zufälligen Daten
-			}
+		
+		for(int i=0;i<anzahlStudenten;i++){
+			
+		    boolean zeitminimierer;
+		        
+		    if(zufallsZahl(0,1)==1){
+		       zeitminimierer=true;
+		    }else{
+		       zeitminimierer=false;
+		    }
+		    
+		    boolean studentHinzugefuegt = false;
+		    
+		    while(!studentHinzugefuegt){
+		    		
+		    	if(generierteStudentenliste.addNeuerStudent(zufallsZahl(100000, 999999), nachnamen[zufallsZahl(0,(nachnamen.length-1))], 
+		        		 vornamen[zufallsZahl(0,(vornamen.length-1))], uni[zufallsZahl(0,1)],
+		        		 bundeslaender[zufallsZahl(0,(bundeslaender.length-1))],zeitminimierer)){
+		    		studentHinzugefuegt=true;
+		    	}
+		    
+		    }
+		   		     					
+		}
+	
 	}
 	
 	/**
@@ -152,6 +210,18 @@ public class Simulator {
 	private int zufallsAnzahlBuchungen(){
 		Random rand = new Random();
 		return (rand.nextInt(maxBuchungen-minBuchungen+1))+minBuchungen;
+	}
+	
+	/**
+	 * Liefert eine Zufallszahl
+	 * 
+	 * @param x
+	 * @param y
+	 * @return int - Zufallszahl zwischen x und y
+	 */
+	private int zufallsZahl(int x, int y){
+		Random rand = new Random();
+		return (rand.nextInt(y-x+1))+x;
 	}
 	
 	/**
