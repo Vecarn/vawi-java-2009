@@ -142,8 +142,6 @@ public class Simulator {
 			kursids.add(new Integer(ki.next().getKursid()));
 		}
 		
-		//System.out.println("-"+kursliste.getSize()+"-"+generierteStudentenliste.getSize());
-		
 		while(si.hasNext()){
 		
 			Student student = si.next();
