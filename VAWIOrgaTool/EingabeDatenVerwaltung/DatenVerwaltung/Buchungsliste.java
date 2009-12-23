@@ -71,7 +71,10 @@ public class Buchungsliste {
      * @return int: Anzahl an Buchungen für einen gegebenen Kurs
      */
     public int anzBuchungenKurs(Kurs kurs){
-    	return 0;
+    	if(buchungszahlen.get(kurs)==null){
+    		return 0;
+    	}
+    	return buchungszahlen.get(kurs).intValue();
     }
     
     /**
@@ -81,7 +84,15 @@ public class Buchungsliste {
      * @return int: Anzahl an Buchungen für einen gegebenen Student
      */
     public int anzBuchungenStudent(Student student){
-    	return 0;
+    	int anzBuchungen = 0;
+    	Iterator<Buchung> bi = getIterator();
+    	while(bi.hasNext()){
+    		if(bi.next().getStudent()==student){
+    			anzBuchungen++;
+    		}
+    	}
+    	
+    	return anzBuchungen;
     }
     
     /**

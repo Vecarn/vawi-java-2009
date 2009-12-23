@@ -28,10 +28,10 @@ public class Simulator {
 	//DummyDaten
 	private String [] vornamen = new String[]{"Elias","Julian","Marcel","Thomas","Luca","Stefan","Michael","Felix",
             "Luca","Stefan","Michael","Felix","Jessica","Katharina","Frauke",
-            "Petra","Manuela","Sophie","Marta","Lisa"};
+            "Petra","Manuela","Sophie","Marta","Lisa","Franz","Fritz"};
 	private String [] nachnamen = new String[]{"Mueller","Schmidt","Klein","Muster","Mayer","Bode","Hauser","Munkelt","Woelfle",
             "Schoenherr","Nett","Gosler","Sell","Rausch","Freitag","Buchmann","Junge",
-            "Merkel","Schroeder","Schaeuble","Gutenberg"};
+            "Merkel","Schroeder","Schaeuble","Gutenberg","Pesser","Hugendubel","Oesterle"};
 	private char[] uni = new char[]{Uni.Bamberg,Uni.Duisburg};
 	private String [] bundeslaender = new String[]{"Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg",
 			"Mecklemburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Nordreihn-Westfalen","Reihnland-Pfalz","Saarland",
@@ -163,9 +163,7 @@ public class Simulator {
 						buchungHinzugefuegt = true;
 					}
 				}
-				
 			}
-			
 		}			
 	}
 	
@@ -173,6 +171,8 @@ public class Simulator {
 	 * Generiert Studenten mit zufälligen Daten und fügt Sie der Studentenliste hinzu
 	 */
 	private void generiereStudenten(){
+		
+		//generierteStudentenliste.addNeuerStudent(123456, "Bode","Markus", 'B',"Thüringen",true);
 		
 		for(int i=0;i<anzahlStudenten;i++){
 			
@@ -185,6 +185,10 @@ public class Simulator {
 		    }
 		    
 		    boolean studentHinzugefuegt = false;
+		    
+		    // Falls zufällig die selbe MatrikelNummer generiert werden würde, ändert sich die Collection nicht.
+		    // Versuche solange einen Student hinzuzufügen, bis sich die Collection verändert.
+		    // Dadurch wird sichergestellt, dass auch die gewünschte Anzahl an Studenten generiert wird.
 		    
 		    while(!studentHinzugefuegt){
 		    		
@@ -213,8 +217,8 @@ public class Simulator {
 	/**
 	 * Liefert eine Zufallszahl
 	 * 
-	 * @param x
-	 * @param y
+	 * @param x (int) - untere Grenze für Zufallszahl
+	 * @param y (int) - obere Grenze für Zufallszahl
 	 * @return int - Zufallszahl zwischen x und y
 	 */
 	private int zufallsZahl(int x, int y){
