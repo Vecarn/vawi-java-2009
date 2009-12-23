@@ -18,7 +18,7 @@ import EingabeDatenVerwaltung.DatenObjekte.*;
  * Informationen über den Buchungsbestand zu liefern.   
  *
  * @author Markus Bode
- * @version 1.0 vom 05.12.2009
+ * @version 1.0 vom 23.12.2009
  */
 public class Buchungsliste {
 	
