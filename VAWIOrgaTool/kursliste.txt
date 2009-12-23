@@ -1,0 +1,3 @@
+21, GdP, Grundlagen der Programmierung (Java), ja, 90
+22, Sim, Simulation, ja, 60
+23, BWL, Grundlagen der BWL, nein,0
