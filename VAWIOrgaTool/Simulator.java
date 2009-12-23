@@ -14,7 +14,7 @@ import Hilfsklassen.Uni;
  * 
  * 
  * @author Markus Bode
- * @version 1.0 vom 8.12.2009
+ * @version 1.0 vom 23.12.2009
  */
 public class Simulator {
 	// Objekt Listen
@@ -171,8 +171,6 @@ public class Simulator {
 	 * Generiert Studenten mit zufälligen Daten und fügt Sie der Studentenliste hinzu
 	 */
 	private void generiereStudenten(){
-		
-		//generierteStudentenliste.addNeuerStudent(123456, "Bode","Markus", 'B',"Thüringen",true);
 		
 		for(int i=0;i<anzahlStudenten;i++){
 			
