@@ -1,0 +1,6 @@
+1, Meier, Karl, Duisburg-Essen, NRW, ja
+2, Müller, Karoline, Duisburg-Essen, Hamburg, ja
+3, Mann, Kristian, Bamberg, Hessen, nein
+4, Frau, Dorotee, Duisburg-Essen, Berlin, ja
+5, Chef, Engelbert, Bamberg, Bayern, nein
+6, Ober, Wilhelm, Duisburg-Essen, NRW, ja
