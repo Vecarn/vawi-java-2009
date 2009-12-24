@@ -54,19 +54,19 @@ public class ZufriedenheitsMesser {
 			int anzahlPruefungstage = 0;
 			//zaehle Prüfungen für Student am Tag -> merke max Pruefungen / Tag
 			int maxPruefungenProTag = 0;
-			//
+			
 			while(pi.hasNext()){
 				if(pi.next().getTagesStudentenliste().getStudent(student.getMatrikelnr())!=null){
 					anzahlPruefungstage++;
 				}
 			}
-			//
+			
 			if(student.getZeitminimierer()&&(anzahlPruefungstage==1)){
-				//student.setZufriedenheit(true);
+				student.setZufrieden(true);
 			}else if(!student.getZeitminimierer()&&(maxPruefungenProTag==1)){
-				//student.setZufriedenheit(true);
+				student.setZufrieden(true);
 			}else{
-				//student.setZufriedenheit(false);
+				student.setZufrieden(false);
 			}
 		
 		}
