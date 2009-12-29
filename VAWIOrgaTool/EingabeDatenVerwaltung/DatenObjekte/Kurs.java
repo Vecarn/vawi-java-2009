@@ -44,15 +44,19 @@ public class Kurs
      */
     public void setHatTeilleistungen(boolean hatTeilleistungen)
      {
-         this.hatTeilleistungen = hatTeilleistungen;
+           if (hatTeilleistungen=true)
+           { this.hatTeilleistungen = hatTeilleistungen;
+            }
      }
    /**
      * Set-Methode setMaxPunkte (ueberschreibt Attribut setMaxPunkte)
      * @param maxPunkte maximale Punktzahl eines Kurses (int)
      */
     public void setMaxPunkte(int maxPunkte)
-     {
-         this.maxPunkte = maxPunkte;
+    {
+           if (maxPunkte !=0)
+           { this.maxPunkte = maxPunkte;
+            }
      }   
         
     /**

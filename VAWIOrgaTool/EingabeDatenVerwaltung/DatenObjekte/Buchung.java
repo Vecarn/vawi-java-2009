@@ -52,7 +52,9 @@ public class Buchung
      */  
     public void setErreichtePunkte(int erreichtePunkte)
      {
-         this.erreichtePunkte = erreichtePunkte;
+           if (erreichtePunkte !=0)
+           { this.erreichtePunkte = erreichtePunkte;
+                 }
      }
 
     /**
