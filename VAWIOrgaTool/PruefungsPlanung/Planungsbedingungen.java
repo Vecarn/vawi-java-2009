@@ -31,7 +31,9 @@ public class Planungsbedingungen
        */  
         public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
        {
-           this.pruefungProStudentUndTag = pruefungProStudentUndTag;
+           if (pruefungProStudentUndTag !=0)
+           { this.pruefungProStudentUndTag = pruefungProStudentUndTag;
+            }
         }
 
         /**
