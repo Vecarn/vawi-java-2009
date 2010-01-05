@@ -78,7 +78,8 @@ public class Student
              System.out.println("Fehler! Nur B oder U möglich"); 
          }
      }
-   /**
+
+     /**
      * Set-Methode bundesland (ueberschreibt Attribut bundesland)
      * @param bundesland Bundesland, in welchem der Student ansaessig ist, frei als Text (String)
      */    
@@ -146,6 +147,23 @@ public class Student
       return uni;
       }
     /**
+     * Erzeugt einen String, der die ausgeschriebe Uni des Studierenden enthält.
+     * @return gibt einen String, der die ausgeschriebene Uni enthält, zurück.
+     */
+    public String formToString()
+    {
+        switch (uni){
+        case 'B': return("Universität Bamberg");
+        case 'D': return("Universität Duisburg-Essen");
+        default:
+            System.out.println("Die Uni eines Studentenobjektes ist inkonsistent!");
+            return("Inkonsistent");
+        }
+    }
+      
+      
+      
+     /**
      * Get-Methode: Gibt Bundesland eines Studenten als String zurück
      * @return  Bundesland des Studenten als String
      */

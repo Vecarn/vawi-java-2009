@@ -58,21 +58,25 @@ public class Buchung
      }
     
      /**
-      * Set-Methode maxPunkte (ueberschreibt Attribut maxPunkte aus Klasse Kurs)
+      * Set-Methode maxPunkte (aus klasse Kurs)
       * benötigt fuer Ueberpruefung der erreichten Punkte
       */
      public void setMaxPunkte (Kurs maxPunkte)
      {
          this.maxPunkte = maxPunkte;
         }
-     
+/*    public Kurs getMaxPunkte()
+     {
+         return maxPunkte;
+        }    
+*/
      /**
      * Set-Methode erreichtePunkte (ueberschreibt Attribut erreichtePunkte)
      * @param erreichtePunkte bisher erreichte Punkte eines Studenten (int), mit Vergleich maxPunkte
      */  
     public void setErreichtePunkte(int erreichtePunkte)
     {
-            if (erreichtePunkte >= maxPunkte){
+            if (erreichtePunkte >= Kurs.maxPunkte.getMaxPunkte()){
                 System.out.println("Ungültiger Wert, erreichte Punkte können maximale Punkte nicht übersteigen!");
                 return;
             } else {
