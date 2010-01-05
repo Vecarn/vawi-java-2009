@@ -31,19 +31,27 @@ public class Buchung
     }
 
     /**
-     * Set-Methode student (eigentlich schon in Konstruktor fix, daher keine Überprüfung nötig?)
+     * Set-Methode student (eigentlich schon in Konstruktor fix)
      * @param student Student in der Buchung (Student)
      */  
     public void setStudent(Student student)
      {
+         if(student==null){
+            System.out.println("Student ist null!");
+            return;
+            }         
          this.student = student;
      }
     /**
-     * Set-Methode kurs (eigentlich schon in Konstruktor fix, keine Überprüfung nötig?)
+     * Set-Methode kurs (eigentlich schon in Konstruktor fix)
      * @param kurs Kurs in der Buchung (Kurs)
      */  
     public void setKurs(Kurs kurs)
      {
+         if(kurs==null){
+            System.out.println("Kurs ist null!");
+            return;
+            }         
          this.kurs = kurs;
      }
    /**
