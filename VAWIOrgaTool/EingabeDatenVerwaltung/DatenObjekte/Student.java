@@ -1,4 +1,3 @@
-
 package EingabeDatenVerwaltung.DatenObjekte;
 
 
@@ -8,7 +7,7 @@ package EingabeDatenVerwaltung.DatenObjekte;
  * mit den Eigenschaften eines Studenten und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
- * @version 1.0 on 04.12.2009
+ * @version 2.0 on 08.01.2010
  */
 public class Student
 {
@@ -36,8 +35,10 @@ public class Student
      * 
      * @param matrikelnr   ID des Studenten (int)
      */
-    public Student(String name, String vorname, int matrikelnr)
+    public Student(String vorname, String name, int matrikelnr)
     {
+        this.vorname=name;
+        this.name=name;
         this.matrikelnr=matrikelnr;
      }
    /**
@@ -54,15 +55,28 @@ public class Student
      */    
     public void setName(String name)
      {
-         this.name = name;
+         if (name != null) {
+              this.name = name;
+            }     
      }
    /**
      * Set-Methode uni (ueberschreibt Attribut uni)
-     * @param uni Universitaet, an welcher ein Student eingeschrieben ist (char). Möglich sind die Buchstaben 'B' für Bamberg und 'D' für Duiesburg-Essen
+     * @param uni Universitaet, an welcher ein Student eingeschrieben ist (char). 
+     * Möglich sind die Buchstaben 'B' für Bamberg und 'D' für Duisburg-Essen
      */    
     public void setUni(char uni)
      {
-         this.uni = uni;
+         switch(uni) 
+         {
+             case 'B':
+                this.uni = uni;
+                break;
+             case 'D':
+                this.uni = uni;
+                break;
+             default:
+             System.out.println("Fehler! Nur B oder U möglich"); 
+         }
      }
    /**
      * Set-Methode bundesland (ueberschreibt Attribut bundesland)
@@ -78,7 +92,12 @@ public class Student
      */    
     public void setZeitminimierer(boolean zeitminimierer)
      {
+         if (zeitminimierer == true) 
+         {
          this.zeitminimierer = zeitminimierer;
+          } else {
+            zeitminimierer = false;
+           }
      }        
    /**
      * Set-Methode zufrieden (ueberschreibt Attribut vorname)
@@ -86,7 +105,12 @@ public class Student
      */    
     public void setZufrieden(boolean zufrieden)
      {
+         if (zufrieden == true) 
+         {
          this.zufrieden = zufrieden;
+          } else {
+            zufrieden = false;
+          }
      }  
     /**
      * Get-Methode: Gibt Matrikelnummer eines Studenten als int zurück

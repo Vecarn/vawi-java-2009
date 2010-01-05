@@ -9,7 +9,7 @@ import  EingabeDatenVerwaltung.DatenObjekte.*;
  * und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
- * @version 1.0 on 04.12.2009
+ * @version 2.0 on 08.01.2010
  */
 public class Buchung
 {
@@ -31,7 +31,7 @@ public class Buchung
     }
 
     /**
-     * Set-Methode student (eigentlich schon in Konstruktor fix)
+     * Set-Methode student (eigentlich schon in Konstruktor fix, daher keine Überprüfung nötig?)
      * @param student Student in der Buchung (Student)
      */  
     public void setStudent(Student student)
@@ -39,7 +39,7 @@ public class Buchung
          this.student = student;
      }
     /**
-     * Set-Methode kurs (eigentlich schon in Konstruktor fix)
+     * Set-Methode kurs (eigentlich schon in Konstruktor fix, keine Überprüfung nötig?)
      * @param kurs Kurs in der Buchung (Kurs)
      */  
     public void setKurs(Kurs kurs)
@@ -52,9 +52,7 @@ public class Buchung
      */  
     public void setErreichtePunkte(int erreichtePunkte)
      {
-           if (erreichtePunkte !=0)
-           { this.erreichtePunkte = erreichtePunkte;
-                 }
+         this.erreichtePunkte = erreichtePunkte;
      }
 
     /**

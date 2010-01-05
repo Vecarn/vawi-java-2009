@@ -2,13 +2,12 @@ package PruefungsPlanung;
 import PruefungsPlanung.PruefungsPlanerAlgo1.*;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
-
 /**
  * Die Planungsbedingungen ist eine Datenklasse mit Attributen, 
  * (z.B. maximale Anzahl an Kurse pro Student und Tag). Die Planungsbedingungen werden ueber den Programmablauf gesetzt.
  * 
  * @author  Silvia Wölfle
- * @version 2.0 on 11.12.2009
+ * @version 2.1 on 08.01.2010
  */
 public class Planungsbedingungen 
 {
@@ -22,7 +21,9 @@ public class Planungsbedingungen
         */
        public Planungsbedingungen (int pruefungProTag)
        {
-           this.pruefungProTag = pruefungProTag;
+           if (pruefungProTag <=8) {
+              this.pruefungProTag = pruefungProTag;
+              }
         }
 
         /**
@@ -31,8 +32,8 @@ public class Planungsbedingungen
        */  
         public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
        {
-           if (pruefungProStudentUndTag !=0)
-           { this.pruefungProStudentUndTag = pruefungProStudentUndTag;
+           if (pruefungProStudentUndTag <=3) {
+           this.pruefungProStudentUndTag = pruefungProStudentUndTag;
             }
         }
 
@@ -53,4 +54,3 @@ public class Planungsbedingungen
              return pruefungProStudentUndTag;
             }
  }
-
