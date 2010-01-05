@@ -10,7 +10,7 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  * da dies erst in der Verwaltungsklassen für die Listen zusammengestellt wird 
  * 
  * @author  Silvia Wölfle
- * @version 2.0 on 11.12.2009
+ * @version 2.1 on 08.01.2010
  */
 
 public class Anwesenheit 
@@ -26,6 +26,10 @@ public class Anwesenheit
      */
     public Anwesenheit (Student student)
     {
+         if(student == null){
+            System.out.println("Student ist null!");
+            return;
+        }         
         this.student = student; 
     }
    /**
@@ -34,6 +38,13 @@ public class Anwesenheit
      */ 
     public void setKursliste(Kursliste studentKursliste)
         {
+           if(studentKursliste==null){
+              System.out.println("Studentenliste für Kurs ist null!");
+              return;
+              }else if(studentKursliste.getSize()==0){
+              System.out.println("Studentenliste für Kurs ist leer!");
+              return;
+              }         
             this.studentKursliste = studentKursliste;
         }
      /**
@@ -53,3 +64,4 @@ public class Anwesenheit
       return studentKursliste;
       }
  }
+

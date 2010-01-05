@@ -9,7 +9,7 @@ import PruefungsPlanung.PruefungsPlanerAlgo1.*;
  * Wird ueber Pruefunsplanung fuer Tage 1,2,... gefuellt
  * 
  * @author  Silvia Wölfle
- * @version 2.0 on 11.12.2009
+ * @version 2.1 on 08.01.2010
  */
 public class Pruefungstag 
 {
@@ -25,6 +25,10 @@ public class Pruefungstag
      */
     public Pruefungstag (int tagId)
     {
+         if(tagId == 0){
+            System.out.println("Tag ID ist 0!");
+            return;
+            }         
         this.tagId = tagId;   
     }
    /**
@@ -33,6 +37,13 @@ public class Pruefungstag
      */  
     public void setTagesKursliste(Kursliste tagesKursliste)
      {
+         if(tagesKursliste==null){
+            System.out.println("Kursliste für Tag ist null!");
+            return;
+             }else if(tagesKursliste.getSize()==0){
+            System.out.println("Kursliste für Tag ist leer!");
+            return;
+            }         
          this.tagesKursliste = tagesKursliste;
      }
    /**
@@ -41,6 +52,13 @@ public class Pruefungstag
      */  
     public void setTagesStudentenliste(Studentenliste tagesStudentenliste)
      {
+         if(tagesStudentenliste==null){
+            System.out.println("Studentenliste für Tag ist null!");
+            return;
+             }else if(tagesStudentenliste.getSize()==0){
+            System.out.println("Studentenliste für Tag ist leer!");
+            return;
+            }       
          this.tagesStudentenliste = tagesStudentenliste;
      }
 
