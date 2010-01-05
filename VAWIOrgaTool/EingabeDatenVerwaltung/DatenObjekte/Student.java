@@ -112,6 +112,7 @@ public class Student
             zufrieden = false;
           }
      }  
+     
     /**
      * Get-Methode: Gibt Matrikelnummer eines Studenten als int zurück
      * @return   Matrikelnummer des Studenten als int

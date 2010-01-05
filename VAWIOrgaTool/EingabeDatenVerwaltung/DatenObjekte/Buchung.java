@@ -17,6 +17,7 @@ public class Buchung
     private Student student;
     private Kurs kurs;
     private int erreichtePunkte;
+    private Kurs maxPunkte;
 
      /**
      * Konstruktor Buchung, verlangt einen Studenten und einen Kurs 
@@ -51,17 +52,31 @@ public class Buchung
          if(kurs==null){
             System.out.println("Kurs ist null!");
             return;
-            } else if(kurs instanceof Kurs)         
+            } else if(kurs instanceof Kurs)       
          this.kurs = kurs;
+        
      }
-   /**
+    
+     /**
+      * Set-Methode maxPunkte (ueberschreibt Attribut maxPunkte aus Klasse Kurs)
+      * benötigt fuer Ueberpruefung der erreichten Punkte
+      */
+     public void setMaxPunkte (Kurs maxPunkte)
+     {
+         this.maxPunkte = maxPunkte;
+        }
+     
+     /**
      * Set-Methode erreichtePunkte (ueberschreibt Attribut erreichtePunkte)
-     * @param erreichtePunkte bisher erriechte Punkte eines Studenten (int)
+     * @param erreichtePunkte bisher erreichte Punkte eines Studenten (int), mit Vergleich maxPunkte
      */  
     public void setErreichtePunkte(int erreichtePunkte)
-     {
-         if (erreichtePunkte != 0) {
-              this.erreichtePunkte = erreichtePunkte;
+    {
+            if (erreichtePunkte >= maxPunkte){
+                System.out.println("Ungültiger Wert, erreichte Punkte können maximale Punkte nicht übersteigen!");
+                return;
+            } else {
+                this.erreichtePunkte = erreichtePunkte;
             }
      }
 
