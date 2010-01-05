@@ -51,7 +51,7 @@ public class Buchung
          if(kurs==null){
             System.out.println("Kurs ist null!");
             return;
-            }         
+            } else if(kurs instanceof Kurs)         
          this.kurs = kurs;
      }
    /**
@@ -60,7 +60,9 @@ public class Buchung
      */  
     public void setErreichtePunkte(int erreichtePunkte)
      {
-         this.erreichtePunkte = erreichtePunkte;
+         if (erreichtePunkte != 0) {
+              this.erreichtePunkte = erreichtePunkte;
+            }
      }
 
     /**
