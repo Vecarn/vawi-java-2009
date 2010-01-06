@@ -93,7 +93,7 @@ public class Student
      */    
     public void setZeitminimierer(boolean zeitminimierer)
      {
-         if (zeitminimierer == true) 
+         if (zeitminimierer) 
          {
          this.zeitminimierer = zeitminimierer;
           } else {
