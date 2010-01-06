@@ -76,7 +76,7 @@ public class Buchung
      */  
     public void setErreichtePunkte(int erreichtePunkte)
     {
-            if (erreichtePunkte >= Kurs.maxPunkte.getMaxPunkte()){
+            if (erreichtePunkte > this.maxPunkte.getMaxPunkte()){
                 System.out.println("Ungültiger Wert, erreichte Punkte können maximale Punkte nicht übersteigen!");
                 return;
             } else {
