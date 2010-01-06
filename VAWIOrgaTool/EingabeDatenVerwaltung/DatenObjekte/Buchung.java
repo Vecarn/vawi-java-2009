@@ -17,7 +17,6 @@ public class Buchung
     private Student student;
     private Kurs kurs;
     private int erreichtePunkte;
-    private Kurs maxPunkte;
 
      /**
      * Konstruktor Buchung, verlangt einen Studenten und einen Kurs 
@@ -27,10 +26,20 @@ public class Buchung
      */
     public Buchung(Student student, Kurs kurs)
     {
-        this.student = student;
-        this.kurs = kurs;
+       if(student==null){
+            System.out.println("Student ist null!");
+            return;
+            }         
+         this.student = student;
+         
+         if(kurs==null){
+            System.out.println("Kurs ist null!");
+            return;
+            } else if(kurs instanceof Kurs)       
+         this.kurs = kurs;
     }
 
+//  folgende setter unnötig?
     /**
      * Set-Methode student (eigentlich schon in Konstruktor fix)
      * @param student Student in der Buchung (Student)
@@ -57,26 +66,14 @@ public class Buchung
         
      }
     
-     /**
-      * Set-Methode maxPunkte (aus klasse Kurs)
-      * benötigt fuer Ueberpruefung der erreichten Punkte
-      */
-     public void setMaxPunkte (Kurs maxPunkte)
-     {
-         this.maxPunkte = maxPunkte;
-        }
-/*    public Kurs getMaxPunkte()
-     {
-         return maxPunkte;
-        }    
-*/
+
      /**
      * Set-Methode erreichtePunkte (ueberschreibt Attribut erreichtePunkte)
      * @param erreichtePunkte bisher erreichte Punkte eines Studenten (int), mit Vergleich maxPunkte
      */  
     public void setErreichtePunkte(int erreichtePunkte)
     {
-            if (erreichtePunkte > this.maxPunkte.getMaxPunkte()){
+            if (erreichtePunkte > this.kurs.getMaxPunkte()){
                 System.out.println("Ungültiger Wert, erreichte Punkte können maximale Punkte nicht übersteigen!");
                 return;
             } else {
