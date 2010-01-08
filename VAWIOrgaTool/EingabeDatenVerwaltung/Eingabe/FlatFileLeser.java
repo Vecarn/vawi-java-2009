@@ -29,8 +29,11 @@ public class FlatFileLeser {
 	private Studentenliste studentenliste;
 	private Buchungsliste buchungsliste;
 	private Kursliste kursliste;
-
-	private static String TRENNZEICHEN = ","; 
+	
+	/**
+	 * Trennzeichen welches in den Eingabedateien genutzt wird um einzelne Attribute eines Datensatzes zu trennen
+	 */
+	private static String TRENNZEICHEN = ";"; 
 	/**
 	 * Konstruktor für Objekte der Klasse FlatFileLeser, welcher einen Dateinamen zu einer Kursdatei erwartet. <br>
 	 * Kann z.B.: für den Simulationsprozess verwendet werden. (Nur eine Kursdatei, restl. Daten werden generiert)<br>
@@ -105,32 +108,39 @@ public class FlatFileLeser {
             
             // Abfage, ob das Ende der Datei erreicht wurde
             if (!kursdatei.eof()){
+            	
             	StringTokenizer st = new StringTokenizer(kurs,TRENNZEICHEN, true);
-        		String[] daten = new String[9]; 
-        		int i = 0;
-        		while(st.hasMoreTokens()){
-        			daten[i]=st.nextToken();
-        			i++;
-        		}
         		
-        		int kursid = new Integer(daten[0].replaceAll(" ", "")).intValue();
-        		String kurztitel = daten[2].replaceAll(" ", "");
-        		String titel = daten[4];
-        		boolean teilleistungen;
-        		if(daten[6].replaceAll(" ", "").equalsIgnoreCase("ja")){
-        			teilleistungen = true;
-        		}else{
-        			teilleistungen = false;
-        		}
-        		int maxPunkte = new Integer(daten[8].replaceAll(" ", "")).intValue();
-        		 
-        		kursliste.addNeuerKurs(kursid, kurztitel, titel, teilleistungen, maxPunkte);
-        		
+            	try {
+	            	
+            		String[] daten = new String[9]; 
+	        		int i = 0;
+	        		while(st.hasMoreTokens()){
+	        			daten[i]=st.nextToken();
+	        			i++;
+	        		}	        		
+					int kursid = new Integer(daten[0].replaceAll(" ", "")).intValue();
+					String kurztitel = daten[2].replaceAll(" ", "");
+					String titel = daten[4];
+					boolean teilleistungen;
+					if(daten[6].replaceAll(" ", "").equalsIgnoreCase("ja")){
+						teilleistungen = true;
+					}else{
+						teilleistungen = false;
+					}
+					int maxPunkte = new Integer(daten[8].replaceAll(" ", "")).intValue();
+					kursliste.addNeuerKurs(kursid, kurztitel, titel, teilleistungen, maxPunkte);
+					
+				} catch (ArrayIndexOutOfBoundsException e) {
+					System.err.println("Kursdatensatz hat falsche Länge -> überspringen.");
+				} catch (NumberFormatException e) {
+					System.err.println("Kursdatensatz fehlerhaft -> überspringen.");
+				}				
+            	
                 anzahlZeilen++;                  
             }            
         }
-        
-        
+                
         // Prüfe ob Fehler beim schließen auftrat
         if (kursdatei.closeInFile()!=0){
             // werfe neue Exception, Fehler beim Schließen
@@ -163,27 +173,38 @@ public class FlatFileLeser {
         		throw new IOException("Fehler: Beim lesen der Eingabdeatei - Buchungsliste.");
         	}
         	
-        	if(!buchungsdatei.eof()){
-        		
-        		StringTokenizer st = new StringTokenizer(buchung, TRENNZEICHEN, true);
-        		String[] daten = new String[5]; 
-        		int i = 0;
-        		while(st.hasMoreTokens()){
-        			daten[i]=st.nextToken();
-        			i++;
-        		}
-        		
-        		int matrikelnr = new Integer(daten[0].replaceAll(" ", "")).intValue();
-        		int kursid = new Integer(daten[2].replaceAll(" ", "")).intValue();
-        		int erreichtePunkte = new Integer(daten[4].replaceAll(" ", "")).intValue();
-        		
-        		if((studentenliste.getStudent(matrikelnr)!=null)&&(kursliste.getKurs(kursid)!=null)){
-        			buchungsliste.addBuchung(studentenliste.getStudent(matrikelnr), kursliste.getKurs(kursid), erreichtePunkte);
-        		}else{
-        			System.out.println("-"+matrikelnr+"-"+kursid);
-        		}
-        		anzahlZeilen++;	
-        	}        		
+			if (!buchungsdatei.eof()) {
+
+				StringTokenizer st = new StringTokenizer(buchung, TRENNZEICHEN,true);
+
+				try {
+
+					String[] daten = new String[5];
+					int i = 0;
+					while (st.hasMoreTokens()) {
+						daten[i] = st.nextToken();
+						i++;
+					}
+
+					int matrikelnr = new Integer(daten[0].replaceAll(" ", "")).intValue();
+					int kursid = new Integer(daten[2].replaceAll(" ", "")).intValue();
+					int erreichtePunkte = new Integer(daten[4].replaceAll(" ","")).intValue();
+
+					if ((studentenliste.getStudent(matrikelnr) != null)
+							&& (kursliste.getKurs(kursid) != null)) {
+						buchungsliste.addBuchung(studentenliste.getStudent(matrikelnr), kursliste.getKurs(kursid), erreichtePunkte);
+					} else {
+						System.out.println("Student oder Kurs der Buchung nicht in Kurs-/Studentenliste:"+ matrikelnr + "-" + kursid);
+					}
+					
+				} catch(ArrayIndexOutOfBoundsException e){
+					System.err.println("Buchungssatz hat falsche Länge -> überspringen.");
+				} catch (NumberFormatException e) {
+					System.err.println("Buchungssatz fehlerhaft -> überspringen.");
+				}
+				
+				anzahlZeilen++;
+			}	
         }
         
         if(buchungsdatei.closeInFile()!=0){
@@ -215,39 +236,46 @@ public class FlatFileLeser {
         		throw new IOException("Fehler: Beim lesen der Eingabdeatei - Studentenliste.");
         	}
         	
-        	if(!studentendatei.eof()){
-        		
-        		
-        		StringTokenizer st = new StringTokenizer(student, TRENNZEICHEN, true);
-        		String[] daten = new String[11]; 
-        		int i = 0;
-        		while(st.hasMoreTokens()){
-        			daten[i]=st.nextToken();
-        			i++;
-        		}
-        		
-        		int matrikelNummer = new Integer(daten[0].replaceAll(" ", "")).intValue();
-        		String name = daten[2].replaceAll(" ", "");
-        		String vorname = daten[4].replaceAll(" ", "");
-        		char uni;
-        		if(daten[6].replaceAll(" ", "").charAt(0)=='D'){
-        			uni = Uni.Duisburg;
-        		}else{
-        			uni = Uni.Bamberg;
-        		}
-        		String bundesland = daten[8].replaceAll(" ", "");
-        		boolean zeitminimierer;
-        		if(daten[10].replaceAll(" ", "").equalsIgnoreCase("ja")){
-        			zeitminimierer = true;
-        		}else{
-        			zeitminimierer = false;
-        		}
-        		
-        		studentenliste.addNeuerStudent(matrikelNummer, name, vorname, uni, bundesland, zeitminimierer);
-        		
-        		anzahlZeilen++;
-        		
-        	}        		
+			if (!studentendatei.eof()) {
+
+				StringTokenizer st = new StringTokenizer(student, TRENNZEICHEN,true);
+
+				try {
+
+					String[] daten = new String[11];
+					int i = 0;
+					while (st.hasMoreTokens()) {
+						daten[i] = st.nextToken();
+						i++;
+					}
+					int matrikelNummer = new Integer(daten[0].replaceAll(" ","")).intValue();
+					String name = daten[2].replaceAll(" ", "");
+					String vorname = daten[4].replaceAll(" ", "");
+					char uni;
+					if (daten[6].replaceAll(" ", "").charAt(0) == 'D') {
+						uni = Uni.Duisburg;
+					} else {
+						uni = Uni.Bamberg;
+					}
+					String bundesland = daten[8].replaceAll(" ", "");
+					boolean zeitminimierer;
+					if (daten[10].replaceAll(" ", "").equalsIgnoreCase("ja")) {
+						zeitminimierer = true;
+					} else {
+						zeitminimierer = false;
+					}
+
+					studentenliste.addNeuerStudent(matrikelNummer, name,vorname, uni, bundesland, zeitminimierer);
+				
+				} catch (ArrayIndexOutOfBoundsException e) {
+					System.err.println("Studentendatensatz hat falsche Länge -> überspringen.");
+				} catch (NumberFormatException e) {
+					System.err.println("Studentendatensatz fehlerhaft -> überspringen.");
+				}
+
+				anzahlZeilen++;
+
+			}    		
         }
         
         if(studentendatei.closeInFile()!=0){
