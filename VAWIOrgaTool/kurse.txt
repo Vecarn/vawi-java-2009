@@ -1,0 +1,28 @@
+1;ReCo;Grundlagen der Betriebswirtschaftslehre;nein;0
+2;eBis;E-Buisness;ja;60
+3;InWi;Informations- und Wissensmanagement;ja;60
+4;IDA;Integrierte Anwendungssysteme, Datenbanken und Archivierungssysteme;ja;90
+5;MSuP;Modellierung von Systemen und Prozessen;nein;0
+6;RBKVS;Rechner-, Betriebs- und Kommunikationssysteme, Verteilte Systeme;nein;0
+7;Proj;Projektmanagement;nein;0
+8;ERP;Enterprise Resource Planning;ja;90
+9;eBisD;Electronic Buisness im Dienstleistungsbereich;ja;90
+10;eCom;E-Commerce;ja;60
+11;OR;Operations Research;nein;0
+12;SoCo;Soft Computing;nein;0
+13;DaMa;Datenmanagement;nein;90
+14;DWuDMS;Data-Warehouse und Data-Mining-Systeme;nein;0
+15;InReSy;Information-Retrieval-Systeme;ja;60
+16;Bla;Blaaa;ja;50
+17;ITS;IT-Sicherheit;ja;60
+18;WWSy;Workflow- und Workgroup-Systeme;nein;0
+19;Lete;Lerntechnologien;ja;90
+20;InLe;Internetbasierte Lernumgebungen;ja;90
+21;GdP;Grundlagen der Programmierung (Java);ja;90 
+22;Sim;Simulation;ja;60 
+23;BWL;Grundlagen der Betriebswirtschaftslehre;nein;0
+24;QuEB;Qualitätssicherung und Evaluation in der Bildung;ja;90
+25;ReRe;Rechtliche Regelungen;nein;0
+26;EKoo;E-Kooperation;ja;90
+27;MdSys;Methoden der Systementwicklung;nein;0
+28;SoTe;Software-Technik;ja;90
