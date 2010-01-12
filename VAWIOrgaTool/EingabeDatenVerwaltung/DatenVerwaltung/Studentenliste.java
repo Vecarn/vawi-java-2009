@@ -12,7 +12,7 @@ import EingabeDatenVerwaltung.DatenObjekte.*;
  * Informationen über den Datenbestand zu liefern.
  * 
  * @author Markus Bode
- * @version 1.0 vom 6.12.2009
+ * @version 1.1 vom 12.01.2010
  */
 public class Studentenliste {
 
@@ -33,7 +33,7 @@ public class Studentenliste {
      */
     public boolean addNeuerStudent(int matrikelNummer, String name, String vorname, char uni, String bundesland, boolean zeitminimierer){
     	
-    	Student student = new Student(name,vorname,matrikelNummer);
+    	Student student = new Student(vorname,name,matrikelNummer);
     	
     	if(studenten.add(student)){
     		student.setUni(uni);
