@@ -18,7 +18,7 @@ import EingabeDatenVerwaltung.DatenObjekte.*;
  * Informationen über den Buchungsbestand zu liefern.   
  *
  * @author Markus Bode
- * @version 1.0 vom 23.12.2009
+ * @version 1.1 vom 12.01.2010
  */
 public class Buchungsliste {
 	
@@ -149,6 +149,46 @@ public class Buchungsliste {
 	   	}
 	   	
     	return buchung;
+    }
+    
+    /**
+     * Methode fügt der Collection buchung ein bereits bestehendes Buchungsobjekt hinzu. 
+     * Die Methode wird benötigt um die Klasse Buchungsliste wiederverwenden zu können <br>
+     * um z.B. eine Untermenge der Buchungsobjekte in einer weiteren Buchungsliste zu speichern.
+     * 
+     * @param buchung (Buchung) - Ein bereits existierendes Buchungsobjekt.
+     * @return  true: wenn Collection geändert wurde <br>
+     *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
+     */
+    public boolean addBuchungsObjekt(Buchung buchung){
+    	return(buchungen.add(buchung));
+    }
+    
+    /**
+     * Die Methode liefert eine Collection vom Typ Buchungsliste mit <br>
+     * allen Buchungsobjekten für das übergebene Studentenobjekt.
+     * 
+     * @param student (Student) - Ein Studentenobjekt.
+     * @return Buchungsliste: Collection mit Buchungen des übergebenen Studenten.
+     */
+    public Buchungsliste getBuchungen(Student student){
+    	
+    	Buchungsliste buchungsliste = new Buchungsliste();
+    	
+    	Iterator<Buchung> bi = getIterator();
+    	
+	   	Buchung buchung = null;
+	   	
+    	while(bi.hasNext()){
+	   		buchung = bi.next();
+	   		if(buchung.getStudent().getMatrikelnr()==student.getMatrikelnr()){
+	   			buchungsliste.addBuchungsObjekt(buchung);
+	   		}else{
+	   			buchung = null;
+	   		}
+	   	} 
+    	
+		return buchungsliste;
     }
        
 }
