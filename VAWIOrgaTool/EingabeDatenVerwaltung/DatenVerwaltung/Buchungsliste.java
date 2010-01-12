@@ -177,15 +177,14 @@ public class Buchungsliste {
     	
     	Iterator<Buchung> bi = getIterator();
     	
-	   	Buchung buchung = null;
-	   	
-    	while(bi.hasNext()){
-	   		buchung = bi.next();
+	   	while(bi.hasNext()){
+	   		
+	   		Buchung buchung = bi.next();
+	   		
 	   		if(buchung.getStudent().getMatrikelnr()==student.getMatrikelnr()){
 	   			buchungsliste.addBuchungsObjekt(buchung);
-	   		}else{
-	   			buchung = null;
 	   		}
+	   		
 	   	} 
     	
 		return buchungsliste;
