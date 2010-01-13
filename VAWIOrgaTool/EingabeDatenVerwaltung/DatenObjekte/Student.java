@@ -39,7 +39,9 @@ public class Student
     {
         this.vorname=vorname;
         this.name=name;
-        this.matrikelnr=matrikelnr;
+                if (matrikelnr != 0) {   
+                    this.matrikelnr=matrikelnr;
+                    }
      }
 
    /**
@@ -76,12 +78,7 @@ public class Student
      */    
     public void setZeitminimierer(boolean zeitminimierer)
      {
-         if (zeitminimierer) 
-         {
          this.zeitminimierer = zeitminimierer;
-          } else {
-            zeitminimierer = false;
-           }
      }        
    /**
      * Set-Methode zufrieden (ueberschreibt Attribut vorname)
@@ -89,12 +86,7 @@ public class Student
      */    
     public void setZufrieden(boolean zufrieden)
      {
-         if (zufrieden == true) 
-         {
          this.zufrieden = zufrieden;
-          } else {
-            zufrieden = false;
-          }
      }  
      
     /**
