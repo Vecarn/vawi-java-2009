@@ -12,7 +12,7 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  * Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
  * 
  * @author Martin
- * @version 0.3
+ * @version 0.8
  */
 public class Notenliste {
 
@@ -30,18 +30,6 @@ public class Notenliste {
     	 this.buchungsliste = buchungsliste;
     }
     
-	/**
-	 * Fügt eine Note zur Liste hinzu
-	 * 
-	 * @param student Der Student, dessen Anwesenheit hinzugefügt wird.
-	 * @return boolean flag true oder false
-	 */
-	public boolean addNote(Student student){
-		
-	
-		return false;
-		
-	}
 	
 	/** 
 	 * Anzahl der Elemente in der Notenliste ausgeben.
