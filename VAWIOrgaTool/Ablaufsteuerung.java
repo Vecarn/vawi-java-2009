@@ -32,7 +32,7 @@ public class Ablaufsteuerung {
      */
     public void leseDatenEin(String studentenFile, String buchungsFile, String kursFile) throws Exception {
         //Dateien einlesen
-        flatFileLeser = new FlatFileLeser("Studenten.txt", "Buchungen.txt", "Kurse.txt");
+        flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
     }
 
     /**
@@ -41,14 +41,15 @@ public class Ablaufsteuerung {
      * @param PruefungenProStudentUndTag als Randbedingung aus dem UI mitgeben
      * @throws Exception
      */
-    public void startePlanungslauf(String pruefungenProTag, String PruefungenProStudentUndTag) throws Exception {
+    public void startePlanungslauf(int pruefungenProTag, int pruefungenProStudentUndTag) throws Exception {
         //@TO-DO: Check ob flatFileLeser != null         
         //Planungsbedingungsklasse erschaffen
-        //Planungsbedingungen bedingungen = new Planungsbedingungen();
+        Planungsbedingungen bedingungen = new Planungsbedingungen(pruefungenProTag);
+        bedingungen.setPruefungProStudentUndTag(pruefungenProStudentUndTag);
         //Konkreten Pruefungsplaner erschaffen und Planungsbedingungen uebergeben
-        //PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
+        PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
         //Pruefungsterminplan berechnen lassen
-        //pruefungsplan = planer.berechnePruefungsTerminPlan(flatFileLeser.getStudentenliste(), flatFileLeser.getBuchungsliste(), flatFileLeser.getKursliste());
+        pruefungsplan = planer.berechnePruefungsTerminPlan(flatFileLeser.getStudentenliste(), flatFileLeser.getBuchungsliste(), flatFileLeser.getKursliste());
     }
 
     /**
