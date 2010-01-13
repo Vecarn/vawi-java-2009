@@ -26,7 +26,7 @@ public class VAWIOrgaTool {
      *
      */
     public static void main(String[] args) throws Exception {
-    	String pfad = "C:/Users/Dahausa/Documents/VAWI/WS09-10/Grundlagen der Programmierung/TL3/VAWIOrgaTool/";
+    	String pfad = "C:/Users/Dahausa/workspace/VAWIOrgaTool/";
     	Ablaufsteuerung steuerung = new Ablaufsteuerung();
     	steuerung.leseDatenEin(pfad + "studenten.txt", pfad + "buchungen.txt", pfad + "kurse.txt");
     	steuerung.startePlanungslauf(3, 3);
