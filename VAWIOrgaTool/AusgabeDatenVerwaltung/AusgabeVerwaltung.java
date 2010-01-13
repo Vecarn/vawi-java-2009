@@ -3,6 +3,7 @@ package AusgabeDatenVerwaltung;
 import java.util.Iterator;
 
 import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
+import AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag;
 import AusgabeDatenVerwaltung.Datenverwaltung.*;
 import EingabeDatenVerwaltung.DatenVerwaltung.*;
 import EingabeDatenVerwaltung.DatenObjekte.*;
@@ -22,6 +23,7 @@ import Hilfsklassen.Datei;
  */
 /**
  * @author Martin
+ * @version 0.8
  *
  */
 public class AusgabeVerwaltung {
@@ -115,7 +117,38 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereNotenliste() {
-    	fileschreiber.writer("");
+    	
+    	String output = new String();
+    	
+    	Iterator i1 = buchungsliste.getIterator();
+    	
+    	int kursid = 0;
+    	
+    	while(i1.hasNext()){
+    		Buchung b = (Buchung) i1.next();
+    		if(kursid != b.getKurs().getKursid()){
+    			output = output + "Kurs " 
+    					+ b.getKurs().getKursid() +
+    					" - " + b.getKurs().getKurztitel() + "\n\r";
+    		}
+    		
+    		output = output + b.getStudent().getName() + ", "
+    					+ b.getStudent().getVorname();
+    		
+    		if(b.getKurs().getHatTeilleistungen() == true){
+    			output = output + ":" + b.getErreichtePunkte();
+    		}
+    		
+    		output = output + "\n\r";
+    		
+    		
+    		kursid =  b.getKurs().getKursid();
+    	}
+    	
+    	
+    	
+    	
+    	fileschreiber.writer(output);
     	
     	return true;
 	}
@@ -147,7 +180,27 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereTerminplan(){
     	
-    	fileschreiber.writer("");
+    	String output = new String();
+    	
+    	Iterator i1 = pruefungsterminplan.getPruefungsplanIterator();
+    	while(i1.hasNext()){
+    		Pruefungstag p = (Pruefungstag) i1.next();
+    		output = output + "Tag " + p.getTagId() + ": \n\r";
+    		output = output + "------------------------------ \n\r";
+    		
+    		Iterator i2 = p.getTagesKursliste().getKursIterator();
+    		while(i2.hasNext()){
+    			
+    			Kurs k = (Kurs) i2.next();
+    			
+    			output = output + k.getKursid() + " - " 
+    					+ k.getKurztitel() + "\n\r";
+    			
+    		}
+    	}
+    	
+    	
+    	fileschreiber.writer(output);
     	
     	return true;
     }
