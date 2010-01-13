@@ -35,37 +35,10 @@ public class Buchung
          if(kurs==null){
             System.out.println("Kurs ist null!");
             return;
-            } else if(kurs instanceof Kurs)       
+            }      
          this.kurs = kurs;
     }
 
-//  folgende setter unnötig?
-    /**
-     * Set-Methode student (eigentlich schon in Konstruktor fix)
-     * @param student Student in der Buchung (Student)
-     */  
-    public void setStudent(Student student)
-     {
-         if(student==null){
-            System.out.println("Student ist null!");
-            return;
-            }         
-         this.student = student;
-     }
-    /**
-     * Set-Methode kurs (eigentlich schon in Konstruktor fix)
-     * @param kurs Kurs in der Buchung (Kurs)
-     */  
-    public void setKurs(Kurs kurs)
-     {
-         if(kurs==null){
-            System.out.println("Kurs ist null!");
-            return;
-            } else if(kurs instanceof Kurs)       
-         this.kurs = kurs;
-        
-     }
-    
 
      /**
      * Set-Methode erreichtePunkte (ueberschreibt Attribut erreichtePunkte)

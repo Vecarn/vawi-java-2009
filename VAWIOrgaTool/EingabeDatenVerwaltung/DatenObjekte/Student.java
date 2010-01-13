@@ -37,28 +37,11 @@ public class Student
      */
     public Student(String vorname, String name, int matrikelnr)
     {
-        this.vorname=name;
+        this.vorname=vorname;
         this.name=name;
         this.matrikelnr=matrikelnr;
      }
-   /**
-     * Set-Methode vorname (ueberschreibt Attribut vorname)
-     * @param vorname Vorname eines Studenten (String)
-     */    
-    public void setVorname(String vorname)
-     {
-         this.vorname = vorname;
-     }
-   /**
-     * Set-Methode name (ueberschreibt Attribut name)
-     * @param name Nachname eines Studenten (String)
-     */    
-    public void setName(String name)
-     {
-         if (name != null) {
-              this.name = name;
-            }     
-     }
+
    /**
      * Set-Methode uni (ueberschreibt Attribut uni)
      * @param uni Universitaet, an welcher ein Student eingeschrieben ist (char). 

@@ -25,10 +25,6 @@ public class Pruefungstag
      */
     public Pruefungstag (int tagId)
     {
-         if(tagId == 0){
-            System.out.println("Tag ID ist 0!");
-            return;
-            }         
         this.tagId = tagId;   
     }
    /**
