@@ -151,6 +151,8 @@ public class Buchungsliste {
     	return buchung;
     }
     
+    
+    
     /**
      * Methode fügt der Collection buchung ein bereits bestehendes Buchungsobjekt hinzu. 
      * Die Methode wird benötigt um die Klasse Buchungsliste wiederverwenden zu können <br>
@@ -188,6 +190,34 @@ public class Buchungsliste {
 	   	} 
     	
 		return buchungsliste;
+    }
+    
+    
+    public Buchungsliste getBuchungen(Kurs kurs){
+    	
+    	Buchungsliste buchungsliste = new Buchungsliste();
+    	
+    	Iterator<Buchung> bi = getIterator();
+    	
+	   	while(bi.hasNext()){
+	   		
+	   		Buchung buchung = bi.next();
+	   		
+	   		if(buchung.getKurs().getKursid()==kurs.getKursid()){
+	   			buchungsliste.addBuchungsObjekt(buchung);
+	   		}
+	   		
+	   	} 
+    	
+		return buchungsliste;
+    }
+    
+    public void removeBuchungen(Kurs kurs){
+		Iterator<Buchung> bi = getBuchungen(kurs).getIterator();
+    	while(bi.hasNext()){
+    		bi.next();
+    		bi.remove();
+    	}
     }
        
 }
