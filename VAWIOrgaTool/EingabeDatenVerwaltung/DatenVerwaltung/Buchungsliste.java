@@ -151,8 +151,6 @@ public class Buchungsliste {
     	return buchung;
     }
     
-    
-    
     /**
      * Methode fügt der Collection buchung ein bereits bestehendes Buchungsobjekt hinzu. 
      * Die Methode wird benötigt um die Klasse Buchungsliste wiederverwenden zu können <br>
@@ -162,7 +160,7 @@ public class Buchungsliste {
      * @return  true: wenn Collection geändert wurde <br>
      *			false: wenn Collection nicht geändert wurde (z.B. wenn Objekt bereits in Collection)
      */
-    public boolean addBuchungsObjekt(Buchung buchung){
+    public boolean addBuchung(Buchung buchung){
     	return(buchungen.add(buchung));
     }
     
@@ -184,7 +182,7 @@ public class Buchungsliste {
 	   		Buchung buchung = bi.next();
 	   		
 	   		if(buchung.getStudent().getMatrikelnr()==student.getMatrikelnr()){
-	   			buchungsliste.addBuchungsObjekt(buchung);
+	   			buchungsliste.addBuchung(buchung);
 	   		}
 	   		
 	   	} 
@@ -192,7 +190,13 @@ public class Buchungsliste {
 		return buchungsliste;
     }
     
-    
+    /**
+     * Die Methode liefert eine Collection vom Typ Buchungsliste mit <br>
+     * allen Buchungsobjekten für das übergeben Kursobjekt.
+     * 
+     * @param kurs (Kurs) - Ein Kursobjekt.
+     * @return Buchungsliste: Collection mit allen Buchungen für das übergebene Kursobjekt
+     */
     public Buchungsliste getBuchungen(Kurs kurs){
     	
     	Buchungsliste buchungsliste = new Buchungsliste();
@@ -204,7 +208,7 @@ public class Buchungsliste {
 	   		Buchung buchung = bi.next();
 	   		
 	   		if(buchung.getKurs().getKursid()==kurs.getKursid()){
-	   			buchungsliste.addBuchungsObjekt(buchung);
+	   			buchungsliste.addBuchung(buchung);
 	   		}
 	   		
 	   	} 
@@ -212,6 +216,11 @@ public class Buchungsliste {
 		return buchungsliste;
     }
     
+    /**
+     * Die Methode entfernt alle Buchungen für das übergebe Kursobjekt aus der Buchungsmenge.
+     * 
+     * @param kurs (Kurs) - Ein Kursobjekt des Kurses für den die Buchungen gelöscht werden sollen.
+     */
     public void removeBuchungen(Kurs kurs){
 		Iterator<Buchung> bi = getBuchungen(kurs).getIterator();
     	while(bi.hasNext()){

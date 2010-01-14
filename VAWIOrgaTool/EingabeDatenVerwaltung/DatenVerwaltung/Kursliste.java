@@ -61,6 +61,7 @@ public class Kursliste {
     	
     	return false;
     }
+    
     /**
      * Kurse werden über eine ID eindeutig identifiziert.<br> 
      * Die Methode gibt einen Kurs anhand einer KursID zurück. 
@@ -88,7 +89,6 @@ public class Kursliste {
      * 
      * @return Iterator: Typisierter Iterator auf Collection mit Kurs-Objekten.
      */
-    
     public Iterator<Kurs> getKursIterator(){
 		return kurse.iterator();	
     }
@@ -102,6 +102,11 @@ public class Kursliste {
     	return kurse.size();
     }
     
+    /**
+     * Die Methode entfernt das übergebene Kursobjekt aus der Kursmenge. 
+     * 
+     * @param kurs (Kurs) - Ein Kursobjekt.
+     */
     public void removeKurs(Kurs kurs){
 		Iterator<Kurs> kursiterator = kurse.iterator();
 		while(kursiterator.hasNext()){
