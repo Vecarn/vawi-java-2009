@@ -43,6 +43,7 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
      */
     public PruefungsPlanerAlgo1(Planungsbedingungen bedingungen) {
         super(bedingungen);
+        this.planungsbedingungen =bedingungen;
     }
     
 
@@ -53,141 +54,210 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     	this.buchungsliste = buchungen;
     	this.kursliste = kurse;
     	
-    	/*
-    	 * Variable für Algorithmus
-    	 */
-    	Kursliste verfgbKurse; //Kursliste mit Kursen, die noch nicht verplant sind
-    	Buchungsliste verfgbBuchungen; //Buchungen, die noch nicht verplant sind
-    	Studentenliste verfgbStudenten; //Studenten, die noch nicht verplant sind
-    	Student studentMaxKurse; //Student mit den meisten aktuellen Buchungen
-    	int maxKurse = 0;//Maximale Anzahl an Kursen, die ein Student belegt hat
-    	int kurseAktuellerStudent = 0; //Anzahl an Belegungen des aktuellen Studenten
-    	double minTage = 0; //Erechnete mind. Anzahl an Tage, die geplant werden müssen
     	int tag=0;
-    	int geplKurse=0;
-    	
-    	//HashMap um zu zählen wie viel Pruefungen der Student am aktuellen Tag schreibt
-    	HashMap<Student,Integer> countKurseStudent = new HashMap<Student,Integer>();
-    	//Initiale Befüllung der HashMap
-    	Iterator<Student> itStudent = this.studentenliste.getStudentIterator();
-    	while(itStudent.hasNext()){
-    		countKurseStudent.put(itStudent.next(),new Integer(0));
-    	}
-    	
-    	Kursliste kurseAmPruefungsTag = new Kursliste();
-    	
+    	 	
     	
     	/*
-    	 * 1. Neuen Pruefungsterminplan  + Pruefungstag erstellen
+    	 * Neuen Pruefungsterminplan erstellen und durchführen der Tagesplanungungen
     	 */
     	tag++;
     	pruefungsterminplan = new Pruefungsterminplan();
-    	Pruefungstag pTag = new Pruefungstag(tag);
-    	
-    	/*
-    	 * 2. Initialwerte der Listen befüllen
-    	 */
-    	verfgbKurse = this.kursliste;
-    	verfgbStudenten = this.studentenliste;
-    	verfgbBuchungen = this.buchungsliste;
-    	
 
+    	 pruefungsterminplan = erstelleTagesplanung(tag,pruefungsterminplan, kurse);
+
+    		
+    	return pruefungsterminplan;
+    }
+    /**
+     * Gibt den Studenten mit den meisten belegten Kursen aus der Kursliste aus
+     * @param kurse
+     * @return Student mit den meisten Kursen
+     */
+    private Student getStudentMitMaxKursen(Kursliste kurse){
     	
-    	/*
-    	 * 3. Bestimmung des Studenten mit der höchsten Anzahl an Kursen als Engpass für Planung
-    	 */
-    	studentMaxKurse = null;
-    	itStudent = studentenliste.getStudentIterator();
+    	int maxKurse=0;
+    	int kurseAktuellerStudent=0;
+    	Student studentMaxKurse = null;
+    	Iterator<Student>itStudent = studentenliste.getStudentIterator();
+    	Student student=null;
     	while(itStudent.hasNext()){
-    		Student student = itStudent.next();
-    		kurseAktuellerStudent = buchungsliste.anzBuchungenStudent(student);
-    		if( kurseAktuellerStudent > maxKurse){
+    		student = itStudent.next();
+        	Buchungsliste buchungen = this.buchungsliste.getBuchungen(student);
+        	
+        	Iterator<Kurs> it = kurse.getKursIterator();
+        	while(it.hasNext()){
+        		Kurs kurs = it.next();
+        		if(buchungen.getBuchung(kurs.getKursid(), student.getMatrikelnr()) != null){
+        			kurseAktuellerStudent++;
+        		}
+        	}
+       		if( kurseAktuellerStudent > maxKurse){
     			studentMaxKurse = student;
     			maxKurse = kurseAktuellerStudent;
     		}
+        	kurseAktuellerStudent=0;
     	}
-    	/*
-    	 * 4. Bestimmung des Kurses mit der höchsten Anzahl Teilnehmern an dem der studentMaxKurse teilnimmt
-    	 *    und Planung des Kurses in Pruefungstag
-    	 */
+
+    	System.out.println("Student mit der höchsten Anzahl an Kursen: " + studentMaxKurse.getVorname()+ " " + studentMaxKurse.getName());
+    	System.out.println("Anzahl seiner belegten Kurse: " + maxKurse);
+		return studentMaxKurse;
+    }
+    
+    /**
+     * Gibt den Kurs mit der höchsten Teilnehmerzahl aus an dem der Student student teilnimmt
+     * @param kurse
+     * @param student
+     * @return Kurs mit den meisten Teilnehmern
+     */
+    private Kurs getKursMitMaxTeilnehmern(Kursliste kurse, Student student) {
+    	
     	int kursMaxBuchungen=0;
     	int anzBuchungen=0;
     	Kurs maxKurs=null;
     	Kurs aktKurs=null;
-    	Iterator<Buchung> itBuchung = verfgbBuchungen.getBuchungen(studentMaxKurse).getIterator();
+    	
+    	//Loop über alle Kurse des Studenten mit Hilfe seiner Buchungen	
+    	Iterator<Buchung>itBuchung = this.buchungsliste.getBuchungen(student).getIterator();
     	while(itBuchung.hasNext()){
     		Buchung buchung = itBuchung.next();
+    		//Ermittlung des Kurses
     		aktKurs = buchung.getKurs();
-    		anzBuchungen = buchungsliste.anzBuchungenKurs(aktKurs);
-    		if(anzBuchungen > kursMaxBuchungen){
-    			kursMaxBuchungen = anzBuchungen;
-    			maxKurs = aktKurs;
+    		//Wenn Kurs in ungeplanten Kurse ist
+    		if (kurse.getKurs(aktKurs.getKursid())!=null){
+    			//Ermittlung der absoluten Anzahl an Buchungen
+        		anzBuchungen = buchungsliste.anzBuchungenKurs(aktKurs);
+        		if(anzBuchungen > kursMaxBuchungen){
+        			kursMaxBuchungen = anzBuchungen;
+        			maxKurs = aktKurs;
+        		}
     		}
+
     	}
-    	kurseAmPruefungsTag.addKurs(maxKurs);
-    	
-    	//Anzahl der geschriebenen Prüfungen am aktuellen Tag erhöhen
-    	Iterator<Student> it = countKurseStudent.keySet().iterator();
-    	while(it.hasNext()){
-    		int i=0;
-    		Student student = it.next();
-    		if(verfgbBuchungen.getBuchung(maxKurs.getKursid(), new Integer(student.getMatrikelnr())) !=null){
-    			i= countKurseStudent.get(student) + 1;
-    			if (i<planungsbedingungen.getPruefungProStudentUndTag()){
-    				countKurseStudent.remove(student);
-        			countKurseStudent.put(student,i);
-    			} else {
-    				
-    			}
-    		
-    		}
-    	}
-    	
-    	/*
-    	 * 5. Pruefung welche Stundenten an diesem Tag bereits max Kurse schreiben und entfernen dieser Kurse
-    	 */
-    	Kursliste delKurse = new Kursliste();
-    	
-    	Iterator<Kurs> itKurs = kurseAmPruefungsTag.getKursIterator();
-    	while(itKurs.hasNext()){
-    		Kurs kurs = itKurs.next();
-    		Buchungsliste buchliste = verfgbBuchungen.getBuchungen(kurs);
-    		Iterator<Buchung> it2 = buchliste.getIterator();
-    		while(it2.hasNext()){
-    			Buchung buchung =it2.next();
-    			
-    		}
-    	}
-
-    	
-    	
-    	
-    	/*
-    	 * 6. Aufrauemarbeiten
-    	 */
-    	//Entfernen der Buchungen des MaxKurse
-    	verfgbBuchungen.removeBuchungen(maxKurs) ;
-    	//Entfernen des Kurses aus verfgbKurse
-    	verfgbKurse.removeKurs(maxKurs);
-
-    	
-
-    	//Bestimmung der maximalen Anzahl an Pruefungstagen
-    	minTage = (maxKurse/this.getPlanungsbedingungen().getPruefungProStudentUndTag());
-    	
-    	System.out.println("==Student mit der höchsten Anzahl an Kursen: " + studentMaxKurse.getVorname()+ " " + studentMaxKurse.getName());
-    	System.out.println("==Anzahl belegter Kurse: " + maxKurse);
-    	System.out.println("==Max. Klausuren pro Student pro Tag: " + this.getPlanungsbedingungen().getPruefungProStudentUndTag());
-    	System.out.println("==Ergibt mindesten " + minTage + "Prüfungstage");
-    	
-    	//
-    	/*
-    	 * 3. Prüfung ob Tag schon vollständig geplant ist
-    	 */
-
-    		
-    	return null;
+    	System.out.println("Kurs mit der maximalen Teilnehmerzahl des max Studenten: " + maxKurs.getTitel());
+    	System.out.println("Anzahl der Buchungen dieses Kurses:" + kursMaxBuchungen);
+    	return maxKurs;
     }
+    
+    private Kursliste getUnplanbareKurse(Kursliste geplanteKurse,Kursliste ungeplanteKurse){
+    	
+    	 Kursliste unplanbareKurse = new Kursliste();
+    	//Loop über alle Studenten
+    	Iterator<Student>itStudent = this.studentenliste.getStudentIterator();
+    	while(itStudent.hasNext()){
+    		
+    		int anzahlPruefungenAmTag=0;
+    		Student student = itStudent.next();
+    		
+    		//Loop über alle geplanten Kurse
+    		Iterator<Kurs> itKurs = geplanteKurse.getKursIterator();
+    		while(itKurs.hasNext()){
+    			Kurs kurs = itKurs.next();
+    			Buchung b = this.buchungsliste.getBuchung(kurs.getKursid(), student.getMatrikelnr());
+    			if (b != null){
+    				anzahlPruefungenAmTag++;
+    			}
+    		}
+    		// Wenn Student maximale Anzahl an Prüfungen pro Tag schreibt
+    		if(anzahlPruefungenAmTag == planungsbedingungen.getPruefungProStudentUndTag()){
+    			//Loop über alle ungeplanten Kurse
+    			itKurs = ungeplanteKurse.getKursIterator();
+    			while(itKurs.hasNext()){
+    				//Schauen ob Student Buchungen
+    				Kurs kurs = itKurs.next();
+    				Buchung b = this.buchungsliste.getBuchung(kurs.getKursid(), student.getMatrikelnr());
+    				if(b !=null){
+    					unplanbareKurse.addKurs(kurs);
+    				}
+    			}
+    		}
+    	}
+    	
+    	return unplanbareKurse;
+    }
+    /**
+     * Planung aller Kurse eines Tages aus den noch ungeplanten Kursen
+     * @param tag
+     * @param ungeplanteKurse
+     * @return Pruefungstag 
+     */
+    private Pruefungsterminplan erstelleTagesplanung(int tag,Pruefungsterminplan plan, Kursliste ungeplanteKurse){
+    	
+    	Student studentMaxKurse; //Student mit den meisten aktuellen Buchungen
+    	Kurs kursMaxTeilnehmer;
+    	
+    	int kursNr=0;	
+    	
+    	if(ungeplanteKurse.getSize()>0){
+    		
+	    	//Liste mit zu schreibenden Prüfungen an diesem Tag
+	    	Kursliste kurseAmPruefungsTag = new Kursliste();
+	    	Kursliste entfernteKurse = new Kursliste();
+	    	//Returnwert Prüfungstag
+	    	Pruefungstag pTag = new Pruefungstag(tag);
+	    	System.out.println("* Planungslauf für Tag: " + tag + " *");
+	    	 	
+	    	do {
+		    	
+	    		kursNr++;
+	    		System.out.println("==> Plane Kurs Nr " + kursNr + " des Tages");
+	    		System.out.println("Zur Planung verbleiben noch " + ungeplanteKurse.getSize()+" Kurse");
+		    	/*
+		    	 * Bestimmung des Studenten mit der höchsten Anzahl an Kursen als Engpass für Planung
+		    	 */
+		    	studentMaxKurse = this.getStudentMitMaxKursen(ungeplanteKurse);
+		     
+		     	/*
+		    	 * Bestimmung des Kurses mit der höchsten Anzahl Teilnehmern an dem der studentMaxKurse teilnimmt
+		    	 */
+		    	kursMaxTeilnehmer = this.getKursMitMaxTeilnehmern(ungeplanteKurse, studentMaxKurse);
+	
+		    	/*
+		    	 * Hinzufügen dieses Kurses zum Pruefungstag
+		    	 */
+		    	kurseAmPruefungsTag.addKurs(kursMaxTeilnehmer);
+		    	System.out.println("Der Kurs "+ kursMaxTeilnehmer.getKurztitel() +" wurde für den Tag an " + kursNr + ". Stelle eingeplant!");
+		    	/*
+		    	 * Entfernen dieses Kurses aus der Planung
+		    	 */
+		    	ungeplanteKurse.removeKurs(kursMaxTeilnehmer);
+		    	System.out.println("Der Kurs " + kursMaxTeilnehmer.getKurztitel() + " wurde aus den noch zu planenden Kursen entfernt!");
+		    	
+		    	/*
+		    	 * Entfernen aller Kurse, die für diesen Tag nicht mehr planbar sind
+		    	 */
+		    	Iterator<Kurs> itKurse = this.getUnplanbareKurse(kurseAmPruefungsTag, ungeplanteKurse).getKursIterator();
+		    	while(itKurse.hasNext()){
+		    		Kurs kurs = itKurse.next();
+		    		//Zwischenspeichern der Kurse, damit sie am nächsten Tag wieder hinzugefügt werden
+		    		entfernteKurse.addKurs(kurs);
+		    		ungeplanteKurse.removeKurs(kurs);
+		    		System.out.println("-> Entferne Kurs " + kurs.getKurztitel() + " aus den planbaren Kursen fuer aktuellen Tag da Teilnehmerkonflikt");
+		    	}
+	
+	    	} while( kurseAmPruefungsTag.getSize() <= planungsbedingungen.getPruefungProTag());
+	    	
+	    	System.out.println("Die maximal mögliche Anzahl an Prüfungen des Tages ist erreicht!");
+	    	System.out.println("Setze die Tageskursliste");
+	    	
+	    	Iterator<Kurs> itKurse = entfernteKurse.getKursIterator();
+	    	while(itKurse.hasNext()){
+	    		ungeplanteKurse.addKurs(itKurse.next());
+	    	}
+	    	System.out.println("Kurse wegen Teilnehmerkonflikt werden wieder hinzugefügt!");
+	    	
+	    	//Setzen aller Kurse des Pruefungstages
+	    	pTag.setTagesKursliste(kurseAmPruefungsTag);
+	    	
+	    	//Hinzufuegen des Pruefungstages zum Pruefungsplan
+	    	plan.addPruefungstag(pTag);
+	    	
+	    	//Rekursiver Aufruf der Methode
+	    	return this.erstelleTagesplanung(tag+1, plan, ungeplanteKurse);
+    	}
+    	
+    	return plan;
+    }
+    
 
 
     ;

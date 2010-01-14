@@ -27,7 +27,7 @@ public class Pruefungsterminplan {
      * Konstruktor für den Pruefungsterminplan
      */
     public Pruefungsterminplan(){
-    	pruefungsterminplan = new TreeSet<Pruefungstag>();
+    	pruefungsterminplan = new TreeSet<Pruefungstag>(new PruefungstagComparator());
     }
     
     

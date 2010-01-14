@@ -103,12 +103,16 @@ public class Kursliste {
     }
     
     public void removeKurs(Kurs kurs){
-		Iterator<Kurs> itKurse = kurse.iterator();
-		while(itKurse.hasNext()){
-			if(itKurse.next().equals(kurs)){
-				itKurse.remove();
+		Iterator<Kurs> kursiterator = kurse.iterator();
+		while(kursiterator.hasNext()){
+			if(kursiterator.next().equals(kurs)){
+				kursiterator.remove();
 			}
 		}
+    }
+    
+    public void removeKurse(Kursliste kursliste){
+    	kurse.removeAll((Collection<?>) kursliste);
     }
       
  }
