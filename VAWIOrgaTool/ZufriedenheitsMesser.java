@@ -73,22 +73,31 @@ public class ZufriedenheitsMesser {
 			while(pi.hasNext()){
 				Pruefungstag pruefungstag = pi.next();
 				Studentenliste sl = pruefungstag.getTagesStudentenliste();
-				
-				//alle Buchungen des aktuellen Studenten
-				Iterator<Buchung> bi = buchungsliste.getBuchungen(student).getIterator();
-				
+								
+				//wenn der Student in der Studentenliste des Tages ist, muss der Tag in die Betrachtung mit einfließen
+				//anzahl Tage erhöht sich und es muss geprüft werden wieviele Kurse der Student schreibt
 				if(sl.containsStudent(student)){
+						
 						anzahlPruefungstage++;
 						//Anzahl Kurse die der Student an diesem Tag schreibt
 						int kurse = 0;
 						
+						//alle Buchungen des aktuellen Studenten
+						Iterator<Buchung> bi = buchungsliste.getBuchungen(student).getIterator();
+						
 						while(bi.hasNext()){
 							Kurs k = bi.next().getKurs();
+							
+							//prüfe ob der Kurs des aktuellen Buchungsobjektes in der Tageskursliste enthalten ist
+							//wenn ja, dann muss der Zähle für die Kurse die der Student an diesem Tag schreibt erhöht werden
 							if(pruefungstag.getTagesKursliste().containsKurs(k)){
 								kurse++;
 							}
 						}
 						
+						//prüfe ob die Anzahl der von diesem Student zu schreibenden Kurse an diesem Tag
+						//größer ist wie die Anzahl der Kurse die er an den letzten geprüften Tagen schreiben musste
+						//--> die maximale Anzahl an zu schreibenden Prüfungen / Tag wird gespeichert
 						if(kurse>maxPruefungenProTag){
 							maxPruefungenProTag=kurse;
 						}
