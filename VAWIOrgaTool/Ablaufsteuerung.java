@@ -84,7 +84,7 @@ public class Ablaufsteuerung {
     public void werteZufriedenheitAus() throws Exception {
     	if(pruefungsplan!=null && studentenliste !=null){
     		System.out.println("Zufriedenheit wird ausgegeben...");
-    		ZufriedenheitsMesser zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
+    		ZufriedenheitsMesser zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste,buchungsliste);
     		zufriedenheitsMesser.errechneZufriedenheit();
     	} else {
     		System.out.println("Achtung: Es sind keine Daten zur Auswertung vorhanden. Bitte erst Daten einlesen oder Prüfungsplan erstellen!");
