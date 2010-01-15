@@ -115,5 +115,9 @@ public class Kursliste {
 			}
 		}
     }
+    
+    public boolean containsKurs(Kurs kurs){
+    	return(kurse.contains(kurs));
+    }
           
  }

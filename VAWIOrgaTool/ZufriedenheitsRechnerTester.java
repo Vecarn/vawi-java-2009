@@ -24,7 +24,7 @@ public class ZufriedenheitsRechnerTester {
     		System.out.println(student.getVorname()+""+student.getName()+"\t"+student.getZeitminimierer()+ "\t\t"+student.getZufrieden());
     		Iterator<Buchung> bi = steuerung.buchungsliste.getBuchungen(student).getIterator();
     		while(bi.hasNext()){
-    			System.out.print(bi.next().getKurs().getKursid()+";");
+    			System.out.print(bi.next().getKurs().getKursid()+" ");
     		}
     		System.out.print("\n");
     	}
