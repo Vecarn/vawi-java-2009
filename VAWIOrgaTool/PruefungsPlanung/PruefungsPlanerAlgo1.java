@@ -1,5 +1,6 @@
 package PruefungsPlanung;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -47,7 +48,6 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     }
     
 
-
     public Pruefungsterminplan berechnePruefungsTerminPlan(Studentenliste studenten, Buchungsliste buchungen, Kursliste kurse) {
          	
     	this.studentenliste = studenten;
@@ -55,15 +55,84 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     	this.kursliste = kurse;
     	
     	int tag=0;
-    	 	
+    	
+    	Kursliste ek = new Kursliste();
+    	Studentenliste es = new Studentenliste();
     	
     	/*
     	 * Neuen Pruefungsterminplan erstellen und durchführen der Tagesplanungungen
     	 */
     	tag++;
+    	int i=1;
+    	System.out.println("===> Start der Planung <===");
     	pruefungsterminplan = new Pruefungsterminplan();
+    	
+    	//Alle Kurse auflisten
+    	System.out.println("Folgende Kurse stehen für die Planung zur Verfügung:");
+    	Iterator<Kurs>itK = this.kursliste.getKursIterator();
+    	while(itK.hasNext()){
+    		Kurs k = itK.next();
+    		int a = buchungsliste.anzBuchungenKurs(k);
+    		if(a==0){
+    			//Kurse ohne Buchung
+    			ek.addKurs(k);
+    			System.out.println(i++ +". " + k.getTitel() + " (" + a + " Buchungen) <-- Keine Buchung (wird entfernt)");
+    		} else {
+    			System.out.println(i++ +". " + k.getTitel() + " (" + a + " Buchungen)");
+    		}
+    		
+    	}  	
+    	//Entfernen der Kurse ohne Buchungen von der Planung
+    	itK = ek.getKursIterator();
+    	while(itK.hasNext()){
+    		kursliste.removeKurs(itK.next());
+    	}
+    	
+    	System.out.println();
+    	System.out.println("-> Somit werden folgende Kurse geplant:");
+    	i=1;
+    	itK = kursliste.getKursIterator();
+    	while(itK.hasNext()){
+    		System.out.println(i++ +". " + itK.next().getTitel());
+    	}
+    	
+    	System.out.println();
+    	//Alle Studenten auflisten
+    	System.out.println("Folgende Studenten stehen für die Planung zur Verfügung:");
+    	i=1;
+    	Iterator<Student>itS = this.studentenliste.getStudentIterator();
+    	while(itS.hasNext()){
+    		Student s = itS.next();
+    		int a = buchungsliste.anzBuchungenStudent(s);
+    		if(a==0){
+    			//Studenten ohne Buchung
+    			es.addStudent(s);
+    			System.out.println(i++ +" " + s.getVorname() +" " + s.getName() + "(" + a + " Buchungen) <-- Keine Buchung (wird entfernt)");
+    		} else {
+    			System.out.println(i++ +". " + s.getVorname() + " " +s.getName() + " (" + a + " Buchungen)");
+    		}
+    	}
+    	//Entfernen der Studenten ohne Buchung
+    	itS = es.getStudentIterator();
+    	while(itS.hasNext()){
+    		studentenliste.removeStudent(itS.next());
+    	}
+    	System.out.println();
+    	System.out.println("-> Somit werden Kurse für folgende Studenten geplant:");
+    	i=1;
+    	itS = this.studentenliste.getStudentIterator();
+    	while(itS.hasNext()){
+    		Student s = itS.next();
+    		System.out.println(i++ + ". " + s.getVorname() + " " + s.getName());
+    	}
+    	System.out.println();
+     	
+    	
+    	
+    	
 
-    	 pruefungsterminplan = erstelleTagesplanung(tag,pruefungsterminplan, kurse);
+
+    	 pruefungsterminplan = erstellePruefungsplan(tag,pruefungsterminplan, kursliste);
 
     		
     	return pruefungsterminplan;
@@ -78,7 +147,7 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     	int maxKurse=0;
     	int kurseAktuellerStudent=0;
     	Student studentMaxKurse = null;
-    	Iterator<Student>itStudent = studentenliste.getStudentIterator();
+    	Iterator<Student>itStudent = this.studentenliste.getStudentIterator();
     	Student student=null;
     	while(itStudent.hasNext()){
     		student = itStudent.next();
@@ -138,6 +207,13 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     	return maxKurs;
     }
     
+    /**
+     * Prüft anhand der geplanten Kurse ob Studenten die max. Anzahl an Kursen pro Tag überschritten haben und löscht
+     * deren Kurse aus der Menge der noch zu planenden Kurse für diesen Tag
+     * @param geplanteKurse
+     * @param ungeplanteKurse
+     * @return
+     */
     private Kursliste getUnplanbareKurse(Kursliste geplanteKurse,Kursliste ungeplanteKurse){
     	
     	 Kursliste unplanbareKurse = new Kursliste();
@@ -174,13 +250,15 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     	
     	return unplanbareKurse;
     }
+    
+    
     /**
      * Planung aller Kurse eines Tages aus den noch ungeplanten Kursen
      * @param tag
      * @param ungeplanteKurse
      * @return Pruefungstag 
      */
-    private Pruefungsterminplan erstelleTagesplanung(int tag,Pruefungsterminplan plan, Kursliste ungeplanteKurse){
+    private Pruefungsterminplan erstellePruefungsplan(int tag,Pruefungsterminplan plan, Kursliste ungeplanteKurse){
     	
     	Student studentMaxKurse; //Student mit den meisten aktuellen Buchungen
     	Kurs kursMaxTeilnehmer;
@@ -194,23 +272,26 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 	    	Kursliste entfernteKurse = new Kursliste();
 	    	//Returnwert Prüfungstag
 	    	Pruefungstag pTag = new Pruefungstag(tag);
+	    	System.out.println();
 	    	System.out.println("* Planungslauf für Tag: " + tag + " *");
+	    	System.out.println("--------------------------------------");
 	    	 	
 	    	do {
 		    	
+
 	    		kursNr++;
-	    		System.out.println("==> Plane Kurs Nr " + kursNr + " des Tages");
+	    		System.out.println();
+	    		System.out.println("==> Plane Kurs Nr " + kursNr + " des Tages " + tag);
+	    		System.out.println("--------------------------------------");
 	    		System.out.println("Zur Planung verbleiben noch " + ungeplanteKurse.getSize()+" Kurse");
 		    	/*
 		    	 * Bestimmung des Studenten mit der höchsten Anzahl an Kursen als Engpass für Planung
 		    	 */
-		    	studentMaxKurse = this.getStudentMitMaxKursen(ungeplanteKurse);
-		     
+		    	studentMaxKurse = this.getStudentMitMaxKursen(ungeplanteKurse);     
 		     	/*
 		    	 * Bestimmung des Kurses mit der höchsten Anzahl Teilnehmern an dem der studentMaxKurse teilnimmt
 		    	 */
 		    	kursMaxTeilnehmer = this.getKursMitMaxTeilnehmern(ungeplanteKurse, studentMaxKurse);
-	
 		    	/*
 		    	 * Hinzufügen dieses Kurses zum Pruefungstag
 		    	 */
@@ -220,8 +301,7 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 		    	 * Entfernen dieses Kurses aus der Planung
 		    	 */
 		    	ungeplanteKurse.removeKurs(kursMaxTeilnehmer);
-		    	System.out.println("Der Kurs " + kursMaxTeilnehmer.getKurztitel() + " wurde aus den noch zu planenden Kursen entfernt!");
-		    	
+		    	System.out.println("<- Der Kurs " + kursMaxTeilnehmer.getKurztitel() + " wurde aus den noch zu planenden Kursen entfernt!");	
 		    	/*
 		    	 * Entfernen aller Kurse, die für diesen Tag nicht mehr planbar sind
 		    	 */
@@ -231,19 +311,23 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 		    		//Zwischenspeichern der Kurse, damit sie am nächsten Tag wieder hinzugefügt werden
 		    		entfernteKurse.addKurs(kurs);
 		    		ungeplanteKurse.removeKurs(kurs);
-		    		System.out.println("-> Entferne Kurs " + kurs.getKurztitel() + " aus den planbaren Kursen fuer aktuellen Tag da Teilnehmerkonflikt");
+		    		System.out.println("<- Entferne Kurs " + kurs.getKurztitel() + " aus den planbaren Kursen fuer aktuellen Tag da Teilnehmerkonflikt");
 		    	}
 	
-	    	} while( kurseAmPruefungsTag.getSize() <= planungsbedingungen.getPruefungProTag());
+	    	} while( kurseAmPruefungsTag.getSize() <= planungsbedingungen.getPruefungProTag() && ungeplanteKurse.getSize()>0);
 	    	
-	    	System.out.println("Die maximal mögliche Anzahl an Prüfungen des Tages ist erreicht!");
-	    	System.out.println("Setze die Tageskursliste");
+	    	System.out.println("==> Achtung: Die maximal mögliche Anzahl an Prüfungen des Tages ist erreicht!");
+	    	System.out.println();
+	    	System.out.println("Schließe den Tag ab und setze die Tageskursliste!");
+	    	System.out.println();
 	    	
 	    	Iterator<Kurs> itKurse = entfernteKurse.getKursIterator();
 	    	while(itKurse.hasNext()){
-	    		ungeplanteKurse.addKurs(itKurse.next());
+	    		Kurs k = itKurse.next();
+	    		System.out.println("-> Kurs " + k.getKurztitel() +" wird wieder zur Planung hinzugefuegt (da neuer Tag)");
+	    		ungeplanteKurse.addKurs(k);
 	    	}
-	    	System.out.println("Kurse wegen Teilnehmerkonflikt werden wieder hinzugefügt!");
+	    	
 	    	
 	    	//Setzen aller Kurse des Pruefungstages
 	    	pTag.setTagesKursliste(kurseAmPruefungsTag);
@@ -252,13 +336,10 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 	    	plan.addPruefungstag(pTag);
 	    	
 	    	//Rekursiver Aufruf der Methode
-	    	return this.erstelleTagesplanung(tag+1, plan, ungeplanteKurse);
+	    	return this.erstellePruefungsplan(tag+1, plan, ungeplanteKurse);
     	}
     	
     	return plan;
     }
-    
 
-
-    ;
 }

@@ -107,4 +107,8 @@ public class Studentenliste {
     	return studenten.size();
     }
 
+	public void removeStudent(Student student) {
+    	studenten.remove(student);
+	}
+
 }
