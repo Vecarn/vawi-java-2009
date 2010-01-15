@@ -52,14 +52,17 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void startePlanungslauf(int pruefungenProTag, int pruefungenProStudentUndTag) throws Exception {
-        //@TO-DO: Check ob flatFileLeser != null         
-        //Planungsbedingungsklasse erschaffen
-        Planungsbedingungen bedingungen = new Planungsbedingungen(pruefungenProTag);
-        bedingungen.setPruefungProStudentUndTag(pruefungenProStudentUndTag);
-        //Konkreten Pruefungsplaner erschaffen und Planungsbedingungen uebergeben
-        PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
-        //Pruefungsterminplan berechnen lassen
-        pruefungsplan = planer.berechnePruefungsTerminPlan(studentenliste,buchungsliste,kursliste);
+        if(studentenliste!=null && kursliste !=null && kursliste !=null){         
+        	//Planungsbedingungsklasse erschaffen
+        	Planungsbedingungen bedingungen = new Planungsbedingungen(pruefungenProTag);
+        	bedingungen.setPruefungProStudentUndTag(pruefungenProStudentUndTag);
+        	//Konkreten Pruefungsplaner erschaffen und Planungsbedingungen uebergeben
+        	PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
+        	//Pruefungsterminplan berechnen lassen
+        	pruefungsplan = planer.berechnePruefungsTerminPlan(studentenliste,buchungsliste,kursliste);
+        } else {
+        	System.out.println("Achtung: Es sind keine Daten zur Planung vorhanden. Bitte erst Daten einlesen!");
+        }
     }
 
     /**
@@ -67,10 +70,14 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void gebeDatenAus() throws Exception {
-        ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
-        ausgabeVerwalter.generiereAnwesenheitsliste();
-        ausgabeVerwalter.generiereNotenliste();
-        ausgabeVerwalter.generierePlatzkartenliste();
+    	if(studentenliste != null && kursliste !=null && kursliste !=null && pruefungsplan != null){
+	        ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
+	        ausgabeVerwalter.generiereAnwesenheitsliste();
+	        ausgabeVerwalter.generiereNotenliste();
+	        ausgabeVerwalter.generierePlatzkartenliste();
+    	} else {
+    		System.out.println("Achtung: Es sind keine Daten zur Ausgabe vorhanden. Bitte erst die Planung starten!");
+    	}
     }
 
     /**
@@ -78,8 +85,12 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void werteZufriedenheitAus() throws Exception {
-        zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
-        zufriedenheitsMesser.errechneZufriedenheit();
+    	if(pruefungsplan!=null && studentenliste !=null){    
+    		zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
+    		zufriedenheitsMesser.errechneZufriedenheit();
+    	} else {
+    		System.out.println("Achtung: Es sind keine Daten zur Auswertung vorhanden. Bitte erst Daten einlesen oder Prüfungsplan erstellen!");
+    	}
     }
 
     /**

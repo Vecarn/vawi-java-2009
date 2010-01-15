@@ -36,7 +36,7 @@ public class VAWIOrgaTool {
     	System.out.println("-----------------------------");
     	System.out.println("Auswahl:");
     	System.out.println("(1) Daten einlesen");
-    	System.out.println("(2) Fiktive Studenten erstellen");
+    	System.out.println("(2) Fiktive Studenten/Buchungen erstellen");
     	System.out.println("(3) Prüfungstermine planen");
     	System.out.println("(4) Zufriedenheit errechnen");
     	System.out.println("(5) Daten ausgeben");
