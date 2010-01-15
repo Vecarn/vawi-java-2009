@@ -38,6 +38,7 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void leseDatenEin(String studentenFile, String buchungsFile, String kursFile) throws Exception {
+    	System.out.println("Daten werden eingelesen...");
         //Dateien einlesen
         flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
         buchungsliste = flatFileLeser.getBuchungsliste();
@@ -52,7 +53,8 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void startePlanungslauf(int pruefungenProTag, int pruefungenProStudentUndTag) throws Exception {
-        if(studentenliste!=null && kursliste !=null && kursliste !=null){         
+        if(studentenliste!=null && kursliste !=null && kursliste !=null){ 
+        	System.out.println("Planungslauf wird gestartet...");
         	//Planungsbedingungsklasse erschaffen
         	Planungsbedingungen bedingungen = new Planungsbedingungen(pruefungenProTag);
         	bedingungen.setPruefungProStudentUndTag(pruefungenProStudentUndTag);
@@ -71,6 +73,7 @@ public class Ablaufsteuerung {
      */
     public void gebeDatenAus() throws Exception {
     	if(studentenliste != null && kursliste !=null && kursliste !=null && pruefungsplan != null){
+    		System.out.println("Daten werden ausgegeben...");
 	        ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
 	        ausgabeVerwalter.generiereAnwesenheitsliste();
 	        ausgabeVerwalter.generiereNotenliste();
@@ -85,7 +88,8 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void werteZufriedenheitAus() throws Exception {
-    	if(pruefungsplan!=null && studentenliste !=null){    
+    	if(pruefungsplan!=null && studentenliste !=null){
+    		System.out.println("Zufriedenheit wird ausgegeben...");
     		zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
     		zufriedenheitsMesser.errechneZufriedenheit();
     	} else {
@@ -98,9 +102,14 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void erstelleFiktiveStudentenListe() throws Exception {
-        simulator = new Simulator(flatFileLeser.getKursliste());
-        studentenliste = simulator.getStudentenliste();
-        buchungsliste = simulator.getBuchungsliste();
+    	if(kursliste !=null){
+    		System.out.println("Fiktive Studenten und Buchungen werden erstellt...");
+    		simulator = new Simulator(flatFileLeser.getKursliste());
+            studentenliste = simulator.getStudentenliste();
+            buchungsliste = simulator.getBuchungsliste();
+    	} else {
+    		System.out.println("Achtung: Es fehlen Kurse zur Erstellung der Buchungen. Bitte erst Daten einlesen!");
+    	} 
     }
 
     /**
