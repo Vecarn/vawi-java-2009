@@ -20,10 +20,10 @@ public class VAWIOrgaTool {
 	private static String kursDatei = "kurse.txt";
 	private static String buchungsDatei = "buchungen.txt";
 	
-	private static final int pruefungenProTag=3;
-	private static final int pruefungenProStudentUndTag=3;
+	private static int pruefungenProTag=3;
+	private static int pruefungenProStudentUndTag=3;
 	
-	VAWIOrgaTool(String args[]){
+	VAWIOrgaTool(String args[]) throws Exception{
 		System.out.println("VAWIOrgaTool 1 der Gruppe 5");
 		System.out.println("---------------------------");
 		File f = new File("");
@@ -46,8 +46,7 @@ public class VAWIOrgaTool {
 			System.out.println("Achtung!!!");
 			System.out.println("Es wurden keine oder nicht genügend Parameter beim Programmstart angegeben!");
 			System.out.println("Der Aufruf per Parameter lautet z.B. -studenten=studenten.txt -kurse=kurse.txt -buchungen=buchungen.txt");
-			System.out.println("Wichtig: Die Dateien müssen sich im Wurzelverzeichnis des VAWIOrgaTools befinden!");
-			
+			System.out.println("Wichtig: Die Dateien müssen sich im Wurzelverzeichnis des VAWIOrgaTools befinden!");	
 		} 	
 		for (int i = 0; i < args.length; i++) {
 			//Parameter: -studenten
@@ -74,44 +73,67 @@ public class VAWIOrgaTool {
 	
     /**
      * Methode baut das Menue zur Benutzerfuehrung auf
+     * @throws Exception 
      */
-    private void setMenu() {
+    private void setMenu() throws Exception {
     	System.out.println();
     	System.out.println("Auswahl-Menü");
     	System.out.println("-----------------------------");
     	System.out.println("(1) Daten einlesen");
     	System.out.println("(2) Fiktive Studenten/Buchungen erstellen");
-    	System.out.println("(3) Prüfungstermine planen");
-    	System.out.println("(4) Zufriedenheit errechnen");
-    	System.out.println("(5) Daten ausgeben");
+    	System.out.println("(3) Planungsparameter einstellen");
+    	System.out.println("(4) Prüfungstermine planen");
+    	System.out.println("(5) Zufriedenheit errechnen");
+    	System.out.println("(6) Daten ausgeben");
     	System.out.println("(0) Programm beenden");
     	System.out.println();
     	System.out.println("Eingabe:");
     	
+    	String eingabe = getEingabe();
+    	werteEingabeAus(eingabe);
+
+    }
+    
+    private void setBedingungen(){
+    	String eingabe="";
+    	try {
+	    	System.out.println("Bitte maximale Prüfungen eines Studenten pro Tag angeben: ");
+	    	eingabe = getEingabe();
+	    	pruefungenProStudentUndTag = Integer.parseInt(eingabe);
+	    	System.out.println("Prüfungen pro Student und Tag auf " + pruefungenProStudentUndTag + " gesetzt.");
+	    	
+	    	System.out.println("Bitte maximale Prüfungen, die an einem Tag statt finden können angeben: ");
+	    	eingabe = getEingabe();
+	    	pruefungenProTag = Integer.parseInt(eingabe);
+	    	System.out.println("Prüfungen pro Tag auf " + pruefungenProStudentUndTag + " gesetzt.");
+    	}catch(java.lang.NumberFormatException e){
+    		System.out.println("Fehler: Eingabe muss nummerische sein (Eingabe:" + eingabe +")");
+    	}
+    }
+
+    private String getEingabe(){
     	
     	InputStreamReader isr = new InputStreamReader(System.in);
     	BufferedReader br = new BufferedReader(isr);
-    	String input;
-    	char eingabe;
+    	String eingabe;
     	try{
-    		input = br.readLine();
-    		eingabe = input.charAt(0);
-    		werteEingabeAus(eingabe);
+    		eingabe = br.readLine();
+    		return eingabe;
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
+    	return null;
     }
-
+    
     /**
      * Methode wertet Benutzereingaben aus und ruft die passende Methode der Ablaufsteuerung auf
      * @param eingabe der STDIO
      * @throws Exception 
      */
-    private void werteEingabeAus(char eingabe) throws Exception {
-    	
-			switch (eingabe) {
+    private void werteEingabeAus(String eingabe) throws Exception {
+    		char i = eingabe.charAt(0);
+			switch (i) {
 			case '0':
-				System.out.println("Beende Programm!");
 				steuerung.beendeProgramm();
 				break;
 			case '1':
@@ -125,16 +147,21 @@ public class VAWIOrgaTool {
 				setMenu();
 				break;
 			case '3':
+				setBedingungen();
+				System.out.println("---> Planungsparameter gesetzt!");
+				setMenu();
+				break;
+			case '4':
 				steuerung.startePlanungslauf(pruefungenProTag, pruefungenProStudentUndTag);
 				System.out.println("---> Planung beendet!");
 				setMenu();
 				break;
-			case '4':
+			case '5':
 				steuerung.werteZufriedenheitAus();
 				System.out.println("---> Zufriedenheit ausgewertet!");
 				setMenu();
 				break;
-			case '5':
+			case '6':
 				steuerung.gebeDatenAus();
 				System.out.println("---> Daten ausgegeben!");
 				setMenu();

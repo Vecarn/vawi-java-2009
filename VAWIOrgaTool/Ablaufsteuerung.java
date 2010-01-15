@@ -22,13 +22,7 @@ import java.util.logging.Logger;
  */
 public class Ablaufsteuerung {
 
-    private PruefungsPlaner pruefungsPlaner;
-    private Simulator simulator;
-    private FlatFileLeser flatFileLeser;
-    private ZufriedenheitsMesser zufriedenheitsMesser;
-    private AusgabeVerwaltung ausgabeVerwalter;
-    private Pruefungsterminplan pruefungsplan;
-    
+    private Pruefungsterminplan pruefungsplan;  
     private Buchungsliste buchungsliste;
     private Studentenliste studentenliste;
     private Kursliste kursliste;
@@ -40,7 +34,7 @@ public class Ablaufsteuerung {
     public void leseDatenEin(String studentenFile, String buchungsFile, String kursFile) throws Exception {
     	System.out.println("Daten werden eingelesen...");
         //Dateien einlesen
-        flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
+    	FlatFileLeser flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
         buchungsliste = flatFileLeser.getBuchungsliste();
         studentenliste = flatFileLeser.getStudentenliste();
         kursliste = flatFileLeser.getKursliste();
@@ -74,7 +68,7 @@ public class Ablaufsteuerung {
     public void gebeDatenAus() throws Exception {
     	if(studentenliste != null && kursliste !=null && kursliste !=null && pruefungsplan != null){
     		System.out.println("Daten werden ausgegeben...");
-	        ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
+	        AusgabeVerwaltung ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
 	        ausgabeVerwalter.generiereAnwesenheitsliste();
 	        ausgabeVerwalter.generiereNotenliste();
 	        ausgabeVerwalter.generierePlatzkartenliste();
@@ -90,7 +84,7 @@ public class Ablaufsteuerung {
     public void werteZufriedenheitAus() throws Exception {
     	if(pruefungsplan!=null && studentenliste !=null){
     		System.out.println("Zufriedenheit wird ausgegeben...");
-    		zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
+    		ZufriedenheitsMesser zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
     		zufriedenheitsMesser.errechneZufriedenheit();
     	} else {
     		System.out.println("Achtung: Es sind keine Daten zur Auswertung vorhanden. Bitte erst Daten einlesen oder Prüfungsplan erstellen!");
@@ -104,7 +98,7 @@ public class Ablaufsteuerung {
     public void erstelleFiktiveStudentenListe() throws Exception {
     	if(kursliste !=null){
     		System.out.println("Fiktive Studenten und Buchungen werden erstellt...");
-    		simulator = new Simulator(flatFileLeser.getKursliste());
+    		Simulator simulator = new Simulator(kursliste);
             studentenliste = simulator.getStudentenliste();
             buchungsliste = simulator.getBuchungsliste();
     	} else {
@@ -117,6 +111,7 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void beendeProgramm() throws Exception {
+    	System.out.println("Programm wird beendet...");
         System.exit(0);
     }
 }

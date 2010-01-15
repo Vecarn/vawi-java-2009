@@ -1,7 +1,6 @@
 package PruefungsPlanung;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.Iterator;
 
 import AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag;
@@ -127,12 +126,8 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
     	}
     	System.out.println();
      	
-    	
-    	
-    	
-
-
-    	 pruefungsterminplan = erstellePruefungsplan(tag,pruefungsterminplan, kursliste);
+    	//Starten der Planungsläufe
+    	pruefungsterminplan = erstellePruefungsplan(tag,pruefungsterminplan, kursliste);
 
     		
     	return pruefungsterminplan;
