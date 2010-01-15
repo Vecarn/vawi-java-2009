@@ -115,9 +115,5 @@ public class Kursliste {
 			}
 		}
     }
-    
-    public void removeKurse(Kursliste kursliste){
-    	kurse.removeAll((Collection<?>) kursliste);
-    }
-      
+          
  }

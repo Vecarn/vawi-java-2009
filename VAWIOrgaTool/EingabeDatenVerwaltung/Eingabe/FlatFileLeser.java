@@ -13,7 +13,6 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  * 
  * @author Markus Bode
  * @version 1.0 vom 23.12.2009
- * @TODO FEHLERHANDLING! (skip Satz wenn unvollständig)
  */
 public class FlatFileLeser {
 	
@@ -147,7 +146,7 @@ public class FlatFileLeser {
             throw new IOException("Fehler: Beim schliessen der Eingabedatei - Kursliste.");
         }
         
-        System.out.println("==Anzahl Zeilen in Datei: "+anzahlZeilen+" Anzahl eindeutige Kurse: "+kursliste.getSize());
+        System.out.println("== Anzahl Zeilen in der Kursdatei: "+anzahlZeilen+" Anzahl eindeutige Kurse: "+kursliste.getSize());
 	}
 	
 	/**
@@ -194,7 +193,7 @@ public class FlatFileLeser {
 							&& (kursliste.getKurs(kursid) != null)) {
 						buchungsliste.addBuchung(studentenliste.getStudent(matrikelnr), kursliste.getKurs(kursid), erreichtePunkte);
 					} else {
-						System.out.println("Student oder Kurs der Buchung nicht in Kurs-/Studentenliste:"+ matrikelnr + "-" + kursid);
+						System.out.println("Student Nr:"+matrikelnr+" oder Kurs Nr:"+kursid+" der Buchung nicht in Kurs-/Studentenliste -> Buchung nicht aufgenommen!");
 					}
 					
 				} catch(ArrayIndexOutOfBoundsException e){
@@ -211,7 +210,7 @@ public class FlatFileLeser {
         	throw new IOException("Fehler: Beim schliessen der Eingabedatei - Buchungsliste.");
         }
         
-        System.out.println("==Anzahl Zeilen in Datei: "+anzahlZeilen+" Anzahl eindeutige Buchungen: "+buchungsliste.getSize());
+        System.out.println("== Anzahl Zeilen in der Buchungsdatei: "+anzahlZeilen+" Anzahl eindeutige Buchungen: "+buchungsliste.getSize());
 	}
 	
 	/**
@@ -282,7 +281,7 @@ public class FlatFileLeser {
         	throw new IOException("Fehler: Beim schliessen der Eingabedatei - Studentenliste.");
         }
         
-        System.out.println("==Anzahl Zeilen in Datei: "+anzahlZeilen+" Anzahl eindeutige Studenten: "+studentenliste.getSize());
+        System.out.println("== Anzahl Zeilen in der Studentendatei: "+anzahlZeilen+" Anzahl eindeutige Studenten: "+studentenliste.getSize());
 		
 	}
 

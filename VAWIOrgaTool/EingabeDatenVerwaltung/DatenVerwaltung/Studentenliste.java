@@ -106,7 +106,23 @@ public class Studentenliste {
     public int getSize(){
     	return studenten.size();
     }
-
+    
+    /**
+     * Methode prüft ob ein Student in der Studentenliste enthalten ist.
+     * 
+     * @param student (Student) - Ein Studentenobjekt.
+     * @return	true:	Student ist in Collection enthalten.
+     * 			false: 	Student ist nicht in der Collection enthalten.
+     */
+    public boolean containsStudent(Student student){
+    	return(studenten.contains(student));
+    }
+    
+    /**
+     * Methode entfernt das Studentenobjekt aus der Collection.
+     * 
+     * @param student (Student) - Das zu entfernende Studentenobjekt.
+     */
 	public void removeStudent(Student student) {
     	studenten.remove(student);
 	}
