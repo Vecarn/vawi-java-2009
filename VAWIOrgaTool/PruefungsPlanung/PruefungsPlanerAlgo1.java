@@ -270,6 +270,7 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 	    	//Liste mit zu schreibenden Prüfungen an diesem Tag
 	    	Kursliste kurseAmPruefungsTag = new Kursliste();
 	    	Kursliste entfernteKurse = new Kursliste();
+	    	Studentenliste tagesStudentenliste = new Studentenliste();
 	    	//Returnwert Prüfungstag
 	    	Pruefungstag pTag = new Pruefungstag(tag);
 	    	System.out.println();
@@ -297,6 +298,13 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 		    	 */
 		    	kurseAmPruefungsTag.addKurs(kursMaxTeilnehmer);
 		    	System.out.println("Der Kurs "+ kursMaxTeilnehmer.getKurztitel() +" wurde für den Tag an " + kursNr + ". Stelle eingeplant!");
+		    	/*
+		    	 * Hinzufügen der Teilnehmer zur tagesStudentenliste
+		    	 */
+		    	Iterator<Buchung> itBuchung = buchungsliste.getBuchungen(kursMaxTeilnehmer).getIterator();
+		    	while(itBuchung.hasNext()){
+		    		tagesStudentenliste.addStudent(itBuchung.next().getStudent());
+		    	}
 		    	/*
 		    	 * Entfernen dieses Kurses aus der Planung
 		    	 */
@@ -328,12 +336,22 @@ public class PruefungsPlanerAlgo1 extends PruefungsplanerAbstrakt implements Pru
 	    		ungeplanteKurse.addKurs(k);
 	    	}
 	    	
+	    	itKurse = kurseAmPruefungsTag.getKursIterator();
+	    	while(itKurse.hasNext()){
+	    		Kurs k = itKurse.next();
+	    		
+	    	}
 	    	
 	    	//Setzen aller Kurse des Pruefungstages
 	    	pTag.setTagesKursliste(kurseAmPruefungsTag);
 	    	
+	    	//Setzen aller Studenten, die an diesem Tag schreiben
+	    	pTag.setTagesStudentenliste(tagesStudentenliste);
+	    	
+	    	
 	    	//Hinzufuegen des Pruefungstages zum Pruefungsplan
 	    	plan.addPruefungstag(pTag);
+	    	
 	    	
 	    	//Rekursiver Aufruf der Methode
 	    	return this.erstellePruefungsplan(tag+1, plan, ungeplanteKurse);

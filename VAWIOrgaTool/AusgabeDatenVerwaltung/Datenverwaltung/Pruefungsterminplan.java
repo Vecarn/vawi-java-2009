@@ -53,4 +53,8 @@ public class Pruefungsterminplan {
 		
 		return false;
     }
+    
+    public int getSize(){
+    	return pruefungsterminplan.size();
+    }
  }
