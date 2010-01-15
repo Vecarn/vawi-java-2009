@@ -28,6 +28,7 @@ public class ZufriedenheitsMesser {
 	 * @param stdl (Studentenliste): Die Verwaltungsliste mit den Studenten-Objekten.
 	 */
 	public ZufriedenheitsMesser(Pruefungsterminplan prfgtpl,Studentenliste stdl){
+		
 		this.pruefungsterminplan=prfgtpl;
 		this.studentenliste=stdl;
 	}
@@ -45,9 +46,16 @@ public class ZufriedenheitsMesser {
 	 * 
 	 */
 	public Studentenliste errechneZufriedenheit(){
-	
+		
+		if(pruefungsterminplan==null||studentenliste==null){
+			System.out.println("Prüfungsterminplan oder Studentenliste ist noch null! -> keine Errechnung");
+			return null;
+		}
+		
 		Iterator<Student> si = studentenliste.getStudentIterator();
 		Iterator<Pruefungstag> pi = pruefungsterminplan.getPruefungsplanIterator();
+		
+		System.out.println("-"+studentenliste.getSize()+"-");
 		//alles an einem Tag -> zufrieden
 		while(si.hasNext()){
 			Student student = si.next();
@@ -56,8 +64,14 @@ public class ZufriedenheitsMesser {
 			int maxPruefungenProTag = 0;
 			
 			while(pi.hasNext()){
-				if(pi.next().getTagesStudentenliste().getStudent(student.getMatrikelnr())!=null){
-					anzahlPruefungstage++;
+				Pruefungstag pruefungstag = pi.next();
+				Studentenliste sl = pruefungstag.getTagesStudentenliste();
+				if(sl==null){
+					System.err.println("Tagesstudentenliste ist null!!");
+				}else{
+					if(sl.containsStudent(student)){
+						anzahlPruefungstage++;
+					}
 				}
 			}
 			
