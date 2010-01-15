@@ -2,7 +2,10 @@ import java.util.Iterator;
 
 import AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag;
 import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
+import EingabeDatenVerwaltung.DatenObjekte.Buchung;
+import EingabeDatenVerwaltung.DatenObjekte.Kurs;
 import EingabeDatenVerwaltung.DatenObjekte.Student;
+import EingabeDatenVerwaltung.DatenVerwaltung.Buchungsliste;
 import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
 
 
@@ -19,6 +22,8 @@ public class ZufriedenheitsMesser {
 	private Pruefungsterminplan pruefungsterminplan;
 	
 	private Studentenliste studentenliste;
+	
+	private Buchungsliste buchungsliste;
 
 	/**
 	 * Der Konstruktor erwartet einen Pruefungsterminplan und eine Studentenliste. <br>
@@ -27,10 +32,11 @@ public class ZufriedenheitsMesser {
 	 * @param prfgtpl (Pruefungsterminplan): Von der PruefungsPlanung erstellter PruefungsTerminplan.
 	 * @param stdl (Studentenliste): Die Verwaltungsliste mit den Studenten-Objekten.
 	 */
-	public ZufriedenheitsMesser(Pruefungsterminplan prfgtpl,Studentenliste stdl){
+	public ZufriedenheitsMesser(Pruefungsterminplan prfgtpl,Studentenliste stdl,Buchungsliste bl){
 		
 		this.pruefungsterminplan=prfgtpl;
 		this.studentenliste=stdl;
+		this.buchungsliste=bl;
 	}
 	
 	/**
@@ -53,8 +59,7 @@ public class ZufriedenheitsMesser {
 		}
 		
 		Iterator<Student> si = studentenliste.getStudentIterator();
-		Iterator<Pruefungstag> pi = pruefungsterminplan.getPruefungsplanIterator();
-		
+				
 		System.out.println("-"+studentenliste.getSize()+"-");
 		//alles an einem Tag -> zufrieden
 		while(si.hasNext()){
@@ -63,15 +68,31 @@ public class ZufriedenheitsMesser {
 			//zaehle Prüfungen für Student am Tag -> merke max Pruefungen / Tag
 			int maxPruefungenProTag = 0;
 			
+			Iterator<Pruefungstag> pi = pruefungsterminplan.getPruefungsplanIterator();
+						
 			while(pi.hasNext()){
 				Pruefungstag pruefungstag = pi.next();
 				Studentenliste sl = pruefungstag.getTagesStudentenliste();
-				if(sl==null){
-					System.err.println("Tagesstudentenliste ist null!!");
-				}else{
-					if(sl.containsStudent(student)){
+				
+				//alle Buchungen des aktuellen Studenten
+				Iterator<Buchung> bi = buchungsliste.getBuchungen(student).getIterator();
+				
+				if(sl.containsStudent(student)){
 						anzahlPruefungstage++;
-					}
+						//Anzahl Kurse die der Student an diesem Tag schreibt
+						int kurse = 0;
+						
+						while(bi.hasNext()){
+							Kurs k = bi.next().getKurs();
+							if(pruefungstag.getTagesKursliste().containsKurs(k)){
+								kurse++;
+							}
+						}
+						
+						if(kurse>maxPruefungenProTag){
+							maxPruefungenProTag=kurse;
+						}
+				
 				}
 			}
 			
