@@ -21,9 +21,11 @@ public class Planungsbedingungen
         */
        public Planungsbedingungen (int pruefungProTag)
        {
-           if (pruefungProTag <=8) {
+           if(pruefungProTag <=0){
+            System.out.println("Weniger als 0 Prüfungen am Tag sind nicht möglich!");
+            return;
+            }   
               this.pruefungProTag = pruefungProTag;
-              }
         }
 
         /**
@@ -32,9 +34,11 @@ public class Planungsbedingungen
        */  
         public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
        {
-           if (pruefungProStudentUndTag <=3) {
-           this.pruefungProStudentUndTag = pruefungProStudentUndTag;
+            if(pruefungProStudentUndTag <=0){
+            System.out.println("Student kann nicht weniger als 0 Prüfungen am Tag haben!");
+            return;
             }
+           this.pruefungProStudentUndTag = pruefungProStudentUndTag;  
         }
 
         /**
