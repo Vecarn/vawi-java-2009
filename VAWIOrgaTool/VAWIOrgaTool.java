@@ -23,6 +23,10 @@ public class VAWIOrgaTool {
 	private static int pruefungenProTag=3;
 	private static int pruefungenProStudentUndTag=3;
 	
+	private static int anzSimStudenten=50;
+	private static int minSimBuchungen=0;
+	private static int maxSimBuchungen=10;
+	
 	VAWIOrgaTool(String args[]) throws Exception{
 		System.out.println("VAWIOrgaTool 1 der Gruppe 5");
 		System.out.println("---------------------------");
@@ -68,6 +72,8 @@ public class VAWIOrgaTool {
 		System.out.println("Studentendatei: " + studentenDatei);
 		System.out.println("Kursdatei: " + kursDatei);
 		System.out.println("Buchungsdatei: " + buchungsDatei);
+		System.out.println("Prüfung pro Stundent und Tag: " +pruefungenProStudentUndTag);
+		System.out.println("Maximal geplante Prüfungen pro Tag: " +pruefungenProTag);
 	}
 
 	
@@ -105,11 +111,34 @@ public class VAWIOrgaTool {
 	    	System.out.println("Bitte maximale Prüfungen, die an einem Tag statt finden können angeben: ");
 	    	eingabe = getEingabe();
 	    	pruefungenProTag = Integer.parseInt(eingabe);
-	    	System.out.println("Prüfungen pro Tag auf " + pruefungenProStudentUndTag + " gesetzt.");
+	    	System.out.println("Prüfungen pro Tag auf " + pruefungenProTag + " gesetzt.");
     	}catch(java.lang.NumberFormatException e){
     		System.out.println("Fehler: Eingabe muss nummerische sein (Eingabe:" + eingabe +")");
     	}
     }
+    private void setSimulator(){
+    	String eingabe="";
+    	try {
+	    	System.out.println("Bitte Anzahl der fiktiven Studenten eingeben: ");
+	    	eingabe = getEingabe();
+	    	anzSimStudenten = Integer.parseInt(eingabe);
+	    	System.out.println("Anzahl fiktiver Studenten auf " + anzSimStudenten + " gesetzt.");
+	    	
+	    	System.out.println("Bitte minimale Anzahl an Buchungen der fiktiven Studenten eingeben: ");
+	    	eingabe = getEingabe();
+	    	minSimBuchungen = Integer.parseInt(eingabe);
+	    	System.out.println("Minimale Anzahl an Buchungen auf " + minSimBuchungen + " gesetzt.");
+	    	
+	    	System.out.println("Bitte maximal Anzahl an Buchungen der fiktiven Studenten eingeben: ");
+	    	eingabe = getEingabe();
+	    	maxSimBuchungen = Integer.parseInt(eingabe);
+	    	System.out.println("Maximale Anzahl an Buchungen auf " + minSimBuchungen + " gesetzt.");
+	    	
+    	}catch(java.lang.NumberFormatException e){
+    		System.out.println("Fehler: Eingabe muss nummerische sein (Eingabe:" + eingabe +")");
+    	}
+    }
+    
 
     private String getEingabe(){
     	
@@ -142,7 +171,8 @@ public class VAWIOrgaTool {
 				setMenu();
 				break;
 			case '2':
-				steuerung.erstelleFiktiveStudentenListe();
+				setSimulator();
+				steuerung.erstelleFiktiveStudentenListe(minSimBuchungen,maxSimBuchungen,anzSimStudenten);
 				System.out.println("---> Fiktive Studentenlisten erstellt!");
 				setMenu();
 				break;

@@ -95,10 +95,10 @@ public class Ablaufsteuerung {
      * Methode kuemmert sich um die Erstellung von fiktiven Studentenliste zur Simulation
      * @throws Exception
      */
-    public void erstelleFiktiveStudentenListe() throws Exception {
+    public void erstelleFiktiveStudentenListe(int minBuchungen,int maxBuchungen,int anzahlStudenten) throws Exception {
     	if(kursliste !=null){
     		System.out.println("Fiktive Studenten und Buchungen werden erstellt...");
-    		Simulator simulator = new Simulator(kursliste);
+    		Simulator simulator = new Simulator(kursliste,minBuchungen,maxBuchungen,anzahlStudenten);
             studentenliste = simulator.getStudentenliste();
             buchungsliste = simulator.getBuchungsliste();
     	} else {
