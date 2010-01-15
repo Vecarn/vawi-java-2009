@@ -2,6 +2,9 @@
 import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
 import AusgabeDatenVerwaltung.AusgabeVerwaltung;
 import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
+import EingabeDatenVerwaltung.DatenVerwaltung.Buchungsliste;
+import EingabeDatenVerwaltung.DatenVerwaltung.Kursliste;
+import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
 import EingabeDatenVerwaltung.Eingabe.FlatFileLeser;
 import PruefungsPlanung.PruefungsPlaner;
 import PruefungsPlanung.Planungsbedingungen;
@@ -25,6 +28,10 @@ public class Ablaufsteuerung {
     private ZufriedenheitsMesser zufriedenheitsMesser;
     private AusgabeVerwaltung ausgabeVerwalter;
     private Pruefungsterminplan pruefungsplan;
+    
+    private Buchungsliste buchungsliste;
+    private Studentenliste studentenliste;
+    private Kursliste kursliste;
 
     /**
      * Methode kuemmert sich um das korrekte Einlesen der Dateien
@@ -33,6 +40,9 @@ public class Ablaufsteuerung {
     public void leseDatenEin(String studentenFile, String buchungsFile, String kursFile) throws Exception {
         //Dateien einlesen
         flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
+        buchungsliste = flatFileLeser.getBuchungsliste();
+        studentenliste = flatFileLeser.getStudentenliste();
+        kursliste = flatFileLeser.getKursliste();
     }
 
     /**
@@ -49,7 +59,7 @@ public class Ablaufsteuerung {
         //Konkreten Pruefungsplaner erschaffen und Planungsbedingungen uebergeben
         PruefungsPlaner planer = new PruefungsPlanerAlgo1(bedingungen);
         //Pruefungsterminplan berechnen lassen
-        pruefungsplan = planer.berechnePruefungsTerminPlan(flatFileLeser.getStudentenliste(), flatFileLeser.getBuchungsliste(), flatFileLeser.getKursliste());
+        pruefungsplan = planer.berechnePruefungsTerminPlan(studentenliste,buchungsliste,kursliste);
     }
 
     /**
@@ -57,11 +67,10 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void gebeDatenAus() throws Exception {
-        //Dateien ausgeben
-        //ausgabeVerwalter = new AusgabeVerwaltung(flatFileLeser.getStudentenliste(), pruefungsplan, flatFileLeser.getKursliste(), flatFileLeser.getBuchungsliste());
-        //ausgabeVerwalter.generiereAnwesenheitsliste();
-        //ausgabeVerwalter.generiereNotenliste();
-        //ausgabeVerwalter.generierePlatzkartenliste();
+        ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
+        ausgabeVerwalter.generiereAnwesenheitsliste();
+        ausgabeVerwalter.generiereNotenliste();
+        ausgabeVerwalter.generierePlatzkartenliste();
     }
 
     /**
@@ -69,8 +78,8 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void werteZufriedenheitAus() throws Exception {
-        //zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, flatFileLeser.getStudentenliste());
-        //zufriedenheitsMesser.errechneZufriedenheit();
+        zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste);
+        zufriedenheitsMesser.errechneZufriedenheit();
     }
 
     /**
@@ -78,7 +87,9 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void erstelleFiktiveStudentenListe() throws Exception {
-        //simulator = new Simulator(flatFileLeser.getKursliste());
+        simulator = new Simulator(flatFileLeser.getKursliste());
+        studentenliste = simulator.getStudentenliste();
+        buchungsliste = simulator.getBuchungsliste();
     }
 
     /**
