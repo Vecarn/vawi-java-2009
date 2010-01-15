@@ -67,6 +67,7 @@ public class VAWIOrgaTool {
     	
 			switch (eingabe) {
 			case '0':
+				System.out.println("Beende Programm!");
 				steuerung.beendeProgramm();
 				break;
 			case '1':
