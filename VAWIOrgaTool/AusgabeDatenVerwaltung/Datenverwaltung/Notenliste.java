@@ -16,8 +16,13 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  */
 public class Notenliste {
 
-
+	/**
+	 * Die Buchungsliste
+	 */
     private Buchungsliste buchungsliste;
+    /**
+     * Die Ausgabeverwaltung
+     */
     private AusgabeVerwaltung ausgabeverwaltung;
     
 
@@ -45,14 +50,26 @@ public class Notenliste {
 	 * @return String mit der aufbereiteten Liste
 	 */
 	public String erzeugeListe(){
-			
+		
+		//output String für die Erzeugung der Liste
 		String output = new String();
+		//der Iterator der Buchungsliste
     	Iterator i1 = buchungsliste.getIterator();
+    	//integer Wert der den aktuellen Kurs speichert
     	int kursid = 0;
+    	
+    	
+    	//zum Output wird zuerst der Header hinzugefügt
     	output = ausgabeverwaltung.generiereHeader(1);
-    	    	
+
+    	//so lange der Iterator noch Elemente hat wird geloopt
     	while(i1.hasNext()){
+    		
+    		//Buchung holen
     		Buchung b = (Buchung) i1.next();
+    		
+    		//wenn die aktuelle Kursid ungleich der gespeicherten
+    		//dann Kurszeile ausgeben
     		if(kursid != b.getKurs().getKursid()){
     			 
     			output = output + "\n\nKurs " 
@@ -61,18 +78,23 @@ public class Notenliste {
     			output = output + "-----------------------------------\n";
     		}
     		
+    		//ansonsten hier weiter mit der Studentenzeile
     		output = output + b.getStudent().getName() + ", "
     					+ b.getStudent().getVorname();
     		
+    		//wenn der Kurs eine Teilleistung hat dann
+    		//das Ergebnis der TL in den Stream schreiben
     		if(b.getKurs().getHatTeilleistungen() == true){
     			output = output + ": " + b.getErreichtePunkte();
     		}
     		
+    		
     		output = output + "\n";
     		
-    		
+    		//die Kursid am Ende auf den aktuellen Kurs der Buchung setzen
     		kursid =  b.getKurs().getKursid();
     	}
+    	
     	
     	return output;
 	}
