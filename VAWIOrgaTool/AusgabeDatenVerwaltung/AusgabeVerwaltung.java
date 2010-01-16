@@ -1,5 +1,6 @@
 
 package AusgabeDatenVerwaltung;
+import java.util.Date;
 import java.util.Iterator;
 
 import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
@@ -23,7 +24,7 @@ import Hilfsklassen.Datei;
  */
 /**
  * @author Martin
- * @version 0.8
+ * @version 0.9
  *
  */
 public class AusgabeVerwaltung {
@@ -118,37 +119,14 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereNotenliste() {
     	
-    	String output = new String();
+    	notenliste = new Notenliste(buchungsliste, this);
     	
-    	Iterator i1 = buchungsliste.getIterator();
-    	
-    	int kursid = 0;
-    	
-    	while(i1.hasNext()){
-    		Buchung b = (Buchung) i1.next();
-    		if(kursid != b.getKurs().getKursid()){
-    			output = output + "Kurs " 
-    					+ b.getKurs().getKursid() +
-    					" - " + b.getKurs().getKurztitel() + "\n\r";
-    		}
-    		
-    		output = output + b.getStudent().getName() + ", "
-    					+ b.getStudent().getVorname();
-    		
-    		if(b.getKurs().getHatTeilleistungen() == true){
-    			output = output + ":" + b.getErreichtePunkte();
-    		}
-    		
-    		output = output + "\n\r";
-    		
-    		
-    		kursid =  b.getKurs().getKursid();
-    	}
-    	
-    	
-    	
-    	
-    	fileschreiber.writer(output);
+    	//öffne das File zum Schreiben 
+    	fileschreiber.openFile();
+    	//sting an die Ausgabeklasse senden
+    	fileschreiber.writer(notenliste.erzeugeListe());
+    	//File schliessen
+    	fileschreiber.closeFile();
     	
     	return true;
 	}
@@ -180,29 +158,71 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereTerminplan(){
     	
-    	String output = new String();
+//    	String output = new String();
     	
-    	Iterator i1 = pruefungsterminplan.getPruefungsplanIterator();
-    	while(i1.hasNext()){
-    		Pruefungstag p = (Pruefungstag) i1.next();
-    		output = output + "Tag " + p.getTagId() + ": \n\r";
-    		output = output + "------------------------------ \n\r";
+//    	Iterator i1 = pruefungsterminplan.getPruefungsplanIterator();
+//    	while(i1.hasNext()){
+//    		Pruefungstag p = (Pruefungstag) i1.next();
+//    		output = output + "Tag " + p.getTagId() + ": \n\r";
+//    		output = output + "------------------------------ \n\r";
+//    		
+//    		Iterator i2 = p.getTagesKursliste().getKursIterator();
+//    		while(i2.hasNext()){
+//    			
+//    			Kurs k = (Kurs) i2.next();
+//    			
+//    			output = output + k.getKursid() + " - " 
+//    					+ k.getKurztitel() + "\n\r";
+//    			
+//    		}
+//    	}
+//    	
+//    	
+//    	fileschreiber.writer(output);
+    	
+    	return true;
+    }
+    
+    /**
+     * Methode zum Erzeugen der Header für die Ausgabelisten
+     * @param listenID die ID wird zum Zeitpunkt der Listnerzeugung an die
+     * Methode übergeben, damit der entsprechende Header erzeugt werden kann
+     * @return String Variable, die den Header enthält
+     */
+    public String generiereHeader(int listenID){
+    	String header = new String();
+    	Date dt = new Date();
+    	
+    	
+    	switch(listenID){
+    	
+    	case 1:
+    		header = "------------------------------------\n";
+    		header = header +
+    				 "VAWi-Orga-Tool - Notenliste\n";
+    		header = header +
+    				 "------------------------------------\n";
     		
-    		Iterator i2 = p.getTagesKursliste().getKursIterator();
-    		while(i2.hasNext()){
-    			
-    			Kurs k = (Kurs) i2.next();
-    			
-    			output = output + k.getKursid() + " - " 
-    					+ k.getKurztitel() + "\n\r";
-    			
-    		}
+    		
+    		
+    	case 2:
+    		
+    	case 3:
+    		
+    	default:
+    	
     	}
     	
     	
-    	fileschreiber.writer(output);
+    	header = header + 
+    			 "Liste erzeugt am " + 
+    			 dt.toGMTString() + "\n";
+    	header = header + 
+    			 "------------------------------------\n";
     	
-    	return true;
+    	return header;
+    	
+    	
     }
 
  }
