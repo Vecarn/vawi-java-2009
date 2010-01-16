@@ -31,6 +31,7 @@ public class ZufriedenheitsMesser {
 	 * 
 	 * @param prfgtpl (Pruefungsterminplan): Von der PruefungsPlanung erstellter PruefungsTerminplan.
 	 * @param stdl (Studentenliste): Die Verwaltungsliste mit den Studenten-Objekten.
+	 * @param bl (Buchungsliste): Die Verwaltungsliste mit den Buchungs-Objekten.
 	 */
 	public ZufriedenheitsMesser(Pruefungsterminplan prfgtpl,Studentenliste stdl,Buchungsliste bl){
 		
@@ -59,8 +60,13 @@ public class ZufriedenheitsMesser {
 		}
 		
 		Iterator<Student> si = studentenliste.getStudentIterator();
-				
-		System.out.println("-"+studentenliste.getSize()+"-");
+		System.out.println("****** Start Zufriedenheitsberechnung.*********");
+		System.out.println("----------------------------------------------------");
+		System.out.println("Name, Vorname\t\tisZeitminimierer|isZufrieden\nMatrikelNr");
+		System.out.println("----------------------------------------------------");
+		
+		int anzahlZufrieden = 0;
+		
 		//alles an einem Tag -> zufrieden
 		while(si.hasNext()){
 			Student student = si.next();
@@ -106,17 +112,26 @@ public class ZufriedenheitsMesser {
 			}
 			
 			if(student.getZeitminimierer()&&(anzahlPruefungstage==1)){
+				// der Zeitminimierer-Student hat nur an einem Prüfungstag zu erscheinen -> er ist zufrieden
+				anzahlZufrieden++;
 				student.setZufrieden(true);
 			}else if(!student.getZeitminimierer()&&(maxPruefungenProTag==1)){
+			   // der nicht Zeitminimierer-Student schreibt maximal eine Prüfung pro Tag im ganzen Prüfungsterminplan -> er ist zufrieden
+				anzahlZufrieden++;
 				student.setZufrieden(true);
 			}else{
+			   // mit allen anderen Konstellationen sind die Studenten unzufrieden
 				student.setZufrieden(false);
 			}
-		
+			System.out.println(student.getName()+", "+student.getVorname());
+			System.out.println(student.getMatrikelnr()+"\t\t\t"+student.getZeitminimierer()+"\t\t "+student.getZufrieden());
+			System.out.println("--------------------------------------------------");
+			
 		}
 	
+	System.out.println("Anzahl Studenten: "+studentenliste.getSize()+" Anzahl zufriedene Studenten: "+anzahlZufrieden+ " => "+((double)anzahlZufrieden*100)/studentenliste.getSize()+"%");
+		
 	return studentenliste;
-	
 	}
 
 }
