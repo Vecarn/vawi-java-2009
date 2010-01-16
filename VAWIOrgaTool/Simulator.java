@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -164,7 +165,13 @@ public class Simulator {
 					}
 				}
 			}
-		}			
+		}
+		
+		System.out.println("Es wurden "+generierteStudentenliste.getSize()+" Studenten generiert.");
+		System.out.println("Jeder Student hat zwischen "+minBuchungen+" und "+maxBuchungen+" Buchungen.");
+		System.out.println("Insgesammt wurden "+generierteBuchungsliste.getSize()+" Buchungen zu den "+kursliste.getSize()+" gegebenen Kursen erstellt.\n"+
+				"Das sind im Durchschnitt: "+new DecimalFormat("0.00").format((double)generierteBuchungsliste.getSize()/generierteStudentenliste.getSize())+" Buchungen pro Student.");
+		
 	}
 	
 	/**
@@ -199,7 +206,7 @@ public class Simulator {
 		    }
 		   		     					
 		}
-	
+			
 	}
 	
 	/**
