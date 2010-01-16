@@ -87,12 +87,12 @@ public class Simulator {
 	public Simulator(Kursliste kursliste, int minBuchungen, int maxBuchungen, int anzahlStudenten){
 		
 		if(kursliste==null){
-			System.out.println("Kursliste ist null! -> keine Simulation");
+			System.out.println("Kursliste ist null! Keine Erstelltung der fiktiven Daten. Bitte erst Daten (Kursliste) einlesen.");
 			generierteBuchungsliste=null;
 			generierteStudentenliste=null;
 			return;
 		}else if(kursliste.getSize()==0){
-			System.out.println("Kursliste ist leer! -> keine Simulation");
+			System.out.println("Kursliste ist leer! Keine Erstelltung der fiktiven Daten. Bitte erst Daten (Kursliste) einlesen.");
 			generierteBuchungsliste=null;
 			generierteStudentenliste=null;
 			return;
