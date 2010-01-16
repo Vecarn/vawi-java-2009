@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Iterator;
 
 import AusgabeDatenVerwaltung.DatenObjekte.Pruefungstag;
@@ -129,7 +130,7 @@ public class ZufriedenheitsMesser {
 			
 		}
 	
-	System.out.println("Anzahl Studenten: "+studentenliste.getSize()+" Anzahl zufriedene Studenten: "+anzahlZufrieden+ " => "+((double)anzahlZufrieden*100)/studentenliste.getSize()+"%");
+	System.out.println("Anzahl Studenten: "+studentenliste.getSize()+" Anzahl zufriedene Studenten: "+anzahlZufrieden+ " => "+new DecimalFormat("0.00").format(((double)anzahlZufrieden*100)/studentenliste.getSize())+"%");
 		
 	return studentenliste;
 	}
