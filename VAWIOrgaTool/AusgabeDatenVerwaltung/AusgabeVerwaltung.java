@@ -161,12 +161,15 @@ public class AusgabeVerwaltung {
 		fileschreiber.setFile("platzkarten.txt");
     	
     	
- 
-    	
+		platzkartenliste = new Platzkartenliste(buchungsliste, pruefungsterminplan, this);
+		
+    	String output = new String();
+    	output = generiereHeader(4) + platzkartenliste.generiereListe();
+		
     	//öffne das File zum Schreiben 
     	fileschreiber.openFile();
     	//string an die Ausgabeklasse senden
-    	fileschreiber.writer("");
+    	fileschreiber.writer(output);
     	//File schliessen
     	fileschreiber.closeFile();
     	
@@ -277,6 +280,13 @@ public class AusgabeVerwaltung {
     		header = line;
     		header = header +
     				 "VAWi-Orga-Tool - Anwesenheitsliste\n";
+    		header = header +
+    				 line;
+    		break;
+    	case 4:
+    		header = line;
+    		header = header +
+    				 "VAWi-Orga-Tool - Platzkartenliste\n";
     		header = header +
     				 line;
     		break;
