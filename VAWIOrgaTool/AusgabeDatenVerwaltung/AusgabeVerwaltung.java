@@ -110,15 +110,21 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereAnwesenheitsliste(){
+
+    	
+    	anwesenheitsliste = new Anwesenheitsliste
+    							(buchungsliste,pruefungsterminplan, this);
+    	
+    	
+
+    	String outputstream = new String();
+    	outputstream = generiereHeader(3) + anwesenheitsliste.generiereListe();
+    	//filename setzen
     	fileschreiber.setFile("anwesenheitsliste.txt");
-    	
-    	
-    	notenliste = new Notenliste(buchungsliste, this);
-    	
     	//öffne das File zum Schreiben 
     	fileschreiber.openFile();
     	//string an die Ausgabeklasse senden
-    	fileschreiber.writer(notenliste.erzeugeListe());
+    	fileschreiber.writer(outputstream);
     	//File schliessen
     	fileschreiber.closeFile();
     	return true;
@@ -155,12 +161,12 @@ public class AusgabeVerwaltung {
 		fileschreiber.setFile("platzkarten.txt");
     	
     	
-    	notenliste = new Notenliste(buchungsliste, this);
+ 
     	
     	//öffne das File zum Schreiben 
     	fileschreiber.openFile();
     	//string an die Ausgabeklasse senden
-    	fileschreiber.writer(notenliste.erzeugeListe());
+    	fileschreiber.writer("");
     	//File schliessen
     	fileschreiber.closeFile();
     	
@@ -183,18 +189,13 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereTerminplan(){
-    	//filenamen setzen
-    	fileschreiber.setFile("terminplan.txt");
+    	
     	//output String initialisieren
     	String output = new String();
-  	
-    	//öffne das File zum Schreiben 
-    	fileschreiber.openFile();
-    	
+  	    	   	
     	//header erzeugen
     	output = generiereHeader(2);
-    	
-    	
+        	
     	Iterator i1 = pruefungsterminplan.getPruefungsplanIterator();
     	int tagid = 0;
     	
@@ -219,18 +220,19 @@ public class AusgabeVerwaltung {
     					k1.getTitel() +
     					"\n";	
     		}
-    		
-    		
     		output = output + "\n\n";
-    		
     	}
     	
     	
-    	
+    	//filenamen setzen
+    	fileschreiber.setFile("terminplan.txt");
+    	//öffne das File zum Schreiben 
+    	fileschreiber.openFile();
     	//string an die Ausgabeklasse senden
     	fileschreiber.writer(output);
     	//File schliessen
     	fileschreiber.closeFile();
+    	
     	return true;
     }
     
@@ -289,7 +291,8 @@ public class AusgabeVerwaltung {
     			 "Liste erzeugt am " + 
     			 dt.toGMTString() + "\n";
     	header = header + 
-    			 "---------------------------------------------\n\n\n";
+    			 line + 
+    			 "\n\n";
     	
     	return header;
     	
