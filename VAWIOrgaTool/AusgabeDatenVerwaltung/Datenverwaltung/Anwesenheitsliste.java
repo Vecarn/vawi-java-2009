@@ -19,7 +19,7 @@ import Hilfsklassen.*;
  */
 public class Anwesenheitsliste {
 
-	private Collection<Anwesenheit> anw_liste = new TreeSet<Anwesenheit>(new AnwesenheitComparator());
+	//private Collection<Anwesenheit> anw_liste = new TreeSet<Anwesenheit>(new AnwesenheitComparator());
 	private Buchungsliste buchungsliste;
 	private Pruefungsterminplan pruefungsterminplan;
 	private AusgabeVerwaltung ausgabeverwaltung;
@@ -50,13 +50,74 @@ public class Anwesenheitsliste {
 	 */
 	public String generiereListe() {
 
+		String output_b = new String();
+		String output_d = new String();
 		String output = new String();
 		
+		Iterator i_pplan = pruefungsterminplan.getPruefungsplanIterator();
+		
+		while(i_pplan.hasNext()){
+			
+			Pruefungstag tmp_pt = (Pruefungstag) i_pplan.next();
+			
+			output_b = 
+				output_b + "\nBamberg - Tag " + tmp_pt.getTagId() + "\n\n";
+			output_d =
+				output_d + "\nDuisburg-Essen - Tag " + tmp_pt.getTagId() + "\n\n";
+			
+			Iterator i_studenten = 
+				tmp_pt.getTagesStudentenliste().getStudentIterator();
+			
+			Iterator i_tageskurse =
+				tmp_pt.getTagesKursliste().getKursIterator();
+			
+			String tageskurse = null;
+			tageskurse = new String();
+			
+			while(i_tageskurse.hasNext()){
+				Kurs tmp_kurs = (Kurs) i_tageskurse.next();
+				tageskurse = tageskurse + tmp_kurs.getKurztitel() + "|";
+				
+			}
+			
+			
+			while(i_studenten.hasNext()){
+				
+				
+				Student tmp_student = (Student) i_studenten.next();
+				
+				switch(tmp_student.getUni()){
+				
+				case 'B':
+					
+					output_b = output_b + tmp_student.getName() + ", " +
+							tmp_student.getVorname() + "\t";
+					
+					output_b = output_b + tageskurse + "\n";
+					
+					
+					
+					break;
+				case 'D':
+					output_d = output_d + tmp_student.getName() + ", " +
+					tmp_student.getVorname() + "\t";
+					
+					output_d = output_d + tageskurse + "\n";
+					break;
+				default:
+					break;
+				}
+				
+			}
+			
+			
+		}
 		
 		
 		
 		
 		
+		output = output_b + "\n\n\n" + output_d;
 		
 		
 		return output;
