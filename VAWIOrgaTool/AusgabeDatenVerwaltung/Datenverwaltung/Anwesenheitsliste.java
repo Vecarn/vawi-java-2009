@@ -80,7 +80,7 @@ public class Anwesenheitsliste {
 				case 'B':
 
 					output_b = output_b + tmp_student.getName() + ", "
-							+ tmp_student.getVorname() + "\t";
+							+ tmp_student.getVorname() + ": ";
 
 					tageskurse = tmp_pt.getTagesKursliste();
 
@@ -93,12 +93,16 @@ public class Anwesenheitsliste {
 						if (tageskurse.getKurs(tmp_buchung.getKurs()
 								.getKursid()) != null) {
 
+							
 							output_b = output_b
-									+ tmp_buchung.getKurs().getKurztitel();
+									+ tmp_buchung.getKurs().getKurztitel() + ",";
 
+							
+							
 						}
 
 					}
+					
 					output_b = output_b + "\n";
 
 					break;
@@ -106,7 +110,7 @@ public class Anwesenheitsliste {
 				case 'D':
 
 					output_d = output_d + tmp_student.getName() + ", "
-							+ tmp_student.getVorname() + "\t";
+							+ tmp_student.getVorname() + ": ";
 
 					tageskurse = tmp_pt.getTagesKursliste();
 
@@ -120,24 +124,24 @@ public class Anwesenheitsliste {
 								.getKursid()) != null) {
 
 							output_d = output_d
-									+ tmp_buchung.getKurs().getKurztitel();
+									+ tmp_buchung.getKurs().getKurztitel() + ",";
 
 						}
 
 					}
+					//output_d = output_d.substring(0, output.length());
 					output_d = output_d + "\n";
 
 					break;
 
-				
+				}
+
 			}
 
 		}
 
+		output = output_b + "\n\n\n" + output_d;
+		return output;
+
 	}
-
-	output = output_b + "\n\n\n" + output_d;
-	return output;
-
-}
 }
