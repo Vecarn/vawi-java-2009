@@ -71,6 +71,7 @@ public class Ablaufsteuerung {
 	        AusgabeVerwaltung ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
 	        ausgabeVerwalter.generiereAnwesenheitsliste();
 	        ausgabeVerwalter.generiereNotenliste();
+	        ausgabeVerwalter.generiereTerminplan();
 	        ausgabeVerwalter.generierePlatzkartenliste();
     	} else {
     		System.out.println("Achtung: Es sind keine Daten zur Ausgabe vorhanden. Bitte erst die Planung starten!");
