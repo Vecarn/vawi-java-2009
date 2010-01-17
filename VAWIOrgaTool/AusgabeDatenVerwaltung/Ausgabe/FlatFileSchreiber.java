@@ -9,7 +9,7 @@ import Hilfsklassen.*;
  * Realisierung des Datenschreibers, der FlatFiles ausgibt.
  * 
  * @author Martin
- * @version 0.8
+ * @version 1.0
  */
 public class FlatFileSchreiber {
 
@@ -24,11 +24,13 @@ public class FlatFileSchreiber {
      * auf die AusgabeVerwaltung
      */
     public FlatFileSchreiber(AusgabeVerwaltung ausgabeVerwaltung) {
-		datei = new Datei("output.txt");
+		
 		this.ausgabeVerwaltung = ausgabeVerwaltung;
     }
     
-    
+    public void setFile(String name){
+    	datei = new Datei(name);
+    }
     
     /**
      * Methode für das Öffnen eines neuen Files

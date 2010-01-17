@@ -12,7 +12,7 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  * Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
  * 
  * @author Martin
- * @version 1.0
+ * @version 1.1
  */
 public class Notenliste {
 
@@ -75,7 +75,7 @@ public class Notenliste {
     			output = output + "\n\nKurs " 
     					+ b.getKurs().getKursid() +
     					" - " + b.getKurs().getKurztitel() + "\n";
-    			output = output + "-----------------------------------\n";
+    			output = output + ausgabeverwaltung.line;
     		}
     		
     		//ansonsten hier weiter mit der Studentenzeile

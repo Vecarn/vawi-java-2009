@@ -24,7 +24,7 @@ import Hilfsklassen.Datei;
  */
 /**
  * @author Martin
- * @version 0.9
+ * @version 1.0
  *
  */
 public class AusgabeVerwaltung {
@@ -74,7 +74,11 @@ public class AusgabeVerwaltung {
      */
     private Iterator<Buchung> bi;
     
-
+    /**
+     * public final String für die Erzeugung einer Linie in der Ausgabe
+     */
+    public final String line = 
+		new String("---------------------------------------------\n");
     
     /**
      * Konstruktor fuer die Klasse Ausgabeverwaltung
@@ -106,8 +110,17 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereAnwesenheitsliste(){
-    	fileschreiber.writer("");
+    	fileschreiber.setFile("anwesenheitsliste.txt");
     	
+    	
+    	notenliste = new Notenliste(buchungsliste, this);
+    	
+    	//öffne das File zum Schreiben 
+    	fileschreiber.openFile();
+    	//string an die Ausgabeklasse senden
+    	fileschreiber.writer(notenliste.erzeugeListe());
+    	//File schliessen
+    	fileschreiber.closeFile();
     	return true;
     }
     
@@ -119,11 +132,14 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereNotenliste() {
     	
+    	fileschreiber.setFile("notenliste.txt");
+    	
+    	
     	notenliste = new Notenliste(buchungsliste, this);
     	
     	//öffne das File zum Schreiben 
     	fileschreiber.openFile();
-    	//sting an die Ausgabeklasse senden
+    	//string an die Ausgabeklasse senden
     	fileschreiber.writer(notenliste.erzeugeListe());
     	//File schliessen
     	fileschreiber.closeFile();
@@ -136,7 +152,17 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generierePlatzkartenliste() {
-    	fileschreiber.writer("");
+		fileschreiber.setFile("platzkarten.txt");
+    	
+    	
+    	notenliste = new Notenliste(buchungsliste, this);
+    	
+    	//öffne das File zum Schreiben 
+    	fileschreiber.openFile();
+    	//string an die Ausgabeklasse senden
+    	fileschreiber.writer(notenliste.erzeugeListe());
+    	//File schliessen
+    	fileschreiber.closeFile();
     	
     	return true;
 	}
@@ -157,39 +183,70 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generiereTerminplan(){
+    	//filenamen setzen
+    	fileschreiber.setFile("terminplan.txt");
+    	//output String initialisieren
+    	String output = new String();
+  	
+    	//öffne das File zum Schreiben 
+    	fileschreiber.openFile();
     	
-//    	String output = new String();
+    	//header erzeugen
+    	output = generiereHeader(2);
     	
-//    	Iterator i1 = pruefungsterminplan.getPruefungsplanIterator();
-//    	while(i1.hasNext()){
-//    		Pruefungstag p = (Pruefungstag) i1.next();
-//    		output = output + "Tag " + p.getTagId() + ": \n\r";
-//    		output = output + "------------------------------ \n\r";
-//    		
-//    		Iterator i2 = p.getTagesKursliste().getKursIterator();
-//    		while(i2.hasNext()){
-//    			
-//    			Kurs k = (Kurs) i2.next();
-//    			
-//    			output = output + k.getKursid() + " - " 
-//    					+ k.getKurztitel() + "\n\r";
-//    			
-//    		}
-//    	}
-//    	
-//    	
-//    	fileschreiber.writer(output);
     	
+    	Iterator i1 = pruefungsterminplan.getPruefungsplanIterator();
+    	int tagid = 0;
+    	
+    	while(i1.hasNext()){
+    		Pruefungstag p1 = (Pruefungstag) i1.next();
+    		
+    		if(p1.getTagId() != tagid){
+    			output = output + "Pruefungstag " +
+    					 p1.getTagId() + "\n";
+    			output = output + line;
+    		}
+    		
+    		Kursliste kl1 = p1.getTagesKursliste();
+    		Iterator i2 = kl1.getKursIterator();
+    		
+    		while(i2.hasNext()){
+    			
+    			Kurs k1 = (Kurs) i2.next();
+    			output = output + 
+    					k1.getKurztitel() +
+    					" - " + 
+    					k1.getTitel() +
+    					"\n";	
+    		}
+    		
+    		
+    		output = output + "\n\n";
+    		
+    	}
+    	
+    	
+    	
+    	//string an die Ausgabeklasse senden
+    	fileschreiber.writer(output);
+    	//File schliessen
+    	fileschreiber.closeFile();
     	return true;
     }
+    
     
     /**
      * Methode zum Erzeugen der Header für die Ausgabelisten
      * @param listenID die ID wird zum Zeitpunkt der Listnerzeugung an die
      * Methode übergeben, damit der entsprechende Header erzeugt werden kann
+     * <br> 1 - Notenliste
+     * <br> 2 - Terminplan
+     * <br> 3 - Anwesenheitsliste
      * @return String Variable, die den Header enthält
      */
     public String generiereHeader(int listenID){
+    	
+    	
     	String header = new String();
     	Date dt = new Date();
     	
@@ -197,19 +254,33 @@ public class AusgabeVerwaltung {
     	switch(listenID){
     	
     	case 1:
-    		header = "------------------------------------\n";
+    		header = line;
     		header = header +
     				 "VAWi-Orga-Tool - Notenliste\n";
     		header = header +
-    				 "------------------------------------\n";
+    				 line;
+    		break;
     		
     		
     		
     	case 2:
+    		header = line;
+    		header = header +
+    				 "VAWi-Orga-Tool - Terminplan\n";
+    		header = header +
+    				 line;
+    		break;
     		
     	case 3:
+    		header = line;
+    		header = header +
+    				 "VAWi-Orga-Tool - Anwesenheitsliste\n";
+    		header = header +
+    				 line;
+    		break;
     		
     	default:
+    		break;
     	
     	}
     	
@@ -218,7 +289,7 @@ public class AusgabeVerwaltung {
     			 "Liste erzeugt am " + 
     			 dt.toGMTString() + "\n";
     	header = header + 
-    			 "------------------------------------\n";
+    			 "---------------------------------------------\n\n\n";
     	
     	return header;
     	
