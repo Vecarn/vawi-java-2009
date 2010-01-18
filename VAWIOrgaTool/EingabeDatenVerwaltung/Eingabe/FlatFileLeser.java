@@ -89,6 +89,8 @@ public class FlatFileLeser {
 	 */
 	private void erstelleKursliste() throws IOException {
 		
+		System.out.println("=========Kursdaten=======================");
+		
 		//Öffne Datei und Prüfe ob Fehler dabei auftritt
 		if(kursdatei.openInFile()!=0){
 			throw new IOException("Fehler: Beim öffnen der Eingabedatei - Kursliste.");
@@ -130,11 +132,9 @@ public class FlatFileLeser {
 					int maxPunkte = new Integer(daten[8].replaceAll(" ", "")).intValue();
 					kursliste.addNeuerKurs(kursid, kurztitel, titel, teilleistungen, maxPunkte);
 					
-				} catch (ArrayIndexOutOfBoundsException e) {
-					System.err.println("Kursdatensatz hat falsche Länge -> überspringen.");
-				} catch (NumberFormatException e) {
-					System.err.println("Kursdatensatz fehlerhaft -> überspringen.");
-				}				
+				} catch (Exception e) {
+					System.out.println("Zeile "+(anzahlZeilen+1)+": Kursdatensatz fehlerhaft -> überspringen.");
+				} 
             	
                 anzahlZeilen++;                  
             }            
@@ -146,7 +146,7 @@ public class FlatFileLeser {
             throw new IOException("Fehler: Beim schliessen der Eingabedatei - Kursliste.");
         }
         
-        System.out.println("== Anzahl Zeilen in der Kursdatei: "+anzahlZeilen+" Anzahl eindeutige Kurse: "+kursliste.getSize());
+        System.out.println("Anzahl Zeilen in der Kursdatei: "+anzahlZeilen+"\nAnzahl eindeutige, korrekte Kursdatensätze: "+kursliste.getSize());
 	}
 	
 	/**
@@ -155,6 +155,7 @@ public class FlatFileLeser {
 	 */
 	private void erstelleBuchungsliste() throws IOException {
 		
+		System.out.println("=========Buchungsdaten===================");
 		//erst Studentenliste und Kursliste erstellen
 		//beim erstellen neuer Buchung: buchung.setStudent(studentenliste.getStudent(id))
 		//   							buchung.setKurs(kursliste.getKurs(id))
@@ -193,14 +194,12 @@ public class FlatFileLeser {
 							&& (kursliste.getKurs(kursid) != null)) {
 						buchungsliste.addBuchung(studentenliste.getStudent(matrikelnr), kursliste.getKurs(kursid), erreichtePunkte);
 					} else {
-						System.out.println("Student Nr:"+matrikelnr+" oder Kurs Nr:"+kursid+" der Buchung nicht in Kurs-/Studentenliste -> Buchung nicht aufgenommen!");
+						System.out.println("Zeile "+(anzahlZeilen+1)+": Student (Nr:"+matrikelnr+") oder Kurs (Nr:"+kursid+") der Buchung nicht in Kurs-/Studentenliste -> Buchung nicht aufgenommen!");
 					}
 					
-				} catch(ArrayIndexOutOfBoundsException e){
-					System.err.println("Buchungssatz hat falsche Länge -> überspringen.");
-				} catch (NumberFormatException e) {
-					System.err.println("Buchungssatz fehlerhaft -> überspringen.");
-				}
+				} catch(Exception e){
+					System.out.println("Zeile "+(anzahlZeilen+1)+": Buchungssatz fehlerhaft -> überspringen.");
+				}  
 				
 				anzahlZeilen++;
 			}	
@@ -210,7 +209,7 @@ public class FlatFileLeser {
         	throw new IOException("Fehler: Beim schliessen der Eingabedatei - Buchungsliste.");
         }
         
-        System.out.println("== Anzahl Zeilen in der Buchungsdatei: "+anzahlZeilen+" Anzahl eindeutige Buchungen: "+buchungsliste.getSize());
+        System.out.println("Anzahl Zeilen in der Buchungsdatei: "+anzahlZeilen+"\nAnzahl eindeutige, korrekte Buchungsdatensätze: "+buchungsliste.getSize());
 	}
 	
 	/**
@@ -218,6 +217,9 @@ public class FlatFileLeser {
 	 * 
 	 */
 	private void erstelleStudentenliste() throws IOException {
+		
+		System.out.println("=========Studentendaten==================");
+		
 		//erst Studentenliste und Kursliste erstellen
 		//beim erstellen neuer Buchung: buchung.setStudent(studentenliste.getStudent(id))
 		//   							buchung.setKurs(kursliste.getKurs(id))
@@ -266,10 +268,8 @@ public class FlatFileLeser {
 
 					studentenliste.addNeuerStudent(matrikelNummer, name,vorname, uni, bundesland, zeitminimierer);
 				
-				} catch (ArrayIndexOutOfBoundsException e) {
-					System.err.println("Studentendatensatz hat falsche Länge -> überspringen.");
-				} catch (NumberFormatException e) {
-					System.err.println("Studentendatensatz fehlerhaft -> überspringen.");
+				} catch (Exception e) {
+					System.out.println("Zeile "+(anzahlZeilen+1)+": Studentendatensatz hat falsche Länge -> überspringen.");
 				}
 
 				anzahlZeilen++;
@@ -281,7 +281,7 @@ public class FlatFileLeser {
         	throw new IOException("Fehler: Beim schliessen der Eingabedatei - Studentenliste.");
         }
         
-        System.out.println("== Anzahl Zeilen in der Studentendatei: "+anzahlZeilen+" Anzahl eindeutige Studenten: "+studentenliste.getSize());
+        System.out.println("Anzahl Zeilen in der Studentendatei: "+anzahlZeilen+"\nAnzahl eindeutige, korrekte Studentendatensätze: "+studentenliste.getSize());
 		
 	}
 
