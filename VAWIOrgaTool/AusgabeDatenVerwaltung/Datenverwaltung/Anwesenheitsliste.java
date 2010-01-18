@@ -68,10 +68,12 @@ public class Anwesenheitsliste {
 
 			//zu Beginn eines jeden Prüfungstages werden die entsprechenden
 			//Tages-Header in die jeweiligen Output-Strings geschrieben
-			output_b = output_b + "\nBamberg - Tag " + tmp_pt.getTagId()
-					+ "\n\n";
-			output_d = output_d + "\nDuisburg-Essen - Tag " + tmp_pt.getTagId()
-					+ "\n\n";
+			output_b = output_b + "\nUniversität Bamberg - Tag " 
+						+ tmp_pt.getTagId()
+						+ "\n\n";
+			output_d = output_d + "\nUniversität Duisburg-Essen - Tag "
+						+ tmp_pt.getTagId()
+						+ "\n\n";
 
 			
 			Iterator i_studenten = tmp_pt.getTagesStudentenliste().getStudentIterator();
