@@ -111,12 +111,8 @@ public class AusgabeVerwaltung {
      */
     public boolean generiereAnwesenheitsliste(){
 
-    	
     	anwesenheitsliste = new Anwesenheitsliste
     							(buchungsliste,pruefungsterminplan, this);
-    	
-    	
-
     	String outputstream = new String();
     	outputstream = generiereHeader(3) + anwesenheitsliste.generiereListe();
     	//filename setzen
@@ -139,10 +135,7 @@ public class AusgabeVerwaltung {
     public boolean generiereNotenliste() {
     	
     	fileschreiber.setFile("notenliste.txt");
-    	
-    	
     	notenliste = new Notenliste(buchungsliste, this);
-    	
     	//öffne das File zum Schreiben 
     	fileschreiber.openFile();
     	//string an die Ausgabeklasse senden
@@ -158,14 +151,12 @@ public class AusgabeVerwaltung {
      * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
      */
     public boolean generierePlatzkartenliste() {
-		fileschreiber.setFile("platzkarten.txt");
-    	
-    	
-		platzkartenliste = new Platzkartenliste(buchungsliste, pruefungsterminplan, this);
 		
+    	fileschreiber.setFile("platzkarten.txt");
+		platzkartenliste = new Platzkartenliste(buchungsliste, 
+				pruefungsterminplan, this);
     	String output = new String();
     	output = generiereHeader(4) + platzkartenliste.generiereListe();
-		
     	//öffne das File zum Schreiben 
     	fileschreiber.openFile();
     	//string an die Ausgabeklasse senden
@@ -177,15 +168,6 @@ public class AusgabeVerwaltung {
 	}
     
     
-    /**
-     * Methode für das Erzeugen der Zufriedenheitsliste
-     * @return true, wenn erfolgreich<br>false, wenn nicht erfolgreich
-     */
-    public boolean generiereZufriefenheitsliste(){
-    	fileschreiber.writer("");
-    	
-    	return true;
-    }
     
     /**
      * Methode für das Erzeugen der Ausgabe eines Terminplanes
@@ -247,17 +229,15 @@ public class AusgabeVerwaltung {
      * <br> 1 - Notenliste
      * <br> 2 - Terminplan
      * <br> 3 - Anwesenheitsliste
+     * <br> 4 - Platzkartenliste
      * @return String Variable, die den Header enthält
      */
     public String generiereHeader(int listenID){
     	
-    	
     	String header = new String();
     	Date dt = new Date();
     	
-    	
     	switch(listenID){
-    	
     	case 1:
     		header = line;
     		header = header +
@@ -265,9 +245,6 @@ public class AusgabeVerwaltung {
     		header = header +
     				 line;
     		break;
-    		
-    		
-    		
     	case 2:
     		header = line;
     		header = header +
@@ -275,7 +252,6 @@ public class AusgabeVerwaltung {
     		header = header +
     				 line;
     		break;
-    		
     	case 3:
     		header = line;
     		header = header +
@@ -290,10 +266,8 @@ public class AusgabeVerwaltung {
     		header = header +
     				 line;
     		break;
-    		
     	default:
     		break;
-    	
     	}
     	
     	
@@ -305,8 +279,6 @@ public class AusgabeVerwaltung {
     			 "\n\n";
     	
     	return header;
-    	
-    	
     }
 
  }
