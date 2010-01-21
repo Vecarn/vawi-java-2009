@@ -34,7 +34,7 @@ public class Kursliste {
     public boolean addNeuerKurs(int id, String kurztitel, String titel, boolean teilleistungen, int maxPunkte){
     	
     	Kurs kurs = new Kurs(id,titel,kurztitel);
-    	
+    	//wenn der Kurs noch nicht in der Collection ist, setze auch die restlichen Attribute und gibt true zurück
     	if(kurse.add(kurs)){
     		kurs.setHatTeilleistungen(teilleistungen);
     		kurs.setMaxPunkte(maxPunkte);
@@ -72,9 +72,10 @@ public class Kursliste {
     public Kurs getKurs(int kursId){
     	    	
     	Iterator<Kurs> kursiterator = kurse.iterator();
-    		
+    	//gehe über alle Kurse	
     	while(kursiterator.hasNext()){
     		Kurs kurs = kursiterator.next();
+    		//wenn der aktuelle Kurs die übergebene KursId hat, wird er zurückgegeben
     		if(kurs.getKursid() == kursId){
     			return kurs;
     		}
@@ -109,13 +110,22 @@ public class Kursliste {
      */
     public void removeKurs(Kurs kurs){
 		Iterator<Kurs> kursiterator = kurse.iterator();
+		//gehe über alle Kurs
 		while(kursiterator.hasNext()){
-			if(kursiterator.next().equals(kurs)){
+			//wenn der übergebene Kurs dem aktuellen Kurs entspricht wird dieser vom Iterator 
+			//und damit der zugrunde liegenden Collection gelöscht
+			if(kursiterator.next()==kurs){
 				kursiterator.remove();
 			}
 		}
     }
     
+    /**
+     * Prüft ob das übergebene Objekt in der Liste enthalten ist.
+     * @param kurs (Kurs) - Ein Kursobjekt.
+     * @return true: wenn die zugrunde liegende Collection das Objekt beinhaltet.<br>
+     * 			false: wenn die zugrunde liegende Collection das Objekt nicht beinhaltet.
+     */
     public boolean containsKurs(Kurs kurs){
     	return(kurse.contains(kurs));
     }

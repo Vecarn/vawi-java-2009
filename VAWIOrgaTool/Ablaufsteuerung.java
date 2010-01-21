@@ -31,13 +31,19 @@ public class Ablaufsteuerung {
      * Methode kuemmert sich um das korrekte Einlesen der Dateien
      * @throws Exception
      */
-    public void leseDatenEin(String studentenFile, String buchungsFile, String kursFile) throws Exception {
+    public void leseDatenEin(String studentenFile, String buchungsFile, String kursFile, int einleseModus) throws Exception {
     	System.out.println("Daten werden eingelesen...");
         //Dateien einlesen
-    	FlatFileLeser flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
-        buchungsliste = flatFileLeser.getBuchungsliste();
-        studentenliste = flatFileLeser.getStudentenliste();
-        kursliste = flatFileLeser.getKursliste();
+    	if(einleseModus==1){
+    		FlatFileLeser flatFileLeser = new FlatFileLeser(studentenFile, buchungsFile, kursFile);
+    		buchungsliste = flatFileLeser.getBuchungsliste();
+    		studentenliste = flatFileLeser.getStudentenliste();
+    		kursliste = flatFileLeser.getKursliste();
+    	}else{
+    		FlatFileLeser flatFileLeser = new FlatFileLeser(kursFile);
+    		kursliste = flatFileLeser.getKursliste();
+    	}
+    	
     }
 
     /**
@@ -47,7 +53,7 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void startePlanungslauf(int pruefungenProTag, int pruefungenProStudentUndTag) throws Exception {
-        if(studentenliste!=null && kursliste !=null && kursliste !=null){ 
+        if(studentenliste!=null && buchungsliste !=null && kursliste !=null){ 
         	System.out.println("Planungslauf wird gestartet...");
         	//Planungsbedingungsklasse erschaffen
         	Planungsbedingungen bedingungen = new Planungsbedingungen(pruefungenProTag);
@@ -66,7 +72,7 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void gebeDatenAus() throws Exception {
-    	if(studentenliste != null && kursliste !=null && kursliste !=null && pruefungsplan != null){
+    	if(studentenliste != null && buchungsliste !=null && kursliste !=null && pruefungsplan != null){
     		System.out.println("Daten werden ausgegeben...");
 	        AusgabeVerwaltung ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
 	        ausgabeVerwalter.generiereAnwesenheitsliste();
@@ -83,7 +89,7 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void werteZufriedenheitAus() throws Exception {
-    	if(pruefungsplan!=null && studentenliste !=null){
+    	if(pruefungsplan!=null && studentenliste !=null && buchungsliste != null){
     		System.out.println("Zufriedenheit wird ausgegeben...");
     		ZufriedenheitsMesser zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste,buchungsliste);
     		zufriedenheitsMesser.errechneZufriedenheit();

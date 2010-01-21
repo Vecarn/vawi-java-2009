@@ -3,9 +3,7 @@ package EingabeDatenVerwaltung.DatenVerwaltung;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.TreeSet;
-import java.util.Map.Entry;
 
 import EingabeDatenVerwaltung.DatenObjekte.*;
 
@@ -49,11 +47,15 @@ public class Buchungsliste {
 		    	
     	Buchung buchung = new Buchung(student,kurs);
     	buchung.setErreichtePunkte(erreichtePunkte);
+    	//nur wenn true geliefert wird, muss die Buchung gezählt werden
+    	//wenn buchungen.add(buchung) false liefert, gibt es diese Buchung bereits
     	if(buchungen.add(buchung)){
     		
     		if(buchungszahlen.containsKey(kurs)){
+    			//der Kurs trat bereits einmal auf -> der Value (anzahl Buchungen) zu dem Key(kurs) muss erhöht werden
     			buchungszahlen.put(kurs, new Integer((buchungszahlen.get(kurs).intValue())+1));
     		}else{
+    			//der Kurs trat noch nicht auf -> Value auf 1 setzen.
     			buchungszahlen.put(kurs, new Integer(1));
     		}
     		
@@ -72,8 +74,11 @@ public class Buchungsliste {
      */
     public int anzBuchungenKurs(Kurs kurs){
     	if(buchungszahlen.get(kurs)==null){
+    		//wenn get(kurs) null liefert, ist Key(kurs) nich vorhanden -> 
+    		// es gibt also keine Buchungen zu dem Kurs -> return 0
     		return 0;
     	}
+    	//return Anzahl Buchungen
     	return buchungszahlen.get(kurs).intValue();
     }
     
@@ -86,7 +91,9 @@ public class Buchungsliste {
     public int anzBuchungenStudent(Student student){
     	int anzBuchungen = 0;
     	Iterator<Buchung> bi = getIterator();
+    	//gehe über alle Buchungsobjekte
     	while(bi.hasNext()){
+    		//wenn der übergebene Student auch in dem Buchungsobjekt referenziert ist erhöhe anzBuchungen
     		if(bi.next().getStudent()==student){
     			anzBuchungen++;
     		}
@@ -108,16 +115,6 @@ public class Buchungsliste {
     }
     
     /**
-     * Liefert Set mit der Anzahl Buchungen pro Kurs.<br>
-     * Ein Eintrag besteht aus KEY (Kurs) und Value (Anzahl Buchungen).
-     * 
-     * @return EntrySet: Repräsentierung der Inhalte des Buchungszaehlers als Set.
-     */
-    public Set<Entry<Kurs,Integer>> getBuchungszaehlerEntrySet(){
-    	return buchungszahlen.entrySet();
-   	 
-    }
-    /**
      * Liefert die Anzahl der existierenden Buchungs-Objekte.
      * 
      * @return int: Anzahl Buchungen in der Buchungsliste.
@@ -138,9 +135,12 @@ public class Buchungsliste {
 	   	Iterator<Buchung> bi = getIterator();
     	
 	   	Buchung buchung = null;
-	   	
+	   	//gehe über alle Buchungen
     	while(bi.hasNext()){
+    		//setze das nächste Buchungsobjekt auf buchung
 	   		buchung = bi.next();
+	   		//wenn die übergebenen IDs den IDs der Kurs und Studentenobjekte des aktuellen Buchungsobjeks entsprechen
+	   		//wird buchung zurückgegeben, sonst bleibt buchung = null
 	   		if((buchung.getKurs().getKursid()==kursid)&&(buchung.getStudent().getMatrikelnr()==matrikelnr)){
 	   			return buchung;
 	   		}else{
@@ -172,15 +172,15 @@ public class Buchungsliste {
      * @return Buchungsliste: Collection mit Buchungen des übergebenen Studenten.
      */
     public Buchungsliste getBuchungen(Student student){
-    	
+    	//erzeuge neue Buchungsliste
     	Buchungsliste buchungsliste = new Buchungsliste();
     	
     	Iterator<Buchung> bi = getIterator();
-    	
+    	//gehe über alle Buchungen
 	   	while(bi.hasNext()){
 	   		
 	   		Buchung buchung = bi.next();
-	   		
+	   		//wenn die aktuelle Buchung zu dem übergebenen Studenten gehört, wird das Buchungsobjekt der neuen Buchungsliste hinzugefügt
 	   		if(buchung.getStudent().getMatrikelnr()==student.getMatrikelnr()){
 	   			buchungsliste.addBuchung(buchung);
 	   		}
@@ -198,15 +198,15 @@ public class Buchungsliste {
      * @return Buchungsliste: Collection mit allen Buchungen für das übergebene Kursobjekt
      */
     public Buchungsliste getBuchungen(Kurs kurs){
-    	
+    	//die Studenten id von arg0 ist kleiner > -1
     	Buchungsliste buchungsliste = new Buchungsliste();
     	
     	Iterator<Buchung> bi = getIterator();
-    	
+    	//die Studenten id von arg0 ist kleiner > -1
 	   	while(bi.hasNext()){
 	   		
 	   		Buchung buchung = bi.next();
-	   		
+	   	    //wenn die aktuelle Buchung zu dem übergebenen Kurs gehört, wird das Buchungsobjekt der neuen Buchungsliste hinzugefügt
 	   		if(buchung.getKurs().getKursid()==kurs.getKursid()){
 	   			buchungsliste.addBuchung(buchung);
 	   		}
@@ -216,17 +216,4 @@ public class Buchungsliste {
 		return buchungsliste;
     }
     
-    /**
-     * Die Methode entfernt alle Buchungen für das übergebe Kursobjekt aus der Buchungsmenge.
-     * 
-     * @param kurs (Kurs) - Ein Kursobjekt des Kurses für den die Buchungen gelöscht werden sollen.
-     */
-    public void removeBuchungen(Kurs kurs){
-		Iterator<Buchung> bi = getBuchungen(kurs).getIterator();
-    	while(bi.hasNext()){
-    		bi.next();
-    		bi.remove();
-    	}
-    }
-       
 }
