@@ -27,6 +27,8 @@ public class VAWIOrgaTool {
 	private static int minSimBuchungen=0;
 	private static int maxSimBuchungen=10;
 	
+	private static int einleseModus=1;
+	
 	VAWIOrgaTool(String args[]) throws Exception{
 		System.out.println("VAWIOrgaTool 1 der Gruppe 5");
 		System.out.println("---------------------------");
@@ -139,7 +141,21 @@ public class VAWIOrgaTool {
     	}
     }
     
-
+    private void setFlatFileLeser(){
+    	String eingabe="";
+    	try {
+	    	System.out.println("Bitte wählen Sie welche Daten Sie einlesen wollen:");
+	    	System.out.println("(1) Alle Listen (Kursliste,Studentenliste,Buchungsliste).");
+	    	System.out.println("(2) Nur die Kursliste - ich möchte die restlichen Daten generieren.");
+	    	eingabe = getEingabe();
+	    	einleseModus = Integer.parseInt(eingabe);
+	    	System.out.println("Auswahl gesetzt.");
+	    	
+    	}catch(java.lang.NumberFormatException e){
+    		System.out.println("Fehler: Eingabe muss nummerische sein (Eingabe:" + eingabe +")");
+    	}
+    	
+    }
     private String getEingabe(){
     	
     	InputStreamReader isr = new InputStreamReader(System.in);
@@ -166,7 +182,8 @@ public class VAWIOrgaTool {
 				steuerung.beendeProgramm();
 				break;
 			case '1':
-				steuerung.leseDatenEin(studentenDatei, buchungsDatei, kursDatei);
+				setFlatFileLeser();
+				steuerung.leseDatenEin(studentenDatei, buchungsDatei, kursDatei,einleseModus);
 				System.out.println("---> Daten einlesen beendet!");
 				setMenu();
 				break;

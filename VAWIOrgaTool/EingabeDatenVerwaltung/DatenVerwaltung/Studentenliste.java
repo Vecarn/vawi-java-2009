@@ -34,7 +34,7 @@ public class Studentenliste {
     public boolean addNeuerStudent(int matrikelNummer, String name, String vorname, char uni, String bundesland, boolean zeitminimierer){
     	
     	Student student = new Student(vorname,name,matrikelNummer);
-    	
+    	//wenn add(student) true liefert -> Collection hat sich geändert (neuer Student), setze auch die anderen Attribute und liefer true zurück
     	if(studenten.add(student)){
     		student.setUni(uni);
     		student.setBundesland(bundesland);
@@ -75,16 +75,16 @@ public class Studentenliste {
     public Student getStudent(int matrikelnr){
     	
     	Iterator<Student> studenteniterator = studenten.iterator();
-    	
+    	//gehe über alle Studenten
     	while(studenteniterator.hasNext()){
     		
     		Student student = studenteniterator.next();
-  
+    		//wenn aktueller Student die übergebene matrikelnr hat, liefere diesen Student zurück
     		if(student.getMatrikelnr()==matrikelnr){
     			return student;
     		}
     	}
-    		
+    	//den Studenten mit der matrikelnr gibt es nicht	
     	return null;
     }
     

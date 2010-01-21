@@ -27,25 +27,33 @@ public class BuchungsComparator implements Comparator<Buchung> {
 	 * 				 1: KursId arg0 > KursId arg1 || ((KursId arg0 == KursId arg1) && (MatrikelNr arg0 > MatrikelNr arg1))
 	 */
 	public int compare(Buchung arg0, Buchung arg1) {
-
+		
+		//Kurs- und StudentID des ersten Objektes
 		int k0 = arg0.getKurs().getKursid();
 		int s0 = arg0.getStudent().getMatrikelnr();
-				
+		
+		//Kurs- und StudentID des zweiten Objektes
 		int k1 = arg1.getKurs().getKursid();
 		int s1 = arg1.getStudent().getMatrikelnr();
 				
 		if((k0==k1)&&(s0==s1)){
+			//beide Objekte sind identisch
 			return 0;
 		}else{
 			if(k0==k1){
+				//die gleiche Kursid
 				if(s0<s1){
+					//die Studenten id von arg0 ist kleiner > return -1
 					return -1;
 				}else if(s0>s1){
+					//die Studenten id von arg0 ist größer > return 1
 					return 1;
 				}
 			}else if(k0<k1){
+				//die Kurs id von arg0 ist kleiner > return -1
 				return -1;
 			}else if(k0>k1){
+				//die Kurs id von arg0 ist größer > return 1
 				return 1;
 			}
 		}

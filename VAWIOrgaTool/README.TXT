@@ -4,12 +4,15 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE: VAWI JAVA WS0910 - Teilleistung 2
-PURPOSE OF PROJECT: API - Dokumentation	
-VERSION or DATE: 14.12.2009
-HOW TO START THIS PROJECT: - noch zu definieren in TL3 -
+PROJECT TITLE: VAWI JAVA WS0910 - Teilleistung 3
+PURPOSE OF PROJECT: Lauffähiges Tool zum planen eines Prüfungsterminplans. 	
+VERSION or DATE: 25.01.2010
+HOW TO START THIS PROJECT:
+Beim starten des Programms können Parameter eingegeben werden mit den Dateinamen der Eingabedateien.
+Der Aufruf per Parameter lautet z.B. -studenten=studenten.txt -kurse=kurse.txt -buchungen=buchungen.txt
+Wichtig: Die Dateien müssen sich im Wurzelverzeichnis des VAWIOrgaTools befinden!
+Wenn keine Angaben gemacht werden, werden Standardnamen der Dateien angenommen.
 AUTHORS: Silvia Wölfle, Martin Munkelt, Jörn Hauser, Markus Bode
-USER INSTRUCTIONS: -
 
 |---------------------------------------------|
 | Allgemeine Beschreibung des Klassensystems |
@@ -43,13 +46,13 @@ Ablaufsteuerung
 ---------------
 Stellt Methoden zur Steuerung des Programmablaufs bereit. Prüft zusätzlich auf Plausibilität des Programmablaufs.
 
-Simulator
-------------
+Simulator (Markus Bode)
+------------------------
 Die Klasse Simulator nutzt die Verwaltungsklassen aus dem Paket EingabeDatenVerwaltung.DatenVerwaltung.
 Anhand einer übergebenen Kursliste und wahlweise Parametern werden Daten generiert.
 
-ZufriedenheitsMesser
---------------------
+ZufriedenheitsMesser (Markus Bode)
+----------------------------------
 Der ZufriedenheitsMesser bestimmt die Zufriedenheit der Studenten mit dem erstellten Pruefungsterminplan.
 Dazu wird die Klasse Studentenliste genutzt um die Zufriedenheit eines Studenten zu speichern.
 
@@ -79,29 +82,29 @@ EingabeDatenverwaltung.DatenObjekte: Student, Kurs und Buchung
 --------------------------------------------------------------
 Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden (inkl. Prüfungen)
 
-EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator
---------------------------------------------------------------------------
+EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator (Markus Bode)
+----------------------------------------------------------------------------------------
 Die Buchungsliste steht mit allen Klassen in Beziehung, die Zugriff auf den Buchungs-Bestand benötigen. 
 Der PruefungsPlaner nutzt so die Liste. Außerdem wird Sie von der Klasse FlatFileLeser genutzt um 
 die Objekte aus den Daten zu erstellen. Im Simulationsprozess wird die Klasse von der Klasse Simulator 
 genutzt, welche die Liste mit generierten Daten beliefert. Die Buchungsliste nutzt den BuchungsComparator 
 um die Objekte der Klasse Buchung sortiert zu speichern.
 
-EingabeDatenverwaltung.DatenVerwaltung: Kursliste + KursComparator
-------------------------------------------------------------------
+EingabeDatenverwaltung.DatenVerwaltung: Kursliste + KursComparator (Markus Bode)
+--------------------------------------------------------------------------------
 Auch die Kursliste steht mit dem PruefungsPlaner und dem FlatFileLeserin in Beziehung. Die Klasse nutzt den 
 KursComparator um Objekte der Klasse Kurs sortiert zu speichern. Weiterhin wird die Klasse Kursliste von allen Klassen genutzt, 
 die mehrere Kurse speichern müssen oder Zugriff auf diese benötigen. (z.B.: Klasse Anwesenheit, Klasse Simulator) 
 
-EingabeDatenverwaltung.DatenVerwaltung: Studentenliste + StudentenComparator
-----------------------------------------------------------------------------
+EingabeDatenverwaltung.DatenVerwaltung: Studentenliste + StudentenComparator (Markus Bode)
+------------------------------------------------------------------------------------------
 Die Studentenliste steht ebenfalls mit dem PruefungsPlaner in Beziehung. Die Klasse nutzt den StudentenComparator
 um die erstellten Objekte der Klasse Student sortiert vorzuhalten. Auch die Studentenliste wird durch den FlatFileLeser
 mit Daten beliefert. Die Studentenliste steht außerdem mit allen Klassen in Beziehung, welche die Verwaltungslogik (Speicherung und Zugriff) 
 der Studentenliste benötigen. (z.B.: Klasse Simulator, Klasse Pruefungstag, Klasse ZufriedenheitsMesser)
 
-Eingabe: FlatFileLeser
-----------------------
+Eingabe: FlatFileLeser (Markus Bode)
+------------------------------------
 Wird von der Klasse Ablaufsteuerung genutzt und liest Daten mit Hilfe der Klasse Datei ein. 
 Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben. 
 
