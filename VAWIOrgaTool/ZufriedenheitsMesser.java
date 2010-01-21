@@ -35,7 +35,7 @@ public class ZufriedenheitsMesser {
 	 * @param bl (Buchungsliste): Die Verwaltungsliste mit den Buchungs-Objekten.
 	 */
 	public ZufriedenheitsMesser(Pruefungsterminplan prfgtpl,Studentenliste stdl,Buchungsliste bl){
-		
+		//setze Instanzvariablen
 		this.pruefungsterminplan=prfgtpl;
 		this.studentenliste=stdl;
 		this.buchungsliste=bl;
@@ -55,48 +55,59 @@ public class ZufriedenheitsMesser {
 	 */
 	public Studentenliste errechneZufriedenheit(){
 		
-		if(pruefungsterminplan==null||studentenliste==null){
-			System.out.println("Prüfungsterminplan oder Studentenliste ist noch null! -> keine Errechnung");
+		//gib null zurück wenn Methode aufgerufen wird ohne gültige Verwaltungslisten 
+		if(pruefungsterminplan==null||studentenliste==null||buchungsliste==null){
+			System.out.println("Prüfungsterminplan, Studentenliste oder Buchungsliste ist noch null! -> keine Errechnung");
 			return null;
 		}
-		
+		//hole Iterator über alle Studenten
 		Iterator<Student> si = studentenliste.getStudentIterator();
 		System.out.println("****** Start Zufriedenheitsberechnung.*********");
 		System.out.println("----------------------------------------------------");
 		System.out.println("Name, Vorname\t\tisZeitminimierer|isZufrieden\nMatrikelNr");
 		System.out.println("----------------------------------------------------");
 		
+		//Anzahl der zufriedenen Studenten
 		int anzahlZufrieden = 0;
 		
-		//alles an einem Tag -> zufrieden
+		//Prüfe jeden einzelnen Studenten
 		while(si.hasNext()){
 			Student student = si.next();
+			//Anzahl der Prüfungstage an denen der Student erscheinen muss
 			int anzahlPruefungstage = 0;
-			//zaehle Prüfungen für Student am Tag -> merke max Pruefungen / Tag
+			
+			//maximale Anzahl an Prüfungen pro Tag die der Student an den Prüfungstagen schreiben muss 
 			int maxPruefungenProTag = 0;
 			
+			//Iterator über alle Prüfungstage
 			Iterator<Pruefungstag> pi = pruefungsterminplan.getPruefungsplanIterator();
-						
+			
+			//prüfe jeden Prüfungstag
 			while(pi.hasNext()){
 				Pruefungstag pruefungstag = pi.next();
+				//Studentenliste mit Studenten die an diesem Tag Prüfung schreiben müssen
 				Studentenliste sl = pruefungstag.getTagesStudentenliste();
 								
 				//wenn der Student in der Studentenliste des Tages ist, muss der Tag in die Betrachtung mit einfließen
-				//anzahl Tage erhöht sich und es muss geprüft werden wieviele Kurse der Student schreibt
+				//die anzahlPruefungstage erhöht sich und es muss geprüft werden wieviele Kurse der Student an diesem Tag schreibt
 				if(sl.containsStudent(student)){
 						
 						anzahlPruefungstage++;
+						
 						//Anzahl Kurse die der Student an diesem Tag schreibt
 						int kurse = 0;
 						
 						//alle Buchungen des aktuellen Studenten
 						Iterator<Buchung> bi = buchungsliste.getBuchungen(student).getIterator();
 						
+						//prüfe alle Buchungen des Studenten
 						while(bi.hasNext()){
+							
 							Kurs k = bi.next().getKurs();
 							
 							//prüfe ob der Kurs des aktuellen Buchungsobjektes in der Tageskursliste enthalten ist
-							//wenn ja, dann muss der Zähle für die Kurse die der Student an diesem Tag schreibt erhöht werden
+							//wenn ja, dann muss der Zähler für die Kurse die der Student an diesem Tag schreibt erhöht werden
+							//(Student muss an diesem Tag zu dieser Prüfung erscheinen)
 							if(pruefungstag.getTagesKursliste().containsKurs(k)){
 								kurse++;
 							}
@@ -104,7 +115,7 @@ public class ZufriedenheitsMesser {
 						
 						//prüfe ob die Anzahl der von diesem Student zu schreibenden Kurse an diesem Tag
 						//größer ist wie die Anzahl der Kurse die er an den letzten geprüften Tagen schreiben musste
-						//--> die maximale Anzahl an zu schreibenden Prüfungen / Tag wird gespeichert
+						//--> die maximale Anzahl an zu schreibenden Prüfungen pro Tag aller Prüfungstage wird gespeichert
 						if(kurse>maxPruefungenProTag){
 							maxPruefungenProTag=kurse;
 						}
@@ -115,13 +126,16 @@ public class ZufriedenheitsMesser {
 			if(student.getZeitminimierer()&&(anzahlPruefungstage==1)){
 				// der Zeitminimierer-Student hat nur an einem Prüfungstag zu erscheinen -> er ist zufrieden
 				anzahlZufrieden++;
+				//setze Zufrieden
 				student.setZufrieden(true);
 			}else if(!student.getZeitminimierer()&&(maxPruefungenProTag==1)){
 			   // der nicht Zeitminimierer-Student schreibt maximal eine Prüfung pro Tag im ganzen Prüfungsterminplan -> er ist zufrieden
 				anzahlZufrieden++;
 				student.setZufrieden(true);
 			}else{
-			   // mit allen anderen Konstellationen sind die Studenten unzufrieden
+				// mit allen anderen Konstellationen sind die Studenten unzufrieden
+				// ..>  zeitminimierer==true && anzahlPruefungstage > 1
+				//		zeitminimierer==false && maxPruefungenProTag > 1
 				student.setZufrieden(false);
 			}
 			System.out.println(student.getName()+", "+student.getVorname());
