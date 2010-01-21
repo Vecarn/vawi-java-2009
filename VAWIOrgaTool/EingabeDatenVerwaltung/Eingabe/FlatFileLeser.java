@@ -42,13 +42,13 @@ public class FlatFileLeser {
 	 * @throws IOException : Wenn ein Problem beim Öffnen der Datei auftritt, wird eine IOException geworfen. 
 	 */
 	public FlatFileLeser(String kursdateiname) throws IOException {
-		
+		//neues Dateiobjekt für Kursdatei
 		this.kursdatei = new Datei(kursdateiname);
 		this.studentendatei = null;
 		this.buchungsdatei = null;
-		
+		//neues Objekt kursliste erstellen
 		this.kursliste = new Kursliste();
-		
+		//Daten einlesen 
 		erstelleKursliste();
 		
 		
@@ -68,15 +68,15 @@ public class FlatFileLeser {
 	 */
 	public FlatFileLeser(String studentendateiname,
 			String buchungsdateiname, String kursdateiname) throws IOException {
-		
+		//Dateiobjeke erstellen für einzelne Listen
 		this.studentendatei = new Datei(studentendateiname);
 		this.buchungsdatei = new Datei(buchungsdateiname);
 		this.kursdatei = new Datei(kursdateiname);
-		
+		//Verwaltungsobjekte erstellen
 		this.kursliste = new Kursliste();
 		this.studentenliste = new Studentenliste();
 		this.buchungsliste = new Buchungsliste();
-		
+		//Daten einlesen
 		erstelleKursliste();
 		erstelleStudentenliste();
 		erstelleBuchungsliste();
@@ -91,7 +91,7 @@ public class FlatFileLeser {
 		
 		System.out.println("=========Kursdaten=======================");
 		
-		//Öffne Datei und Prüfe ob Fehler dabei auftritt
+		//Öffne Datei und Prüfe ob Fehler dabei auftritt, wenn dann wird eine Exception geworfen
 		if(kursdatei.openInFile()!=0){
 			throw new IOException("Fehler: Beim öffnen der Eingabedatei - Kursliste.");
 		}
@@ -103,23 +103,28 @@ public class FlatFileLeser {
             String kurs = kursdatei.readLine();
             // Prüfe ob Fehler beim Lesen einer Zeile auftrat
             if (!kursdatei.state()){
-                // werfe neue Exception, Fehler beim Lesen
+            // werfe neue Exception, Fehler beim Lesen
                 throw new IOException("Fehler: Beim lesen der Eingabdeatei - Kursliste.");
             }
             
             // Abfage, ob das Ende der Datei erreicht wurde
             if (!kursdatei.eof()){
             	
+            	//trennt eingelesene Zeile bei TRENNZEICHEN und speichert in tokens
             	StringTokenizer st = new StringTokenizer(kurs,TRENNZEICHEN, true);
         		
+            	//versuche Daten zu verarbeiten, wenn Exception auftritt ist Datensatz felerhaft (z.B. falsche Länge)
+            	//der Satz wird dann übersprungen
             	try {
 	            	
             		String[] daten = new String[9]; 
 	        		int i = 0;
+	        		//speichere Tokens in Array von Strings 
 	        		while(st.hasMoreTokens()){
 	        			daten[i]=st.nextToken();
 	        			i++;
-	        		}	        		
+	        		}
+	        		//speichere Daten aus Array in entsprechenden Variablen, ohne leerzeichen
 					int kursid = new Integer(daten[0].replaceAll(" ", "")).intValue();
 					String kurztitel = daten[2].replaceAll(" ", "");
 					String titel = daten[4];
@@ -130,9 +135,11 @@ public class FlatFileLeser {
 						teilleistungen = false;
 					}
 					int maxPunkte = new Integer(daten[8].replaceAll(" ", "")).intValue();
+					//füge der Kursliste einen neuen Kurs hinzu
 					kursliste.addNeuerKurs(kursid, kurztitel, titel, teilleistungen, maxPunkte);
 					
 				} catch (Exception e) {
+					//Exception aufgetreten -> Zeilennr ausgeben, Satz wird übersprungen
 					System.out.println("Zeile "+(anzahlZeilen+1)+": Kursdatensatz fehlerhaft -> überspringen.");
 				} 
             	
@@ -160,52 +167,59 @@ public class FlatFileLeser {
 		//beim erstellen neuer Buchung: buchung.setStudent(studentenliste.getStudent(id))
 		//   							buchung.setKurs(kursliste.getKurs(id))
 		int anzahlZeilen = 0;
-		
+		//versuche File zu öffnen, wenn Fehlschlag: neue Exception
 		if(buchungsdatei.openInFile()!=0){
 			throw new IOException("Fehler: Beim öffen der Eingabedatei - Buchungsliste.");
 		}
         
         while(!buchungsdatei.eof()){
-        		
+        	//lese eine Zeile	
         	String buchung = buchungsdatei.readLine();
-        	
+        	//prüfe ob Fehler aufgetreten ist: wenn Fehler auftrat wird Exception erzeugt
         	if(!buchungsdatei.state()){
         		throw new IOException("Fehler: Beim lesen der Eingabdeatei - Buchungsliste.");
         	}
-        	
+        	//Abfrage ob das Ende erreicht wurde
 			if (!buchungsdatei.eof()) {
-
+				//trennt eingelesene Zeile bei TRENNZEICHEN und speichert in tokens
 				StringTokenizer st = new StringTokenizer(buchung, TRENNZEICHEN,true);
-
+				
+				//versuche Daten zu verarbeiten, wenn Exception auftritt ist Datensatz felerhaft (z.B. falsche Länge)
+            	//der Satz wird dann übersprungen
 				try {
 
 					String[] daten = new String[5];
 					int i = 0;
+					//speichere Tokens in Array von Strings
 					while (st.hasMoreTokens()) {
 						daten[i] = st.nextToken();
 						i++;
 					}
-
+					//speichere Daten aus Array in entsprechenden Variablen, ohne leerzeichen
 					int matrikelnr = new Integer(daten[0].replaceAll(" ", "")).intValue();
 					int kursid = new Integer(daten[2].replaceAll(" ", "")).intValue();
 					int erreichtePunkte = new Integer(daten[4].replaceAll(" ","")).intValue();
-
+					//prüfe ob Studenten/Kursobjekt mit gelesener matrikelnr/kursid in den Verwaltungslisten vorhanden
+					//das Buchungsobjekt wird dann gleich mit deren Referenzen gespeichert
 					if ((studentenliste.getStudent(matrikelnr) != null)
 							&& (kursliste.getKurs(kursid) != null)) {
 						buchungsliste.addBuchung(studentenliste.getStudent(matrikelnr), kursliste.getKurs(kursid), erreichtePunkte);
 					} else {
+						//Die oder eine der gelesenen Nr. ist unbekannt -> Buchung nicht hinzugefügt
 						System.out.println("Zeile "+(anzahlZeilen+1)+": Student (Nr:"+matrikelnr+") oder Kurs (Nr:"+kursid+") der Buchung nicht in Kurs-/Studentenliste -> Buchung nicht aufgenommen!");
 					}
 					
 				} catch(Exception e){
+					//Exception aufgetreten -> Zeilennr ausgeben, Satz wird übersprungen
 					System.out.println("Zeile "+(anzahlZeilen+1)+": Buchungssatz fehlerhaft -> überspringen.");
 				}  
 				
 				anzahlZeilen++;
 			}	
         }
-        
+        // Prüfe ob Fehler beim schließen auftrat
         if(buchungsdatei.closeInFile()!=0){
+        	 // werfe neue Exception, Fehler beim Schließen
         	throw new IOException("Fehler: Beim schliessen der Eingabedatei - Buchungsliste.");
         }
         
@@ -224,31 +238,35 @@ public class FlatFileLeser {
 		//beim erstellen neuer Buchung: buchung.setStudent(studentenliste.getStudent(id))
 		//   							buchung.setKurs(kursliste.getKurs(id))
 		int anzahlZeilen = 0;
-		
+		//versuche File zu öffnen, wenn Fehlschlag: neue Exception
 		if(studentendatei.openInFile()!=0){
 			throw new IOException("Fehler: Beim öffen der Eingabedatei - Studentenliste.");
 		}
         
         while(!studentendatei.eof()){
-        		
+        	//Lese eine Zeile	
         	String student = studentendatei.readLine();
-        	
+        	//prüfe ob Fehler aufgetreten ist: wenn Fehler auftrat wird Exception erzeugt
         	if(!studentendatei.state()){
         		throw new IOException("Fehler: Beim lesen der Eingabdeatei - Studentenliste.");
         	}
-        	
+        	//prüfe ob jetzt Ende erreicht
 			if (!studentendatei.eof()) {
-
+				//trennt eingelesene Zeile bei TRENNZEICHEN und speichert in tokens
 				StringTokenizer st = new StringTokenizer(student, TRENNZEICHEN,true);
-
+				
+				//versuche Daten zu verarbeiten, wenn Exception auftritt ist Datensatz felerhaft (z.B. falsche Länge)
+            	//der Satz wird dann übersprungen
 				try {
 
 					String[] daten = new String[11];
 					int i = 0;
+					//speichere Tokens in Array von Strings
 					while (st.hasMoreTokens()) {
 						daten[i] = st.nextToken();
 						i++;
 					}
+					//speichere Daten aus Array in entsprechenden Variablen, ohne leerzeichen
 					int matrikelNummer = new Integer(daten[0].replaceAll(" ","")).intValue();
 					String name = daten[2].replaceAll(" ", "");
 					String vorname = daten[4].replaceAll(" ", "");
@@ -265,10 +283,11 @@ public class FlatFileLeser {
 					} else {
 						zeitminimierer = false;
 					}
-
+					//füge der Studentenliste einen neuen Student hinzu
 					studentenliste.addNeuerStudent(matrikelNummer, name,vorname, uni, bundesland, zeitminimierer);
 				
 				} catch (Exception e) {
+					//Exception aufgetreten -> Zeilennr ausgeben, Satz wird übersprungen
 					System.out.println("Zeile "+(anzahlZeilen+1)+": Studentendatensatz hat falsche Länge -> überspringen.");
 				}
 
@@ -276,8 +295,9 @@ public class FlatFileLeser {
 
 			}    		
         }
-        
+        // Prüfe ob Fehler beim schließen auftrat
         if(studentendatei.closeInFile()!=0){
+        	 // werfe neue Exception, Fehler beim Schließen
         	throw new IOException("Fehler: Beim schliessen der Eingabedatei - Studentenliste.");
         }
         

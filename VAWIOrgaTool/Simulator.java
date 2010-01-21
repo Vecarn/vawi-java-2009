@@ -18,15 +18,18 @@ import Hilfsklassen.Uni;
  * @version 1.0 vom 23.12.2009
  */
 public class Simulator {
-	// Objekt Listen
+	
+	// Verwaltungslisten
 	private Kursliste kursliste;
 	private Buchungsliste generierteBuchungsliste;
 	private Studentenliste  generierteStudentenliste;
+	
 	// Simulationsparameter
 	private int minBuchungen;
 	private int maxBuchungen;
 	private int anzahlStudenten;
-	//DummyDaten
+	
+	// Daten die zufällig zu Studentenobjekten kombiniert werden
 	private String [] vornamen = new String[]{"Elias","Julian","Marcel","Thomas","Luca","Stefan","Michael","Felix",
             "Luca","Stefan","Michael","Felix","Jessica","Katharina","Frauke",
             "Petra","Manuela","Sophie","Marta","Lisa","Franz","Fritz"};
@@ -52,6 +55,7 @@ public class Simulator {
 	 */
 	public Simulator(Kursliste kursliste){
 		
+		//Prüfung auf korrekte Kursliste
 		if(kursliste==null){
 			System.out.println("Kursliste ist null! -> keine Simulation");
 			generierteBuchungsliste=null;
@@ -63,14 +67,15 @@ public class Simulator {
 			generierteStudentenliste=null;
 			return;
 		}
-		
+		//setze Instanzvariablen
 		this.kursliste=kursliste;
 		generierteStudentenliste=new Studentenliste();
 		generierteBuchungsliste=new Buchungsliste();
-		
+		//setze Standardparameter
 		this.minBuchungen=1;
 		this.maxBuchungen=6;
 		this.anzahlStudenten=100;
+		//starte Generierung der Daten
 		generiereBuchungsDaten();
 		
 	}
@@ -87,6 +92,8 @@ public class Simulator {
 	 */
 	public Simulator(Kursliste kursliste, int minBuchungen, int maxBuchungen, int anzahlStudenten){
 		
+		//prüfe ob korrekte Kursliste vorliegt mit > 0 Kursobjekten
+		//sonst können auch keine sinnvollen Buchungsobjekte erstellt werden
 		if(kursliste==null){
 			System.out.println("Kursliste ist null! Keine Erstelltung der fiktiven Daten. Bitte erst Daten (Kursliste) einlesen.");
 			generierteBuchungsliste=null;
@@ -99,10 +106,13 @@ public class Simulator {
 			return;
 		}
 		
+		//setze Instanzvariablen
 		this.kursliste=kursliste;
 		generierteStudentenliste=new Studentenliste();
 		generierteBuchungsliste=new Buchungsliste();
 		
+		//prüfe Plausibilität der übergebenen Parameter
+		//wenn ok werden die Instanzvariablen gesetzt
 		if((minBuchungen<0)||(minBuchungen>maxBuchungen)){
 			System.out.println("Variable minBuchungen ungültig! -> keine Simulation");
 			return;
@@ -124,6 +134,7 @@ public class Simulator {
 			this.anzahlStudenten=anzahlStudenten;
 		}
 		
+		//starte die Generierung der Daten
 		generiereBuchungsDaten();
 		
 	}
@@ -133,40 +144,52 @@ public class Simulator {
 	 */
 	private void generiereBuchungsDaten(){
 		
+		//zuerst Studentenobjekte erstellen
 		generiereStudenten();
 		
+		//hole Iteratoren über die generierten Studenten und die gegebenen Kursobjekte
 		Iterator<Student> si = generierteStudentenliste.getStudentIterator();
 		Iterator<Kurs> ki = kursliste.getKursIterator();
 		
+		//Alle Kursids in die ArrayList speichern
 		ArrayList<Integer> kursids = new ArrayList<Integer>();
 		while(ki.hasNext()){
 			kursids.add(new Integer(ki.next().getKursid()));
 		}
 		
+		//gehe über alle Studenten
 		while(si.hasNext()){
 		
 			Student student = si.next();
 			
+			//anzahl Schleifendurchläufe: zwische min und maxBuchungen
+			//--> für den Studenten werden Buchungen zwischen min und maxBuchungen hinzugefügt
 			for(int i=0;i<zufallsAnzahlBuchungen();i++){
 				
 				boolean buchungHinzugefuegt = false;
 				
+				//durchlauf bis buchungHinzugefuegt == true
+				//es wird solange versucht eine Buchung hinzuzufügen, bis sich die Buchungscollection geändert hat,
+				//also auch wirklich ein neues Buchungsobjekt (gegebener Student hat ausgewählten Kurs noch nicht gebucht)
+				//hinzugefügt wurde
 				while(!buchungHinzugefuegt){
-					
+					//hole das Kursobjekt aus der Kursliste zu der zufällig aus der ArrayListe kursids ausgewählten Kursid 
 					Kurs kurs = kursliste.getKurs(kursids.get(zufallsZahl(0,kursids.size()-1)).intValue());
 					int erreichtePunkte = 0;
 					
+					//wenn der Kurs Teilleistungen hatte, generiere die Punktzahl dir der Student erreicht hat
 					if(kurs.getHatTeilleistungen()){
 						erreichtePunkte = zufallsZahl(0, kurs.getMaxPunkte());
 					}
 					
+					//füge Buchung hinzu, wenn true -> collection hat sich geändert > neue Buchung ist hinzugekommen
 					if(generierteBuchungsliste.addBuchung(student,kurs,erreichtePunkte)){
 						buchungHinzugefuegt = true;
 					}
 				}
 			}
 		}
-		
+		//Statistik...
 		System.out.println("Es wurden "+generierteStudentenliste.getSize()+" Studenten generiert.");
 		System.out.println("Jeder Student hat zwischen "+minBuchungen+" und "+maxBuchungen+" Buchungen.");
 		System.out.println("Insgesammt wurden "+generierteBuchungsliste.getSize()+" Buchungen zu den "+kursliste.getSize()+" gegebenen Kursen erstellt.\n"+
@@ -179,10 +202,12 @@ public class Simulator {
 	 */
 	private void generiereStudenten(){
 		
+		//übergebener Parameter steuert wieoft die Schleife durchlaufen wird > 
+		// > wieoft die Generierung eines Studenten stattfindet
 		for(int i=0;i<anzahlStudenten;i++){
 			
 		    boolean zeitminimierer;
-		        
+		    //setze zeitminimierer abhängig von der erzeugten Zufallszahl    
 		    if(zufallsZahl(0,1)==1){
 		       zeitminimierer=true;
 		    }else{
@@ -194,9 +219,11 @@ public class Simulator {
 		    // Falls zufällig die selbe MatrikelNummer generiert werden würde, ändert sich die Collection nicht.
 		    // Versuche solange einen Student hinzuzufügen, bis sich die Collection verändert.
 		    // Dadurch wird sichergestellt, dass auch die gewünschte Anzahl an Studenten generiert wird.
-		    
 		    while(!studentHinzugefuegt){
-		    		
+		    	
+		    	//generiere Studenten mit zufällig aus den Arrays ausgewählten Daten (Strings, char)
+		    	//Auswahl findet per Zufallszahl statt
+		    	//wenn true zurückgeliefert wurde, war Student mit der zufälligen Matrikelnr noch nicht vorhanden 
 		    	if(generierteStudentenliste.addNeuerStudent(zufallsZahl(100000, 999999), nachnamen[zufallsZahl(0,(nachnamen.length-1))], 
 		        		 vornamen[zufallsZahl(0,(vornamen.length-1))], uni[zufallsZahl(0,1)],
 		        		 bundeslaender[zufallsZahl(0,(bundeslaender.length-1))],zeitminimierer)){
@@ -215,6 +242,7 @@ public class Simulator {
 	 * @return int - Zufallszahl zwischen minBuchungen und maxBuchungen
 	 */
 	private int zufallsAnzahlBuchungen(){
+		//neues Randomobjekt
 		Random rand = new Random();
 		return (rand.nextInt(maxBuchungen-minBuchungen+1))+minBuchungen;
 	}
@@ -227,6 +255,7 @@ public class Simulator {
 	 * @return int - Zufallszahl zwischen x und y
 	 */
 	private int zufallsZahl(int x, int y){
+		//neues Randomobjekt
 		Random rand = new Random();
 		return (rand.nextInt(y-x+1))+x;
 	}
