@@ -126,15 +126,15 @@ public class VAWIOrgaTool {
 	    	anzSimStudenten = Integer.parseInt(eingabe);
 	    	System.out.println("Anzahl fiktiver Studenten auf " + anzSimStudenten + " gesetzt.");
 	    	
-	    	System.out.println("Bitte minimale Anzahl an Buchungen der fiktiven Studenten eingeben: ");
+	    	System.out.println("Bitte minimale Anzahl an Buchungen eines fiktiven Studenten eingeben: ");
 	    	eingabe = getEingabe();
 	    	minSimBuchungen = Integer.parseInt(eingabe);
 	    	System.out.println("Minimale Anzahl an Buchungen auf " + minSimBuchungen + " gesetzt.");
 	    	
-	    	System.out.println("Bitte maximal Anzahl an Buchungen der fiktiven Studenten eingeben: ");
+	    	System.out.println("Bitte maximal Anzahl an Buchungen eines fiktiven Studenten eingeben: ");
 	    	eingabe = getEingabe();
 	    	maxSimBuchungen = Integer.parseInt(eingabe);
-	    	System.out.println("Maximale Anzahl an Buchungen auf " + minSimBuchungen + " gesetzt.");
+	    	System.out.println("Maximale Anzahl an Buchungen auf " + maxSimBuchungen + " gesetzt.");
 	    	
     	}catch(java.lang.NumberFormatException e){
     		System.out.println("Fehler: Eingabe muss nummerische sein (Eingabe:" + eingabe +")");
