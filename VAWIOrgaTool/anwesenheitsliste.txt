@@ -1,65 +1,71 @@
 ---------------------------------------------
 VAWi-Orga-Tool - Anwesenheitsliste
 ---------------------------------------------
-Liste erzeugt am 22 Jan 2010 08:16:45 GMT
+Liste erzeugt am 22 Jan 2010 10:29:50 GMT
 ---------------------------------------------
 
 
 
 Universität Bamberg - Tag 1
 
-Wells, Orson: eCom
+Freitag, Fritz: IDA, SoTe
+Schroeder, Jessica: SoTe
+Woelfle, Manuela: eBis
+Nett, Michael: SoTe
 
 Universität Bamberg - Tag 2
 
-Chef, Engelbert: MSuP, Sim
-Wells, Orson: MSuP, Sim
-Osbourne, Ozzy: MSuP
+Freitag, Fritz: Sim
+Woelfle, Manuela: eCom
+Rausch, Fritz: eCom, Bla
 
 Universität Bamberg - Tag 3
 
-Chef, Engelbert: IDA
-Gore, Martin: IDA
+Schroeder, Jessica: WWSy, ReRe
+Woelfle, Manuela: ITS
+Nett, Michael: WWSy
 
 Universität Bamberg - Tag 4
 
-Chef, Engelbert: WWSy
-Wells, Orson: EKoo
+Freitag, Fritz: ERP
 
 Universität Bamberg - Tag 5
 
-Pütz, Jean: QuEB
-Gore, Martin: GdP
+Woelfle, Manuela: QuEB
+
+Universität Bamberg - Tag 6
+
 
 
 
 
 Universität Duisburg-Essen - Tag 1
 
-Meier, Karl: Lete
-Müller, Karoline: ERP, eCom, Lete
-Moorcock, Michael: eCom, Lete
+Munkelt, Marcel: eBis
+Gosler, Jessica: IDA
+Schaeuble, Fritz: IDA
 
 Universität Duisburg-Essen - Tag 2
 
-Meier, Karl: MSuP
-Müller, Karoline: eBisD
-Moorcock, Michael: Sim
-Willis, Bruce: Sim
+Oesterle, Michael: Bla, Sim
 
 Universität Duisburg-Essen - Tag 3
 
-Müller, Karoline: InLe
-Willis, Bruce: ReCo
-Amos, Tori: ReCo
+Schaeuble, Fritz: ReRe
+Freitag, Felix: WWSy
 
 Universität Duisburg-Essen - Tag 4
 
-Müller, Karoline: SoTe
-Moorcock, Michael: EKoo
-Willis, Bruce: WWSy
+Merkel, Jessica: MSuP
+Hugendubel, Michael: RBKVS
 
 Universität Duisburg-Essen - Tag 5
 
-Willis, Bruce: ITS
+Oesterle, Michael: Lete
+Gosler, Jessica: GdP
+
+Universität Duisburg-Essen - Tag 6
+
+Schaeuble, Fritz: InWi
+Freitag, Felix: ReCo
 
