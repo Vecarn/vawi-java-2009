@@ -7,7 +7,7 @@ package EingabeDatenVerwaltung.DatenObjekte;
  * mit den Eigenschaften eines Studenten und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
- * @version 2.0 on 08.01.2010
+ * @version 3.0 on 22.01.2010
  */
 public class Student
 {
@@ -33,13 +33,13 @@ public class Student
      * Konstruktor für Objekte der Klasse Student mit Parameter 
      * (der name, vorname und matrikelnr bei der erstellung des Objekts verlangt und gleich setzt)
      * 
-     * @param matrikelnr   ID des Studenten (int)
+     * @param matrikelnr   ID des Studenten (int), soweit grösser 0
      */
     public Student(String vorname, String name, int matrikelnr)
     {
         this.vorname=vorname;
         this.name=name;
-                if (matrikelnr != 0) {   
+                if (matrikelnr >= 0) {   
                     this.matrikelnr=matrikelnr;
                     }
      }
