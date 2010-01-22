@@ -140,6 +140,12 @@ AusgabeDatenverwaltung.DatenVerwaltung: Platzkartenlisten (Martin Munkelt)
 Die Platzkartenliste wird von der AusgabeVerwaltung erzeugt und enthält Buchungsobjekte. Auch
 hier sind in den Buchungen die gesamten Informationen der Platzkarte enthalten.
 
+
+AusgabeDatenverwaltung.DatenVerwaltung: PruefungstagComparator
+--------------------------------------------------------------
+...
+
+
 Ausgabe: FlatFileSchreiber (Martin Munkelt)
 -------------------------------------------
 Der FlatFileSchreiber wird von der AusgabeVerwaltung instantziiert und für die Ausgabe
