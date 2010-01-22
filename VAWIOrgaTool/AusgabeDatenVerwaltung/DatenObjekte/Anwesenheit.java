@@ -22,7 +22,7 @@ public class Anwesenheit
 
     /**
      * Konstruktor Anwesenheit, verlangt Student
-     * @param student  anwesender Student
+     * @param student  anwesender Student mit Überprüfung
      */
     public Anwesenheit (Student student)
     {
