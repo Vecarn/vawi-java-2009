@@ -12,7 +12,7 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  * Studenten und gleichzeitig Entit&auml;tstyp f&uuml;r eine Notenliste.
  * 
  * @author Martin
- * @version 1.1
+ * @version 1.2
  */
 public class Notenliste {
 
@@ -79,7 +79,8 @@ public class Notenliste {
     		}
     		
     		//ansonsten hier weiter mit der Studentenzeile
-    		output = output + b.getStudent().getName() + ", "
+    		output = output + b.getStudent().getMatrikelnr() + " - " + 
+    						b.getStudent().getName() + ", "
     					+ b.getStudent().getVorname();
     		
     		//wenn der Kurs eine Teilleistung hat dann

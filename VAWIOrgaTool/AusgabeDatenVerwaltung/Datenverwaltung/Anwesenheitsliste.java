@@ -15,7 +15,7 @@ import Hilfsklassen.*;
  * Entit&auml;tstyp f&uuml;r eine Anwesenheitsliste.
  * 
  * @author Martin
- * @version 1.0
+ * @version 1.1
  */
 public class Anwesenheitsliste {
 
@@ -92,7 +92,8 @@ public class Anwesenheitsliste {
 
 				case 'B':
 
-					output_b = output_b + tmp_student.getName() + ", "
+					output_b = output_b + tmp_student.getMatrikelnr() + " - " 
+					+ tmp_student.getName() + ", "
 							+ tmp_student.getVorname() + ": ";
 
 					tageskurse = tmp_pt.getTagesKursliste();
@@ -130,7 +131,8 @@ public class Anwesenheitsliste {
 
 				case 'D':
 
-					output_d = output_d + tmp_student.getName() + ", "
+					output_d = output_d + tmp_student.getMatrikelnr() + " - " + 
+								tmp_student.getName() + ", "
 							+ tmp_student.getVorname() + ": ";
 
 					tageskurse = tmp_pt.getTagesKursliste();
