@@ -8,7 +8,7 @@ package EingabeDatenVerwaltung.DatenObjekte;
  * mit den Eigenschaften eines Kurses und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
- * @version 2.0 on 08.01.2010
+ * @version 3.0 on 22.01.2010
  */
 public class Kurs
 {
@@ -41,26 +41,24 @@ public class Kurs
    /**
      * Set-Methode hatTeilleistungen (ueberschreibt Attribut hatTeilleistungen)
      * @param hatTeilleistungen Teilleistungen eines Kurses vorhanden (boolean)
-     * @param wenn true, dann set, sonst false; so auch false, falls gar nichts angegeben sein sollte (?)
+     * @param Überprüfung (true wenn true, false wenn false) macht keinen Sinn...
      */
     public void setHatTeilleistungen(boolean hatTeilleistungen)
      {
-         if (hatTeilleistungen == true) {
-              this.hatTeilleistungen = hatTeilleistungen;
-            } else {   
-         hatTeilleistungen = false;
-        }
+        this.hatTeilleistungen = hatTeilleistungen;
      }
    /**
      * Set-Methode setMaxPunkte (ueberschreibt Attribut setMaxPunkte)
      * @param maxPunkte maximale Punktzahl eines Kurses (int)
-     * @param prüft und setzt Punktzahl wenn ungleich 0
+     * @param prüft und setzt Punktzahl wenn nicht kleiner 0
      */
     public void setMaxPunkte(int maxPunkte)
      {
-         if (maxPunkte != 0) {   
-            this.maxPunkte = maxPunkte;
-            }
+         if (maxPunkte <= 0){
+            System.out.println("Weniger als 0 Punkte nicht möglich!");
+            return;
+            }   
+               this.maxPunkte = maxPunkte;
      }   
         
     /**

@@ -7,7 +7,7 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
  * (z.B. maximale Anzahl an Kurse pro Student und Tag). Die Planungsbedingungen werden ueber den Programmablauf gesetzt.
  * 
  * @author  Silvia Wölfle
- * @version 2.1 on 08.01.2010
+ * @version 3.0 on 22.01.2010
  */
 public class Planungsbedingungen 
 {
@@ -17,7 +17,7 @@ public class Planungsbedingungen
        /**
         * Konstruktor für Planungsbedingung
         * (der pruefungProTag bei der erstellung des Objekts verlangt und gleich setzt)
-        * @param pruefungProTag   Maximale Anzahl der Kurse pro Tag (int)
+        * @param pruefungProTag   Maximale Anzahl der Kurse pro Tag (int), Prüfung ob Zahl negativ
         */
        public Planungsbedingungen (int pruefungProTag)
        {
@@ -30,7 +30,7 @@ public class Planungsbedingungen
 
         /**
        * Set-Methode pruefungProStudentUndTag (ueberschreibt Attribut pruefungProStudentUndTag)
-       * @param pruefungProStudentUndTag  Maximale Anzahl der Kurse pro Student und Tag (int)
+       * @param pruefungProStudentUndTag  Maximale Anzahl der Kurse pro Student und Tag (int), Prüfung ob Zahl negativ
        */  
         public void setPruefungProStudentUndTag (int pruefungProStudentUndTag)
        {

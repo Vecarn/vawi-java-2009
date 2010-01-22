@@ -9,7 +9,7 @@ import  EingabeDatenVerwaltung.DatenObjekte.*;
  * und den passenden Getter/Setter-Methoden
  * 
  * @author  Silvia Wölfle
- * @version 2.0 on 08.01.2010
+ * @version 3.0 on 22.01.2010
  */
 public class Buchung
 {
@@ -42,7 +42,7 @@ public class Buchung
 
      /**
      * Set-Methode erreichtePunkte (ueberschreibt Attribut erreichtePunkte)
-     * @param erreichtePunkte bisher erreichte Punkte eines Studenten (int), mit Vergleich maxPunkte
+     * @param erreichtePunkte bisher erreichte Punkte eines Studenten (int), mit Vergleich maxPunkte und Überprüfung
      */  
     public void setErreichtePunkte(int erreichtePunkte)
     {
