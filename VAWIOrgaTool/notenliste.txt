@@ -1,0 +1,97 @@
+---------------------------------------------
+VAWi-Orga-Tool - Notenliste
+---------------------------------------------
+Liste erzeugt am 22 Jan 2010 08:16:45 GMT
+---------------------------------------------
+
+
+
+
+Kurs 1 - ReCo
+---------------------------------------------
+Willis, Bruce
+Amos, Tori
+
+
+Kurs 4 - IDA
+---------------------------------------------
+Chef, Engelbert: 0
+Gore, Martin: 57
+
+
+Kurs 5 - MSuP
+---------------------------------------------
+Meier, Karl
+Chef, Engelbert
+Wells, Orson
+Osbourne, Ozzy
+
+
+Kurs 8 - ERP
+---------------------------------------------
+Müller, Karoline: 69
+
+
+Kurs 9 - eBisD
+---------------------------------------------
+Müller, Karoline: 61
+
+
+Kurs 10 - eCom
+---------------------------------------------
+Müller, Karoline: 45
+Moorcock, Michael: 50
+Wells, Orson: 31
+
+
+Kurs 17 - ITS
+---------------------------------------------
+Willis, Bruce: 45
+
+
+Kurs 18 - WWSy
+---------------------------------------------
+Chef, Engelbert
+Willis, Bruce
+
+
+Kurs 19 - Lete
+---------------------------------------------
+Meier, Karl: 61
+Müller, Karoline: 78
+Moorcock, Michael: 80
+
+
+Kurs 20 - InLe
+---------------------------------------------
+Müller, Karoline: 46
+
+
+Kurs 21 - GdP
+---------------------------------------------
+Gore, Martin: 81
+
+
+Kurs 22 - Sim
+---------------------------------------------
+Chef, Engelbert: 45
+Moorcock, Michael: 49
+Wells, Orson: 45
+Willis, Bruce: 55
+
+
+Kurs 24 - QuEB
+---------------------------------------------
+Pütz, Jean: 71
+
+
+Kurs 26 - EKoo
+---------------------------------------------
+Moorcock, Michael: 80
+Wells, Orson: 79
+
+
+Kurs 28 - SoTe
+---------------------------------------------
+Müller, Karoline: 81
+

@@ -1,0 +1,186 @@
+---------------------------------------------
+VAWi-Orga-Tool - Platzkartenliste
+---------------------------------------------
+Liste erzeugt am 22 Jan 2010 08:16:45 GMT
+---------------------------------------------
+
+
+
+VAWi-Prüfung in Bamberg - Tag 1
+
+Teilnehmer: Wells, Orson: 
+Heutige Kurse:
+eCom - E-Commerce
+
+
+VAWi-Prüfung in Bamberg - Tag 2
+
+Teilnehmer: Chef, Engelbert: 
+Heutige Kurse:
+MSuP - Modellierung von Systemen und Prozessen
+Sim - Simulation
+
+
+VAWi-Prüfung in Bamberg - Tag 2
+
+Teilnehmer: Wells, Orson: 
+Heutige Kurse:
+MSuP - Modellierung von Systemen und Prozessen
+Sim - Simulation
+
+
+VAWi-Prüfung in Bamberg - Tag 2
+
+Teilnehmer: Osbourne, Ozzy: 
+Heutige Kurse:
+MSuP - Modellierung von Systemen und Prozessen
+
+
+VAWi-Prüfung in Bamberg - Tag 3
+
+Teilnehmer: Chef, Engelbert: 
+Heutige Kurse:
+IDA - Integrierte Anwendungssysteme, Datenbanken und Archivierungssysteme
+
+
+VAWi-Prüfung in Bamberg - Tag 3
+
+Teilnehmer: Gore, Martin: 
+Heutige Kurse:
+IDA - Integrierte Anwendungssysteme, Datenbanken und Archivierungssysteme
+
+
+VAWi-Prüfung in Bamberg - Tag 4
+
+Teilnehmer: Chef, Engelbert: 
+Heutige Kurse:
+WWSy - Workflow- und Workgroup-Systeme
+
+
+VAWi-Prüfung in Bamberg - Tag 4
+
+Teilnehmer: Wells, Orson: 
+Heutige Kurse:
+EKoo - E-Kooperation
+
+
+VAWi-Prüfung in Bamberg - Tag 5
+
+Teilnehmer: Pütz, Jean: 
+Heutige Kurse:
+QuEB - Qualitätssicherung und Evaluation in der Bildung
+
+
+VAWi-Prüfung in Bamberg - Tag 5
+
+Teilnehmer: Gore, Martin: 
+Heutige Kurse:
+GdP - Grundlagen der Programmierung (Java)
+
+
+
+---------------------------------------------
+
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 1
+
+Teilnehmer: Meier, Karl: 
+Heutige Kurse:
+Lete - Lerntechnologien
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 1
+
+Teilnehmer: Müller, Karoline: 
+Heutige Kurse:
+ERP - Enterprise Resource Planning
+eCom - E-Commerce
+Lete - Lerntechnologien
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 1
+
+Teilnehmer: Moorcock, Michael: 
+Heutige Kurse:
+eCom - E-Commerce
+Lete - Lerntechnologien
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 2
+
+Teilnehmer: Meier, Karl: 
+Heutige Kurse:
+MSuP - Modellierung von Systemen und Prozessen
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 2
+
+Teilnehmer: Müller, Karoline: 
+Heutige Kurse:
+eBisD - Electronic Buisness im Dienstleistungsbereich
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 2
+
+Teilnehmer: Moorcock, Michael: 
+Heutige Kurse:
+Sim - Simulation
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 2
+
+Teilnehmer: Willis, Bruce: 
+Heutige Kurse:
+Sim - Simulation
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 3
+
+Teilnehmer: Müller, Karoline: 
+Heutige Kurse:
+InLe - Internetbasierte Lernumgebungen
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 3
+
+Teilnehmer: Willis, Bruce: 
+Heutige Kurse:
+ReCo - Grundlagen der Betriebswirtschaftslehre
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 3
+
+Teilnehmer: Amos, Tori: 
+Heutige Kurse:
+ReCo - Grundlagen der Betriebswirtschaftslehre
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 4
+
+Teilnehmer: Müller, Karoline: 
+Heutige Kurse:
+SoTe - Software-Technik
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 4
+
+Teilnehmer: Moorcock, Michael: 
+Heutige Kurse:
+EKoo - E-Kooperation
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 4
+
+Teilnehmer: Willis, Bruce: 
+Heutige Kurse:
+WWSy - Workflow- und Workgroup-Systeme
+
+
+VAWi-Prüfung in Duisburg-Essen - Tag 5
+
+Teilnehmer: Willis, Bruce: 
+Heutige Kurse:
+ITS - IT-Sicherheit
+
+

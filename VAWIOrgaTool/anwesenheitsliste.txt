@@ -1,0 +1,65 @@
+---------------------------------------------
+VAWi-Orga-Tool - Anwesenheitsliste
+---------------------------------------------
+Liste erzeugt am 22 Jan 2010 08:16:45 GMT
+---------------------------------------------
+
+
+
+Universität Bamberg - Tag 1
+
+Wells, Orson: eCom
+
+Universität Bamberg - Tag 2
+
+Chef, Engelbert: MSuP, Sim
+Wells, Orson: MSuP, Sim
+Osbourne, Ozzy: MSuP
+
+Universität Bamberg - Tag 3
+
+Chef, Engelbert: IDA
+Gore, Martin: IDA
+
+Universität Bamberg - Tag 4
+
+Chef, Engelbert: WWSy
+Wells, Orson: EKoo
+
+Universität Bamberg - Tag 5
+
+Pütz, Jean: QuEB
+Gore, Martin: GdP
+
+
+
+
+Universität Duisburg-Essen - Tag 1
+
+Meier, Karl: Lete
+Müller, Karoline: ERP, eCom, Lete
+Moorcock, Michael: eCom, Lete
+
+Universität Duisburg-Essen - Tag 2
+
+Meier, Karl: MSuP
+Müller, Karoline: eBisD
+Moorcock, Michael: Sim
+Willis, Bruce: Sim
+
+Universität Duisburg-Essen - Tag 3
+
+Müller, Karoline: InLe
+Willis, Bruce: ReCo
+Amos, Tori: ReCo
+
+Universität Duisburg-Essen - Tag 4
+
+Müller, Karoline: SoTe
+Moorcock, Michael: EKoo
+Willis, Bruce: WWSy
+
+Universität Duisburg-Essen - Tag 5
+
+Willis, Bruce: ITS
+

@@ -5,14 +5,14 @@ all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
 PROJECT TITLE: VAWI JAVA WS0910 - Teilleistung 3
-PURPOSE OF PROJECT: Lauffähiges Tool zum planen eines Prüfungsterminplans. 	
+PURPOSE OF PROJECT: Lauffähiges Tool zum planen eines Prüfungsterminplans.  
 VERSION or DATE: 25.01.2010
 HOW TO START THIS PROJECT:
 Beim starten des Programms können Parameter eingegeben werden mit den Dateinamen der Eingabedateien.
 Der Aufruf per Parameter lautet z.B. -studenten=studenten.txt -kurse=kurse.txt -buchungen=buchungen.txt
 Wichtig: Die Dateien müssen sich im Wurzelverzeichnis des VAWIOrgaTools befinden!
 Wenn keine Angaben gemacht werden, werden Standardnamen der Dateien angenommen.
-AUTHORS: Silvia Wölfle, Martin Munkelt, Jörn Hauser, Markus Bode
+AUTHORS: Silvia Wölfle, Martin Munkelt, Jörn Hauser, Markus Bode. Die genaue Zuordnung ist anhand der Namen pro Klasse zu sehen!
 
 |---------------------------------------------|
 | Allgemeine Beschreibung des Klassensystems |
@@ -35,15 +35,15 @@ Alle Algorithmen verwenden die gleichen Randbedingungen.
 
 
 |---------------------------------------------|
-| Zusammenhänge der Klassen					  |
+| Zusammenhänge der Klassen                   |
 |---------------------------------------------|
 
-VAWIOrgaTool
-------------
+VAWIOrgaTool (Jörn Hauser)
+--------------------------
 Einsprungspunkt in das Programm. Enthält die "Main"-Methode. Ebenso stellt es Methoden für eine rudimentäre Benutzerschnittstelle zur Verfügung.
 
-Ablaufsteuerung
----------------
+Ablaufsteuerung (Jörn Hauser)
+-----------------------------
 Stellt Methoden zur Steuerung des Programmablaufs bereit. Prüft zusätzlich auf Plausibilität des Programmablaufs.
 
 Simulator (Markus Bode)
@@ -58,28 +58,28 @@ Dazu wird die Klasse Studentenliste genutzt um die Zufriedenheit eines Studenten
 
 
 
-PruefungsPlanung.Planungsbedingunen
------------------------------------
+PruefungsPlanung.Planungsbedingunen (Silvia Wölfle)
+---------------------------------------------------
 Die Planungsbedingungen ist eine Datenklasse mit Attributen, getter/setter-Methoden (inkl. Prüfungen), z.B. maximale Anzahl an Kurse pro Student und Tag. 
 Die Planungsbedingungen werden ueber den Programmablauf gesetzt. (Also keine Konstanten)
-				
-PruefungsPlanung.PruefungsplanerAlgo1
--------------------------------------
+                
+PruefungsPlanung.PruefungsplanerAlgo1 (Jörn Hauser)
+---------------------------------------------------
 Der PruefungsplanerAlgo1 ist die konkrete Umsetzung des Planungsalgorithmus. 
 Er implementiert den Pruefungsplaner und spezialisiert den PruefungsplanerAbstrakt
 
-PruefungsPlanung.PruefungsplanerAbstrakt
-----------------------------------------
+PruefungsPlanung.PruefungsplanerAbstrakt (Jörn Hauser)
+------------------------------------------------------
 Der PruefungsplanerAbstrakt implementiert allgemeinegültige Methoden für Prüfungsplaner.
 
-PruefungsPlanung.PruefungsPlaner
---------------------------------
+PruefungsPlanung.PruefungsPlaner (Jörn Hauser)
+----------------------------------------------
 Interface, das eine Klasse zur Pruefungsplanung beschreibt.
 
 
 
-EingabeDatenverwaltung.DatenObjekte: Student, Kurs und Buchung
---------------------------------------------------------------
+EingabeDatenverwaltung.DatenObjekte: Student, Kurs und Buchung (Silvia Wölfle)
+------------------------------------------------------------------------------
 Enthalten Datenobjekte Student, Kurs und Buchung und getter/setter-Methoden (inkl. Prüfungen)
 
 EingabeDatenverwaltung.DatenVerwaltung: Buchungsliste + BuchungsComparator (Markus Bode)
@@ -110,38 +110,38 @@ Die Daten werden an die entsprechenden Verwaltungs-Klassen übergeben.
 
 
 
-AusgabeDatenverwaltung.DatenObjekte: Pruefungstag
--------------------------------------------------
+AusgabeDatenverwaltung.DatenObjekte: Pruefungstag (Silvia Wölfle)
+-----------------------------------------------------------------
 Enthält den Prüfungstag und eine Kursliste sowie ein Studentenliste und getter/setter-Methoden (inkl. Prüfungen)
 Die Tage wertden aus dem PruefungsPlanerAlgo1 gesetzt.
 
-AusgabeDatenverwaltung.DatenObjekte: Anwesenheit
-------------------------------------------------
+AusgabeDatenverwaltung.DatenObjekte: Anwesenheit (Silvia Wölfle)
+----------------------------------------------------------------
 Enthält Student und Kursliste und getter/setter-Methoden (inkl. Prüfungen) 
 Enthält selbst nicht Tag und Uni, da erst in der Verwaltungsklassen für die Listen zusammengestellt 
 
-AusgabeDatenverwaltung.DatenVerwaltung: Pruefungsterminplan
------------------------------------------------------------
+AusgabeDatenverwaltung.DatenVerwaltung: Pruefungsterminplan (Martin Munkelt)
+----------------------------------------------------------------------------
 Der Prüfungsterminplan enthält alle Prüfungstage. Der Pruefungsterminplan steht mit der AusgabeVerwaltung
 und der Logik für die Erzeugung des Planes in Beziehung
 
-AusgabeDatenverwaltung.DatenVerwaltung: Notenliste
------------------------------------------------------------
+AusgabeDatenverwaltung.DatenVerwaltung: Notenliste (Martin Munkelt)
+-------------------------------------------------------------------
 Die Notenliste enthält Buchungen. Dadurch, dass in der Buchung alle für die Notenliste
 relevanten Informationen zur Verfügung stehen wird keine weitere Notenklasse benötigt.
 
-AusgabeDatenverwaltung.DatenVerwaltung: Anwesenheitsliste
------------------------------------------------------------
+AusgabeDatenverwaltung.DatenVerwaltung: Anwesenheitsliste (Martin Munkelt)
+--------------------------------------------------------------------------
 Die Anwesenheitsliste wird von der AusgabeVerwaltung generiert. Sie enthält die einzelnen
 Anwesenheiten. Dafür wird ebenfalls auf die Daten der Buchungsliste zurückgegriffen.
 
-AusgabeDatenverwaltung.DatenVerwaltung: Platzkartenlisten
------------------------------------------------------------
+AusgabeDatenverwaltung.DatenVerwaltung: Platzkartenlisten (Martin Munkelt)
+--------------------------------------------------------------------------
 Die Platzkartenliste wird von der AusgabeVerwaltung erzeugt und enthält Buchungsobjekte. Auch
 hier sind in den Buchungen die gesamten Informationen der Platzkarte enthalten.
 
-Ausgabe: FlatFileSchreiber
---------------------------
+Ausgabe: FlatFileSchreiber (Martin Munkelt)
+-------------------------------------------
 Der FlatFileSchreiber wird von der AusgabeVerwaltung instantziiert und für die Ausgabe
 der Listen in Files verwendet. Die Klasse ruft die Hilfsklasse Datei auf und sendet
 die aufbereiteten Datenströme an die Ausgabe.
@@ -153,8 +153,8 @@ Hilfsklasse Datei
 Die vorgegebene Klasse Datei stellt die Logik zum Zugriff auf eine Datei zur Verfügung. 
 Sie wird genutzt vom FlatFileLeser und vom FlatFileSchreiber.
 
-Hilfsklasse: Interface Uni
---------------------------
+Hilfsklasse: Interface Uni (Silvia Wölfle)
+------------------------------------------
 Mit diesem Interface ist sichergestellt, dass programmweit immer "D" für Duisburg und "B" für Bamberg steht.
 
 
