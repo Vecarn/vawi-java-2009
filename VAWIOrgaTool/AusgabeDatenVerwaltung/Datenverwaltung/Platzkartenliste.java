@@ -15,7 +15,7 @@ import Hilfsklassen.*;
  * verwendet.
  * 
  * @author Martin
- * @version 1.0
+ * @version 1.1
  */
 public class Platzkartenliste {
 
@@ -83,7 +83,8 @@ public class Platzkartenliste {
 					output_b = output_b + "\nVAWi-Prüfung in Bamberg - Tag " 
 					+ tmp_pt.getTagId()
 					+ "\n\n";
-					output_b = output_b + "Teilnehmer: " 
+					output_b = output_b + "Teilnehmer: " +
+					tmp_student.getMatrikelnr() + " - " 
 							+ tmp_student.getName() + ", "
 							+ tmp_student.getVorname() + ": ";
 
@@ -130,7 +131,8 @@ public class Platzkartenliste {
 					+ tmp_pt.getTagId()
 					+ "\n\n";
 					output_d = output_d + "Teilnehmer: "
-							+ tmp_student.getName() + ", "
+					+ tmp_student.getMatrikelnr() + " - "
+					+ tmp_student.getName() + ", "
 							+ tmp_student.getVorname() + ": ";
 					
 					output_d = output_d + "\nHeutige Kurse:\n";
