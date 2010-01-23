@@ -33,13 +33,20 @@ public class Student
      * Konstruktor für Objekte der Klasse Student mit Parameter 
      * (der name, vorname und matrikelnr bei der erstellung des Objekts verlangt und gleich setzt)
      * 
-     * @param matrikelnr   ID des Studenten (int), soweit grösser 0
+     * @param name (String), vorname (String) und matrikelnr  (int) des Studenten, matrikelnr soweit grösser 0
      */
     public Student(String vorname, String name, int matrikelnr)
     {
+ 
+
+        if (name==null){
+            System.out.println("Name leer!");
+            return;
+            }
+        this.name=name;      
         this.vorname=vorname;
-        this.name=name;
-                if (matrikelnr >= 0) {   
+       
+        if (matrikelnr >= 0) {   
                     this.matrikelnr=matrikelnr;
                     }
      }
@@ -60,10 +67,10 @@ public class Student
                 this.uni = uni;
                 break;
              default:
-             System.out.println("Fehler! Nur B oder U möglich"); 
+             System.out.println("Fehler! Nur B oder D möglich"); 
          }
      }
-
+     
      /**
      * Set-Methode bundesland (ueberschreibt Attribut bundesland)
      * @param bundesland Bundesland, in welchem der Student ansaessig ist, frei als Text (String)
@@ -135,9 +142,7 @@ public class Student
             return("Inkonsistent");
         }
     }
-      
-      
-      
+            
      /**
      * Get-Methode: Gibt Bundesland eines Studenten als String zurück
      * @return  Bundesland des Studenten als String
