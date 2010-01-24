@@ -25,6 +25,9 @@ public class Platzkartenliste {
 	
 	/**
 	 * Konstruktor für die Platzkarten(liste)
+	 * @param buchungsliste 
+	 * @param pruefungsterminplan 
+	 * @param ausgabeverwaltung 
 	 */
 	public Platzkartenliste(Buchungsliste buchungsliste,
 			Pruefungsterminplan pruefungsterminplan,
@@ -38,7 +41,7 @@ public class Platzkartenliste {
 	/**
 	 * Methode zum Erzeugen der Liste
 	 * 
-	 * @return
+	 * @return output Liste als String
 	 */
 	public String generiereListe() {
 

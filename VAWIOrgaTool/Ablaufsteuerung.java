@@ -49,7 +49,7 @@ public class Ablaufsteuerung {
     /**
      * Methode startet den Planungslauf, wenn alle notwendigen Inputdaten vorhanden sind
      * @param pruefungenProTag als Randbedingungen aus dem UI mitgegeben
-     * @param PruefungenProStudentUndTag als Randbedingung aus dem UI mitgeben
+     * @param pruefungenProStudentUndTag als Randbedingung aus dem UI mitgeben
      * @throws Exception
      */
     public void startePlanungslauf(int pruefungenProTag, int pruefungenProStudentUndTag) throws Exception {

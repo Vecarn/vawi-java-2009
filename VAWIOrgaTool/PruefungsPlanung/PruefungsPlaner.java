@@ -12,7 +12,7 @@ public interface PruefungsPlaner {
 
     /**
      * Methode berechnet den Pruefungsplan und gibt diesen zurueck
-     * @param studenten, die eingeplant werden müssen
+     * @param studenten die eingeplant werden müssen
      * @param buchungen dieser Studenten
      * @param kurse mit allen buchbaren Kursen
      * @return Pruefungsterminplan mit allen geplanten Tagen

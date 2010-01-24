@@ -41,7 +41,6 @@ public class Kurs
    /**
      * Set-Methode hatTeilleistungen (ueberschreibt Attribut hatTeilleistungen)
      * @param hatTeilleistungen Teilleistungen eines Kurses vorhanden (boolean)
-     * @param Überprüfung (true wenn true, false wenn false) macht keinen Sinn...
      */
     public void setHatTeilleistungen(boolean hatTeilleistungen)
      {
@@ -49,8 +48,8 @@ public class Kurs
      }
    /**
      * Set-Methode setMaxPunkte (ueberschreibt Attribut setMaxPunkte)
+     * prüft und setzt Punktzahl wenn nicht kleiner 0
      * @param maxPunkte maximale Punktzahl eines Kurses (int)
-     * @param prüft und setzt Punktzahl wenn nicht kleiner 0
      */
     public void setMaxPunkte(int maxPunkte)
      {
