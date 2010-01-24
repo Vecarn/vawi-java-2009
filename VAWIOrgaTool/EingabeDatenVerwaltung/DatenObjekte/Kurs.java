@@ -54,7 +54,7 @@ public class Kurs
      */
     public void setMaxPunkte(int maxPunkte)
      {
-         if (maxPunkte <= 0){
+         if (maxPunkte < 0){
             System.out.println("Weniger als 0 Punkte nicht möglich!");
             return;
             }   
