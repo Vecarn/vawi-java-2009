@@ -13,7 +13,7 @@
 13;DaMa;Datenmanagement;nein;90
 14;DWuDMS;Data-Warehouse und Data-Mining-Systeme;nein;0
 15;InReSy;Information-Retrieval-Systeme;ja;60
-16;Bla;Blaaa;ja;50
+16;KoMi;Kommunikationsnetze und Middleware;ja;60
 17;ITS;IT-Sicherheit;ja;60
 18;WWSy;Workflow- und Workgroup-Systeme;nein;0
 19;Lete;Lerntechnologien;ja;90

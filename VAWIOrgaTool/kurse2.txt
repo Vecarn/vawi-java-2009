@@ -1,4 +1,0 @@
-1;ReCo;Grundlagen der Betriebswirtschaftslehre;nein;0
-2;eBis;E-Buisness;ja;60
-3;InWi;Informations- und Wissensmanagement;ja;60
-4;IDA;Integrierte Anwendungssysteme, Datenbanken und Archivierungssysteme;ja;90
