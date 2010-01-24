@@ -143,7 +143,8 @@ hier sind in den Buchungen die gesamten Informationen der Platzkarte enthalten.
 
 AusgabeDatenverwaltung.DatenVerwaltung: PruefungstagComparator
 --------------------------------------------------------------
-...
+Der PruefungstagComparator wird vom Pruefungstag benutzt, um die Objekte der 
+Klasse Pruefungstag sortiert zu speichern.
 
 
 Ausgabe: FlatFileSchreiber (Martin Munkelt)
