@@ -1,17 +1,13 @@
 
-import AusgabeDatenVerwaltung.Ausgabe.FlatFileSchreiber;
 import AusgabeDatenVerwaltung.AusgabeVerwaltung;
 import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
 import EingabeDatenVerwaltung.DatenVerwaltung.Buchungsliste;
 import EingabeDatenVerwaltung.DatenVerwaltung.Kursliste;
 import EingabeDatenVerwaltung.DatenVerwaltung.Studentenliste;
 import EingabeDatenVerwaltung.Eingabe.FlatFileLeser;
-import PruefungsPlanung.PruefungsPlaner;
 import PruefungsPlanung.Planungsbedingungen;
+import PruefungsPlanung.PruefungsPlaner;
 import PruefungsPlanung.PruefungsPlanerAlgo1;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Die Klasse Ablaufsteuerung stellt Methoden bereit um den Programmablauf durch ein UI zu steuern.
@@ -19,6 +15,7 @@ import java.util.logging.Logger;
  * und vorher notwendigen Schritte durchgefuehrt wurden.
  *
  * @author Joern Hauser
+ * @version 1.7
  */
 public class Ablaufsteuerung {
 
@@ -53,7 +50,8 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void startePlanungslauf(int pruefungenProTag, int pruefungenProStudentUndTag) throws Exception {
-        if(studentenliste!=null && buchungsliste !=null && kursliste !=null){ 
+        //Wenn alle Daten für Planung vorhanden
+    	if(studentenliste!=null && buchungsliste !=null && kursliste !=null){ 
         	System.out.println("Planungslauf wird gestartet...");
         	//Planungsbedingungsklasse erschaffen
         	Planungsbedingungen bedingungen = new Planungsbedingungen(pruefungenProTag);
@@ -72,9 +70,11 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void gebeDatenAus() throws Exception {
+    	//Wenn alle für die Ausgabe notwendigen Daten vorhanden
     	if(studentenliste != null && buchungsliste !=null && kursliste !=null && pruefungsplan != null){
     		System.out.println("Daten werden ausgegeben...");
-	        AusgabeVerwaltung ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
+	        //AusgabeVerwaltung erschaffen und Listen generieren
+    		AusgabeVerwaltung ausgabeVerwalter = new AusgabeVerwaltung(studentenliste, pruefungsplan, kursliste, buchungsliste);
 	        ausgabeVerwalter.generiereAnwesenheitsliste();
 	        ausgabeVerwalter.generiereNotenliste();
 	        ausgabeVerwalter.generiereTerminplan();
@@ -89,8 +89,10 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void werteZufriedenheitAus() throws Exception {
+    	//Wenn alle für die Auswertung der Zufriedenheit notwendigen Daten vorhanden
     	if(pruefungsplan!=null && studentenliste !=null && buchungsliste != null){
     		System.out.println("Zufriedenheit wird ausgegeben...");
+    		//Zufriedenheitsmesser erschaffen und Zufriedenheit errechnen
     		ZufriedenheitsMesser zufriedenheitsMesser = new ZufriedenheitsMesser(pruefungsplan, studentenliste,buchungsliste);
     		zufriedenheitsMesser.errechneZufriedenheit();
     	} else {
@@ -103,8 +105,10 @@ public class Ablaufsteuerung {
      * @throws Exception
      */
     public void erstelleFiktiveStudentenListe(int minBuchungen,int maxBuchungen,int anzahlStudenten) throws Exception {
+    	//Wenn Kursliste vorhanden
     	if(kursliste !=null){
     		System.out.println("Fiktive Studenten und Buchungen werden erstellt...");
+    		//Neuen Simulator erschaffen und Studenten und Buchungslisten generieren
     		Simulator simulator = new Simulator(kursliste,minBuchungen,maxBuchungen,anzahlStudenten);
             studentenliste = simulator.getStudentenliste();
             buchungsliste = simulator.getBuchungsliste();
@@ -119,6 +123,7 @@ public class Ablaufsteuerung {
      */
     public void beendeProgramm() throws Exception {
     	System.out.println("Programm wird beendet...");
+    	//Korrektes Beenden mit Return-Wert 0
         System.exit(0);
     }
 }

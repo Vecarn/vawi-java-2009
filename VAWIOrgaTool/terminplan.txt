@@ -1,49 +1,43 @@
 ---------------------------------------------
 VAWi-Orga-Tool - Terminplan
 ---------------------------------------------
-Liste erzeugt am 22 Jan 2010 10:29:51 GMT
+Liste erzeugt am 17 Jan 2010 17:50:46 GMT
 ---------------------------------------------
 
 
 Pruefungstag 1
 ---------------------------------------------
-eBis - E-Buisness
-IDA - Integrierte Anwendungssysteme, Datenbanken und Archivierungssysteme
-SoTe - Software-Technik
+ERP - Enterprise Resource Planning
+eCom - E-Commerce
+Lete - Lerntechnologien
 
 
 Pruefungstag 2
 ---------------------------------------------
-eCom - E-Commerce
-Bla - Blaaa
+MSuP - Modellierung von Systemen und Prozessen
+eBisD - Electronic Buisness im Dienstleistungsbereich
 Sim - Simulation
 
 
 Pruefungstag 3
 ---------------------------------------------
-ITS - IT-Sicherheit
-WWSy - Workflow- und Workgroup-Systeme
-ReRe - Rechtliche Regelungen
+ReCo - Grundlagen der Betriebswirtschaftslehre
+IDA - Integrierte Anwendungssysteme, Datenbanken und Archivierungssysteme
+InLe - Internetbasierte Lernumgebungen
 
 
 Pruefungstag 4
 ---------------------------------------------
-MSuP - Modellierung von Systemen und Prozessen
-RBKVS - Rechner-, Betriebs- und Kommunikationssysteme, Verteilte Systeme
-ERP - Enterprise Resource Planning
+WWSy - Workflow- und Workgroup-Systeme
+EKoo - E-Kooperation
+SoTe - Software-Technik
 
 
 Pruefungstag 5
 ---------------------------------------------
-Lete - Lerntechnologien
+ITS - IT-Sicherheit
 GdP - Grundlagen der Programmierung (Java)
 QuEB - Qualitätssicherung und Evaluation in der Bildung
-
-
-Pruefungstag 6
----------------------------------------------
-ReCo - Grundlagen der Betriebswirtschaftslehre
-InWi - Informations- und Wissensmanagement
 
 
 

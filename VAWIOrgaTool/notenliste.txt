@@ -1,7 +1,7 @@
 ---------------------------------------------
 VAWi-Orga-Tool - Notenliste
 ---------------------------------------------
-Liste erzeugt am 22 Jan 2010 10:29:51 GMT
+Liste erzeugt am 17 Jan 2010 17:50:46 GMT
 ---------------------------------------------
 
 
@@ -9,96 +9,89 @@ Liste erzeugt am 22 Jan 2010 10:29:51 GMT
 
 Kurs 1 - ReCo
 ---------------------------------------------
-Freitag, Felix
-
-
-Kurs 2 - eBis
----------------------------------------------
-Munkelt, Marcel: 31
-Woelfle, Manuela: 42
-
-
-Kurs 3 - InWi
----------------------------------------------
-Schaeuble, Fritz: 55
+Willis, Bruce
+Amos, Tori
 
 
 Kurs 4 - IDA
 ---------------------------------------------
-Freitag, Fritz: 24
-Gosler, Jessica: 17
-Schaeuble, Fritz: 81
+Chef, Engelbert: 0
+Gore, Martin: 57
 
 
 Kurs 5 - MSuP
 ---------------------------------------------
-Merkel, Jessica
-
-
-Kurs 6 - RBKVS
----------------------------------------------
-Hugendubel, Michael
+Meier, Karl
+Chef, Engelbert
+Wells, Orson
+Osbourne, Ozzy
 
 
 Kurs 8 - ERP
 ---------------------------------------------
-Freitag, Fritz: 88
+Müller, Karoline: 69
+
+
+Kurs 9 - eBisD
+---------------------------------------------
+Müller, Karoline: 61
 
 
 Kurs 10 - eCom
 ---------------------------------------------
-Woelfle, Manuela: 4
-Rausch, Fritz: 3
-
-
-Kurs 16 - Bla
----------------------------------------------
-Oesterle, Michael: 11
-Rausch, Fritz: 38
+Müller, Karoline: 45
+Moorcock, Michael: 50
+Wells, Orson: 31
 
 
 Kurs 17 - ITS
 ---------------------------------------------
-Woelfle, Manuela: 28
+Willis, Bruce: 45
 
 
 Kurs 18 - WWSy
 ---------------------------------------------
-Schroeder, Jessica
-Nett, Michael
-Freitag, Felix
+Chef, Engelbert
+Willis, Bruce
 
 
 Kurs 19 - Lete
 ---------------------------------------------
-Oesterle, Michael: 84
+Meier, Karl: 61
+Müller, Karoline: 78
+Moorcock, Michael: 80
+
+
+Kurs 20 - InLe
+---------------------------------------------
+Müller, Karoline: 46
 
 
 Kurs 21 - GdP
 ---------------------------------------------
-Gosler, Jessica: 47
+Gore, Martin: 81
 
 
 Kurs 22 - Sim
 ---------------------------------------------
-Freitag, Fritz: 11
-Oesterle, Michael: 14
+Chef, Engelbert: 45
+Moorcock, Michael: 49
+Wells, Orson: 45
+Willis, Bruce: 55
 
 
 Kurs 24 - QuEB
 ---------------------------------------------
-Woelfle, Manuela: 15
+Pütz, Jean: 71
 
 
-Kurs 25 - ReRe
+Kurs 26 - EKoo
 ---------------------------------------------
-Schroeder, Jessica
-Schaeuble, Fritz
+Moorcock, Michael: 80
+Wells, Orson: 79
 
 
 Kurs 28 - SoTe
 ---------------------------------------------
-Freitag, Fritz: 43
-Schroeder, Jessica: 50
-Nett, Michael: 33
+Müller, Karoline: 81
 
