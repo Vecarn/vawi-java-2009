@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  * VAWIOrgaTool enthaelt die Main-Methode und Methoden eines rudimentaeren UI zur Steuerung des Programms durch einen Benutzer
  *
  * @author Joern Hauser
+ * @version	1.9
  */
 public class VAWIOrgaTool {
 	
@@ -32,9 +33,12 @@ public class VAWIOrgaTool {
 	VAWIOrgaTool(String args[]) throws Exception{
 		System.out.println("VAWIOrgaTool 1 der Gruppe 5");
 		System.out.println("---------------------------");
+		//Neues File-Objekt wird erzeugt um den relativen Pfad zum Root-Verzeichnis zu erhalten
 		File f = new File("");
 		pfad = f.getAbsolutePath() + "\\";
+		//Initialisierungsmethode aufrufen
 		init(args);
+		//Benutzeroberfläche anzeigen
 		setMenu();
 	}
 	
@@ -54,7 +58,9 @@ public class VAWIOrgaTool {
 			System.out.println("Der Aufruf per Parameter lautet z.B. -studenten=studenten.txt -kurse=kurse.txt -buchungen=buchungen.txt");
 			System.out.println("Wichtig: Die Dateien müssen sich im Wurzelverzeichnis des VAWIOrgaTools befinden!");	
 		} 	
+		//Loop über alle Aufrufparameter.
 		for (int i = 0; i < args.length; i++) {
+			//Überprüfen mit regulärem Ausdruck nach Suchmustern, falls nicht gefunden bleibt der Default Wert
 			//Parameter: -studenten
 			if (Pattern.matches("-studenten=.*", args[i])) {
 				studentenDatei = pfad+args[i].substring(11, args[i].length());
@@ -101,7 +107,9 @@ public class VAWIOrgaTool {
     	werteEingabeAus(eingabe);
 
     }
-    
+    /**
+     * Methode führt Benutzer durch die Eingabe-Prozedur der Planungsparameter
+     */
     private void setBedingungen(){
     	String eingabe="";
     	try {
@@ -118,6 +126,9 @@ public class VAWIOrgaTool {
     		System.out.println("Fehler: Eingabe muss nummerische sein (Eingabe:" + eingabe +")");
     	}
     }
+    /**
+     * Methode führt Benutzer durch die Eingabe-Prozedur des Simulators
+     */
     private void setSimulator(){
     	String eingabe="";
     	try {
@@ -141,6 +152,9 @@ public class VAWIOrgaTool {
     	}
     }
     
+    /**
+     * Methode führt den Benutzer durch die Eingabe-Prozedur für das Einlesen der Eingabedaten
+     */
     private void setFlatFileLeser(){
     	String eingabe="";
     	try {
@@ -156,13 +170,20 @@ public class VAWIOrgaTool {
     	}
     	
     }
+    /**
+     * Hilfsmethode um von der Kommandozeile Eingaben entgegenzunehmen
+     * @return String 
+     */
     private String getEingabe(){
     	
+    	//Neuen InputReader der Stdin
     	InputStreamReader isr = new InputStreamReader(System.in);
     	BufferedReader br = new BufferedReader(isr);
     	String eingabe;
     	try{
+    		//Einlesen einer Zeile
     		eingabe = br.readLine();
+    		//Rückgabe der Zeile
     		return eingabe;
     	} catch (Exception e) {
 			e.printStackTrace();
@@ -176,47 +197,58 @@ public class VAWIOrgaTool {
      * @throws Exception 
      */
     private void werteEingabeAus(String eingabe) throws Exception {
-    		char i = eingabe.charAt(0);
-			switch (i) {
-			case '0':
-				steuerung.beendeProgramm();
-				break;
-			case '1':
-				setFlatFileLeser();
-				steuerung.leseDatenEin(studentenDatei, buchungsDatei, kursDatei,einleseModus);
-				System.out.println("---> Daten einlesen beendet!");
-				setMenu();
-				break;
-			case '2':
-				setSimulator();
-				steuerung.erstelleFiktiveStudentenListe(minSimBuchungen,maxSimBuchungen,anzSimStudenten);
-				System.out.println("---> Fiktive Studentenlisten erstellt!");
-				setMenu();
-				break;
-			case '3':
-				setBedingungen();
-				System.out.println("---> Planungsparameter gesetzt!");
-				setMenu();
-				break;
-			case '4':
-				steuerung.startePlanungslauf(pruefungenProTag, pruefungenProStudentUndTag);
-				System.out.println("---> Planung beendet!");
-				setMenu();
-				break;
-			case '5':
-				steuerung.werteZufriedenheitAus();
-				System.out.println("---> Zufriedenheit ausgewertet!");
-				setMenu();
-				break;
-			case '6':
-				steuerung.gebeDatenAus();
-				System.out.println("---> Daten ausgegeben!");
-				setMenu();
-				break;
-			default:
-				System.out.println("Falsche Eingabe!!!");
-				setMenu();
-			}
+		//Erstes Zeichen der Eingabe einlesen
+    	char i = eingabe.charAt(0);
+		//Auswahl welches Zeichen eingegeben wurde
+    	switch (i) {
+		case '0':
+			//Programmende
+			steuerung.beendeProgramm();
+			break;
+		case '1':
+			//Dateien einlesen
+			setFlatFileLeser();
+			steuerung.leseDatenEin(studentenDatei, buchungsDatei, kursDatei,einleseModus);
+			System.out.println("---> Daten einlesen beendet!");
+			setMenu();
+			break;
+		case '2':
+			//Simulation
+			setSimulator();
+			steuerung.erstelleFiktiveStudentenListe(minSimBuchungen,maxSimBuchungen,anzSimStudenten);
+			System.out.println("---> Fiktive Studentenlisten erstellt!");
+			setMenu();
+			break;
+		case '3':
+			//Planungsparameter setzen
+			setBedingungen();
+			System.out.println("---> Planungsparameter gesetzt!");
+			setMenu();
+			break;
+		case '4':
+			//Planungslauf starten
+			steuerung.startePlanungslauf(pruefungenProTag, pruefungenProStudentUndTag);
+			System.out.println("---> Planung beendet!");
+			setMenu();
+			break;
+		case '5':
+			//Zufriedenheit auswerten
+			steuerung.werteZufriedenheitAus();
+			System.out.println("---> Zufriedenheit ausgewertet!");
+			setMenu();
+			break;
+		case '6':
+			//Daten ausgeben
+			steuerung.gebeDatenAus();
+			System.out.println("---> Daten ausgegeben!");
+			setMenu();
+			break;
+		default:
+			//Wenn nichts zutreffendes eingegeben wurde, dann Fehlermeldung
+			System.out.println("Falsche Eingabe!!!");
+			//Menü wieder aufbauen
+			setMenu();
+		}
 
 
     }

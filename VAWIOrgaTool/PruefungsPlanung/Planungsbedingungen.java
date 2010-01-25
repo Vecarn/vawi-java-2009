@@ -1,6 +1,4 @@
 package PruefungsPlanung;
-import PruefungsPlanung.PruefungsPlanerAlgo1.*;
-import EingabeDatenVerwaltung.DatenVerwaltung.*;
 
 /**
  * Die Planungsbedingungen ist eine Datenklasse mit Attributen, 

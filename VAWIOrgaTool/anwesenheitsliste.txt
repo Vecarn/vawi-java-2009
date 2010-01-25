@@ -1,71 +1,65 @@
 ---------------------------------------------
 VAWi-Orga-Tool - Anwesenheitsliste
 ---------------------------------------------
-Liste erzeugt am 22 Jan 2010 10:29:50 GMT
+Liste erzeugt am 17 Jan 2010 17:50:46 GMT
 ---------------------------------------------
 
 
 
-Universität Bamberg - Tag 1
+Bamberg - Tag 1
 
-Freitag, Fritz: IDA, SoTe
-Schroeder, Jessica: SoTe
-Woelfle, Manuela: eBis
-Nett, Michael: SoTe
+Wells, Orson	ERP|eCom|Lete|
 
-Universität Bamberg - Tag 2
+Bamberg - Tag 2
 
-Freitag, Fritz: Sim
-Woelfle, Manuela: eCom
-Rausch, Fritz: eCom, Bla
+Chef, Engelbert	MSuP|eBisD|Sim|
+Wells, Orson	MSuP|eBisD|Sim|
+Osbourne, Ozzy	MSuP|eBisD|Sim|
 
-Universität Bamberg - Tag 3
+Bamberg - Tag 3
 
-Schroeder, Jessica: WWSy, ReRe
-Woelfle, Manuela: ITS
-Nett, Michael: WWSy
+Chef, Engelbert	ReCo|IDA|InLe|
+Gore, Martin	ReCo|IDA|InLe|
 
-Universität Bamberg - Tag 4
+Bamberg - Tag 4
 
-Freitag, Fritz: ERP
+Chef, Engelbert	WWSy|EKoo|SoTe|
+Wells, Orson	WWSy|EKoo|SoTe|
 
-Universität Bamberg - Tag 5
+Bamberg - Tag 5
 
-Woelfle, Manuela: QuEB
-
-Universität Bamberg - Tag 6
+Pütz, Jean	ITS|GdP|QuEB|
+Gore, Martin	ITS|GdP|QuEB|
 
 
 
 
+Duisburg-Essen - Tag 1
 
-Universität Duisburg-Essen - Tag 1
+Meier, Karl	ERP|eCom|Lete|
+Müller, Karoline	ERP|eCom|Lete|
+Moorcock, Michael	ERP|eCom|Lete|
 
-Munkelt, Marcel: eBis
-Gosler, Jessica: IDA
-Schaeuble, Fritz: IDA
+Duisburg-Essen - Tag 2
 
-Universität Duisburg-Essen - Tag 2
+Meier, Karl	MSuP|eBisD|Sim|
+Müller, Karoline	MSuP|eBisD|Sim|
+Moorcock, Michael	MSuP|eBisD|Sim|
+Willis, Bruce	MSuP|eBisD|Sim|
 
-Oesterle, Michael: Bla, Sim
+Duisburg-Essen - Tag 3
 
-Universität Duisburg-Essen - Tag 3
+Müller, Karoline	ReCo|IDA|InLe|
+Willis, Bruce	ReCo|IDA|InLe|
+Amos, Tori	ReCo|IDA|InLe|
 
-Schaeuble, Fritz: ReRe
-Freitag, Felix: WWSy
+Duisburg-Essen - Tag 4
 
-Universität Duisburg-Essen - Tag 4
+Müller, Karoline	WWSy|EKoo|SoTe|
+Moorcock, Michael	WWSy|EKoo|SoTe|
+Willis, Bruce	WWSy|EKoo|SoTe|
 
-Merkel, Jessica: MSuP
-Hugendubel, Michael: RBKVS
+Duisburg-Essen - Tag 5
 
-Universität Duisburg-Essen - Tag 5
-
-Oesterle, Michael: Lete
-Gosler, Jessica: GdP
-
-Universität Duisburg-Essen - Tag 6
-
-Schaeuble, Fritz: InWi
-Freitag, Felix: ReCo
+Willis, Bruce	ITS|GdP|QuEB|
 
