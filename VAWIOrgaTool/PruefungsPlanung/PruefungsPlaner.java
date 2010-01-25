@@ -6,9 +6,9 @@ import EingabeDatenVerwaltung.DatenVerwaltung.*;
 /**
  * Der PruefungsPlaner ist ein Interface, welches von den Klassen, die die Pr&uuml;fungsplanungalgorithmen enthalten implementiert werden. Dieses Interface hat somit die Aufgabe unterschiedliche Planungsalgorithmen modular in die Ablaufsteuerung einzubinden und den Planungsalgorithmus zu kapseln. Er ben&ouml;tigt daf&uuml;r die EingabeDaten und den Pruefungsterminplan mit den Pruefungstagen.
  * @author Joern Hauser
+ * @version 1.2
  */
 public interface PruefungsPlaner {
-
 
     /**
      * Methode berechnet den Pruefungsplan und gibt diesen zurueck
