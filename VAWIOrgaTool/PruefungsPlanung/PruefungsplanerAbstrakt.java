@@ -8,21 +8,22 @@ import AusgabeDatenVerwaltung.Datenverwaltung.Pruefungsterminplan;
 /**
  * Der PruefungsplanerAbstrakt ist eine abstrakte Klasse, die das Interface Pruefungsplaner implementiert. Alle Methoden die den Algorithmus direkt betreffen bleiben abstrakt. Lediglich die Methoden, die die Planungsbedingungen als Randbedingungen f&uuml;r den Algorithmus setzen, sind implementiert.
  * @author Joern Hauser
+ * @version 1.2
  */
 public abstract class PruefungsplanerAbstrakt implements PruefungsPlaner {
 
 	private Planungsbedingungen bedingungen;
     /**
      * Konstruktor mit Planungsbedingungen
-     * @param planungsbedingungen
+     * @param planungsbedingungen als Randbedingungen zur Planung
      */
     public PruefungsplanerAbstrakt(Planungsbedingungen planungsbedingungen){
     	this.bedingungen = planungsbedingungen;
     }
 
-        /**
+     /**
      * Methode gibt die aktuell gültigen Planungsbedingungen zurueck
-     * @return Planungsbedingungen
+     * @return Planungsbedingungen aktuelle Planungsbedingungen
      */
     public Planungsbedingungen getPlanungsbedingungen(){
         return bedingungen;
