@@ -1,0 +1,7 @@
+**Eclipse SVN Nutzung**
+
+Hallo zusammen, ich habe einen guten Link gefunden der Schritt für Schritt die googlecode SVN Nutzung mit Eclipse beschreibt:
+
+http://code.google.com/p/opent/wiki/EclipseSVN
+
+Ich werde jetzt sehr wahrscheinlich Eclipse verwenden. Das BlueJ ist mir irgendwie zu unübersichtlich mit Packages.
